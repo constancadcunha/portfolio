@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Constança Cunha – UX Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+            colors: {
+                softPink: '#fcd5ce',
+                blush: '#f8cdda',
+                softLilac: '#dcd6f7',
+                cream: '#fff8f0',
+                dark: '#0e0e10',
+                darker: '#09090b',
+                accent: '#ffb6b9',
+                sky: '#cde8f7',
+                mint: '#d3f4e3',
+                nightText: '#f5f5f5',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          animation: {
+            fadeIn: 'fadeIn 1s ease-out forwards',
+            slideInRight: 'slideInRight 0.8s ease-out forwards',
+            slideInLeft: 'slideInLeft 0.8s ease-out forwards',
+            type: 'type 4s steps(40, end) forwards, blink 0.75s step-end infinite',
+            float: 'float 6s ease-in-out infinite',
+            scale: 'scale 0.3s ease-out forwards'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
+            },
+            slideInRight: {
+              '0%': { transform: 'translateX(50px)', opacity: 0 },
+              '100%': { transform: 'translateX(0)', opacity: 1 }
+            },
+            slideInLeft: {
+              '0%': { transform: 'translateX(-50px)', opacity: 0 },
+              '100%': { transform: 'translateX(0)', opacity: 1 }
+            },
+            type: {
+              '0%': { width: '0' },
+              '100%': { width: '100%' }
+            },
+            blink: {
+              '50%': { borderColor: 'transparent' }
+            },
+            float: {
+              '0%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+              '100%': { transform: 'translateY(0px)' }
+            },
+            scale: {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(1.05)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .typewriter-text {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 3s steps(60, end) forwards;
+    }
+
+    
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .project-card:hover .project-card-inner {
+      transform: rotateY(180deg);
+    }
+    .project-card-inner {
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .project-card-front, .project-card-back {
+      backface-visibility: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .project-card-back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+    .active-btn {
+      background-color: #ffb6b9;
+      color: white;
+      box-shadow: 0 0 10px rgba(255, 182, 185, 0.5);
+      transform: scale(1.05);
+    }
+    .custom-cursor {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: transform 0.2s ease;
+    }
+    /* For screen readers only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Skills hover effect */
+    .skill-pill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    /* Scroll progress bar */
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .progress-bar {
+      height: 4px;
+      background: #ffb6b9;
+      width: 0%;
+    }
+  </style>
+</head>
+<body class="bg-cream text-black font-sans transition-all duration-500">
+  <!-- Scroll progress bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="custom-cursor hidden lg:block bg-accent"></div>
+
+  <div class="p-6 max-w-7xl mx-auto space-y-16">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <h1 class="text-4xl font-extrabold text-accent drop-shadow-md">Constança Cunha <span class="animate-float inline-block">✦</span></h1>
+    </div>
+
+    <!-- Intro section with animation -->
+    <div class="mt-10 mb-6">
+      <h2 class="text-2xl font-bold typewriter-text text-typewriter animate-type">Hi! I'm Constança, a UX Designer & Frontend Developer.</h2>
+      
+      <!-- Personal brand statement -->
+      <p class="mt-4 text-lg opacity-0 animate-fadeIn" style="animation-delay: 2s;">
+        <span class="bg-accent text-white px-3 py-1 rounded-full font-semibold">I create intuitive digital experiences that blend beauty with function.</span>
+      </p>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="section mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-white p-8 rounded-2xl shadow-md">
+      <div class="md:col-span-1">
+        <img src="Constança.jpg" alt="Constança Cunha" class="rounded-2xl border-4 border-accent shadow-lg mx-auto">
+      </div>
+      <div class="md:col-span-2">
+        <h2 class="text-3xl font-bold text-accent mb-4">About Me</h2>
+        <p class="mb-4">I'm a UX Designer and Frontend Developer with a passion for creating interfaces that are not only beautiful but also functional and accessible. With a background in computer science, I bring a unique blend of technical knowledge and design sensibility to every project.</p>
+        <p class="mb-4">My approach to design is user-centered, focusing on understanding the people I'm designing for and the problems they're trying to solve. I believe that the best digital experiences are those that feel intuitive and natural, almost invisible to the user.</p>
+        <p>When I'm not designing or coding, you can find me exploring new design trends, attending tech meetups, or sketching in my notebook at a local café.</p>
+        
+        <!-- Interactive element: Design philosophy wheel -->
+        <!-- Replace your current design wheel section with this enhanced version -->
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold mb-4">My Design Philosophy & Process</h3>
+        
+        <!-- Design wheel with enhanced interaction -->
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div id="design-wheel" class="relative h-48 w-48 mx-auto cursor-pointer">
+            <div class="design-segment absolute inset-0 opacity-90 transition-all duration-300" 
+                style="clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%); background-color: #fcd5ce;">
+              <div class="absolute top-[15%] right-[15%] transform translate-x-0 -translate-y-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+            <div class="design-segment absolute inset-0 opacity-90 transition-all duration-300" 
+                style="clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 50% 100%); background-color: #f8cdda;">
+              <div class="absolute top-[15%] left-[15%] transform -translate-x-0 -translate-y-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+            </div>
+            <div class="design-segment absolute inset-0 opacity-90 transition-all duration-300" 
+                style="clip-path: polygon(50% 50%, 50% 100%, 100% 100%, 100% 50%); background-color: #dcd6f7;">
+              <div class="absolute bottom-[15%] right-[15%] transform translate-x-0 translate-y-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+            </div>
+            <div class="design-segment absolute inset-0 opacity-90 transition-all duration-300" 
+                style="clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 50% 100%); background-color: #cde8f7;">
+              <div class="absolute bottom-[15%] left-[15%] transform -translate-x-0 translate-y-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+            </div>
+            
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white rounded-full h-24 w-24 flex items-center justify-center shadow-md hover:scale-110 transition-transform duration-300">
+                <span class="text-sm font-semibold text-center">Human<br>Centered<br>Design</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Enhanced philosophy details panel -->
+          <div id="philosophy-detail" class="w-full md:w-3/5 p-5 bg-white rounded-lg shadow-lg">
+            <div class="philosophy-content" data-phase="default">
+              <h4 class="font-semibold text-lg text-accent mb-2">My Design Philosophy</h4>
+              <p class="text-sm mb-3">I believe in human-centered design that solves real problems while creating delightful experiences. Hover over each segment of the wheel to learn more about my design process.</p>
+              <p class="text-xs text-gray-500 italic">Each phase is crucial and informs the others in a continuous cycle of improvement.</p>
+            </div>
+            
+            <div class="philosophy-content hidden" data-phase="research">
+              <h4 class="font-semibold text-lg text-accent mb-2">1. Research</h4>
+              <p class="text-sm mb-3">I begin every project with thorough user research to understand needs, pain points, and behaviors. This includes interviews, surveys, competitive analysis, and market research.</p>
+              <p class="text-xs mb-2"><span class="font-semibold">Tools:</span> User interviews, Surveys, Personas, Journey maps</p>
+              <p class="text-xs text-gray-500 italic">Example: For ReMi app, I interviewed 12 recent movers to understand their challenges.</p>
+            </div>
+            
+            <div class="philosophy-content hidden" data-phase="ideate">
+              <h4 class="font-semibold text-lg text-accent mb-2">2. Ideate</h4>
+              <p class="text-sm mb-3">I explore multiple solutions through sketching, brainstorming, and conceptual mapping before settling on a direction. This phase is about quantity of ideas over quality.</p>
+              <p class="text-xs mb-2"><span class="font-semibold">Tools:</span> Mind maps, Sketching, Crazy 8s, How Might We</p>
+              <p class="text-xs text-gray-500 italic">Example: For Clicky Companion, I ideated 20+ different interactions to make mood tracking engaging.</p>
+            </div>
+            
+            <div class="philosophy-content hidden" data-phase="design">
+              <h4 class="font-semibold text-lg text-accent mb-2">3. Design</h4>
+              <p class="text-sm mb-3">I create intuitive, accessible interfaces with a focus on visual hierarchy, consistency, and delight. Each design choice is made deliberately with the user's needs in mind.</p>
+              <p class="text-xs mb-2"><span class="font-semibold">Tools:</span> Wireframing, Prototyping, Visual design, Interaction design</p>
+              <p class="text-xs text-gray-500 italic">Example: SageBook's cottagecore aesthetic was chosen to create a warm, inviting learning environment.</p>
+            </div>
+            
+            <div class="philosophy-content hidden" data-phase="test">
+              <h4 class="font-semibold text-lg text-accent mb-2">4. Test & Iterate</h4>
+              <p class="text-sm mb-3">I continuously test with users and refine designs based on feedback and data. No design is perfect on the first try, and user insights drive improvements.</p>
+              <p class="text-xs mb-2"><span class="font-semibold">Tools:</span> Usability testing, A/B testing, Analytics, Heatmaps</p>
+              <p class="text-xs text-gray-500 italic">Example: ReMi's onboarding flow was redesigned 3 times based on usability test findings.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Process flow visualization -->
+        <div class="mt-8 overflow-x-auto">
+          <div class="process-flow flex items-center justify-between min-w-[600px] py-4">
+            <div class="process-step flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full bg-softPink flex items-center justify-center mb-2">
+                <span class="text-lg font-bold">1</span>
+              </div>
+              <span class="text-xs font-medium">Research</span>
+            </div>
+            
+            <div class="process-arrow w-12 h-0.5 bg-gray-300 relative">
+              <div class="absolute -top-1 right-0 border-t-4 border-r-0 border-b-4 border-l-8 border-t-transparent border-b-transparent border-l-gray-300"></div>
+            </div>
+            
+            <div class="process-step flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full bg-blush flex items-center justify-center mb-2">
+                <span class="text-lg font-bold">2</span>
+              </div>
+              <span class="text-xs font-medium">Ideate</span>
+            </div>
+            
+            <div class="process-arrow w-12 h-0.5 bg-gray-300 relative">
+              <div class="absolute -top-1 right-0 border-t-4 border-r-0 border-b-4 border-l-8 border-t-transparent border-b-transparent border-l-gray-300"></div>
+            </div>
+            
+            <div class="process-step flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full bg-softLilac flex items-center justify-center mb-2">
+                <span class="text-lg font-bold">3</span>
+              </div>
+              <span class="text-xs font-medium">Design</span>
+            </div>
+            
+            <div class="process-arrow w-12 h-0.5 bg-gray-300 relative">
+              <div class="absolute -top-1 right-0 border-t-4 border-r-0 border-b-4 border-l-8 border-t-transparent border-b-transparent border-l-gray-300"></div>
+            </div>
+            
+            <div class="process-step flex flex-col items-center">
+              <div class="w-16 h-16 rounded-full bg-sky flex items-center justify-center mb-2">
+                <span class="text-lg font-bold">4</span>
+              </div>
+              <span class="text-xs font-medium">Test & Iterate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section">
+      <h2 class="text-3xl font-bold text-accent mb-6">My Skills</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Design Skills -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <h3 class="font-semibold text-lg mb-3">Design</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm transition-all duration-300">UI Design</span>
+            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm transition-all duration-300">UX Research</span>
+            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm transition-all duration-300">Wireframing</span>
+            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm transition-all duration-300">Prototyping</span>
+          </div>
+        </div>
+        
+        <!-- Development Skills -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <h3 class="font-semibold text-lg mb-3">Development</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm transition-all duration-300">HTML</span>
+            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm transition-all duration-300">CSS</span>
+            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm transition-all duration-300">JavaScript</span>
+            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm transition-all duration-300">Tailwind</span>
+          </div>
+        </div>
+        
+        <!-- Tools -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <h3 class="font-semibold text-lg mb-3">Tools</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm transition-all duration-300">Figma</span>
+            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm transition-all duration-300">Adobe XD</span>
+            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm transition-all duration-300">VS Code</span>
+            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm transition-all duration-300">Git</span>
+          </div>
+        </div>
+        
+        <!-- Soft Skills -->
+        <div class="bg-white p-6 rounded-2xl shadow-md">
+          <h3 class="font-semibold text-lg mb-3">Soft Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm transition-all duration-300">Communication</span>
+            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm transition-all duration-300">Problem Solving</span>
+            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm transition-all duration-300">Teamwork</span>
+            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm transition-all duration-300">Empathy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="section flex flex-wrap gap-4 justify-center my-8">
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="all" aria-pressed="true">
+        <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-accent"></span>All
+      </button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="app" aria-pressed="false">
+        <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-transparent"></span>Apps
+      </button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="website" aria-pressed="false">
+        <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-transparent"></span>Websites
+      </button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="cert" aria-pressed="false">
+        <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-transparent"></span>Certificates
+      </button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="design" aria-pressed="false">
+        <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-transparent"></span>Designs
+      </button>
+    </div>
+
+    <!-- Projects -->
+    <div id="projects" class="space-y-24">
+
+      <div class="section space-y-6" data-type="app">
+        <h3 class="text-2xl font-semibold border-b pb-2">✨ Apps</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+          <div class="project-card h-80">
+            <div class="project-card-inner">
+              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
+                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
+                  <img src="/api/placeholder/200/150" alt="Clicky Companion" class="object-contain h-full mx-auto lazy-load" data-src="clicky.png">
+                </div>
+                <h4 class="font-semibold text-lg">Clicky Companion</h4>
+                <p class="text-sm mb-3">Mental wellness tracker with a cute digital companion.</p>
+                <p class="text-xs text-gray-500 italic">Click to view details</p>
+              </div>
+              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg text-accent">Clicky Companion</h4>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Problem:</p>
+                  <p>Mental health tracking apps often feel clinical and are abandoned quickly.</p>
+                  
+                  <p class="font-semibold">Solution:</p>
+                  <p>A gamified mental wellness tracker with a virtual pet that responds to user's emotional states.</p>
+                  
+                  <p class="font-semibold">Process:</p>
+                  <p>User interviews, wireframing, prototyping in Figma, usability testing</p>
+                  
+                  <div class="mt-4">
+                    <a href="https://www.figma.com/proto/UC2rBn1q2buoAE2SHOHmMg/App" target="_blank" class="text-accent underline text-sm">View Prototype</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="project-card h-80">
+            <div class="project-card-inner">
+              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
+                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
+                  <img src="/api/placeholder/200/150" alt="SageBook" class="object-contain h-full mx-auto lazy-load" data-src="sagebook.png">
+                </div>
+                <h4 class="font-semibold text-lg">SageBook (WIP)</h4>
+                <p class="text-sm mb-3">Cottagecore cooking assistant with gamified learning.</p>
+                <p class="text-xs text-gray-500 italic">Click to view details</p>
+              </div>
+              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg text-accent">SageBook (WIP)</h4>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Problem:</p>
+                  <p>Cooking apps are often utilitarian and lack engaging elements for beginners.</p>
+                  
+                  <p class="font-semibold">Solution:</p>
+                  <p>A whimsical cooking assistant with achievement-based learning and cottagecore aesthetics.</p>
+                  
+                  <p class="font-semibold">Process:</p>
+                  <p>Competitive analysis, user personas, journey mapping, high-fidelity prototyping</p>
+                  
+                  <div class="mt-4">
+                    <a href="https://www.figma.com/proto/uHi2kRUlatW4vGDMtvpI1p/SageBook" target="_blank" class="text-accent underline text-sm">View Prototype</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="project-card h-80">
+            <div class="project-card-inner">
+              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
+                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
+                  <img src="/api/placeholder/200/150" alt="ReMi" class="object-contain h-full mx-auto lazy-load" data-src="remi.png">
+                </div>
+                <h4 class="font-semibold text-lg">ReMi</h4>
+                <p class="text-sm mb-3">Relocation app for smoother transitions.</p>
+                <p class="text-xs text-gray-500 italic">Click to view details</p>
+              </div>
+              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg text-accent">ReMi</h4>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Problem:</p>
+                  <p>Moving to a new city is stressful with fragmented information sources.</p>
+                  
+                  <p class="font-semibold">Solution:</p>
+                  <p>An all-in-one relocation companion that guides users through every step of moving to a new place.</p>
+                  
+                  <p class="font-semibold">Process:</p>
+                  <p>User interviews with recent movers, information architecture design, usability testing</p>
+                  
+                  <div class="mt-4 space-y-1">
+                    <a href="https://www.figma.com/proto/KwwVf95iNG2TyMDblbhMAk/CCU?node-id=295-928" target="_blank" class="text-accent underline text-sm block">View Prototype</a>
+                    <a href="https://group1ccul03.notion.site/78aca85d730543929c78a2d25c008060?v=0ed04df2912d4a379f3af8766f5ae863" target="_blank" class="text-accent underline text-sm block">View Case Study</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+
+      <div class="section space-y-6" data-type="website">
+        <h3 class="text-2xl font-semibold border-b pb-2">🌐 Websites</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="project-card h-64">
+            <div class="project-card-inner">
+              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg">Personal Website</h4>
+                <p class="text-sm">Digital CV and portfolio presence.</p>
+                <p class="text-xs text-gray-500 italic mt-4">Click to view details</p>
+              </div>
+              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg text-accent">Personal Website</h4>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Challenge:</p>
+                  <p>Creating a distinctive online presence that showcases my skills and personality.</p>
+                  
+                  <p class="font-semibold">Solution:</p>
+                  <p>A responsive, accessible website with interactive elements and clean design.</p>
+                  
+                  <p class="font-semibold">Technologies:</p>
+                  <p>HTML, CSS, JavaScript, Tailwind CSS</p>
+                  
+                  <div class="mt-4">
+                    <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="text-accent underline text-sm">Visit Site</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card h-64">
+            <div class="project-card-inner">
+              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg">Resumos LEIC</h4>
+                <p class="text-sm">A resource hub for students in the LEIC program.</p>
+                <p class="text-xs text-gray-500 italic mt-4">Click to view details</p>
+              </div>
+              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
+                <h4 class="font-semibold text-lg text-accent">Resumos LEIC</h4>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Challenge:</p>
+                  <p>Students lacked a centralized platform for course materials and study resources.</p>
+                  
+                  <p class="font-semibold">Solution:</p>
+                  <p>A collaborative website where students can share notes, summaries and resources.</p>
+                  
+                  <p class="font-semibold">My Role:</p>
+                  <p>UX Designer and Frontend Developer</p>
+                  
+                  <div class="mt-4">
+                    <a href="https://resumos.leic.pt/" target="_blank" class="text-accent underline text-sm">Visit Site</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="section space-y-6" data-type="cert">
+        <h3 class="text-2xl font-semibold border-b pb-2">📜 Certificates</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <h4 class="font-semibold text-lg">Complete Figma Megacourse: UI/UX Design</h4>
+            <p class="text-sm">Beginner to expert UI/UX course on Figma.</p>
+            <a href="certificates/UC-a1497d98-ab9f-4d61-8f60-92c8a520914f.pdf" target="_blank" class="text-accent underline text-sm" download>View Certificate</a>
+          </div>
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <h4 class="font-semibold text-lg">Digital Skills: User Experience</h4>
+            <p class="text-sm">UX fundamentals and best practices.</p>
+            <a href="certificates/digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf" target="_blank" class="text-accent underline text-sm" download>View Certificate</a>
+          </div>
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <h4 class="font-semibold text-lg">Intro to UI/UX Design</h4>
+            <p class="text-sm">Basics of UI/UX principles and workflow.</p>
+            <a href="certificates/Constança Cunha - 2025-01-24.pdf" target="_blank" class="text-accent underline text-sm" download>View Certificate</a>
+          </div>
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <h4 class="font-semibold text-lg">Master Digital Product Design</h4>
+            <p class="text-sm">UX research, product design, and interface building.</p>
+            <a href="certificates/UC-486f6c5c-1406-477b-86bc-709727580248.pdf" target="_blank" class="text-accent underline text-sm" download>View Certificate</a>
+          </div>
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <h4 class="font-semibold text-lg">Master Figma for Web & UI/UX</h4>
+            <p class="text-sm">Figma for UI design, prototyping & freelancing.</p>
+            <a href="certificates/UC-03333345-1bff-4c16-90e1-23441660e75c.pdf" target="_blank" class="text-accent underline text-sm" download>View Certificate</a>
+          </div>
+        </div>
+      </div>      
+
+      <div class="section space-y-6" data-type="design">
+        <h3 class="text-2xl font-semibold border-b pb-2">🎨 Designs</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/mcdonalds.png" alt="McDonald's Ad Reimagined" />
+            <h4 class="font-semibold text-lg">McDonald's Ad Reimagined</h4>
+            <p class="text-sm mb-3">A bold and visually refreshing reinterpretation of McDonald's classic branding.</p>
+          </div>
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/hacky x horror.png" alt="Hacky x Horror Poster" />
+            <h4 class="font-semibold text-lg">Hacky x Horror</h4>
+            <p class="text-sm mb-3">A dark, eerie take on SINFO's mascot, Hacky, with horror-themed visuals.</p>
+          </div>
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="designs/perfect-blue.png" alt="Perfect Blue Reimagined" />
+            <h4 class="font-semibold text-lg">Perfect Blue Reimagined</h4>
+            <p class="text-sm mb-3">A modern reimagining of the iconic anime movie poster with surreal aesthetic.</p>
+          </div>
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="designs/mupi.png" alt="MUPI Design" />
+            <h4 class="font-semibold text-lg">MUPI Poster</h4>
+            <p class="text-sm mb-3">Real-world promotional poster designed for public display (MUPI).</p>
+          </div>
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/Recruitment Poster.png" alt="Recruitment Poster" />
+            <h4 class="font-semibold text-lg">Recruitment Poster</h4>
+            <p class="text-sm mb-3">Bold and dynamic design used to attract new members to a student organization.</p>
+          </div>
+      
+          <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/Science Day.png" alt="Science Day Poster" />
+            <h4 class="font-semibold text-lg">Science Day</h4>
+            <p class="text-sm mb-3">Fun and informative design created to promote Science Day.</p>
+          </div>
+      
+        </div>
+      </div>            
+
+    <!-- Contact Form -->
+    <div class="section mt-16 p-8 rounded-2xl bg-white shadow-md">
+      <h3 class="text-3xl font-bold text-accent mb-4">📬 Contact Me</h3>
+      <form action="https://getform.io/f/apjjprla" method="POST" class="space-y-4">
+        <div class="form-group">
+          <label for="name" class="sr-only">Your Name</label>
+          <input id="name" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-cream border focus:ring-2 focus:ring-accent focus:outline-none">
+        </div>
+        <div class="form-group">
+          <label for="email" class="sr-only">Your Email</label>
+          <input id="email" name="email" type="email" placeholder="Your Email" required class="w-full p-3 rounded bg-cream border focus:ring-2 focus:ring-accent focus:outline-none">
+        </div>
+        <div class="form-group">
+          <label for="message" class="sr-only">Your Message</label>
+          <textarea id="message" name="message" placeholder="Your Message" rows="4" required class="w-full p-3 rounded bg-cream border focus:ring-2 focus:ring-accent focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-accent text-white font-bold py-3 rounded hover:brightness-110 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">Send</button>
+      </form>
+    </div>
+
+    <!-- Footer with copyright -->
+    <footer class="text-center text-sm text-gray-500 py-8">
+      <p>© 2025 Constança Cunha. All rights reserved.</p>
+      <p class="mt-2">Built with passion ✦ Last updated: April 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    // Lazy loading for images
+    document.addEventListener("DOMContentLoaded", function() {
+      const lazyImages = document.querySelectorAll(".lazy-load");
+      
+      if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              let lazyImage = entry.target;
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove("lazy-load");
+              lazyImageObserver.unobserve(lazyImage);
+            }
+          });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+          lazyImageObserver.observe(lazyImage);
+        });
+      } else {
+        // Fallback for browsers without intersection observer
+        let lazyImageTimeout;
+        
+        function lazyLoad() {
+          if (lazyImageTimeout) {
+            clearTimeout(lazyImageTimeout);
+          }
+
+          lazyImageTimeout = setTimeout(function() {
+            let scrollTop = window.pageYOffset;
+            lazyImages.forEach(function(lazyImage) {
+              if (lazyImage.offsetTop < (window.innerHeight + scrollTop)) {
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.classList.remove("lazy-load");
+              }
+            });
+            if (lazyImages.length == 0) { 
+              document.removeEventListener("scroll", lazyLoad);
+              window.removeEventListener("resize", lazyLoad);
+              window.removeEventListener("orientationChange", lazyLoad);
+            }
+          }, 20);
+        }
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationChange", lazyLoad);
+        lazyLoad();
+      }
+    });
+
+    // Filter functionality with improved accessibility
+    const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectSections = document.querySelectorAll('#projects .section');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.getAttribute('data-type');
+
+      // Update button states
+      filterBtns.forEach(b => {
+        b.classList.remove('active-btn');
+        b.setAttribute('aria-pressed', 'false');
+        b.querySelector('.indicator').classList.remove('bg-accent');
+        b.querySelector('.indicator').classList.add('bg-transparent');
+      });
+      
+      btn.classList.add('active-btn');
+      btn.setAttribute('aria-pressed', 'true');
+      btn.querySelector('.indicator').classList.remove('bg-transparent');
+      btn.querySelector('.indicator').classList.add('bg-accent');
+
+      // Filter sections
+      projectSections.forEach(section => {
+        if (type === 'all' || section.getAttribute('data-type') === type) {
+          section.style.display = 'block';
+          section.setAttribute('aria-hidden', 'false');
+        } else {
+          section.style.display = 'none';
+          section.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
+  });
+
+    // Custom cursor
+    const cursor = document.querySelector('.custom-cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+    
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'scale(1)';
+    });
+
+    // Interactive design philosophy wheel
+    const designSegments = document.querySelectorAll('.design-segment');
+    const philosophyDetail = document.getElementById('philosophy-detail');
+    
+    const philosophyData = [
+      { color: '#fcd5ce', title: 'Research', text: 'I begin every project with thorough user research to understand needs and pain points.' },
+      { color: '#f8cdda', title: 'Ideate', text: 'I explore multiple solutions through sketching and brainstorming before settling on a direction.' },
+      { color: '#dcd6f7', title: 'Design', text: 'I create intuitive, accessible interfaces with a focus on visual hierarchy and consistency.' },
+      { color: '#cde8f7', title: 'Test & Iterate', text: 'I continuously test with users and refine designs based on feedback and data.' }
+    ];
+    
+    designSegments.forEach((segment, index) => {
+      segment.addEventListener('mouseover', () => {
+        philosophyDetail.innerHTML = `<h4 class="font-semibold mb-1">${philosophyData[index].title}</h4><p class="text-sm">${philosophyData[index].text}</p>`;
+        philosophyDetail.style.opacity = '1';
+        
+        // Highlight the active segment
+        designSegments.forEach(s => s.style.opacity = '0.5');
+        segment.style.opacity = '1';
+      });
+      
+      segment.addEventListener('mouseout', () => {
+        philosophyDetail.style.opacity = '0';
+        designSegments.forEach(s => s.style.opacity = '0.9');
+      });
+    });
+
+    // Intersection Observer for section animations
+    const sections = document.querySelectorAll('.section');
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // Scroll progress bar
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    };
+
+    // Add focus styles for keyboard navigation
+    const focusableElements = document.querySelectorAll('a, button, input, textarea');
+    
+    focusableElements.forEach(element => {
+      element.addEventListener('focus', () => {
+        element.classList.add('ring-2', 'ring-accent', 'ring-offset-2');
+      });
+      
+      element.addEventListener('blur', () => {
+        element.classList.remove('ring-2', 'ring-accent', 'ring-offset-2');
+      });
+    });
+
+    // Updated Design Wheel JavaScript
+    const philosophyDetails = document.querySelectorAll('.philosophy-content');
+
+    // Show default content on load
+    function showDefaultPhilosophy() {
+      philosophyDetails.forEach(detail => {
+        if (detail.getAttribute('data-phase') === 'default') {
+          detail.classList.remove('hidden');
+        } else {
+          detail.classList.add('hidden');
+        }
+      });
+      
+      // Reset all segments opacity
+      designSegments.forEach(s => s.style.opacity = '0.9');
+    }
+
+    // Initialize with default content
+    showDefaultPhilosophy();
+
+    // Phase names corresponding to segments
+    const phases = ['research', 'ideate', 'design', 'test'];
+
+    // Add interactions to each segment
+    designSegments.forEach((segment, index) => {
+      segment.addEventListener('mouseover', () => {
+        // Hide all philosophy contents
+        philosophyDetails.forEach(detail => {
+          detail.classList.add('hidden');
+        });
+        
+        // Show the relevant content
+        const phaseToShow = phases[index];
+        document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
+        
+        // Highlight the active segment
+        designSegments.forEach(s => s.style.opacity = '0.5');
+        segment.style.opacity = '1';
+      });
+      
+      segment.addEventListener('mouseout', () => {
+        showDefaultPhilosophy();
+      });
+    });
+
+    // Make the process steps interactive too
+    const processSteps = document.querySelectorAll('.process-step');
+    processSteps.forEach((step, index) => {
+      step.addEventListener('mouseover', () => {
+        // Hide all philosophy contents
+        philosophyDetails.forEach(detail => {
+          detail.classList.add('hidden');
+        });
+        
+        // Show the relevant content
+        const phaseToShow = phases[index];
+        document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
+        
+        // Highlight the corresponding wheel segment
+        designSegments.forEach((s, i) => {
+          s.style.opacity = i === index ? '1' : '0.5';
+        });
+        
+        // Highlight the active step
+        processSteps.forEach(s => s.querySelector('div').classList.remove('scale-110'));
+        step.querySelector('div').classList.add('scale-110');
+      });
+      
+      step.addEventListener('mouseout', () => {
+        showDefaultPhilosophy();
+        processSteps.forEach(s => s.querySelector('div').classList.remove('scale-110'));
+      });
+    });
+  </script>
+</body>
+</html>
