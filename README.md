@@ -25,7 +25,7 @@ To view this portfolio locally:
 
 ## Open in Browser
 
-Open `https://constancadcunha.github.io/portfolio/` in your preferred browser.
+Open [https://constancadcunha.github.io/portfolio/](https://constancadcunha.github.io/portfolio/) in your preferred browser.
 
 ## About This Section
 
