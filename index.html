@@ -68,6 +68,40 @@
     }
   </script>
   <style>
+    .project-image-container {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      background-color: #f5f5f5; 
+    }
+
+    .project-image-front {
+      object-fit: contain;
+      width: auto;
+      height: 80%;
+      max-width: 80%;
+    }
+    .project-image-logo {
+      object-fit: contain;
+      width: 80%;
+      height: auto;
+      max-height: 80%;
+    }
+
+    .slideshow-container {
+      height: 180px; 
+    }
+
+    .slide img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
     .typewriter-text {
       overflow: hidden;
       white-space: nowrap;
@@ -117,7 +151,6 @@
       mix-blend-mode: difference;
       transition: transform 0.2s ease;
     }
-    /* For screen readers only */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -138,12 +171,10 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Skills hover effect */
     .skill-pill:hover {
       transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
-    /* Scroll progress bar */
     .progress-container {
       width: 100%;
       height: 4px;
@@ -161,35 +192,29 @@
   </style>
 </head>
 <body class="bg-cream text-black font-sans transition-all duration-500">
-  <!-- Scroll progress bar -->
   <div class="progress-container">
     <div class="progress-bar" id="myBar"></div>
   </div>
 
-  <!-- Custom cursor -->
   <div class="custom-cursor hidden lg:block bg-accent"></div>
 
   <div class="p-6 max-w-7xl mx-auto space-y-16">
 
-    <!-- Header -->
     <div class="flex justify-between items-center">
       <h1 class="text-4xl font-extrabold text-accent drop-shadow-md">Constança Cunha <span class="animate-float inline-block">✦</span></h1>
     </div>
 
-    <!-- Intro section with animation -->
     <div class="mt-10 mb-6">
       <h2 class="text-2xl font-bold typewriter-text text-typewriter animate-type">Hi! I'm Constança, a UX Designer & Frontend Developer.</h2>
       
-      <!-- Personal brand statement -->
       <p class="mt-4 text-lg opacity-0 animate-fadeIn" style="animation-delay: 2s;">
         <span class="bg-accent text-white px-3 py-1 rounded-full font-semibold">I create intuitive digital experiences that blend beauty with function.</span>
       </p>
     </div>
 
-    <!-- About Me Section -->
     <div class="section mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-white p-8 rounded-2xl shadow-md">
       <div class="md:col-span-1">
-        <img src="Constanca.jpg" alt="Constança Cunha" class="rounded-2xl border-4 border-accent shadow-lg mx-auto">
+        <img src="Constança.jpg" alt="Constança Cunha" class="rounded-2xl border-4 border-accent shadow-lg mx-auto">
       </div>
       <div class="md:col-span-2">
         <h2 class="text-3xl font-bold text-accent mb-4">About Me</h2>
@@ -197,12 +222,9 @@
         <p class="mb-4">My approach to design is user-centered, focusing on understanding the people I'm designing for and the problems they're trying to solve. I believe that the best digital experiences are those that feel intuitive and natural, almost invisible to the user.</p>
         <p>When I'm not designing or coding, you can find me exploring new design trends, attending tech meetups, or sketching in my notebook at a local café.</p>
         
-        <!-- Interactive element: Design philosophy wheel -->
-        <!-- Replace your current design wheel section with this enhanced version -->
       <div class="mt-8">
         <h3 class="text-xl font-semibold mb-4">My Design Philosophy & Process</h3>
         
-        <!-- Design wheel with enhanced interaction -->
         <div class="flex flex-col md:flex-row items-center gap-6">
           <div id="design-wheel" class="relative h-48 w-48 mx-auto cursor-pointer">
             <div class="design-segment absolute inset-0 opacity-90 transition-all duration-300" 
@@ -245,7 +267,6 @@
             </div>
           </div>
           
-          <!-- Enhanced philosophy details panel -->
           <div id="philosophy-detail" class="w-full md:w-3/5 p-5 bg-white rounded-lg shadow-lg">
             <div class="philosophy-content" data-phase="default">
               <h4 class="font-semibold text-lg text-accent mb-2">My Design Philosophy</h4>
@@ -283,7 +304,6 @@
           </div>
         </div>
         
-        <!-- Process flow visualization -->
         <div class="mt-8 overflow-x-auto">
           <div class="process-flow flex items-center justify-between min-w-[600px] py-4">
             <div class="process-step flex flex-col items-center">
@@ -331,11 +351,9 @@
       </div>
     </div>
 
-    <!-- Skills Section -->
     <div class="section">
       <h2 class="text-3xl font-bold text-accent mb-6">My Skills</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <!-- Design Skills -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
           <h3 class="font-semibold text-lg mb-3">Design</h3>
           <div class="flex flex-wrap gap-2">
@@ -346,7 +364,6 @@
           </div>
         </div>
         
-        <!-- Development Skills -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
           <h3 class="font-semibold text-lg mb-3">Development</h3>
           <div class="flex flex-wrap gap-2">
@@ -357,7 +374,6 @@
           </div>
         </div>
         
-        <!-- Tools -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
           <h3 class="font-semibold text-lg mb-3">Tools</h3>
           <div class="flex flex-wrap gap-2">
@@ -368,7 +384,6 @@
           </div>
         </div>
         
-        <!-- Soft Skills -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
           <h3 class="font-semibold text-lg mb-3">Soft Skills</h3>
           <div class="flex flex-wrap gap-2">
@@ -381,7 +396,6 @@
       </div>
     </div>
 
-    <!-- Filter Buttons -->
     <div class="section flex flex-wrap gap-4 justify-center my-8">
       <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full shadow transition duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent" data-type="all" aria-pressed="true">
         <span class="indicator mr-2 inline-block w-2 h-2 rounded-full bg-accent"></span>All
@@ -400,105 +414,235 @@
       </button>
     </div>
 
-    <!-- Projects -->
     <div id="projects" class="space-y-24">
 
-      <div class="section space-y-6" data-type="app">
-        <h3 class="text-2xl font-semibold border-b pb-2">✨ Apps</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="projects" class="space-y-24">
+        <div class="section space-y-6" data-type="app">
+          <h3 class="text-2xl font-semibold border-b pb-2">✨ Apps</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       
-          <div class="project-card h-80">
-            <div class="project-card-inner">
-              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
-                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
-                  <img src="/api/placeholder/200/150" alt="Clicky Companion" class="object-contain h-full mx-auto lazy-load" data-src="clicky.png">
+            <!-- Cottage Tunes -->
+            <div class="project-card h-[420px]">
+              <div class="project-card-inner">
+                <div class="project-card-front bg-white rounded-2xl p-6 shadow-lg flex flex-col">
+                  <div class="w-full h-48 mb-4 rounded-lg overflow-hidden relative">
+                    <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+                      <img src="cottage-tunes-1.png" alt="Cottage Tunes" 
+                           class="min-w-full min-h-full object-cover scale-105">
+                    </div>
+                  </div>
+                  <h4 class="font-semibold text-lg">Cottage Tunes</h4>
+                  <p class="text-sm mb-3">A delightful cottagecore-themed music player app built with SwiftUI.</p>
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="tech-pill bg-softPink px-2 py-1 rounded-full text-xs">SwiftUI</span>
+                    <span class="tech-pill bg-blush px-2 py-1 rounded-full text-xs">Combine</span>
+                    <span class="tech-pill bg-softLilac px-2 py-1 rounded-full text-xs">MVVM</span>
+                  </div>
+                  <p class="text-xs text-gray-500 italic mt-auto">Click to view details</p>
                 </div>
-                <h4 class="font-semibold text-lg">Clicky Companion</h4>
-                <p class="text-sm mb-3">Mental wellness tracker with a cute digital companion.</p>
-                <p class="text-xs text-gray-500 italic">Click to view details</p>
-              </div>
-              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
-                <h4 class="font-semibold text-lg text-accent">Clicky Companion</h4>
-                <div class="text-sm space-y-2">
-                  <p class="font-semibold">Problem:</p>
-                  <p>Mental health tracking apps often feel clinical and are abandoned quickly.</p>
+                
+                <div class="project-card-back bg-white rounded-2xl p-6 shadow-lg overflow-y-auto">
+                  <h4 class="font-semibold text-lg text-accent mb-3">Cottage Tunes</h4>
+                  <p class="text-sm mb-4">A whimsical music player with cottagecore aesthetics that makes listening to music feel like a cozy experience.</p>
                   
-                  <p class="font-semibold">Solution:</p>
-                  <p>A gamified mental wellness tracker with a virtual pet that responds to user's emotional states.</p>
-                  
-                  <p class="font-semibold">Process:</p>
-                  <p>User interviews, wireframing, prototyping in Figma, usability testing</p>
-                  
-                  <div class="mt-4">
-                    <a href="https://www.figma.com/proto/UC2rBn1q2buoAE2SHOHmMg/App" target="_blank" class="text-accent underline text-sm">View Prototype</a>
+                  <div class="text-sm space-y-3">
+                    <div>
+                      <p class="font-semibold">Features:</p>
+                      <ul class="list-disc pl-5">
+                        <li>Music browsing and playback</li>
+                        <li>Search functionality</li>
+                        <li>Favorites system</li>
+                        <li>Charming cottagecore aesthetic</li>
+                        <li>Custom UI with floral elements</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Technologies:</p>
+                      <p>SwiftUI, Combine (for state management), Async/Await for network operations, MVVM architecture</p>
+                    </div>
+                    
+                    <div class="mt-4 space-y-2">
+                      <a href="https://github.com/constancadcunha/CottageTunes" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
       
-          <div class="project-card h-80">
-            <div class="project-card-inner">
-              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
-                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
-                  <img src="/api/placeholder/200/150" alt="SageBook" class="object-contain h-full mx-auto lazy-load" data-src="sagebook.png">
+            <!-- Clicky Companion -->
+            <div class="project-card h-[420px]">
+              <div class="project-card-inner">
+                <div class="project-card-front bg-white rounded-2xl p-6 shadow-lg flex flex-col">
+                  <div class="w-full h-48 mb-4 rounded-lg overflow-hidden relative">
+                    <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+                      <img src="clicky.png" alt="Clicky Companion" 
+                           class="min-w-full min-h-full object-cover scale-80">
+                    </div>
+                  </div>
+                  <h4 class="font-semibold text-lg">Clicky Companion</h4>
+                  <p class="text-sm mb-3">Mental wellness tracker with a cute digital companion.</p>
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="tech-pill bg-softPink px-2 py-1 rounded-full text-xs">Figma</span>
+                    <span class="tech-pill bg-blush px-2 py-1 rounded-full text-xs">Prototyping</span>
+                    <span class="tech-pill bg-softLilac px-2 py-1 rounded-full text-xs">UI Design</span>
+                  </div>
+                  <p class="text-xs text-gray-500 italic mt-auto">Click to view details</p>
                 </div>
-                <h4 class="font-semibold text-lg">SageBook (WIP)</h4>
-                <p class="text-sm mb-3">Cottagecore cooking assistant with gamified learning.</p>
-                <p class="text-xs text-gray-500 italic">Click to view details</p>
-              </div>
-              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
-                <h4 class="font-semibold text-lg text-accent">SageBook (WIP)</h4>
-                <div class="text-sm space-y-2">
-                  <p class="font-semibold">Problem:</p>
-                  <p>Cooking apps are often utilitarian and lack engaging elements for beginners.</p>
+                
+                <div class="project-card-back bg-white rounded-2xl p-6 shadow-lg overflow-y-auto">
+                  <h4 class="font-semibold text-lg text-accent mb-3">Clicky Companion</h4>
+                  <p class="text-sm mb-4">A gamified mental wellness tracker with a virtual pet that responds to user's emotional states.</p>
                   
-                  <p class="font-semibold">Solution:</p>
-                  <p>A whimsical cooking assistant with achievement-based learning and cottagecore aesthetics.</p>
-                  
-                  <p class="font-semibold">Process:</p>
-                  <p>Competitive analysis, user personas, journey mapping, high-fidelity prototyping</p>
-                  
-                  <div class="mt-4">
-                    <a href="https://www.figma.com/proto/uHi2kRUlatW4vGDMtvpI1p/SageBook" target="_blank" class="text-accent underline text-sm">View Prototype</a>
+                  <div class="text-sm space-y-3">
+                    <div>
+                      <p class="font-semibold">Problem:</p>
+                      <p>Mental health tracking apps often feel clinical and are abandoned quickly.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Solution:</p>
+                      <p>A gamified experience with a virtual pet that evolves based on user engagement and mood inputs.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Process:</p>
+                      <p>User interviews, wireframing, prototyping in Figma, usability testing</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                      <a href="https://www.figma.com/proto/UC2rBn1q2buoAE2SHOHmMg/App" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        View Prototype
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
       
-          <div class="project-card h-80">
-            <div class="project-card-inner">
-              <div class="project-card-front bg-white rounded-2xl p-6 shadow-md">
-                <div class="w-full h-36 overflow-hidden rounded-md mb-4">
-                  <img src="/api/placeholder/200/150" alt="ReMi" class="object-contain h-full mx-auto lazy-load" data-src="remi.png">
+            <!-- SageBook -->
+            <div class="project-card h-[420px]">
+              <div class="project-card-inner">
+                <div class="project-card-front bg-white rounded-2xl p-6 shadow-lg flex flex-col">
+                  <div class="w-full h-48 mb-4 rounded-lg overflow-hidden relative">
+                    <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+                      <img src="sagebook.png" alt="SageBook" 
+                           class="min-w-full min-h-full object-cover scale-130">
+                    </div>
+                  </div>
+                  <h4 class="font-semibold text-lg">SageBook (WIP)</h4>
+                  <p class="text-sm mb-3">Cottagecore cooking assistant with gamified learning.</p>
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="tech-pill bg-softPink px-2 py-1 rounded-full text-xs">Figma</span>
+                    <span class="tech-pill bg-blush px-2 py-1 rounded-full text-xs">UX Research</span>
+                    <span class="tech-pill bg-softLilac px-2 py-1 rounded-full text-xs">UI Design</span>
+                  </div>
+                  <p class="text-xs text-gray-500 italic mt-auto">Click to view details</p>
                 </div>
-                <h4 class="font-semibold text-lg">ReMi</h4>
-                <p class="text-sm mb-3">Relocation app for smoother transitions.</p>
-                <p class="text-xs text-gray-500 italic">Click to view details</p>
-              </div>
-              <div class="project-card-back bg-white rounded-2xl p-6 shadow-md">
-                <h4 class="font-semibold text-lg text-accent">ReMi</h4>
-                <div class="text-sm space-y-2">
-                  <p class="font-semibold">Problem:</p>
-                  <p>Moving to a new city is stressful with fragmented information sources.</p>
+                
+                <div class="project-card-back bg-white rounded-2xl p-6 shadow-lg overflow-y-auto">
+                  <h4 class="font-semibold text-lg text-accent mb-3">SageBook (WIP)</h4>
+                  <p class="text-sm mb-4">A whimsical cooking assistant with achievement-based learning and cottagecore aesthetics.</p>
                   
-                  <p class="font-semibold">Solution:</p>
-                  <p>An all-in-one relocation companion that guides users through every step of moving to a new place.</p>
-                  
-                  <p class="font-semibold">Process:</p>
-                  <p>User interviews with recent movers, information architecture design, usability testing</p>
-                  
-                  <div class="mt-4 space-y-1">
-                    <a href="https://www.figma.com/proto/KwwVf95iNG2TyMDblbhMAk/CCU?node-id=295-928" target="_blank" class="text-accent underline text-sm block">View Prototype</a>
-                    <a href="https://group1ccul03.notion.site/78aca85d730543929c78a2d25c008060?v=0ed04df2912d4a379f3af8766f5ae863" target="_blank" class="text-accent underline text-sm block">View Case Study</a>
+                  <div class="text-sm space-y-3">
+                    <div>
+                      <p class="font-semibold">Problem:</p>
+                      <p>Cooking apps are often utilitarian and lack engaging elements for beginners.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Solution:</p>
+                      <p>An achievement-based learning system with cottagecore aesthetics that makes cooking approachable and fun.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Process:</p>
+                      <p>Competitive analysis, user personas, journey mapping, high-fidelity prototyping</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                      <a href="https://www.figma.com/proto/uHi2kRUlatW4vGDMtvpI1p/SageBook" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        View Prototype
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+      
+            <!-- ReMi -->
+            <div class="project-card h-[420px]">
+              <div class="project-card-inner">
+                <div class="project-card-front bg-white rounded-2xl p-6 shadow-lg flex flex-col">
+                  <div class="w-full h-48 mb-4 rounded-lg overflow-hidden relative">
+                    <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+                      <img src="remi.png" alt="ReMi" 
+                           class="min-w-full min-h-full object-cover scale-100">
+                    </div>
+                  </div>
+                  <h4 class="font-semibold text-lg">ReMi</h4>
+                  <p class="text-sm mb-3">Relocation app for smoother transitions.</p>
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="tech-pill bg-softPink px-2 py-1 rounded-full text-xs">Figma</span>
+                    <span class="tech-pill bg-blush px-2 py-1 rounded-full text-xs">UX Research</span>
+                    <span class="tech-pill bg-softLilac px-2 py-1 rounded-full text-xs">Prototyping</span>
+                  </div>
+                  <p class="text-xs text-gray-500 italic mt-auto">Click to view details</p>
+                </div>
+                
+                <div class="project-card-back bg-white rounded-2xl p-6 shadow-lg overflow-y-auto">
+                  <h4 class="font-semibold text-lg text-accent mb-3">ReMi</h4>
+                  <p class="text-sm mb-4">An all-in-one relocation companion that guides users through every step of moving to a new place.</p>
+                  
+                  <div class="text-sm space-y-3">
+                    <div>
+                      <p class="font-semibold">Problem:</p>
+                      <p>Moving to a new city is stressful with fragmented information sources.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Solution:</p>
+                      <p>A centralized platform with checklists, local services, and neighborhood insights.</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-semibold">Process:</p>
+                      <p>User interviews with recent movers, information architecture design, usability testing</p>
+                    </div>
+                    
+                    <div class="mt-4 space-y-2">
+                      <a href="https://www.figma.com/proto/KwwVf95iNG2TyMDblbhMAk/CCU?node-id=295-928" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        View Prototype
+                      </a>
+                      <a href="https://group1ccul03.notion.site/78aca85d730543929c78a2d25c008060?v=0ed04df2912d4a379f3af8766f5ae863" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        View Case Study
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
           </div>
         </div>
-      </div>      
+      </div>     
 
       <div class="section space-y-6" data-type="website">
         <h3 class="text-2xl font-semibold border-b pb-2">🌐 Websites</h3>
@@ -608,13 +752,13 @@
           </div>
       
           <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
-            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/perfectblue.png" alt="Perfect Blue Reimagined" />
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="designs/perfect-blue.png" alt="Perfect Blue Reimagined" />
             <h4 class="font-semibold text-lg">Perfect Blue Reimagined</h4>
             <p class="text-sm mb-3">A modern reimagining of the iconic anime movie poster with surreal aesthetic.</p>
           </div>
       
           <div class="project-card bg-white rounded-2xl p-6 shadow-md transition transform duration-300 hover:scale-105">
-            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="Designs/mupi.png" alt="MUPI Design" />
+            <img src="/api/placeholder/400/320" class="rounded-lg mb-4 w-full h-64 object-contain lazy-load" data-src="designs/mupi.png" alt="MUPI Design" />
             <h4 class="font-semibold text-lg">MUPI Poster</h4>
             <p class="text-sm mb-3">Real-world promotional poster designed for public display (MUPI).</p>
           </div>
@@ -634,7 +778,6 @@
         </div>
       </div>            
 
-    <!-- Contact Form -->
     <div class="section mt-16 p-8 rounded-2xl bg-white shadow-md">
       <h3 class="text-3xl font-bold text-accent mb-4">📬 Contact Me</h3>
       <form action="https://getform.io/f/apjjprla" method="POST" class="space-y-4">
@@ -654,7 +797,6 @@
       </form>
     </div>
 
-    <!-- Footer with copyright -->
     <footer class="text-center text-sm text-gray-500 py-8">
       <p>© 2025 Constança Cunha. All rights reserved.</p>
       <p class="mt-2">Built with passion ✦ Last updated: April 2025</p>
@@ -662,7 +804,6 @@
   </div>
 
   <script>
-    // Lazy loading for images
     document.addEventListener("DOMContentLoaded", function() {
       const lazyImages = document.querySelectorAll(".lazy-load");
       
@@ -682,7 +823,7 @@
           lazyImageObserver.observe(lazyImage);
         });
       } else {
-        // Fallback for browsers without intersection observer
+      
         let lazyImageTimeout;
         
         function lazyLoad() {
@@ -713,7 +854,6 @@
       }
     });
 
-    // Filter functionality with improved accessibility
     const filterBtns = document.querySelectorAll('.filter-btn');
   const projectSections = document.querySelectorAll('#projects .section');
   
@@ -721,7 +861,7 @@
     btn.addEventListener('click', () => {
       const type = btn.getAttribute('data-type');
 
-      // Update button states
+  
       filterBtns.forEach(b => {
         b.classList.remove('active-btn');
         b.setAttribute('aria-pressed', 'false');
@@ -734,7 +874,7 @@
       btn.querySelector('.indicator').classList.remove('bg-transparent');
       btn.querySelector('.indicator').classList.add('bg-accent');
 
-      // Filter sections
+    
       projectSections.forEach(section => {
         if (type === 'all' || section.getAttribute('data-type') === type) {
           section.style.display = 'block';
@@ -747,7 +887,7 @@
     });
   });
 
-    // Custom cursor
+   
     const cursor = document.querySelector('.custom-cursor');
     
     document.addEventListener('mousemove', (e) => {
@@ -763,7 +903,7 @@
       cursor.style.transform = 'scale(1)';
     });
 
-    // Interactive design philosophy wheel
+    
     const designSegments = document.querySelectorAll('.design-segment');
     const philosophyDetail = document.getElementById('philosophy-detail');
     
@@ -779,7 +919,7 @@
         philosophyDetail.innerHTML = `<h4 class="font-semibold mb-1">${philosophyData[index].title}</h4><p class="text-sm">${philosophyData[index].text}</p>`;
         philosophyDetail.style.opacity = '1';
         
-        // Highlight the active segment
+       
         designSegments.forEach(s => s.style.opacity = '0.5');
         segment.style.opacity = '1';
       });
@@ -790,7 +930,7 @@
       });
     });
 
-    // Intersection Observer for section animations
+    
     const sections = document.querySelectorAll('.section');
     
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -808,7 +948,7 @@
       sectionObserver.observe(section);
     });
 
-    // Scroll progress bar
+   
     window.onscroll = function() {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -816,7 +956,7 @@
       document.getElementById("myBar").style.width = scrolled + "%";
     };
 
-    // Add focus styles for keyboard navigation
+
     const focusableElements = document.querySelectorAll('a, button, input, textarea');
     
     focusableElements.forEach(element => {
@@ -829,10 +969,10 @@
       });
     });
 
-    // Updated Design Wheel JavaScript
+    
     const philosophyDetails = document.querySelectorAll('.philosophy-content');
 
-    // Show default content on load
+   
     function showDefaultPhilosophy() {
       philosophyDetails.forEach(detail => {
         if (detail.getAttribute('data-phase') === 'default') {
@@ -842,29 +982,29 @@
         }
       });
       
-      // Reset all segments opacity
+      
       designSegments.forEach(s => s.style.opacity = '0.9');
     }
 
-    // Initialize with default content
+    
     showDefaultPhilosophy();
 
-    // Phase names corresponding to segments
+    
     const phases = ['research', 'ideate', 'design', 'test'];
 
-    // Add interactions to each segment
+    
     designSegments.forEach((segment, index) => {
       segment.addEventListener('mouseover', () => {
-        // Hide all philosophy contents
+        
         philosophyDetails.forEach(detail => {
           detail.classList.add('hidden');
         });
         
-        // Show the relevant content
+        
         const phaseToShow = phases[index];
         document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
         
-        // Highlight the active segment
+        
         designSegments.forEach(s => s.style.opacity = '0.5');
         segment.style.opacity = '1';
       });
@@ -874,25 +1014,24 @@
       });
     });
 
-    // Make the process steps interactive too
     const processSteps = document.querySelectorAll('.process-step');
     processSteps.forEach((step, index) => {
       step.addEventListener('mouseover', () => {
-        // Hide all philosophy contents
+       
         philosophyDetails.forEach(detail => {
           detail.classList.add('hidden');
         });
         
-        // Show the relevant content
+        
         const phaseToShow = phases[index];
         document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
         
-        // Highlight the corresponding wheel segment
+       
         designSegments.forEach((s, i) => {
           s.style.opacity = i === index ? '1' : '0.5';
         });
         
-        // Highlight the active step
+        
         processSteps.forEach(s => s.querySelector('div').classList.remove('scale-110'));
         step.querySelector('div').classList.add('scale-110');
       });
