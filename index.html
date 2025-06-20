@@ -21,8 +21,6 @@
                 sky: '#cde8f7',
                 mint: '#d3f4e3',
                 nightText: '#f5f5f5',
-                lavender: '#D4B8E3',
-                peach: '#FFD8BE'
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif']
@@ -369,13 +367,10 @@
         <div class="bg-white p-6 rounded-2xl shadow-md">
           <h3 class="font-semibold text-lg mb-3">Development</h3>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm">Python</span>
-            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm">JavaScript</span>
-            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm">Java</span>
-            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm">TypeScript</span>
-            <span class="skill-pill bg-mint px-3 py-1 rounded-full text-sm">C/C++</span>
-            <span class="skill-pill bg-lavender px-3 py-1 rounded-full text-sm">Swift</span>
-            <span class="skill-pill bg-peach px-3 py-1 rounded-full text-sm">HTML</span>
+            <span class="skill-pill bg-softPink px-3 py-1 rounded-full text-sm transition-all duration-300">HTML</span>
+            <span class="skill-pill bg-blush px-3 py-1 rounded-full text-sm transition-all duration-300">CSS</span>
+            <span class="skill-pill bg-softLilac px-3 py-1 rounded-full text-sm transition-all duration-300">JavaScript</span>
+            <span class="skill-pill bg-sky px-3 py-1 rounded-full text-sm transition-all duration-300">Tailwind</span>
           </div>
         </div>
         
@@ -604,7 +599,39 @@
                   <p class="text-sm mb-3">Terminal adventure game teaching debugging skills.</p>
                   <div class="flex flex-wrap gap-2 mb-3">
                     <span class="tech-pill bg-softPink px-2 py-1 rounded-full text-xs">Python</span>
+                    <span class="tech-pill bg-blush px-2 py-1 rounded-full text-xs">Game Design</span>
+                    <span class="tech-pill bg-softLilac px-2 py-1 rounded-full text-xs">Terminal UI</span>
+                  </div>
+                  <p class="text-xs text-gray-500 italic mt-auto">Click to view details</p>
+                </div>
+                
+                <div class="project-card-back bg-white rounded-2xl p-6 shadow-lg overflow-y-auto">
+                  <h4 class="font-semibold text-lg text-accent mb-3">Debug Quest</h4>
+                  <p class="text-sm mb-4">A retro text-based game where players fix bugs in Python/JavaScript code to progress, with RPG-like skill progression and humorous CSS gremlin antagonists.</p>
+                  
+                  <div class="text-sm space-y-3">
+                    <div>
+                      <p class="font-semibold">Highlights:</p>
+                      <ul class="list-disc pl-5">
+                        <li>Pure Python implementation (no libraries)</li>
+                        <li>Typewriter animations and ASCII art</li>
+                        <li>Skill progression system</li>
+                        <li>Easter eggs and humorous dialogue</li>
+                      </ul>
+                    </div>
                     
+                    <div class="mt-4 space-y-2">
+                      <a href="https://github.com/constancadcunha/DebugQuest" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
       
             <!-- ReMi -->
             <div class="project-card h-[420px]">
@@ -848,7 +875,7 @@
           lazyImageObserver.observe(lazyImage);
         });
       } else {
-      
+        // Fallback for browsers without intersection observer
         let lazyImageTimeout;
         
         function lazyLoad() {
@@ -879,6 +906,7 @@
       }
     });
 
+    // Filter functionality with improved accessibility
     const filterBtns = document.querySelectorAll('.filter-btn');
   const projectSections = document.querySelectorAll('#projects .section');
   
@@ -886,7 +914,7 @@
     btn.addEventListener('click', () => {
       const type = btn.getAttribute('data-type');
 
-  
+      // Update button states
       filterBtns.forEach(b => {
         b.classList.remove('active-btn');
         b.setAttribute('aria-pressed', 'false');
@@ -899,7 +927,7 @@
       btn.querySelector('.indicator').classList.remove('bg-transparent');
       btn.querySelector('.indicator').classList.add('bg-accent');
 
-    
+      // Filter sections
       projectSections.forEach(section => {
         if (type === 'all' || section.getAttribute('data-type') === type) {
           section.style.display = 'block';
@@ -912,7 +940,7 @@
     });
   });
 
-   
+    // Custom cursor
     const cursor = document.querySelector('.custom-cursor');
     
     document.addEventListener('mousemove', (e) => {
@@ -928,7 +956,7 @@
       cursor.style.transform = 'scale(1)';
     });
 
-    
+    // Interactive design philosophy wheel
     const designSegments = document.querySelectorAll('.design-segment');
     const philosophyDetail = document.getElementById('philosophy-detail');
     
@@ -944,7 +972,7 @@
         philosophyDetail.innerHTML = `<h4 class="font-semibold mb-1">${philosophyData[index].title}</h4><p class="text-sm">${philosophyData[index].text}</p>`;
         philosophyDetail.style.opacity = '1';
         
-       
+        // Highlight the active segment
         designSegments.forEach(s => s.style.opacity = '0.5');
         segment.style.opacity = '1';
       });
@@ -955,7 +983,7 @@
       });
     });
 
-    
+    // Intersection Observer for section animations
     const sections = document.querySelectorAll('.section');
     
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -973,7 +1001,7 @@
       sectionObserver.observe(section);
     });
 
-   
+    // Scroll progress bar
     window.onscroll = function() {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -981,7 +1009,7 @@
       document.getElementById("myBar").style.width = scrolled + "%";
     };
 
-
+    // Add focus styles for keyboard navigation
     const focusableElements = document.querySelectorAll('a, button, input, textarea');
     
     focusableElements.forEach(element => {
@@ -994,10 +1022,10 @@
       });
     });
 
-    
+    // Updated Design Wheel JavaScript
     const philosophyDetails = document.querySelectorAll('.philosophy-content');
 
-   
+    // Show default content on load
     function showDefaultPhilosophy() {
       philosophyDetails.forEach(detail => {
         if (detail.getAttribute('data-phase') === 'default') {
@@ -1007,29 +1035,29 @@
         }
       });
       
-      
+      // Reset all segments opacity
       designSegments.forEach(s => s.style.opacity = '0.9');
     }
 
-    
+    // Initialize with default content
     showDefaultPhilosophy();
 
-    
+    // Phase names corresponding to segments
     const phases = ['research', 'ideate', 'design', 'test'];
 
-    
+    // Add interactions to each segment
     designSegments.forEach((segment, index) => {
       segment.addEventListener('mouseover', () => {
-        
+        // Hide all philosophy contents
         philosophyDetails.forEach(detail => {
           detail.classList.add('hidden');
         });
         
-        
+        // Show the relevant content
         const phaseToShow = phases[index];
         document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
         
-        
+        // Highlight the active segment
         designSegments.forEach(s => s.style.opacity = '0.5');
         segment.style.opacity = '1';
       });
@@ -1039,24 +1067,25 @@
       });
     });
 
+    // Make the process steps interactive too
     const processSteps = document.querySelectorAll('.process-step');
     processSteps.forEach((step, index) => {
       step.addEventListener('mouseover', () => {
-       
+        // Hide all philosophy contents
         philosophyDetails.forEach(detail => {
           detail.classList.add('hidden');
         });
         
-        
+        // Show the relevant content
         const phaseToShow = phases[index];
         document.querySelector(`.philosophy-content[data-phase="${phaseToShow}"]`).classList.remove('hidden');
         
-       
+        // Highlight the corresponding wheel segment
         designSegments.forEach((s, i) => {
           s.style.opacity = i === index ? '1' : '0.5';
         });
         
-        
+        // Highlight the active step
         processSteps.forEach(s => s.querySelector('div').classList.remove('scale-110'));
         step.querySelector('div').classList.add('scale-110');
       });
