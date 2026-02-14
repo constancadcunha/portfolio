@@ -377,6 +377,7 @@ nav {
     height: 100%;
     object-fit: cover;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: transform;
 }
 
 .iphone-wrapper::before {
@@ -580,6 +581,7 @@ nav {
     object-fit: cover;
     transition: all 0.4s ease;
     filter: saturate(0.9) contrast(1.1);
+    will-change: transform;
 }
 
 .gallery-frame:hover .gallery-image {
@@ -1421,8 +1423,240 @@ nav {
 }
 
 /* =================================
-   PERFORMANCE OPTIMIZATIONS
+   GROWING TREE (Enhancement #8)
    ================================= */
+
+.tree-container {
+    position: absolute;
+    left: 3%;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.growing-tree-svg {
+    width: 100%;
+    height: 100%;
+    position: sticky;
+    top: 0;
+}
+
+.tree-trunk {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.tree-branch {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 1s ease-out;
+}
+
+.tree-leaf {
+    transition: opacity 0.8s ease-out, r 0.8s ease-out;
+}
+
+.tree-crown,
+.tree-crown-2,
+.tree-crown-3 {
+    transition: opacity 1s ease-out, r 1s ease-out;
+}
+
+/* Tree growth stages */
+.tree-stage-1 .tree-trunk {
+    stroke-dashoffset: 350;
+}
+
+.tree-stage-1 .tree-branch-1 {
+    stroke-dashoffset: 0;
+}
+
+.tree-stage-1 .tree-leaf-1,
+.tree-stage-1 .tree-leaf-1b {
+    opacity: 0.7;
+}
+
+.tree-stage-2 .tree-trunk {
+    stroke-dashoffset: 200;
+}
+
+.tree-stage-2 .tree-branch-1,
+.tree-stage-2 .tree-branch-2 {
+    stroke-dashoffset: 0;
+}
+
+.tree-stage-2 .tree-leaf-1,
+.tree-stage-2 .tree-leaf-1b,
+.tree-stage-2 .tree-leaf-2,
+.tree-stage-2 .tree-leaf-2b {
+    opacity: 0.7;
+}
+
+.tree-stage-3 .tree-trunk {
+    stroke-dashoffset: 0;
+}
+
+.tree-stage-3 .tree-branch-1,
+.tree-stage-3 .tree-branch-2,
+.tree-stage-3 .tree-branch-3 {
+    stroke-dashoffset: 0;
+}
+
+.tree-stage-3 .tree-leaf-1,
+.tree-stage-3 .tree-leaf-1b,
+.tree-stage-3 .tree-leaf-2,
+.tree-stage-3 .tree-leaf-2b,
+.tree-stage-3 .tree-leaf-3,
+.tree-stage-3 .tree-leaf-3b {
+    opacity: 0.7;
+}
+
+.tree-stage-3 .tree-crown {
+    opacity: 0.6;
+}
+
+.tree-stage-3 .tree-crown-2 {
+    opacity: 0.5;
+}
+
+.tree-stage-3 .tree-crown-3 {
+    opacity: 0.55;
+}
+
+@media (max-width: 1024px) {
+    .tree-container {
+        display: none;
+    }
+}
+
+/* =================================
+   ABOUT PARTICLES (Enhancement #8)
+   ================================= */
+
+.about-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.seed-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatSeed 8s ease-in-out infinite;
+}
+
+@keyframes floatSeed {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) rotate(0deg);
+    }
+    20% {
+        opacity: 0.4;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+/* =================================
+   CERTIFICATE FLIP CARDS (Enhancement #8)
+   ================================= */
+
+.cert-flip-card {
+    perspective: 1000px;
+    height: 240px;
+}
+
+.cert-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+}
+
+.cert-flip-card:hover .cert-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.cert-front,
+.cert-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    border: 2px solid rgba(156, 175, 136, 0.4);
+}
+
+.cert-front {
+    background: linear-gradient(135deg, rgba(253, 246, 227, 0.95), rgba(245, 238, 214, 0.9));
+}
+
+.cert-back {
+    background: linear-gradient(135deg, #4A5D4E, #2D3A2E);
+    color: #FDF6E3;
+    transform: rotateY(180deg);
+    border-color: rgba(156, 175, 136, 0.6);
+}
+
+.dark .cert-front {
+    background: linear-gradient(135deg, rgba(45, 58, 46, 0.95), rgba(26, 36, 33, 0.9));
+    border-color: rgba(201, 169, 110, 0.4);
+}
+
+.dark .cert-back {
+    background: linear-gradient(135deg, #C9A96E, #B87D64);
+    color: #1A2421;
+    border-color: rgba(201, 169, 110, 0.6);
+}
+
+/* =================================
+   STAT COUNTER ANIMATION (Enhancement #8)
+   ================================= */
+
+.stat-counter {
+    transition: transform 0.3s ease;
+}
+
+.stat-counter:hover {
+    transform: scale(1.08);
+}
+
+.stat-counter.counted .counter-value {
+    transition: none;
+}
+
+/* =================================
+   PERFORMANCE OPTIMIZATIONS (FIX #6)
+   ================================= */
+
+img {
+    content-visibility: auto;
+}
+
+.gallery-image,
+.iphone-screen {
+    will-change: transform;
+}
 
 .performance-optimized {
     transform: translateZ(0);

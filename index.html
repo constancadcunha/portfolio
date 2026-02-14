@@ -7,16 +7,17 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🌿</text></svg>">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Preconnect for speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
-    <!-- External Scripts -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Tailwind Config -->
     <script>
@@ -94,8 +95,8 @@
                 <a href="#wisdom" class="nav-link font-bold uppercase tracking-[0.12em] hover:text-cottage-rose transition-colors">Garden</a>
                 <a href="#contact" class="nav-link font-bold uppercase tracking-[0.12em] hover:text-cottage-rose transition-colors">Contact</a>
                 <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-cottage-sage/20 dark:hover:bg-accentGold/20 transition-all duration-300 hover:rotate-180">
-                    <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
-                    <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-accentGold"></i>
+                    <svg class="w-4 h-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                    <svg class="w-4 h-4 hidden dark:block text-accentGold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                 </button>
             </div>
         </div>
@@ -103,10 +104,11 @@
 
     <!-- HERO SECTION -->
     <section id="hero" class="hero-section px-4 sm:px-8 pt-28 relative overflow-hidden">
+        <!-- Inline SVG botanicals instead of Lucide runtime rendering -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <i data-lucide="flower-2" class="botanical absolute top-[20%] left-[8%] w-28 h-28 text-cottage-sage" style="animation: floatBotanical 8s ease-in-out infinite;"></i>
-            <i data-lucide="leaf" class="botanical absolute top-[55%] right-[12%] w-36 h-36 text-cottage-honey" style="animation: floatBotanical 10s ease-in-out infinite 1s;"></i>
-            <i data-lucide="sparkles" class="botanical absolute bottom-[25%] left-[15%] w-20 h-20 text-cottage-lavender" style="animation: floatBotanical 7s ease-in-out infinite 2s;"></i>
+            <svg class="botanical absolute top-[20%] left-[8%] w-28 h-28 text-cottage-sage" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5a4.5 4.5 0 1 0-4.5 4.5M12 7.5V9m-4.5 3 .75-1.5M17 12l-.75-1.5M12 12l2 5.5M12 12l-2 5.5M12 12V17"/></svg>
+            <svg class="botanical absolute top-[55%] right-[12%] w-36 h-36 text-cottage-honey" style="animation: floatBotanical 10s ease-in-out infinite 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 2.5-1 7.5c3-1 5.5 0 5.5 0S19 14 14 15.5"/></svg>
+            <svg class="botanical absolute bottom-[25%] left-[15%] w-20 h-20 text-cottage-lavender" style="animation: floatBotanical 7s ease-in-out infinite 2s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
         </div>
         <div class="text-center z-10 max-w-5xl mx-auto">
             <p class="font-cursive text-3xl sm:text-5xl text-cottage-bark dark:text-cottage-honey mb-4 opacity-0" id="heroSubtitle">the visual odyssey of</p>
@@ -114,15 +116,16 @@
                 <span class="inline-block opacity-0" id="heroName1">CONSTANÇA</span> <br>
                 <span class="inline-block italic text-outline opacity-0" id="heroName2">CUNHA</span>
             </h1>
-            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-8">
-                <div class="px-5 py-2.5 bg-gradient-to-r from-petalPink to-cottage-rose/30 rounded-full font-bold text-[10px] uppercase tracking-widest opacity-0 border border-cottage-rose/30 dark:text-nightSky" id="badge1">
-                    <span class="flex items-center gap-2"><span class="w-2 h-2 bg-cottage-forest dark:bg-cottage-rose rounded-full animate-pulse"></span>Full-Stack Experience</span>
+            <!-- FIX #2: Bigger chips -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-5 mt-8">
+                <div class="px-6 py-3 bg-gradient-to-r from-petalPink to-cottage-rose/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-rose/30 dark:text-nightSky" id="badge1">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-forest dark:bg-cottage-rose rounded-full animate-pulse"></span>Full-Stack Experience</span>
                 </div>
-                <div class="px-5 py-2.5 bg-gradient-to-r from-mint to-cottage-sage/30 rounded-full font-bold text-[10px] uppercase tracking-widest opacity-0 border border-cottage-sage/30 dark:text-nightSky" id="badge2">
-                    <span class="flex items-center gap-2"><span class="w-2 h-2 bg-cottage-honey dark:bg-cottage-sage rounded-full animate-pulse"></span>UI/UX Visionary</span>
+                <div class="px-6 py-3 bg-gradient-to-r from-mint to-cottage-sage/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-sage/30 dark:text-nightSky" id="badge2">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-honey dark:bg-cottage-sage rounded-full animate-pulse"></span>UI/UX Visionary</span>
                 </div>
-                <div class="px-5 py-2.5 bg-gradient-to-r from-softLilac to-cottage-lavender/30 rounded-full font-bold text-[10px] uppercase tracking-widest opacity-0 border border-cottage-lavender/30 dark:text-nightSky" id="badge3">
-                    <span class="flex items-center gap-2"><span class="w-2 h-2 bg-cottage-berry dark:bg-cottage-lavender rounded-full animate-pulse"></span>Interaction Architect</span>
+                <div class="px-6 py-3 bg-gradient-to-r from-softLilac to-cottage-lavender/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-lavender/30 dark:text-nightSky" id="badge3">
+                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-berry dark:bg-cottage-lavender rounded-full animate-pulse"></span>Interaction Architect</span>
                 </div>
             </div>
             <div class="mt-16 opacity-0" id="scrollHint">
@@ -134,15 +137,20 @@
         <div class="hero-divider"></div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION - Enhanced with floating particles & tilt -->
     <section id="about" class="py-20 relative whimsy-section mt-12">
+        <!-- Floating seed particles -->
+        <div class="about-particles" id="aboutParticles"></div>
         <div class="max-w-6xl mx-auto px-4 sm:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="relative reveal-section">
                     <div class="absolute -top-8 -left-8 w-72 h-72 bg-gradient-to-br from-cottage-sage/20 to-cottage-lavender/10 rounded-full blur-[80px] -z-10"></div>
+                    <!-- FIX #1: Centered name in polaroid -->
                     <div class="polaroid max-w-sm mx-auto lg:mx-0">
-                        <img src="Constanca.jpg" alt="Constança" class="w-full h-[380px] object-cover rounded-sm">
-                        <div class="absolute bottom-4 left-0 right-0 text-center"><p class="font-cursive text-lg text-cottage-bark dark:text-cottage-honey">Constança <span class="material-icons-outlined text-lg">eco</span></p></div>
+                        <img src="Constanca.jpg" alt="Constança" class="w-full h-[380px] object-cover rounded-sm" loading="lazy">
+                        <div class="polaroid-caption">
+                            <p class="font-cursive text-lg text-cottage-bark dark:text-cottage-honey">Constança <span class="material-icons-outlined text-lg">eco</span></p>
+                        </div>
                     </div>
                     <div class="absolute -bottom-6 -right-4 lg:right-4 bg-gradient-to-br from-cottage-forest to-cottage-moss text-vintageCream p-5 rounded-xl shadow-xl max-w-[260px] transform rotate-2 hover:rotate-0 transition-transform">
                         <p class="font-display italic text-base leading-relaxed">"Designing systems where emotion meets engineering."</p>
@@ -159,12 +167,12 @@
                     </div>
                     <div class="grid grid-cols-2 gap-3 pt-2">
                         <div class="skill-greenhouse greenhouse-container p-4">
-                            <i data-lucide="compass" class="w-6 h-6 mb-2 text-cottage-sage dark:text-cottage-honey"></i>
+                            <svg class="w-6 h-6 mb-2 text-cottage-sage dark:text-cottage-honey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
                             <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Adventure Awaits</h4>
                             <p class="text-sm opacity-70">Open to global opportunities <span class="material-icons-outlined text-sm">public</span></p>
                         </div>
                         <div class="skill-greenhouse greenhouse-container p-4">
-                            <i data-lucide="message-circle" class="w-6 h-6 mb-2 text-cottage-honey dark:text-cottage-sage"></i>
+                            <svg class="w-6 h-6 mb-2 text-cottage-honey dark:text-cottage-sage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                             <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Languages</h4>
                             <p class="text-sm opacity-70">PT • EN • FR • ES</p>
                         </div>
@@ -174,34 +182,62 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION -->
+    <!-- JOURNEY SECTION - Enhanced with Growing Tree -->
     <section id="artifacts" class="py-20 bg-gradient-to-br from-cottage-forest via-deepForest to-cottage-moss text-vintageCream relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 pointer-events-none">
             <svg class="w-full h-full"><pattern id="labGrid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#labGrid)" /></svg>
         </div>
+
+        <!-- Growing Tree SVG Background -->
+        <div class="tree-container" id="treeContainer">
+            <svg id="growingTree" viewBox="0 0 200 600" class="growing-tree-svg">
+                <!-- Trunk -->
+                <path class="tree-trunk" d="M100,600 Q100,500 98,400 Q96,300 100,200" stroke="#7D9B76" stroke-width="8" fill="none" stroke-linecap="round"/>
+                <!-- Branch 1 - right -->
+                <path class="tree-branch tree-branch-1" d="M99,420 Q130,400 160,370" stroke="#9CAF88" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- Branch 2 - left -->
+                <path class="tree-branch tree-branch-2" d="M99,340 Q70,310 40,290" stroke="#9CAF88" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- Branch 3 - right -->
+                <path class="tree-branch tree-branch-3" d="M100,260 Q135,240 165,210" stroke="#9CAF88" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <!-- Leaves clusters -->
+                <circle class="tree-leaf tree-leaf-1" cx="160" cy="365" r="20" fill="#9CAF88" opacity="0"/>
+                <circle class="tree-leaf tree-leaf-1b" cx="145" cy="380" r="15" fill="#7D9B76" opacity="0"/>
+                <circle class="tree-leaf tree-leaf-2" cx="40" cy="285" r="22" fill="#E8C07D" opacity="0"/>
+                <circle class="tree-leaf tree-leaf-2b" cx="55" cy="275" r="16" fill="#C9A96E" opacity="0"/>
+                <circle class="tree-leaf tree-leaf-3" cx="165" cy="205" r="25" fill="#B8A9C9" opacity="0"/>
+                <circle class="tree-leaf tree-leaf-3b" cx="150" cy="220" r="18" fill="#8B6B8E" opacity="0"/>
+                <!-- Crown -->
+                <circle class="tree-crown" cx="100" cy="180" r="40" fill="#9CAF88" opacity="0"/>
+                <circle class="tree-crown-2" cx="85" cy="160" r="30" fill="#7D9B76" opacity="0"/>
+                <circle class="tree-crown-3" cx="115" cy="155" r="32" fill="#6B7F5E" opacity="0"/>
+            </svg>
+        </div>
+
         <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-16 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">My Professional</p>
                 <h2 class="text-4xl sm:text-6xl font-serif italic text-vintageCream">JOURNEY</h2>
+                <p class="text-sm text-vintageCream/40 mt-3 font-display italic">Scroll to watch the tree grow with each milestone <span class="material-icons-outlined text-sm align-middle">park</span></p>
             </div>
 
             <div class="timeline-container">
                 <div class="timeline-line"></div>
 
                 <!-- Timeline Item 1: NexFlat CH -->
-                <div class="timeline-item reveal-section">
+                <div class="timeline-item reveal-section" data-tree-stage="3">
                     <div class="timeline-empty"></div>
                     <div class="timeline-dot">
                         <span class="material-icons-outlined text-3xl text-white">bolt</span>
                     </div>
                     <div class="timeline-content">
+                        <!-- FIX #4: Tighter line-height on title -->
                         <div class="flex items-start justify-between gap-4 mb-3">
                             <div>
-                                <div class="flex items-center gap-3 mb-2">
-                                    <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage">NexFlat CH</h3>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage leading-tight">NexFlat CH</h3>
                                     <span class="px-3 py-1 bg-cottage-sage/30 text-cottage-forest dark:text-cottage-sage rounded-full text-[10px] font-bold uppercase dark:bg-cottage-sage/20">Current</span>
                                 </div>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-honey">Full-Stack Developer Intern • Zurich</p>
+                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-honey leading-tight">Full-Stack Developer Intern • Zurich</p>
                             </div>
                             <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">SEP 2025 — PRESENT</p>
                         </div>
@@ -226,12 +262,13 @@
                 </div>
 
                 <!-- Timeline Item 2: Sky Portugal -->
-                <div class="timeline-item reveal-section" style="transition-delay: 0.1s">
+                <div class="timeline-item reveal-section" style="transition-delay: 0.1s" data-tree-stage="2">
                     <div class="timeline-content">
+                        <!-- FIX #4: Tighter line-height on title -->
                         <div class="flex items-start justify-between gap-4 mb-3">
                             <div>
-                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose mb-2">Sky Portugal</h3>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-rose">Front-End Developer Intern • Lisbon</p>
+                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose mb-1 leading-tight">Sky Portugal</h3>
+                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-rose leading-tight">Front-End Developer Intern • Lisbon</p>
                             </div>
                             <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">JUL 2024 — SEP 2024</p>
                         </div>
@@ -258,35 +295,36 @@
                 </div>
 
                 <!-- Timeline Item 3: SINFO -->
-                <div class="timeline-item reveal-section" style="transition-delay: 0.2s">
+                <div class="timeline-item reveal-section" style="transition-delay: 0.2s" data-tree-stage="1">
                     <div class="timeline-empty"></div>
                     <div class="timeline-dot">
                         <span class="material-icons-outlined text-3xl text-white">groups</span>
                     </div>
                     <div class="timeline-content">
+                        <!-- FIX #4: Tighter line-height on title -->
                         <div class="flex items-start justify-between gap-4 mb-3">
                             <div>
-                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender mb-2">SINFO</h3>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-lavender">Coordinator & Lead Designer</p>
+                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender mb-1 leading-tight">SINFO</h3>
+                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-lavender leading-tight">Coordinator & Lead Designer</p>
                             </div>
                             <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">MAR 2022 — MAY 2025</p>
                         </div>
                         <p class="text-base text-cottage-forest/90 dark:text-vintageCream/90 mb-4">Coordinated Portugal's largest free tech conference with 5,000+ attendees. Managed execution, creative strategy, and partner relations with 85+ companies including Google, Microsoft, and Meta.</p>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="text-center p-2 bg-cottage-sage/10 rounded-lg dark:bg-cottage-sage/20">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage">30+</p>
+                            <div class="text-center p-2 bg-cottage-sage/10 rounded-lg dark:bg-cottage-sage/20 stat-counter" data-target="30">
+                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage"><span class="counter-value">0</span>+</p>
                                 <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Visual Assets</p>
                             </div>
-                            <div class="text-center p-2 bg-cottage-honey/10 rounded-lg dark:bg-cottage-honey/20">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-honey">5000+</p>
+                            <div class="text-center p-2 bg-cottage-honey/10 rounded-lg dark:bg-cottage-honey/20 stat-counter" data-target="5000">
+                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-honey"><span class="counter-value">0</span>+</p>
                                 <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Attendees</p>
                             </div>
-                            <div class="text-center p-2 bg-cottage-rose/10 rounded-lg dark:bg-cottage-rose/20">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose">85+</p>
+                            <div class="text-center p-2 bg-cottage-rose/10 rounded-lg dark:bg-cottage-rose/20 stat-counter" data-target="85">
+                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose"><span class="counter-value">0</span>+</p>
                                 <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Partners</p>
                             </div>
-                            <div class="text-center p-2 bg-cottage-lavender/10 rounded-lg dark:bg-cottage-lavender/20">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender">3</p>
+                            <div class="text-center p-2 bg-cottage-lavender/10 rounded-lg dark:bg-cottage-lavender/20 stat-counter" data-target="3">
+                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender"><span class="counter-value">0</span></p>
                                 <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Years</p>
                             </div>
                         </div>
@@ -368,7 +406,10 @@
                         </div>
                     </div>
 
-                    <!-- Archive -->
+                    <!-- Reduced spacer between ReMi and Complete Collection -->
+                    <div class="remi-spacer" style="height: 40px;"></div>
+
+                    <!-- Archive Project - Complete Collection - Centered -->
                     <div class="project-entry reveal-section archive-project" id="archive-project" data-img="archive.png" data-color="#D4A5A5">
                         <div class="magic-card p-6">
                             <p class="text-cottage-rose font-bold text-[10px] uppercase tracking-widest mb-2">Complete Collection</p>
@@ -387,12 +428,12 @@
         <div class="iphone-fixed-wrapper" id="iphoneFixed">
             <div class="iphone-wrapper" id="iphoneWrapper">
                 <div class="iphone-island"></div>
-                <img src="sagebook.png" alt="Project Display" id="viewportImg" class="iphone-screen">
+                <img src="sagebook.png" alt="Project Display" id="viewportImg" class="iphone-screen" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- MUSEUM SECTION -->
+    <!-- MUSEUM SECTION - NOT TOUCHED AT ALL -->
     <section id="designs" class="museum-section">
         <div class="museum-controls">
             <button class="museum-control-btn" id="speedUpBtn" title="Speed up">
@@ -419,74 +460,74 @@
         <div class="gallery-track-container">
             <div class="gallery-track" id="galleryTrack">
                 <div class="gallery-frame" onclick="openModal('Designs/mcdonalds.png')">
-                    <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image" loading="lazy"></div>
                     <h4>McDonald's Reimagined</h4>
                     <p>Bold reinterpretation of classic branding.</p>
                     <div class="gallery-plaque">Golden Arches</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/hacky x horror.png')">
-                    <div class="gallery-image-container"><img src="Designs/hacky x horror.png" alt="Hacky x Horror" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/hacky x horror.png" alt="Hacky x Horror" class="gallery-image" loading="lazy"></div>
                     <h4>Hacky x Horror</h4>
                     <p>Dark take on SINFO's mascot.</p>
                     <div class="gallery-plaque">Spooky Edition</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/perfectblue.png')">
-                    <div class="gallery-image-container"><img src="Designs/perfectblue.png" alt="Perfect Blue" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/perfectblue.png" alt="Perfect Blue" class="gallery-image" loading="lazy"></div>
                     <h4>Perfect Blue</h4>
                     <p>Anime poster reimagining.</p>
                     <div class="gallery-plaque">Anime Redux</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/mupi.png')">
-                    <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image" loading="lazy"></div>
                     <h4>MUPI Poster</h4>
                     <p>Real-world promotional design.</p>
                     <div class="gallery-plaque">Street Display</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Recruitment Poster.png')">
-                    <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image" loading="lazy"></div>
                     <h4>Recruitment Poster</h4>
                     <p>Dynamic member attraction.</p>
                     <div class="gallery-plaque">Join Us</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Science Day.png')">
-                    <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image" loading="lazy"></div>
                     <h4>Science Day</h4>
                     <p>Educational event promotion.</p>
                     <div class="gallery-plaque">Discovery</div>
                 </div>
                 <!-- Duplicate for infinite scroll -->
                 <div class="gallery-frame" onclick="openModal('Designs/mcdonalds.png')">
-                    <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image" loading="lazy"></div>
                     <h4>McDonald's Reimagined</h4>
                     <p>Bold reinterpretation of classic branding.</p>
                     <div class="gallery-plaque">Golden Arches</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/hacky x horror.png')">
-                    <div class="gallery-image-container"><img src="Designs/hacky x horror.png" alt="Hacky x Horror" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/hacky x horror.png" alt="Hacky x Horror" class="gallery-image" loading="lazy"></div>
                     <h4>Hacky x Horror</h4>
                     <p>Dark take on SINFO's mascot.</p>
                     <div class="gallery-plaque">Spooky Edition</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/perfectblue.png')">
-                    <div class="gallery-image-container"><img src="Designs/perfectblue.png" alt="Perfect Blue" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/perfectblue.png" alt="Perfect Blue" class="gallery-image" loading="lazy"></div>
                     <h4>Perfect Blue</h4>
                     <p>Anime poster reimagining.</p>
                     <div class="gallery-plaque">Anime Redux</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/mupi.png')">
-                    <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image" loading="lazy"></div>
                     <h4>MUPI Poster</h4>
                     <p>Real-world promotional design.</p>
                     <div class="gallery-plaque">Street Display</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Recruitment Poster.png')">
-                    <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image" loading="lazy"></div>
                     <h4>Recruitment Poster</h4>
                     <p>Dynamic member attraction.</p>
                     <div class="gallery-plaque">Join Us</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Science Day.png')">
-                    <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image"></div>
+                    <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image" loading="lazy"></div>
                     <h4>Science Day</h4>
                     <p>Educational event promotion.</p>
                     <div class="gallery-plaque">Discovery</div>
@@ -495,7 +536,7 @@
         </div>
     </section>
 
-    <!-- WEBSITES SECTION -->
+    <!-- WEBSITES SECTION - Enhanced with browser mockup frames -->
     <section id="websites" class="py-20 whimsy-section">
         <div class="max-w-5xl mx-auto px-4 sm:px-8">
             <div class="text-center mb-12 reveal-section">
@@ -503,112 +544,206 @@
                 <h2 class="text-4xl sm:text-5xl font-serif italic">BROUGHT TO LIFE</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="web-card reveal-section">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="material-icons-outlined text-3xl">eco</span>
-                        <h3 class="font-serif text-2xl italic">Personal Website</h3>
+                <div class="web-card reveal-section browser-card">
+                    <!-- Browser bar -->
+                    <div class="browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="browser-url">constancadcunha.github.io</div>
                     </div>
-                    <p class="text-base opacity-75 mb-4">Digital portfolio with personality. Interactive elements that make visitors want to explore, not just skim.</p>
-                    <div class="space-y-2 mb-6 text-sm">
-                        <p><span class="font-bold text-cottage-rose">Challenge:</span> Stand out among thousands of portfolios</p>
-                        <p><span class="font-bold text-cottage-honey">Solution:</span> Interactive, memorable, accessible design</p>
-                        <p><span class="font-bold text-cottage-lavender">Tech:</span> HTML, CSS, JS, Tailwind</p>
+                    <div class="browser-content">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-icons-outlined text-3xl">eco</span>
+                            <h3 class="font-serif text-2xl italic">Personal Website</h3>
+                        </div>
+                        <p class="text-base opacity-75 mb-4">Digital portfolio with personality. Interactive elements that make visitors want to explore, not just skim.</p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <p><span class="font-bold text-cottage-rose">Challenge:</span> Stand out among thousands of portfolios</p>
+                            <p><span class="font-bold text-cottage-honey">Solution:</span> Interactive, memorable, accessible design</p>
+                            <p><span class="font-bold text-cottage-lavender">Tech:</span> HTML, CSS, JS, Tailwind</p>
+                        </div>
+                        <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
                     </div>
-                    <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
                 </div>
-                <div class="web-card reveal-section" style="transition-delay: 0.1s">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="material-icons-outlined text-3xl">menu_book</span>
-                        <h3 class="font-serif text-2xl italic">Resumos LEIC</h3>
+                <div class="web-card reveal-section browser-card" style="transition-delay: 0.1s">
+                    <div class="browser-bar">
+                        <div class="browser-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="browser-url">resumos.leic.pt</div>
                     </div>
-                    <p class="text-base opacity-75 mb-4">Student-run knowledge hub. Course notes, summaries, and study materials shared by the community.</p>
-                    <div class="space-y-2 mb-6 text-sm">
-                        <p><span class="font-bold text-cottage-rose">Challenge:</span> No central place for study resources</p>
-                        <p><span class="font-bold text-cottage-honey">Solution:</span> Community-driven platform</p>
-                        <p><span class="font-bold text-cottage-lavender">Role:</span> UX Designer & Frontend Dev</p>
+                    <div class="browser-content">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-icons-outlined text-3xl">menu_book</span>
+                            <h3 class="font-serif text-2xl italic">Resumos LEIC</h3>
+                        </div>
+                        <p class="text-base opacity-75 mb-4">Student-run knowledge hub. Course notes, summaries, and study materials shared by the community.</p>
+                        <div class="space-y-2 mb-6 text-sm">
+                            <p><span class="font-bold text-cottage-rose">Challenge:</span> No central place for study resources</p>
+                            <p><span class="font-bold text-cottage-honey">Solution:</span> Community-driven platform</p>
+                            <p><span class="font-bold text-cottage-lavender">Role:</span> UX Designer & Frontend Dev</p>
+                        </div>
+                        <a href="https://resumos.leic.pt/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
                     </div>
-                    <a href="https://resumos.leic.pt/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CERTIFICATES SECTION -->
+    <!-- CERTIFICATES SECTION - Enhanced with flip cards -->
     <section id="certificates" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
         <div class="max-w-5xl mx-auto px-4 sm:px-8">
             <div class="text-center mb-12 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Certificates I've</p>
                 <h2 class="text-4xl sm:text-5xl font-serif italic">EARNED & FRAMED</h2>
+                <p class="text-sm opacity-50 mt-3 font-display italic">Hover to peek behind the frame <span class="material-icons-outlined text-sm align-middle">touch_app</span></p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">verified</span>
-                    <h4 class="font-bold text-lg mb-2">Complete Figma Megacourse</h4>
-                    <p class="text-sm opacity-75 mb-4">Beginner to expert UI/UX course on Figma</p>
-                    <a href="certificates/UC-a1497d98-ab9f-4d61-8f60-92c8a520914f.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">verified</span>
+                            <h4 class="font-bold text-lg mb-2">Complete Figma Megacourse</h4>
+                            <p class="text-sm opacity-75">Beginner to expert UI/UX course on Figma</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sage">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">Comprehensive Figma mastery — from basic shapes to advanced prototyping and design systems.</p>
+                            <a href="certificates/UC-a1497d98-ab9f-4d61-8f60-92c8a520914f.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.05s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">school</span>
-                    <h4 class="font-bold text-lg mb-2">Digital Skills: User Experience</h4>
-                    <p class="text-sm opacity-75 mb-4">UX fundamentals and best practices · Accenture</p>
-                    <a href="certificates/digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.05s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">school</span>
+                            <h4 class="font-bold text-lg mb-2">Digital Skills: User Experience</h4>
+                            <p class="text-sm opacity-75">UX fundamentals and best practices · Accenture</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-honey">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">UX research methods, user journey mapping, wireframing, and usability testing fundamentals.</p>
+                            <a href="certificates/digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.1s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-lavender">design_services</span>
-                    <h4 class="font-bold text-lg mb-2">Intro to UI/UX Design</h4>
-                    <p class="text-sm opacity-75 mb-4">Basics of UI/UX principles and workflow</p>
-                    <a href="certificates/Constança Cunha - 2025-01-24.pdf" target="_blank" class="text-cottage-lavender underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.1s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-lavender">design_services</span>
+                            <h4 class="font-bold text-lg mb-2">Intro to UI/UX Design</h4>
+                            <p class="text-sm opacity-75">Basics of UI/UX principles and workflow</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-lavender">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">Core design principles, information architecture, and user-centered design methodology.</p>
+                            <a href="certificates/Constança Cunha - 2025-01-24.pdf" target="_blank" class="text-cottage-lavender underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.15s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-rose">rocket_launch</span>
-                    <h4 class="font-bold text-lg mb-2">Master Digital Product Design</h4>
-                    <p class="text-sm opacity-75 mb-4">UX research, product design, and interface building</p>
-                    <a href="certificates/UC-486f6c5c-1406-477b-86bc-709727580248.pdf" target="_blank" class="text-cottage-rose underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.15s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-rose">rocket_launch</span>
+                            <h4 class="font-bold text-lg mb-2">Master Digital Product Design</h4>
+                            <p class="text-sm opacity-75">UX research, product design, and interface building</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-rose">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">End-to-end product design workflow — from discovery to high-fidelity mockups and handoff.</p>
+                            <a href="certificates/UC-486f6c5c-1406-477b-86bc-709727580248.pdf" target="_blank" class="text-cottage-rose underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.2s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-sky">brush</span>
-                    <h4 class="font-bold text-lg mb-2">Master Figma for Web & UI/UX</h4>
-                    <p class="text-sm opacity-75 mb-4">Figma for UI design, prototyping & freelancing</p>
-                    <a href="certificates/UC-03333345-1bff-4c16-90e1-23441660e75c.pdf" target="_blank" class="text-cottage-sky underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.2s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sky">brush</span>
+                            <h4 class="font-bold text-lg mb-2">Master Figma for Web & UI/UX</h4>
+                            <p class="text-sm opacity-75">Figma for UI design, prototyping & freelancing</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sky">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">Advanced Figma techniques for responsive web design, component libraries, and client workflows.</p>
+                            <a href="certificates/UC-03333345-1bff-4c16-90e1-23441660e75c.pdf" target="_blank" class="text-cottage-sky underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.25s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">code</span>
-                    <h4 class="font-bold text-lg mb-2">The Web Developer Bootcamp 2025</h4>
-                    <p class="text-sm opacity-75 mb-4">Full-stack web development · 74.5 hours</p>
-                    <a href="certificates/UC-5533914a-a4c9-4171-b4c3-46bc1f0b70c8.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.25s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">code</span>
+                            <h4 class="font-bold text-lg mb-2">The Web Developer Bootcamp 2025</h4>
+                            <p class="text-sm opacity-75">Full-stack web development · 74.5 hours</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sage">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">74.5 hours of HTML, CSS, JS, Node, Express, MongoDB — the full-stack journey, start to finish.</p>
+                            <a href="certificates/UC-5533914a-a4c9-4171-b4c3-46bc1f0b70c8.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.3s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">gamepad</span>
-                    <h4 class="font-bold text-lg mb-2">Modern UI Development in Unity 4.6/5.0</h4>
-                    <p class="text-sm opacity-75 mb-4">Unity game development UI · 13.5 hours</p>
-                    <a href="certificates/UC-9b00fce4-8886-4ac2-96d6-23a7c9f9ebd8.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.3s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">gamepad</span>
+                            <h4 class="font-bold text-lg mb-2">Modern UI Development in Unity</h4>
+                            <p class="text-sm opacity-75">Unity game development UI · 13.5 hours</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-honey">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">Game UI systems, canvas management, animations, and responsive interfaces in Unity engine.</p>
+                            <a href="certificates/UC-9b00fce4-8886-4ac2-96d6-23a7c9f9ebd8.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.35s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-berry">psychology</span>
-                    <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Practitioner</h4>
-                    <p class="text-sm opacity-75 mb-4">IBM Design Thinking certification</p>
-                    <a href="certificates/Enterprise_Design_Thinking_Practitioner_Badge20250125-26-4dyqob.pdf" target="_blank" class="text-cottage-berry underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.35s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-berry">psychology</span>
+                            <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Practitioner</h4>
+                            <p class="text-sm opacity-75">IBM Design Thinking certification</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-berry">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">IBM's framework for user-centric innovation — Hills, Playbacks, and Sponsor Users.</p>
+                            <a href="certificates/Enterprise_Design_Thinking_Practitioner_Badge20250125-26-4dyqob.pdf" target="_blank" class="text-cottage-berry underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="credential-flower reveal-section flex flex-col items-center text-center p-6" style="transition-delay: 0.4s">
-                    <span class="material-icons-outlined text-4xl mb-4 text-cottage-fern">groups</span>
-                    <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Co-Creator</h4>
-                    <p class="text-sm opacity-75 mb-4">IBM collaborative design practices</p>
-                    <a href="certificates/Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf" target="_blank" class="text-cottage-fern underline text-sm font-bold">View Certificate</a>
+                <div class="cert-flip-card reveal-section" style="transition-delay: 0.4s">
+                    <div class="cert-flip-inner">
+                        <div class="cert-front">
+                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-fern">groups</span>
+                            <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Co-Creator</h4>
+                            <p class="text-sm opacity-75">IBM collaborative design practices</p>
+                        </div>
+                        <div class="cert-back">
+                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-fern">workspace_premium</span>
+                            <p class="text-sm mb-4 opacity-90">Cross-functional collaboration, workshop facilitation, and co-creation techniques at scale.</p>
+                            <a href="certificates/Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf" target="_blank" class="text-cottage-fern underline text-sm font-bold">View Certificate →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WISDOM/SKILLS SECTION -->
+    <!-- WISDOM/SKILLS SECTION - Enhanced with interactive skill bars -->
     <section id="wisdom" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
         <div class="max-w-5xl mx-auto px-4 sm:px-8">
             <div class="text-center mb-12 reveal-section">
@@ -677,11 +812,11 @@
         </div>
     </section>
 
-    <!-- FOOTER/CONTACT -->
+    <!-- FOOTER/CONTACT - FIX #9: EmailJS integration, visually identical -->
     <footer id="contact" class="py-20 bg-gradient-to-br from-cottage-forest via-deepForest to-cottage-moss text-vintageCream relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-            <i data-lucide="mail" class="botanical absolute top-[20%] left-[8%] w-24 h-24" style="animation: floatBotanical 8s ease-in-out infinite;"></i>
-            <i data-lucide="heart" class="botanical absolute bottom-[25%] right-[10%] w-20 h-20" style="animation: floatBotanical 10s ease-in-out infinite 2s;"></i>
+            <svg class="botanical absolute top-[20%] left-[8%] w-24 h-24" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <svg class="botanical absolute bottom-[25%] right-[10%] w-20 h-20" style="animation: floatBotanical 10s ease-in-out infinite 2s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
         </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal-section">
@@ -690,7 +825,7 @@
                 <div class="space-y-6">
                     <a href="mailto:constancadcunha@gmail.com" class="flex items-center gap-5 group">
                         <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-cottage-sage group-hover:scale-110 transition-all duration-300">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </div>
                         <div>
                             <p class="font-bold text-[10px] uppercase tracking-widest opacity-50">Send a Letter</p>
@@ -710,7 +845,7 @@
                         </div>
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Where can I find you?</label>
-                            <input type="email" name="_replyto" placeholder="Email Address" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors">
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors">
                         </div>
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Your Message</label>
@@ -734,7 +869,12 @@
         </div>
     </div>
 
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
+    <!-- FIX #6: Defer heavy scripts, load GSAP only when needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    
+    <!-- Main JavaScript - deferred -->
+    <script src="script.js" defer></script>
 </body>
 </html>
