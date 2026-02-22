@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Constança Cunha | Product Design Architect</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🌿</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='25' y='20' width='50' height='60' rx='10' fill='%23B8B8B8' stroke='%23888' stroke-width='2'/><rect x='30' y='25' width='40' height='32' rx='3' fill='%23C8E6F5'/><circle cx='50' cy='68' r='10' fill='%23E5E5E5' stroke='%23999' stroke-width='1.5'/><circle cx='50' cy='68' r='7' fill='%23F5F5F5'/></svg>">
     
     <!-- Google Fonts - Preconnect for speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Material Icons - loaded async to avoid render blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"></noscript>
     
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- EmailJS SDK - deferred for performance -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
     <!-- Tailwind Config -->
     <script>
@@ -71,13 +73,14 @@
     <div id="museum-cursor-spotlight"></div>
 
     <!-- Audio Element for Whimsical Sound -->
-    <audio id="whimsicalSound" preload="auto">
+    <!-- Audio: preload=none for performance, loads on first user interaction -->
+    <audio id="whimsicalSound" preload="none">
         <source src="https://assets.mixkit.co/music/preview/mixkit-fairy-fantasy-1115.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Image Modal -->
     <div class="image-modal" id="imageModal">
-        <div class="modal-close" onclick="closeModal()">✕</div>
+        <div class="modal-close" onclick="closeModal()"><span class="material-icons-outlined" style="font-size:22px;line-height:1">close</span></div>
         <img src="" alt="Full size image" id="modalImage">
     </div>
 
@@ -116,16 +119,16 @@
                 <span class="inline-block opacity-0" id="heroName1">CONSTANÇA</span> <br>
                 <span class="inline-block italic text-outline opacity-0" id="heroName2">CUNHA</span>
             </h1>
-            <!-- FIX #2: Bigger chips -->
+            <!-- Bigger chips -->
             <div class="flex flex-wrap justify-center gap-3 sm:gap-5 mt-8">
-                <div class="px-6 py-3 bg-gradient-to-r from-petalPink to-cottage-rose/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-rose/30 dark:text-nightSky" id="badge1">
-                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-forest dark:bg-cottage-rose rounded-full animate-pulse"></span>Full-Stack Experience</span>
+                <div class="px-7 py-3.5 bg-gradient-to-r from-petalPink to-cottage-rose/30 rounded-full font-bold text-xs sm:text-sm uppercase tracking-widest opacity-0 border border-cottage-rose/30 dark:text-nightSky" id="badge1">
+                    <span class="flex items-center gap-2.5"><span class="w-3 h-3 bg-cottage-forest dark:bg-cottage-rose rounded-full animate-pulse"></span>Full-Stack Experience</span>
                 </div>
-                <div class="px-6 py-3 bg-gradient-to-r from-mint to-cottage-sage/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-sage/30 dark:text-nightSky" id="badge2">
-                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-honey dark:bg-cottage-sage rounded-full animate-pulse"></span>UI/UX Visionary</span>
+                <div class="px-7 py-3.5 bg-gradient-to-r from-mint to-cottage-sage/30 rounded-full font-bold text-xs sm:text-sm uppercase tracking-widest opacity-0 border border-cottage-sage/30 dark:text-nightSky" id="badge2">
+                    <span class="flex items-center gap-2.5"><span class="w-3 h-3 bg-cottage-honey dark:bg-cottage-sage rounded-full animate-pulse"></span>UI/UX Visionary</span>
                 </div>
-                <div class="px-6 py-3 bg-gradient-to-r from-softLilac to-cottage-lavender/30 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-widest opacity-0 border border-cottage-lavender/30 dark:text-nightSky" id="badge3">
-                    <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 bg-cottage-berry dark:bg-cottage-lavender rounded-full animate-pulse"></span>Interaction Architect</span>
+                <div class="px-7 py-3.5 bg-gradient-to-r from-softLilac to-cottage-lavender/30 rounded-full font-bold text-xs sm:text-sm uppercase tracking-widest opacity-0 border border-cottage-lavender/30 dark:text-nightSky" id="badge3">
+                    <span class="flex items-center gap-2.5"><span class="w-3 h-3 bg-cottage-berry dark:bg-cottage-lavender rounded-full animate-pulse"></span>Interaction Architect</span>
                 </div>
             </div>
             <div class="mt-16 opacity-0" id="scrollHint">
@@ -145,25 +148,58 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="relative reveal-section">
                     <div class="absolute -top-8 -left-8 w-72 h-72 bg-gradient-to-br from-cottage-sage/20 to-cottage-lavender/10 rounded-full blur-[80px] -z-10"></div>
-                    <!-- FIX #1: Centered name in polaroid -->
-                    <div class="polaroid max-w-sm mx-auto lg:mx-0">
-                        <img src="Constanca.jpg" alt="Constança" class="w-full h-[380px] object-cover rounded-sm" loading="lazy">
-                        <div class="polaroid-caption">
-                            <p class="font-cursive text-lg text-cottage-bark dark:text-cottage-honey">Constança <span class="material-icons-outlined text-lg">eco</span></p>
+                    <!-- Camera that takes a photo -->
+                    <div class="camera-photo-widget" id="cameraWidget">
+                        <div class="camera-body" id="cameraBody">
+                            <div class="camera-top-strip">
+                                <div class="camera-viewfinder"></div>
+                                <div class="camera-brand-text">Constança Cam</div>
+                                <div class="camera-mode-dial"></div>
+                            </div>
+                            <div class="camera-rainbow-stripe"></div>
+                            <div class="camera-body-main">
+                                <div class="camera-lens-housing">
+                                    <div class="camera-lens-glass">
+                                        <div class="camera-lens-inner-ring"></div>
+                                    </div>
+                                </div>
+                                <div class="camera-controls-panel">
+                                    <div class="camera-flash-unit"><span class="material-icons-outlined" style="font-size:10px;color:#4A5D4E">flash_on</span></div>
+                                    <button class="camera-shutter-button" onclick="triggerCameraShoot(event)" title="Take a photo!"><span class="material-icons-outlined" style="font-size:20px;color:#fff;line-height:1">photo_camera</span></button>
+                                    <div class="camera-small-dials">
+                                        <div class="camera-small-dial"></div>
+                                        <div class="camera-small-dial"></div>
+                                    </div>
+                                    <div class="camera-film-window">36</div>
+                                </div>
+                            </div>
+                            <div class="camera-film-slot">
+                                <div class="camera-film-slot-inner"></div>
+                            </div>
+                            <div class="camera-bottom-strip">
+                                <div class="camera-ready-led"></div>
+                                <p class="camera-hint-text" id="cameraHintText">Click to take a photo!</p>
+                            </div>
+                        </div>
+                        <div class="camera-polaroid-eject" id="cameraPolaroid">
+                            <div class="polaroid-top-quote">
+                                <p class="font-display italic text-sm leading-snug">"Designing systems where emotion meets engineering."</p>
+                            </div>
+                            <img src="Constanca.jpg" alt="Constança" class="w-full h-[240px] object-cover rounded-sm" loading="lazy">
+                            <div class="polaroid-photo-caption">
+                                <p class="font-cursive text-lg text-cottage-bark dark:text-cottage-honey">Constança <span class="material-icons-outlined text-lg">eco</span></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-6 -right-4 lg:right-4 bg-gradient-to-br from-cottage-forest to-cottage-moss text-vintageCream p-5 rounded-xl shadow-xl max-w-[260px] transform rotate-2 hover:rotate-0 transition-transform">
-                        <p class="font-display italic text-base leading-relaxed">"Designing systems where emotion meets engineering."</p>
-                    </div>
                 </div>
-                <div class="space-y-6 reveal-section" style="transition-delay: 0.2s">
+                <div class="space-y-6 reveal-section relative z-10" style="transition-delay: 0.2s">
                     <h2 class="text-3xl sm:text-4xl font-serif leading-tight dark:text-vintageCream">
                         I design experiences where <span class="text-cottage-bark dark:text-cottage-honey italic underline decoration-cottage-sage decoration-3">logic meets empathy</span>.
                     </h2>
                     <div class="space-y-4 text-base leading-relaxed opacity-85 dark:opacity-90">
                         <p>Currently finishing my Master's in <strong>Computer Science</strong> at <strong>Instituto Superior Técnico</strong>, specializing in <strong>Interaction & Visualization</strong>. I write code, but what I really do is craft experiences.</p>
                         <p>My thesis? <strong>Multimodal Usability Evaluation</strong> — because I believe the best interfaces understand both what users do and how they feel.</p>
-                        <p>Based in <strong>Lisbon</strong> 🇵🇹, open to opportunities anywhere.</p>
+                        <p>Based in <strong>Lisbon</strong>, open to opportunities anywhere.</p>
                     </div>
                     <div class="grid grid-cols-2 gap-3 pt-2">
                         <div class="skill-greenhouse greenhouse-container p-4">
@@ -182,155 +218,241 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - Enhanced with Growing Tree -->
-    <section id="artifacts" class="py-20 bg-gradient-to-br from-cottage-forest via-deepForest to-cottage-moss text-vintageCream relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <!-- JOURNEY SECTION -->
+    <section id="artifacts" class="journey-section relative overflow-hidden">
+        <!-- Fireflies -->
+        <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
+        <!-- Bottom fog -->
+        <div class="journey-fog" aria-hidden="true"></div>
+        <!-- Dot grid -->
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
             <svg class="w-full h-full"><pattern id="labGrid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#labGrid)" /></svg>
         </div>
 
-        <!-- Growing Tree SVG Background -->
-        <div class="tree-container" id="treeContainer">
-            <svg id="growingTree" viewBox="0 0 200 600" class="growing-tree-svg">
-                <!-- Trunk -->
-                <path class="tree-trunk" d="M100,600 Q100,500 98,400 Q96,300 100,200" stroke="#7D9B76" stroke-width="8" fill="none" stroke-linecap="round"/>
-                <!-- Branch 1 - right -->
-                <path class="tree-branch tree-branch-1" d="M99,420 Q130,400 160,370" stroke="#9CAF88" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <!-- Branch 2 - left -->
-                <path class="tree-branch tree-branch-2" d="M99,340 Q70,310 40,290" stroke="#9CAF88" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <!-- Branch 3 - right -->
-                <path class="tree-branch tree-branch-3" d="M100,260 Q135,240 165,210" stroke="#9CAF88" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                <!-- Leaves clusters -->
-                <circle class="tree-leaf tree-leaf-1" cx="160" cy="365" r="20" fill="#9CAF88" opacity="0"/>
-                <circle class="tree-leaf tree-leaf-1b" cx="145" cy="380" r="15" fill="#7D9B76" opacity="0"/>
-                <circle class="tree-leaf tree-leaf-2" cx="40" cy="285" r="22" fill="#E8C07D" opacity="0"/>
-                <circle class="tree-leaf tree-leaf-2b" cx="55" cy="275" r="16" fill="#C9A96E" opacity="0"/>
-                <circle class="tree-leaf tree-leaf-3" cx="165" cy="205" r="25" fill="#B8A9C9" opacity="0"/>
-                <circle class="tree-leaf tree-leaf-3b" cx="150" cy="220" r="18" fill="#8B6B8E" opacity="0"/>
-                <!-- Crown -->
-                <circle class="tree-crown" cx="100" cy="180" r="40" fill="#9CAF88" opacity="0"/>
-                <circle class="tree-crown-2" cx="85" cy="160" r="30" fill="#7D9B76" opacity="0"/>
-                <circle class="tree-crown-3" cx="115" cy="155" r="32" fill="#6B7F5E" opacity="0"/>
-            </svg>
-        </div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
-            <div class="text-center mb-16 reveal-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10 py-24">
+            <!-- Header -->
+            <div class="text-center mb-20 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">My Professional</p>
                 <h2 class="text-4xl sm:text-6xl font-serif italic text-vintageCream">JOURNEY</h2>
-                <p class="text-sm text-vintageCream/40 mt-3 font-display italic">Scroll to watch the tree grow with each milestone <span class="material-icons-outlined text-sm align-middle">park</span></p>
+                <p class="text-xs opacity-40 mt-3 font-mono tracking-widest">Click any card to read the full story</p>
             </div>
 
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
+            <!-- Chapter-style journey -->
+            <div class="journey-chapters">
 
-                <!-- Timeline Item 1: NexFlat CH -->
-                <div class="timeline-item reveal-section" data-tree-stage="3">
-                    <div class="timeline-empty"></div>
-                    <div class="timeline-dot">
-                        <span class="material-icons-outlined text-3xl text-white">bolt</span>
-                    </div>
-                    <div class="timeline-content">
-                        <!-- FIX #4: Tighter line-height on title -->
-                        <div class="flex items-start justify-between gap-4 mb-3">
-                            <div>
-                                <div class="flex items-center gap-3 mb-1">
-                                    <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage leading-tight">NexFlat CH</h3>
-                                    <span class="px-3 py-1 bg-cottage-sage/30 text-cottage-forest dark:text-cottage-sage rounded-full text-[10px] font-bold uppercase dark:bg-cottage-sage/20">Current</span>
+                <!-- Chapter 01: NexFlat -->
+                <div class="journey-chapter reveal-section" id="jchapter-0">
+                    <div class="journey-chapter-num" style="color: rgba(156, 175, 136, 0.15);" aria-hidden="true">01</div>
+                    <div class="journey-chapter-inner">
+                        <!-- Pin -->
+                        <div class="journey-pin journey-pin-sage" onclick="toggleJourneyChapter(0)" title="Click to expand">
+                            <span class="material-icons-outlined" style="font-size:26px;color:#fff">bolt</span>
+                            <div class="journey-pin-ring"></div>
+                        </div>
+                        <!-- Card -->
+                        <div class="journey-card journey-card-sage" onclick="toggleJourneyChapter(0)">
+                            <div class="journey-card-accent" style="background:#9CAF88"></div>
+                            <div class="journey-card-body">
+                                <div class="journey-card-header">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center gap-2 flex-wrap mb-0.5">
+                                            <h3 class="journey-card-title">NexFlat CH</h3>
+                                            <span class="journey-badge journey-badge-live">
+                                                <span class="journey-badge-dot"></span>Current
+                                            </span>
+                                        </div>
+                                        <p class="journey-card-role">Full-Stack Developer Intern &bull; Zurich</p>
+                                    </div>
+                                    <div class="journey-card-meta">
+                                        <span class="journey-card-date">SEP 2025 — NOW</span>
+                                        <span class="journey-expand-caret material-icons-outlined" id="jcaret-0">expand_more</span>
+                                    </div>
                                 </div>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-honey leading-tight">Full-Stack Developer Intern • Zurich</p>
-                            </div>
-                            <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">SEP 2025 — PRESENT</p>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-3 mt-4">
-                            <div class="p-3 bg-cottage-sage/10 rounded-lg dark:bg-cottage-sage/20">
-                                <span class="material-icons-outlined text-xl mb-1 block text-cottage-forest dark:text-cottage-sage">bolt</span>
-                                <h4 class="font-bold text-sm mb-1 text-cottage-forest dark:text-cottage-sage">Core Engineering</h4>
-                                <p class="text-xs text-cottage-forest/80 dark:text-vintageCream/80">Fully integrated member shipping production apps for global clients.</p>
-                            </div>
-                            <div class="p-3 bg-cottage-honey/10 rounded-lg dark:bg-cottage-honey/20">
-                                <span class="material-icons-outlined text-xl mb-1 block text-cottage-forest dark:text-cottage-honey">palette</span>
-                                <h4 class="font-bold text-sm mb-1 text-cottage-forest dark:text-cottage-honey">Frontend Ownership</h4>
-                                <p class="text-xs text-cottage-forest/80 dark:text-vintageCream/80">Primary owner of UI/UX consistency across all products.</p>
-                            </div>
-                            <div class="p-3 bg-cottage-lavender/10 rounded-lg dark:bg-cottage-lavender/20">
-                                <span class="material-icons-outlined text-xl mb-1 block text-cottage-forest dark:text-cottage-lavender">rocket_launch</span>
-                                <h4 class="font-bold text-sm mb-1 text-cottage-forest dark:text-cottage-lavender">Redesign Lead</h4>
-                                <p class="text-xs text-cottage-forest/80 dark:text-vintageCream/80">Led major redesign efforts improving user satisfaction.</p>
+
+                                <!-- Impact quote -->
+                                <div class="journey-impact-quote">
+                                    <span class="material-icons-outlined" style="font-size:16px;opacity:0.5;flex-shrink:0">format_quote</span>
+                                    <p>Fully integrated core team member — shipping production apps for global clients from day one.</p>
+                                </div>
+
+                                <!-- Highlights grid -->
+                                <div class="journey-highlights">
+                                    <div class="journey-highlight">
+                                        <span class="material-icons-outlined jh-icon" style="color:#9CAF88">bolt</span>
+                                        <div>
+                                            <p class="jh-title">Core Engineering</p>
+                                            <p class="jh-desc">Production apps for global clients</p>
+                                        </div>
+                                    </div>
+                                    <div class="journey-highlight">
+                                        <span class="material-icons-outlined jh-icon" style="color:#E8C07D">palette</span>
+                                        <div>
+                                            <p class="jh-title">Frontend Ownership</p>
+                                            <p class="jh-desc">Primary owner of UI/UX consistency</p>
+                                        </div>
+                                    </div>
+                                    <div class="journey-highlight">
+                                        <span class="material-icons-outlined jh-icon" style="color:#B8A9C9">rocket_launch</span>
+                                        <div>
+                                            <p class="jh-title">Redesign Lead</p>
+                                            <p class="jh-desc">Led major redesign across all products</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Story (expandable) -->
+                                <div class="journey-story" id="jstory-0">
+                                    <div class="journey-story-divider"></div>
+                                    <div class="journey-story-chips">
+                                        <span class="story-chip" style="--cc:#9CAF88">React</span>
+                                        <span class="story-chip" style="--cc:#E8C07D">TypeScript</span>
+                                        <span class="story-chip" style="--cc:#B8A9C9">Node.js</span>
+                                        <span class="story-chip" style="--cc:#D4A5A5">Figma</span>
+                                        <span class="story-chip" style="--cc:#A8C5D9">PostgreSQL</span>
+                                    </div>
+                                    <p class="journey-story-text">Working as a core team member at a Swiss PropTech startup — shipping real features, owning the design system, and pushing UI quality across the entire product suite. It's the kind of role where no two days are alike.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Timeline Item 2: Sky Portugal -->
-                <div class="timeline-item reveal-section" style="transition-delay: 0.1s" data-tree-stage="2">
-                    <div class="timeline-content">
-                        <!-- FIX #4: Tighter line-height on title -->
-                        <div class="flex items-start justify-between gap-4 mb-3">
-                            <div>
-                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose mb-1 leading-tight">Sky Portugal</h3>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-rose leading-tight">Front-End Developer Intern • Lisbon</p>
-                            </div>
-                            <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">JUL 2024 — SEP 2024</p>
-                        </div>
-                        <div class="p-3 bg-cottage-honey/10 border-l-4 border-cottage-honey rounded-r-lg mb-3 dark:bg-cottage-honey/20">
-                            <p class="text-base font-display italic text-cottage-forest dark:text-cottage-honey">"Completed a full 2-month development roadmap in just 2 weeks."</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-3">
-                            <div class="p-3 bg-cottage-rose/10 rounded-lg dark:bg-cottage-rose/20">
-                                <span class="material-icons-outlined text-xl mb-1 block text-cottage-forest dark:text-cottage-rose">inventory</span>
-                                <h4 class="font-bold text-sm mb-1 text-cottage-forest dark:text-cottage-rose">STB Information System</h4>
-                                <p class="text-xs text-cottage-forest/80 dark:text-vintageCream/80">Built comprehensive device information system for internal teams.</p>
-                            </div>
-                            <div class="p-3 bg-cottage-sky/10 rounded-lg dark:bg-cottage-sky/20">
-                                <span class="material-icons-outlined text-xl mb-1 block text-cottage-forest dark:text-cottage-sky">build</span>
-                                <h4 class="font-bold text-sm mb-1 text-cottage-forest dark:text-cottage-sky">Platform Expansion</h4>
-                                <p class="text-xs text-cottage-forest/80 dark:text-vintageCream/80">Expanded platform with API testing and CSV management features.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-dot">
-                        <span class="material-icons-outlined text-3xl text-white">code</span>
-                    </div>
-                    <div class="timeline-empty"></div>
+                <!-- Connector line -->
+                <div class="journey-connector" aria-hidden="true">
+                    <div class="journey-connector-line"></div>
+                    <div class="journey-connector-dot"></div>
                 </div>
 
-                <!-- Timeline Item 3: SINFO -->
-                <div class="timeline-item reveal-section" style="transition-delay: 0.2s" data-tree-stage="1">
-                    <div class="timeline-empty"></div>
-                    <div class="timeline-dot">
-                        <span class="material-icons-outlined text-3xl text-white">groups</span>
-                    </div>
-                    <div class="timeline-content">
-                        <!-- FIX #4: Tighter line-height on title -->
-                        <div class="flex items-start justify-between gap-4 mb-3">
-                            <div>
-                                <h3 class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender mb-1 leading-tight">SINFO</h3>
-                                <p class="text-lg font-display italic text-cottage-forest dark:text-cottage-lavender leading-tight">Coordinator & Lead Designer</p>
+                <!-- Chapter 02: Sky Portugal -->
+                <div class="journey-chapter reveal-section journey-chapter-right" id="jchapter-1" style="transition-delay:0.12s">
+                    <div class="journey-chapter-num journey-chapter-num-right" style="color: rgba(212, 165, 165, 0.15);" aria-hidden="true">02</div>
+                    <div class="journey-chapter-inner journey-chapter-inner-right">
+                        <!-- Card -->
+                        <div class="journey-card journey-card-rose" onclick="toggleJourneyChapter(1)">
+                            <div class="journey-card-accent" style="background:#D4A5A5"></div>
+                            <div class="journey-card-body">
+                                <div class="journey-card-header">
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="journey-card-title">Sky Portugal</h3>
+                                        <p class="journey-card-role">Front-End Developer Intern &bull; Lisbon</p>
+                                    </div>
+                                    <div class="journey-card-meta">
+                                        <span class="journey-card-date">JUL — SEP 2024</span>
+                                        <span class="journey-expand-caret material-icons-outlined" id="jcaret-1">expand_more</span>
+                                    </div>
+                                </div>
+
+                                <div class="journey-impact-quote">
+                                    <span class="material-icons-outlined" style="font-size:16px;opacity:0.5;flex-shrink:0">format_quote</span>
+                                    <p>Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</p>
+                                </div>
+
+                                <div class="journey-highlights">
+                                    <div class="journey-highlight">
+                                        <span class="material-icons-outlined jh-icon" style="color:#D4A5A5">inventory</span>
+                                        <div>
+                                            <p class="jh-title">STB Device System</p>
+                                            <p class="jh-desc">Full device registry for internal ops</p>
+                                        </div>
+                                    </div>
+                                    <div class="journey-highlight">
+                                        <span class="material-icons-outlined jh-icon" style="color:#A8C5D9">build</span>
+                                        <div>
+                                            <p class="jh-title">Platform Expansion</p>
+                                            <p class="jh-desc">API testing + CSV management tools</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="journey-story" id="jstory-1">
+                                    <div class="journey-story-divider"></div>
+                                    <div class="journey-story-chips">
+                                        <span class="story-chip" style="--cc:#D4A5A5">Vue.js</span>
+                                        <span class="story-chip" style="--cc:#A8C5D9">REST APIs</span>
+                                        <span class="story-chip" style="--cc:#9CAF88">CSV tooling</span>
+                                        <span class="story-chip" style="--cc:#E8C07D">2-week delivery</span>
+                                    </div>
+                                    <p class="journey-story-text">Walked in, understood the codebase in days, and delivered what was scoped for two months — in two weeks. Built a full STB device registry, API testing tools, and CSV management for Sky's internal ops team.</p>
+                                </div>
                             </div>
-                            <p class="font-mono text-xs text-cottage-forest/70 dark:text-vintageCream/70">MAR 2022 — MAY 2025</p>
                         </div>
-                        <p class="text-base text-cottage-forest/90 dark:text-vintageCream/90 mb-4">Coordinated Portugal's largest free tech conference with 5,000+ attendees. Managed execution, creative strategy, and partner relations with 85+ companies including Google, Microsoft, and Meta.</p>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="text-center p-2 bg-cottage-sage/10 rounded-lg dark:bg-cottage-sage/20 stat-counter" data-target="30">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-sage"><span class="counter-value">0</span>+</p>
-                                <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Visual Assets</p>
-                            </div>
-                            <div class="text-center p-2 bg-cottage-honey/10 rounded-lg dark:bg-cottage-honey/20 stat-counter" data-target="5000">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-honey"><span class="counter-value">0</span>+</p>
-                                <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Attendees</p>
-                            </div>
-                            <div class="text-center p-2 bg-cottage-rose/10 rounded-lg dark:bg-cottage-rose/20 stat-counter" data-target="85">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-rose"><span class="counter-value">0</span>+</p>
-                                <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Partners</p>
-                            </div>
-                            <div class="text-center p-2 bg-cottage-lavender/10 rounded-lg dark:bg-cottage-lavender/20 stat-counter" data-target="3">
-                                <p class="text-2xl font-bold text-cottage-forest dark:text-cottage-lavender"><span class="counter-value">0</span></p>
-                                <p class="text-[9px] uppercase tracking-widest text-cottage-forest/70 dark:text-vintageCream/70">Years</p>
+                        <!-- Pin (right side) -->
+                        <div class="journey-pin journey-pin-rose" onclick="toggleJourneyChapter(1)" title="Click to expand">
+                            <span class="material-icons-outlined" style="font-size:26px;color:#fff">code</span>
+                            <div class="journey-pin-ring"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connector line -->
+                <div class="journey-connector" aria-hidden="true">
+                    <div class="journey-connector-line"></div>
+                    <div class="journey-connector-dot"></div>
+                </div>
+
+                <!-- Chapter 03: SINFO -->
+                <div class="journey-chapter reveal-section" id="jchapter-2" style="transition-delay:0.22s">
+                    <div class="journey-chapter-num" style="color: rgba(184, 169, 201, 0.15);" aria-hidden="true">03</div>
+                    <div class="journey-chapter-inner">
+                        <div class="journey-pin journey-pin-lavender" onclick="toggleJourneyChapter(2)" title="Click to expand">
+                            <span class="material-icons-outlined" style="font-size:26px;color:#fff">groups</span>
+                            <div class="journey-pin-ring"></div>
+                        </div>
+                        <div class="journey-card journey-card-lavender" onclick="toggleJourneyChapter(2)">
+                            <div class="journey-card-accent" style="background:#B8A9C9"></div>
+                            <div class="journey-card-body">
+                                <div class="journey-card-header">
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="journey-card-title">SINFO</h3>
+                                        <p class="journey-card-role">Coordinator &amp; Lead Designer &bull; Lisbon</p>
+                                    </div>
+                                    <div class="journey-card-meta">
+                                        <span class="journey-card-date">MAR 2022 — MAY 2025</span>
+                                        <span class="journey-expand-caret material-icons-outlined" id="jcaret-2">expand_more</span>
+                                    </div>
+                                </div>
+
+                                <div class="journey-impact-quote">
+                                    <span class="material-icons-outlined" style="font-size:16px;opacity:0.5;flex-shrink:0">format_quote</span>
+                                    <p>Portugal's largest free tech conference — 5,000+ attendees, 85+ partners, 3 years of creative leadership.</p>
+                                </div>
+
+                                <!-- Stats grid -->
+                                <div class="journey-stats-row">
+                                    <div class="journey-stat stat-counter" data-target="30">
+                                        <span class="journey-stat-value" style="color: #9CAF88; text-shadow: 0 2px 10px rgba(156, 175, 136, 0.3);"><span class="counter-value">0</span>+</span>
+                                        <span class="journey-stat-label">Visual Assets</span>
+                                    </div>
+                                    <div class="journey-stat stat-counter" data-target="5000">
+                                        <span class="journey-stat-value" style="color: #E8C07D; text-shadow: 0 2px 10px rgba(232, 192, 125, 0.3);"><span class="counter-value">0</span>+</span>
+                                        <span class="journey-stat-label">Attendees</span>
+                                    </div>
+                                    <div class="journey-stat stat-counter" data-target="85">
+                                        <span class="journey-stat-value" style="color: #D4A5A5; text-shadow: 0 2px 10px rgba(212, 165, 165, 0.3);"><span class="counter-value">0</span>+</span>
+                                        <span class="journey-stat-label">Partners</span>
+                                    </div>
+                                    <div class="journey-stat stat-counter" data-target="3">
+                                        <span class="journey-stat-value" style="color: #B8A9C9; text-shadow: 0 2px 10px rgba(184, 169, 201, 0.3);"><span class="counter-value">0</span></span>
+                                        <span class="journey-stat-label">Years</span>
+                                    </div>
+                                </div>
+
+                                <div class="journey-story" id="jstory-2">
+                                    <div class="journey-story-divider"></div>
+                                    <div class="journey-story-chips">
+                                        <span class="story-chip" style="--cc:#B8A9C9">Leadership</span>
+                                        <span class="story-chip" style="--cc:#9CAF88">Brand Design</span>
+                                        <span class="story-chip" style="--cc:#D4A5A5">Event Strategy</span>
+                                        <span class="story-chip" style="--cc:#E8C07D">Partnerships</span>
+                                    </div>
+                                    <p class="journey-story-text">Three years growing from volunteer to coordinator. Designed 30+ branded assets, managed sponsor decks for Google and Microsoft, and co-led the creative direction of Lisbon's biggest free tech event. My creative playground.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </div><!-- end journey-chapters -->
         </div>
     </section>
 
@@ -406,21 +528,20 @@
                         </div>
                     </div>
 
-                    <!-- Reduced spacer between ReMi and Complete Collection -->
-                    <div class="remi-spacer" style="height: 40px;"></div>
-
-                    <!-- Archive Project - Complete Collection - Centered -->
-                    <div class="project-entry reveal-section archive-project" id="archive-project" data-img="archive.png" data-color="#D4A5A5">
-                        <div class="magic-card p-6">
-                            <p class="text-cottage-rose font-bold text-[10px] uppercase tracking-widest mb-2">Complete Collection</p>
-                            <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">And more...</h3>
-                            <p class="text-base opacity-75 leading-relaxed mb-6">My complete portfolio with all projects, designs, and case studies. Everything in one place, from prototypes to detailed breakdowns.</p>
-                            <div class="ghost-button-container">
-                                <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-rose text-white rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold">Explore Complete Website</a>
-                            </div>
+                </div>
+            <!-- Archive Project - Complete Collection - Centered as sibling of studio-projects -->
+            <div class="archive-wrapper">
+                <div class="project-entry reveal-section archive-project" id="archive-project" data-img="archive.png" data-color="#D4A5A5">
+                    <div class="magic-card p-6">
+                        <p class="text-cottage-rose font-bold text-[10px] uppercase tracking-widest mb-2">Complete Collection</p>
+                        <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">And more...</h3>
+                        <p class="text-base opacity-75 leading-relaxed mb-6">My complete website with all projects, designs, and case studies. Everything in one place, from prototypes to detailed breakdowns.</p>
+                        <div class="ghost-button-container">
+                            <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-rose text-white rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold">Explore Complete Website</a>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -536,279 +657,702 @@
         </div>
     </section>
 
-    <!-- WEBSITES SECTION - Enhanced with browser mockup frames -->
-    <section id="websites" class="py-20 whimsy-section">
-        <div class="max-w-5xl mx-auto px-4 sm:px-8">
+    <!-- WEBSITES SECTION - Holographic Signal Broadcast -->
+    <section id="websites" class="py-20 whimsy-section websites-signal-section">
+        <!-- Starfield background -->
+        <div class="websites-starfield" id="websiteStarfield" aria-hidden="true"></div>
+        <!-- Satellite decoration -->
+        <div class="web-satellite" aria-hidden="true">
+            <div class="sat-body"></div>
+            <div class="sat-panel-left"></div>
+            <div class="sat-panel-right"></div>
+            <div class="sat-dish"></div>
+            <div class="sat-signal-ring sat-sig-1"></div>
+            <div class="sat-signal-ring sat-sig-2"></div>
+            <div class="sat-signal-ring sat-sig-3"></div>
+        </div>
+        <!-- Planet decoration -->
+        <div class="web-planet" aria-hidden="true"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Websites I've</p>
-                <h2 class="text-4xl sm:text-5xl font-serif italic">BROUGHT TO LIFE</h2>
+                <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">Websites I've</p>
+                <h2 class="text-4xl sm:text-5xl font-serif italic web-holo-title">BROUGHT TO LIFE</h2>
+                <p class="text-xs font-mono mt-3 text-green-400/50">&gt; Broadcasting on all frequencies...</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="web-card reveal-section browser-card">
-                    <!-- Browser bar -->
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Card 1: Personal Website -->
+                <div class="web-card reveal-section browser-card" id="web-card-0">
                     <div class="browser-bar">
                         <div class="browser-dots">
                             <span class="dot dot-red"></span>
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <div class="browser-url">constancadcunha.github.io</div>
+                        <div class="browser-url" id="web-url-0">constancadcunha.github.io</div>
+                    </div>
+                    <!-- Screen preview -->
+                    <div class="browser-screen-preview" style="--sp-accent:#9CAF88">
+                        <div class="bsp-nav"><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div></div>
+                        <div class="bsp-hero"><div class="bsp-hero-line bsp-h1"></div><div class="bsp-hero-line bsp-h2"></div></div>
+                        <div class="bsp-cards-row">
+                            <div class="bsp-card" style="background:rgba(156,175,136,0.25)"></div>
+                            <div class="bsp-card" style="background:rgba(201,169,110,0.2)"></div>
+                            <div class="bsp-card" style="background:rgba(212,165,165,0.2)"></div>
+                        </div>
+                        <div class="bsp-icon"><span class="material-icons-outlined" style="font-size:22px;color:rgba(156,175,136,0.7)">eco</span></div>
                     </div>
                     <div class="browser-content">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="material-icons-outlined text-3xl">eco</span>
-                            <h3 class="font-serif text-2xl italic">Personal Website</h3>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="font-serif text-2xl italic">Personal Website</h3>
+                                <p class="text-xs font-mono opacity-40 mt-0.5">Cottagecore · Interactive · Portfolio</p>
+                            </div>
+                            <button class="web-expand-btn" onclick="toggleWebsite(0)" title="View case study">
+                                <span class="material-icons-outlined web-expand-icon" id="web-expand-0">add</span>
+                            </button>
                         </div>
-                        <p class="text-base opacity-75 mb-4">Digital portfolio with personality. Interactive elements that make visitors want to explore, not just skim.</p>
-                        <div class="space-y-2 mb-6 text-sm">
-                            <p><span class="font-bold text-cottage-rose">Challenge:</span> Stand out among thousands of portfolios</p>
-                            <p><span class="font-bold text-cottage-honey">Solution:</span> Interactive, memorable, accessible design</p>
-                            <p><span class="font-bold text-cottage-lavender">Tech:</span> HTML, CSS, JS, Tailwind</p>
+                        <p class="text-sm opacity-70 mb-4 leading-relaxed">Digital portfolio with personality. Interactive elements that make visitors want to explore, not just skim.</p>
+                        <div class="web-tech-chips">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Tailwind</span>
                         </div>
-                        <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
+                        <!-- Always visible visit button -->
+                        <div class="web-button-row">
+                            <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="web-visit-btn">
+                                Visit Site <span class="material-icons-outlined align-middle text-sm">open_in_new</span>
+                            </a>
+                        </div>
+                        <!-- Expandable case study -->
+                        <div class="web-case-study" id="web-study-0">
+                            <div class="web-case-divider"></div>
+                            <div class="web-case-row">
+                                <div class="web-case-block">
+                                    <p class="web-case-label">Challenge</p>
+                                    <p class="web-case-text">Stand out among thousands of portfolios without losing authenticity or accessibility.</p>
+                                </div>
+                                <div class="web-case-block">
+                                    <p class="web-case-label">Solution</p>
+                                    <p class="web-case-text">Cottagecore interactive design system with scroll-driven reveals and camera/garden mechanics.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="web-card reveal-section browser-card" style="transition-delay: 0.1s">
+
+                <!-- Card 2: Resumos LEIC -->
+                <div class="web-card reveal-section browser-card" id="web-card-1" style="transition-delay: 0.1s">
                     <div class="browser-bar">
                         <div class="browser-dots">
                             <span class="dot dot-red"></span>
                             <span class="dot dot-yellow"></span>
                             <span class="dot dot-green"></span>
                         </div>
-                        <div class="browser-url">resumos.leic.pt</div>
+                        <div class="browser-url" id="web-url-1">resumos.leic.pt</div>
+                    </div>
+                    <!-- Screen preview -->
+                    <div class="browser-screen-preview" style="--sp-accent:#C9A96E">
+                        <div class="bsp-nav"><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div></div>
+                        <div class="bsp-hero"><div class="bsp-hero-line bsp-h1" style="background:rgba(201,169,110,0.5)"></div><div class="bsp-hero-line bsp-h2" style="background:rgba(201,169,110,0.3)"></div></div>
+                        <div class="bsp-cards-row">
+                            <div class="bsp-card" style="background:rgba(201,169,110,0.25)"></div>
+                            <div class="bsp-card" style="background:rgba(184,125,100,0.2)"></div>
+                            <div class="bsp-card" style="background:rgba(201,169,110,0.15)"></div>
+                        </div>
+                        <div class="bsp-icon"><span class="material-icons-outlined" style="font-size:22px;color:rgba(201,169,110,0.7)">menu_book</span></div>
                     </div>
                     <div class="browser-content">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="material-icons-outlined text-3xl">menu_book</span>
-                            <h3 class="font-serif text-2xl italic">Resumos LEIC</h3>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="font-serif text-2xl italic">Resumos LEIC</h3>
+                                <p class="text-xs font-mono opacity-40 mt-0.5">Community · Knowledge Hub · Open Source</p>
+                            </div>
+                            <button class="web-expand-btn" onclick="toggleWebsite(1)" title="View case study">
+                                <span class="material-icons-outlined web-expand-icon" id="web-expand-1">add</span>
+                            </button>
                         </div>
-                        <p class="text-base opacity-75 mb-4">Student-run knowledge hub. Course notes, summaries, and study materials shared by the community.</p>
-                        <div class="space-y-2 mb-6 text-sm">
-                            <p><span class="font-bold text-cottage-rose">Challenge:</span> No central place for study resources</p>
-                            <p><span class="font-bold text-cottage-honey">Solution:</span> Community-driven platform</p>
-                            <p><span class="font-bold text-cottage-lavender">Role:</span> UX Designer & Frontend Dev</p>
+                        <p class="text-sm opacity-70 mb-4 leading-relaxed">Student-run knowledge hub. Course notes, summaries, and study materials shared by the community.</p>
+                        <div class="web-tech-chips" style="--wt:#C9A96E">
+                            <span>UX Design</span><span>Frontend Dev</span><span>Community</span>
                         </div>
-                        <a href="https://resumos.leic.pt/" target="_blank" class="ghost-button inline-block px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Visit Site <span class="material-icons-outlined align-middle text-sm">arrow_forward</span></a>
+                        <!-- Always visible visit button -->
+                        <div class="web-button-row">
+                            <a href="https://resumos.leic.pt/" target="_blank" class="web-visit-btn">
+                                Visit Site <span class="material-icons-outlined align-middle text-sm">open_in_new</span>
+                            </a>
+                        </div>
+                        <!-- Expandable case study -->
+                        <div class="web-case-study" id="web-study-1">
+                            <div class="web-case-divider"></div>
+                            <div class="web-case-row">
+                                <div class="web-case-block">
+                                    <p class="web-case-label">Challenge</p>
+                                    <p class="web-case-text">No central place for students to find and share course study materials.</p>
+                                </div>
+                                <div class="web-case-block">
+                                    <p class="web-case-label">Role</p>
+                                    <p class="web-case-text">Led UX design and frontend development of a community-driven platform used by hundreds.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CERTIFICATES SECTION - Enhanced with flip cards -->
-    <section id="certificates" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
-        <div class="max-w-5xl mx-auto px-4 sm:px-8">
-            <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Certificates I've</p>
-                <h2 class="text-4xl sm:text-5xl font-serif italic">EARNED & FRAMED</h2>
-                <p class="text-sm opacity-50 mt-3 font-display italic">Hover to peek behind the frame <span class="material-icons-outlined text-sm align-middle">touch_app</span></p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="cert-flip-card reveal-section">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">verified</span>
-                            <h4 class="font-bold text-lg mb-2">Complete Figma Megacourse</h4>
-                            <p class="text-sm opacity-75">Beginner to expert UI/UX course on Figma</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sage">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">Comprehensive Figma mastery — from basic shapes to advanced prototyping and design systems.</p>
-                            <a href="certificates/UC-a1497d98-ab9f-4d61-8f60-92c8a520914f.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate →</a>
-                        </div>
+    <!-- CERTIFICATES SECTION - Cottagecore Desk Setup -->
+    <section id="certificates" class="cert-cottage-section">
+
+        <!-- Section header (compact) -->
+        <div class="cert-cottage-header reveal-section">
+            <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-1">Certificates I've</p>
+            <h2 class="text-4xl sm:text-5xl font-serif italic text-cottage-forest dark:text-vintageCream">EARNED & FRAMED</h2>
+            <p class="text-xs text-cottage-forest/50 dark:text-vintageCream/40 mt-1 font-display italic">Click a folder to open a certificate — right on the screen</p>
+        </div>
+
+        <!-- String lights across the top -->
+        <div class="cert-string-bar" aria-hidden="true">
+            <div class="cert-string-wire"></div>
+            <div class="string-bulb" style="--bd:0s"></div>
+            <div class="string-bulb" style="--bd:0.3s"></div>
+            <div class="string-bulb" style="--bd:0.6s"></div>
+            <div class="string-bulb" style="--bd:0.9s"></div>
+            <div class="string-bulb" style="--bd:1.2s"></div>
+            <div class="string-bulb" style="--bd:0.15s"></div>
+            <div class="string-bulb" style="--bd:0.75s"></div>
+            <div class="string-bulb" style="--bd:1.05s"></div>
+            <div class="string-bulb" style="--bd:0.45s"></div>
+            <div class="string-bulb" style="--bd:1.35s"></div>
+        </div>
+
+        <!-- Three-column scene: left decor | center monitor | right decor -->
+        <div class="cert-scene-row">
+
+            <!-- Left side wall decorations -->
+            <div class="cert-side-deco cert-side-left" aria-hidden="true">
+                <div class="cert-side-frame">
+                    <div class="wall-frame-mat">
+                        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="wall-art-svg">
+                            <path d="M40,52 Q30,36 32,18 Q40,8 48,18 Q50,36 40,52Z" fill="#9CAF88" opacity="0.7"/>
+                            <path d="M40,52 Q37,30 36,16" stroke="#6B7F5E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <path d="M36,30 Q28,26 24,20" stroke="#7D9B76" stroke-width="1" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="24" cy="19" rx="5" ry="3.5" fill="#B8A9C9" opacity="0.7" transform="rotate(-20,24,19)"/>
+                            <ellipse cx="30" cy="9" rx="4" ry="3" fill="#D4A5A5" opacity="0.7" transform="rotate(15,30,9)"/>
+                        </svg>
                     </div>
                 </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.05s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">school</span>
-                            <h4 class="font-bold text-lg mb-2">Digital Skills: User Experience</h4>
-                            <p class="text-sm opacity-75">UX fundamentals and best practices · Accenture</p>
+                <div class="cert-side-shelf">
+                    <div class="shelf-surface"></div>
+                    <div class="shelf-items">
+                        <div class="shelf-tiny-plant">
+                            <div class="stp-pot"></div>
+                            <div class="stp-stem">
+                                <div class="stp-leaf left"></div>
+                                <div class="stp-leaf right"></div>
+                            </div>
                         </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-honey">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">UX research methods, user journey mapping, wireframing, and usability testing fundamentals.</p>
-                            <a href="certificates/digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.1s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-lavender">design_services</span>
-                            <h4 class="font-bold text-lg mb-2">Intro to UI/UX Design</h4>
-                            <p class="text-sm opacity-75">Basics of UI/UX principles and workflow</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-lavender">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">Core design principles, information architecture, and user-centered design methodology.</p>
-                            <a href="certificates/Constança Cunha - 2025-01-24.pdf" target="_blank" class="text-cottage-lavender underline text-sm font-bold">View Certificate →</a>
+                        <div class="shelf-tiny-book" style="background:#9CAF88"></div>
+                        <div class="shelf-tiny-book" style="background:#D4A5A5;width:10px"></div>
+                        <div class="shelf-tiny-candle">
+                            <div class="sth-flame"></div>
+                            <div class="sth-body"></div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.15s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-rose">rocket_launch</span>
-                            <h4 class="font-bold text-lg mb-2">Master Digital Product Design</h4>
-                            <p class="text-sm opacity-75">UX research, product design, and interface building</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-rose">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">End-to-end product design workflow — from discovery to high-fidelity mockups and handoff.</p>
-                            <a href="certificates/UC-486f6c5c-1406-477b-86bc-709727580248.pdf" target="_blank" class="text-cottage-rose underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.2s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sky">brush</span>
-                            <h4 class="font-bold text-lg mb-2">Master Figma for Web & UI/UX</h4>
-                            <p class="text-sm opacity-75">Figma for UI design, prototyping & freelancing</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sky">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">Advanced Figma techniques for responsive web design, component libraries, and client workflows.</p>
-                            <a href="certificates/UC-03333345-1bff-4c16-90e1-23441660e75c.pdf" target="_blank" class="text-cottage-sky underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.25s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-sage">code</span>
-                            <h4 class="font-bold text-lg mb-2">The Web Developer Bootcamp 2025</h4>
-                            <p class="text-sm opacity-75">Full-stack web development · 74.5 hours</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-sage">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">74.5 hours of HTML, CSS, JS, Node, Express, MongoDB — the full-stack journey, start to finish.</p>
-                            <a href="certificates/UC-5533914a-a4c9-4171-b4c3-46bc1f0b70c8.pdf" target="_blank" class="text-cottage-sage underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.3s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-honey">gamepad</span>
-                            <h4 class="font-bold text-lg mb-2">Modern UI Development in Unity</h4>
-                            <p class="text-sm opacity-75">Unity game development UI · 13.5 hours</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-honey">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">Game UI systems, canvas management, animations, and responsive interfaces in Unity engine.</p>
-                            <a href="certificates/UC-9b00fce4-8886-4ac2-96d6-23a7c9f9ebd8.pdf" target="_blank" class="text-cottage-honey underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.35s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-berry">psychology</span>
-                            <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Practitioner</h4>
-                            <p class="text-sm opacity-75">IBM Design Thinking certification</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-berry">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">IBM's framework for user-centric innovation — Hills, Playbacks, and Sponsor Users.</p>
-                            <a href="certificates/Enterprise_Design_Thinking_Practitioner_Badge20250125-26-4dyqob.pdf" target="_blank" class="text-cottage-berry underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-flip-card reveal-section" style="transition-delay: 0.4s">
-                    <div class="cert-flip-inner">
-                        <div class="cert-front">
-                            <span class="material-icons-outlined text-4xl mb-4 text-cottage-fern">groups</span>
-                            <h4 class="font-bold text-lg mb-2">Enterprise Design Thinking Co-Creator</h4>
-                            <p class="text-sm opacity-75">IBM collaborative design practices</p>
-                        </div>
-                        <div class="cert-back">
-                            <span class="material-icons-outlined text-3xl mb-3 text-cottage-fern">workspace_premium</span>
-                            <p class="text-sm mb-4 opacity-90">Cross-functional collaboration, workshop facilitation, and co-creation techniques at scale.</p>
-                            <a href="certificates/Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf" target="_blank" class="text-cottage-fern underline text-sm font-bold">View Certificate →</a>
-                        </div>
-                    </div>
+                    <div class="shelf-bracket left"></div>
+                    <div class="shelf-bracket right"></div>
                 </div>
             </div>
+
+            <!-- Center: monitor + desk -->
+            <div class="cert-center-area">
+                <div class="cottage-table-scene">
+
+                    <!-- Monitor -->
+                    <div class="cottage-monitor-outer reveal-section" style="transition-delay:0.2s">
+                        <div class="cottage-monitor-frame">
+                            <div class="cottage-monitor-screen">
+                                <!-- OS Menu Bar inside the screen -->
+                                <div class="os-menubar">
+                                    <div class="os-menubar-left">
+                                        <span class="os-logo material-icons-outlined" style="font-size:15px">eco</span>
+                                        <span class="os-menu-brand">Certificates.app</span>
+                                        <span class="os-menu-item">File</span>
+                                        <span class="os-menu-item">Edit</span>
+                                        <span class="os-menu-item">View</span>
+                                        <span class="os-menu-item">Help</span>
+                                    </div>
+                                    <div class="os-menubar-right">
+                                        <span class="os-menu-item os-menu-icons"><span class="material-icons-outlined" style="font-size:11px;vertical-align:middle">wifi</span> <span class="material-icons-outlined" id="osBatteryIcon" style="font-size:11px;vertical-align:middle">battery_full</span></span>
+                                        <span class="os-menu-clock" id="osClock">--:--</span>
+                                    </div>
+                                </div>
+                                <!-- OS desktop inside the screen -->
+                                <div class="os-desktop cottage-os-desktop">
+                                    <div class="os-scanlines" aria-hidden="true"></div>
+                                    <p class="os-terminal-hint" style="text-align:center;padding:0.25rem 0 0.25rem;margin-top:-0.5rem;">$ ls ~/certificates/ — 9 items found</p>
+                                    <div class="os-folder-grid" id="osFolderGrid">
+                                        <button class="os-folder" onclick="openCertWindow(0)">
+                                            <div class="os-folder-icon" style="--fc:#9CAF88"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">Figma Mega</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(1)">
+                                            <div class="os-folder-icon" style="--fc:#E8C07D"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">UX Basics</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(2)">
+                                            <div class="os-folder-icon" style="--fc:#B8A9C9"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">UI/UX Intro</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(3)">
+                                            <div class="os-folder-icon" style="--fc:#D4A5A5"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">Product Design</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(4)">
+                                            <div class="os-folder-icon" style="--fc:#A8C5D9"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">Figma Web</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(5)">
+                                            <div class="os-folder-icon" style="--fc:#7D9B76"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">Web Dev Boot</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(6)">
+                                            <div class="os-folder-icon" style="--fc:#E8C07D"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">Unity UI</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(7)">
+                                            <div class="os-folder-icon" style="--fc:#8B6B8E"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">IBM Think</span>
+                                        </button>
+                                        <button class="os-folder" onclick="openCertWindow(8)">
+                                            <div class="os-folder-icon" style="--fc:#9CAF88"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
+                                            <span class="os-folder-label">IBM Co-Create</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Monitor stand -->
+                        <div class="cottage-monitor-neck"></div>
+                        <div class="cottage-monitor-base-plate"></div>
+                    </div>
+
+                    <!-- Desk surface with decorations -->
+                    <div class="cottage-desk-surface">
+                        <!-- Lamp -->
+                        <div class="desk-lamp" aria-hidden="true">
+                            <div class="lamp-arm-1"></div>
+                            <div class="lamp-arm-2"></div>
+                            <div class="lamp-head">
+                                <div class="lamp-bulb"></div>
+                            </div>
+                            <div class="lamp-glow"></div>
+                            <div class="lamp-base"></div>
+                        </div>
+                        <!-- Left: standing books + plant -->
+                        <div class="desk-deco-left">
+                        </div>
+                        <!-- Center: keyboard -->
+                        <div class="desk-deco-center">
+                            <!-- Keyboard below -->
+                            <div class="deco-keyboard">
+                                <div class="kb-row">
+                                    <div class="kb-key wide"></div>
+                                    <div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div>
+                                </div>
+                                <div class="kb-row">
+                                    <div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div>
+                                </div>
+                                <div class="kb-row">
+                                    <div class="kb-key wider"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key wider"></div>
+                                </div>
+                                <div class="kb-row">
+                                    <div class="kb-key space"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right: improved cozy mug + mouse + kitten -->
+                        <div class="desk-deco-right">
+                            <!-- Cozy mug -->
+                            <div class="deco-cozy-mug">
+                                <div class="mug-steam">
+                                    <span class="steam-wisp"></span>
+                                    <span class="steam-wisp"></span>
+                                    <span class="steam-wisp"></span>
+                                </div>
+                                <div class="mug-body">
+                                    <div class="mug-pattern"></div>
+                                    <div class="mug-handle"></div>
+                                    <div class="mug-teabag">
+                                        <div class="teabag-string"></div>
+                                        <div class="teabag-bag"></div>
+                                    </div>
+                                </div>
+                                <div class="mug-saucer"></div>
+                            </div>
+                            <div class="mouse-body" style="margin-bottom:6px"></div>
+                            <!-- Cute CSS kitten sitting on desk -->
+                            <div class="desk-kitten" title="A cozy helper">
+                                <div class="kitty-body-wrap">
+                                    <div class="kitty-tail"></div>
+                                </div>
+                                <div class="kitty-head-wrap">
+                                    <div class="kitty-ear kitty-ear-l"></div>
+                                    <div class="kitty-ear kitty-ear-r"></div>
+                                    <div class="kitty-eyes">
+                                        <div class="kitty-eye"></div>
+                                        <div class="kitty-eye"></div>
+                                    </div>
+                                    <div class="kitty-nose"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Desk front edge -->
+                    <div class="cottage-desk-edge"></div>
+                    <!-- Desk legs -->
+                    <div class="cottage-desk-legs">
+                        <div class="desk-leg"></div>
+                        <div class="desk-leg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side wall decorations -->
+            <div class="cert-side-deco cert-side-right" aria-hidden="true">
+                <div class="cert-side-frame cert-side-frame-abstract">
+                    <div class="wall-frame-mat">
+                        <svg viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="wall-art-svg">
+                            <circle cx="30" cy="25" r="14" fill="#E8C07D" opacity="0.35"/>
+                            <circle cx="22" cy="20" r="9" fill="#D4A5A5" opacity="0.4"/>
+                            <circle cx="36" cy="28" r="7" fill="#B8A9C9" opacity="0.4"/>
+                            <path d="M18,38 Q30,28 42,38" stroke="#9CAF88" stroke-width="1.5" fill="none" opacity="0.7"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cert-side-plaque">
+                    <div class="wall-frame-mat wall-frame-plaque-mat">
+                        <div class="plaque-content">
+                            <span class="material-icons-outlined plaque-icon">workspace_premium</span>
+                            <p class="plaque-title">Certificate</p>
+                            <p class="plaque-sub">Gallery</p>
+                            <div class="plaque-divider"></div>
+                            <p class="plaque-year">Est. 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end cert-scene-row -->
+
+        <!-- Certificate modal window — positioned within monitor screen by JS -->
+        <div class="os-window hidden" id="osWindow">
+            <div class="os-win-titlebar">
+                <div class="os-win-controls">
+                    <button class="os-win-dot os-dot-close" onclick="closeCertWindow()" title="Close"><span class="os-dot-x material-icons-outlined">close</span></button>
+                    <span class="os-win-dot os-dot-min">−</span>
+                    <span class="os-win-dot os-dot-max">+</span>
+                </div>
+                <span class="os-win-title" id="osWinTitle">Certificate</span>
+                <div style="width:70px"></div>
+            </div>
+            <div class="os-win-body" id="osWinBody"></div>
         </div>
     </section>
 
-    <!-- WISDOM/SKILLS SECTION - Enhanced with interactive skill bars -->
+    <!-- WISDOM/SKILLS SECTION — Flower Garden -->
     <section id="wisdom" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
+        <!-- Garden atmosphere -->
+        <div class="garden-sky-deco" aria-hidden="true">
+            <div class="garden-sun"></div>
+            <div class="garden-cloud garden-cloud-1"></div>
+            <div class="garden-cloud garden-cloud-2"></div>
+            <div class="garden-butterfly garden-bf-1" style="animation-delay: 0s;"></div>
+            <div class="garden-butterfly garden-bf-2" style="animation-delay: 2s;"></div>
+            <div class="garden-butterfly garden-bf-1" style="animation-delay: 4s; animation-duration: 10s;"></div>
+            <div class="garden-butterfly garden-bf-2" style="animation-delay: 6s; animation-duration: 9s;"></div>
+            <div class="garden-butterfly garden-bf-1" style="animation-delay: 1s; animation-duration: 11s;"></div>
+            <div class="garden-butterfly garden-bf-2" style="animation-delay: 5s; animation-duration: 8.5s;"></div>
+        </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-8">
             <div class="text-center mb-12 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Skills cultivated in my</p>
                 <h2 class="text-4xl sm:text-5xl font-serif italic">KNOWLEDGE GARDEN</h2>
+                <p class="text-xs opacity-50 mt-2 font-display italic">Click the watering can to bloom each plant <span class="material-icons-outlined align-middle text-xs">watering_can</span></p>
             </div>
-            
-            <div class="garden-row mb-16">
-                <div class="skill-greenhouse greenhouse-container reveal-section">
-                    <div class="material-icons-outlined text-3xl mb-3">grass</div>
-                    <h4 class="font-bold text-[10px] uppercase tracking-widest mb-3 text-cottage-forest dark:text-cottage-sage">Languages</h4>
-                    <ul class="space-y-1.5 text-sm opacity-75">
-                        <li>Python & TypeScript</li>
-                        <li>Java & C/C++</li>
-                        <li>Julia & Prolog</li>
-                        <li>JavaScript</li>
-                    </ul>
+
+            <!-- Flower pot row -->
+            <div class="garden-pots-row" id="gardenPotsRow">
+
+                <!-- Pot 1: Languages -->
+                <div class="flower-pot-card reveal-section" id="pot-0">
+                    <div class="flower-plant-area">
+                        <button class="water-can-btn" onclick="waterPlant(0)" title="Water this plant!">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
+                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
+                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
+                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
+                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="flower-bloom">
+                            <div class="petal" style="background:#6B7F5E"></div>
+                            <div class="petal" style="background:#7D9B76"></div>
+                            <div class="petal" style="background:#9CAF88"></div>
+                            <div class="petal" style="background:#6B7F5E"></div>
+                            <div class="petal" style="background:#7D9B76"></div>
+                            <div class="petal" style="background:#9CAF88"></div>
+                            <div class="flower-center" style="background:#4A5D4E;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">eco</span></div>
+                        </div>
+                        <div class="flower-stem-body" style="height:50px">
+                            <div class="stem-leaf left"></div>
+                            <div class="stem-leaf right"></div>
+                        </div>
+                        <!-- Hidden fallback tooltip (kept for accessibility structure) -->
+                        <div class="flower-skills-tooltip">
+                            Python &amp; TypeScript<br>Java &amp; C/C++<br>Julia &amp; Prolog<br>JavaScript
+                        </div>
+                        <!-- Permanent skill labels (revealed by watering) -->
+                        <div class="flower-skill-labels" id="skill-labels-0"></div>
+                    </div>
+                    <div class="pot-vessel">
+                        <div class="pot-rim"></div>
+                        <div class="pot-body-shape"></div>
+                        <div class="pot-saucer"></div>
+                    </div>
+                    <p class="pot-label-text text-cottage-forest dark:text-cottage-sage">Languages</p>
                 </div>
-                <div class="skill-greenhouse greenhouse-container reveal-section" style="transition-delay: 0.1s">
-                    <div class="material-icons-outlined text-3xl mb-3">spa</div>
-                    <h4 class="font-bold text-[10px] uppercase tracking-widest mb-3 text-cottage-honey">Frontend</h4>
-                    <ul class="space-y-1.5 text-sm opacity-75">
-                        <li>React & SwiftUI</li>
-                        <li>Tailwind CSS</li>
-                        <li>Design Systems</li>
-                        <li>Next.js</li>
-                    </ul>
+
+                <!-- Pot 2: Frontend -->
+                <div class="flower-pot-card reveal-section" style="transition-delay:0.1s" id="pot-1">
+                    <div class="flower-plant-area">
+                        <button class="water-can-btn" onclick="waterPlant(1)" title="Water this plant!">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
+                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
+                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
+                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
+                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="flower-bloom">
+                            <div class="petal" style="background:#C9A96E"></div>
+                            <div class="petal" style="background:#E8C07D"></div>
+                            <div class="petal" style="background:#C9A96E"></div>
+                            <div class="petal" style="background:#E8C07D"></div>
+                            <div class="petal" style="background:#C9A96E"></div>
+                            <div class="petal" style="background:#E8C07D"></div>
+                            <div class="flower-center" style="background:#B87D64;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">local_florist</span></div>
+                        </div>
+                        <div class="flower-stem-body" style="height:60px">
+                            <div class="stem-leaf left"></div>
+                            <div class="stem-leaf right"></div>
+                        </div>
+                        <div class="flower-skills-tooltip">
+                            React &amp; SwiftUI<br>Tailwind CSS<br>Design Systems<br>Next.js
+                        </div>
+                        <div class="flower-skill-labels" id="skill-labels-1"></div>
+                    </div>
+                    <div class="pot-vessel">
+                        <div class="pot-rim"></div>
+                        <div class="pot-body-shape"></div>
+                        <div class="pot-saucer"></div>
+                    </div>
+                    <p class="pot-label-text text-cottage-forest dark:text-cottage-honey">Frontend</p>
                 </div>
-                <div class="skill-greenhouse greenhouse-container reveal-section" style="transition-delay: 0.2s">
-                    <div class="material-icons-outlined text-3xl mb-3">brush</div>
-                    <h4 class="font-bold text-[10px] uppercase tracking-widest mb-3 text-cottage-rose">Design Tools</h4>
-                    <ul class="space-y-1.5 text-sm opacity-75">
-                        <li>Figma Expert</li>
-                        <li>Adobe Illustrator</li>
-                        <li>Photoshop</li>
-                        <li>Motion Design</li>
-                    </ul>
+
+                <!-- Pot 3: Design Tools -->
+                <div class="flower-pot-card reveal-section" style="transition-delay:0.2s" id="pot-2">
+                    <div class="flower-plant-area">
+                        <button class="water-can-btn" onclick="waterPlant(2)" title="Water this plant!">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
+                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
+                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
+                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
+                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="flower-bloom">
+                            <div class="petal" style="background:#D4A5A5"></div>
+                            <div class="petal" style="background:#B87D64"></div>
+                            <div class="petal" style="background:#D4A5A5"></div>
+                            <div class="petal" style="background:#B87D64"></div>
+                            <div class="petal" style="background:#D4A5A5"></div>
+                            <div class="petal" style="background:#B87D64"></div>
+                            <div class="flower-center" style="background:#8B6B8E;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">palette</span></div>
+                        </div>
+                        <div class="flower-stem-body" style="height:55px">
+                            <div class="stem-leaf left"></div>
+                            <div class="stem-leaf right"></div>
+                        </div>
+                        <div class="flower-skills-tooltip">
+                            Figma Expert<br>Adobe Illustrator<br>Photoshop<br>Motion Design
+                        </div>
+                        <div class="flower-skill-labels" id="skill-labels-2"></div>
+                    </div>
+                    <div class="pot-vessel">
+                        <div class="pot-rim"></div>
+                        <div class="pot-body-shape"></div>
+                        <div class="pot-saucer"></div>
+                    </div>
+                    <p class="pot-label-text text-cottage-forest dark:text-cottage-rose">Design Tools</p>
                 </div>
-                <div class="skill-greenhouse greenhouse-container reveal-section" style="transition-delay: 0.3s">
-                    <div class="material-icons-outlined text-3xl mb-3">psychology</div>
-                    <h4 class="font-bold text-[10px] uppercase tracking-widest mb-3 text-cottage-bark dark:text-cottage-mushroom">Soft Skills</h4>
-                    <ul class="space-y-1.5 text-sm opacity-75">
-                        <li>Strategic Leadership</li>
-                        <li>Product Thinking</li>
-                        <li>Rapid Delivery</li>
-                        <li>User Empathy</li>
-                    </ul>
+
+                <!-- Pot 4: Soft Skills -->
+                <div class="flower-pot-card reveal-section" style="transition-delay:0.3s" id="pot-3">
+                    <div class="flower-plant-area">
+                        <button class="water-can-btn" onclick="waterPlant(3)" title="Water this plant!">
+                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
+                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
+                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
+                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
+                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="flower-bloom">
+                            <div class="petal" style="background:#8B6B8E"></div>
+                            <div class="petal" style="background:#B8A9C9"></div>
+                            <div class="petal" style="background:#8B6B8E"></div>
+                            <div class="petal" style="background:#B8A9C9"></div>
+                            <div class="petal" style="background:#8B6B8E"></div>
+                            <div class="petal" style="background:#B8A9C9"></div>
+                            <div class="flower-center" style="background:#6B5580;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">auto_awesome</span></div>
+                        </div>
+                        <div class="flower-stem-body" style="height:64px">
+                            <div class="stem-leaf left"></div>
+                            <div class="stem-leaf right"></div>
+                        </div>
+                        <div class="flower-skills-tooltip">
+                            Strategic Leadership<br>Product Thinking<br>Rapid Delivery<br>User Empathy
+                        </div>
+                        <div class="flower-skill-labels" id="skill-labels-3"></div>
+                    </div>
+                    <div class="pot-vessel">
+                        <div class="pot-rim"></div>
+                        <div class="pot-body-shape"></div>
+                        <div class="pot-saucer"></div>
+                    </div>
+                    <p class="pot-label-text text-cottage-forest dark:text-cottage-lavender">Soft Skills</p>
+                </div>
+
+            </div><!-- end garden-pots-row -->
+            <!-- Garden ground strip -->
+            <div class="garden-ground-strip" aria-hidden="true">
+                <div class="garden-grass-tufts">
+                    <div class="grass-tuft grass-1"></div>
+                    <div class="grass-tuft grass-2"></div>
+                    <div class="grass-tuft grass-3"></div>
+                    <div class="grass-tuft grass-4"></div>
+                    <div class="grass-tuft grass-5"></div>
+                    <div class="grass-tuft grass-6"></div>
+                    <div class="grass-tuft grass-7"></div>
+                    <div class="grass-tuft grass-8"></div>
+                    <div class="grass-tuft grass-9"></div>
                 </div>
             </div>
 
             <div class="section-separator reveal-section"></div>
 
-            <div class="max-w-3xl mx-auto">
-                <h3 class="text-2xl font-serif italic text-center mb-8 reveal-section">Credentials I've Gathered <span class="material-icons-outlined">local_florist</span></h3>
-                <div class="space-y-3 credential-garden">
-                    <div class="credential-flower reveal-section flex justify-between items-center">
-                        <span class="font-bold">Cambridge Proficiency (C2)</span>
-                        <span class="material-icons-outlined text-xl">school</span>
-                    </div>
-                    <div class="credential-flower reveal-section flex justify-between items-center" style="transition-delay: 0.05s">
-                        <span class="font-bold">Interaction & Visualization M.Sc.</span>
-                        <span class="material-icons-outlined text-xl">visibility</span>
+            <!-- Credentials — iPod Classic -->
+            <div class="max-w-4xl mx-auto mt-16 px-4">
+                <div class="text-center mb-10 reveal-section">
+                    <h3 class="text-2xl font-serif italic text-center mb-8 reveal-section">My Credentials <span class="material-icons-outlined">headphones</span></h3>
+                </div>
+
+                <div class="ipod-container reveal-section">
+                    <!-- Background decorative elements -->
+                    <div class="ipod-sparkle ipod-sparkle-1"></div>
+                    <div class="ipod-sparkle ipod-sparkle-2"></div>
+                    <div class="ipod-sparkle ipod-sparkle-3"></div>
+                    <div class="ipod-sparkle ipod-sparkle-4"></div>
+                    <div class="ipod-sparkle ipod-sparkle-5"></div>
+                    <div class="ipod-sparkle ipod-sparkle-6"></div>
+                    <div class="ipod-glow-orb ipod-orb-1"></div>
+                    <div class="ipod-glow-orb ipod-orb-2"></div>
+                    <div class="ipod-glow-orb ipod-orb-3"></div>
+                    
+                    <!-- Floating music notes -->
+                    <div class="music-note music-note-1">♪</div>
+                    <div class="music-note music-note-2">♫</div>
+                    <div class="music-note music-note-3">♪</div>
+                    <div class="music-note music-note-4">♫</div>
+                    <div class="music-note music-note-5">♪</div>
+                    <div class="music-note music-note-6">♫</div>
+                    <div class="music-note music-note-7">♪</div>
+                    <div class="music-note music-note-8">♫</div>
+                    <div class="music-note music-note-9">♪</div>
+                    <div class="music-note music-note-10">♫</div>
+                    
+                    <!-- Vinyl records -->
+                    <div class="vinyl-disc vinyl-1"></div>
+                    <div class="vinyl-disc vinyl-2"></div>
+                    
+                    <!-- The iPod -->
+                    <div class="ipod-body">
+                        <!-- Screen -->
+                        <div class="ipod-screen">
+                            <div class="ipod-screen-inner">
+                                <div class="ipod-status-bar">
+                                    <div class="ipod-battery">
+                                        <div class="battery-level"></div>
+                                    </div>
+                                </div>
+                                <!-- Content Display -->
+                                <div class="ipod-content" id="ipodContent">
+                                    <div class="ipod-menu-title">Credentials</div>
+                                    <div class="ipod-menu" id="ipodMenu">
+                                        <div class="ipod-menu-item active" data-index="0">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>Cambridge C2</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="1">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>M.Sc. Interaction</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Detail View (hidden initially) -->
+                                <div class="ipod-detail-view" id="ipodDetail">
+                                    <div class="ipod-detail-back" onclick="ipodGoBack()">
+                                        <span class="material-icons-outlined">arrow_back</span>
+                                        Back
+                                    </div>
+                                    <div class="ipod-detail-content" id="ipodDetailContent"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Click Wheel -->
+                        <div class="ipod-wheel">
+                            <div class="ipod-wheel-center" onclick="ipodSelect()">
+                                <div class="ipod-center-button">
+                                    <span class="material-icons-outlined">check</span>
+                                </div>
+                            </div>
+                            <button class="ipod-wheel-btn ipod-menu-btn" onclick="ipodMenu()" title="Menu">
+                                <span class="material-icons-outlined">menu</span>
+                            </button>
+                            <button class="ipod-wheel-btn ipod-prev-btn" onclick="ipodPrev()" title="Previous">
+                                <span class="material-icons-outlined">skip_previous</span>
+                            </button>
+                            <button class="ipod-wheel-btn ipod-next-btn" onclick="ipodNext()" title="Next">
+                                <span class="material-icons-outlined">skip_next</span>
+                            </button>
+                            <button class="ipod-wheel-btn ipod-play-btn" onclick="ipodPlay()" title="Select">
+                                <span class="material-icons-outlined">play_arrow</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -862,13 +1406,14 @@
 
     <!-- Dialogue Box -->
     <div class="dialogue-box" id="dialogueContainer">
-        <div class="close-btn" onclick="dismissDialogue()">✕</div>
+        <div class="close-btn" onclick="dismissDialogue()"><span class="material-icons-outlined" style="font-size:14px;line-height:1">close</span></div>
         <div class="w-12 h-12 bg-gradient-to-br from-cottage-forest to-cottage-moss rounded-full flex items-center justify-center text-white text-lg font-serif italic border-2 border-cottage-sage shrink-0">CC</div>
         <div class="flex-1">
             <p id="dialogueText" class="text-sm font-medium italic opacity-85 leading-snug">Welcome to my garden of designs. <span class="material-icons-outlined align-middle">eco</span></p>
         </div>
     </div>
 
+    <!-- Defer heavy scripts, load GSAP only when needed -->
     <!-- FIX #6: Defer heavy scripts, load GSAP only when needed -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
