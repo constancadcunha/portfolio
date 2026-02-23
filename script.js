@@ -1254,6 +1254,7 @@ function toggleJourneyChapter(idx) {
     const story = document.getElementById('jstory-' + idx);
     if (!story) return;
 
+    const chapter = document.getElementById('jchapter-' + idx);
     const isOpen = story.classList.contains('open');
 
     // Close all open chapters (accordion behaviour)
@@ -1267,8 +1268,7 @@ function toggleJourneyChapter(idx) {
     // Open clicked chapter if it was closed
     if (!isOpen) {
         story.classList.add('open');
-        const chapter = document.getElementById('jchapter-' + idx);
-        chapter && chapter.classList.add('expanded');
+        if (chapter) chapter.classList.add('expanded');
     }
 }
 

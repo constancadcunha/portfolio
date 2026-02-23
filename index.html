@@ -218,143 +218,181 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - SCRAPBOOK STYLE -->
+    <!-- JOURNEY SECTION - REAL MEMORY BOOK STYLE -->
     <section id="artifacts" class="journey-section relative overflow-hidden">
         <!-- Fireflies -->
         <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
         <!-- Bottom fog -->
         <div class="journey-fog" aria-hidden="true"></div>
-        <!-- Decorative doodles -->
-        <div class="scrapbook-doodles" aria-hidden="true"></div>
+        <!-- Scribbles and doodles -->
+        <svg class="memory-doodles" aria-hidden="true" viewBox="0 0 1200 400">
+            <path d="M 100 50 Q 150 30 200 50" stroke="rgba(201,169,110,0.15)" stroke-width="2" fill="none"/>
+            <circle cx="950" cy="80" r="20" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="1.5"/>
+            <path d="M 50 300 L 80 320 L 50 340" stroke="rgba(201,169,110,0.12)" stroke-width="2" fill="none"/>
+        </svg>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 py-20">
             <!-- Header -->
-            <div class="text-center mb-16 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">My Professional</p>
-                <h2 class="text-5xl sm:text-7xl font-serif italic text-vintageCream scrapbook-title">JOURNEY</h2>
-                <p class="text-xs opacity-40 mt-4 font-cursive text-lg">~ a collection of memories ~</p>
+            <div class="text-center mb-12 reveal-section">
+                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">A Collection of Memories</p>
+                <h2 class="text-5xl sm:text-7xl font-cursive text-vintageCream memory-book-title">My Journey</h2>
+                <p class="text-xs opacity-40 mt-4 font-cursive text-base">~ click to expand the stories ~</p>
             </div>
 
-            <!-- Scrapbook layout -->
-            <div class="scrapbook-grid">
+            <!-- Memory book pages -->
+            <div class="memory-book-container">
 
-                <!-- Memory Card 01 -->
-                <div class="reveal-section scrapbook-card scrapbook-card-rotate-1" id="jchapter-0" onclick="toggleJourneyChapter(0)">
-                    <div class="scrapbook-tape scrapbook-tape-top-left"></div>
-                    <div class="scrapbook-tape scrapbook-tape-top-right"></div>
-                    <div class="scrapbook-card-inner">
-                        <div class="scrapbook-card-label" style="color: #9CAF88;">NexFlat CH</div>
-                        <div class="scrapbook-card-meta">
-                            <span class="scrapbook-badge">CURRENT</span>
-                            <span class="scrapbook-date">SEP 2025</span>
+                <!-- Memory #1 - NexFlat -->
+                <div class="reveal-section memory-page memory-page-1" id="jchapter-0" onclick="toggleJourneyChapter(0)">
+                    <!-- Polaroid photo -->
+                    <div class="memory-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);">
+                        <div class="memory-photo-label">NexFlat</div>
+                    </div>
+                    
+                    <!-- Handwritten note -->
+                    <div class="memory-note memory-note-1" style="border-left: 4px solid #9CAF88;">
+                        <h3 class="memory-title" style="color: #9CAF88;">NexFlat CH</h3>
+                        <p class="memory-subtitle">Product Design & Frontend</p>
+                        <p class="memory-date">SEP 2025 — NOW</p>
+                        
+                        <div class="memory-quote">Contributed to product design and frontend work on a live real estate platform.</div>
+                        
+                        <div class="memory-tags">
+                            <span class="mem-tag" style="--cc:#9CAF88">React</span>
+                            <span class="mem-tag" style="--cc:#E8C07D">TypeScript</span>
+                            <span class="mem-tag" style="--cc:#B8A9C9">Design</span>
                         </div>
-                        <div class="scrapbook-card-role">Product Design & Frontend</div>
-                        <div class="scrapbook-quote">Contributed to product design and frontend work on a live real estate platform.</div>
-                        <div class="scrapbook-tags">
-                            <span class="scrapbook-tag" style="--cc:#9CAF88">React</span>
-                            <span class="scrapbook-tag" style="--cc:#E8C07D">TypeScript</span>
-                            <span class="scrapbook-tag" style="--cc:#B8A9C9">Design</span>
+
+                        <div class="memory-full-story" id="jstory-0">
+                            <p>Worked with the design and frontend team at a Swiss real estate startup. Helped improve the app's interface, contributed React components, and learned how design actually works in a production environment.</p>
                         </div>
                     </div>
-                    <div class="scrapbook-story" id="jstory-0">
-                        <div class="scrapbook-story-divider"></div>
-                        <p>Worked with the design and frontend team at a Swiss real estate startup. Helped improve the app's interface, contributed React components, and learned how design actually works in a production environment.</p>
-                    </div>
+                    
+                    <!-- Washi tape effect -->
+                    <div class="memory-tape memory-tape-1" style="background: linear-gradient(45deg, rgba(156,175,136,0.3), rgba(156,175,136,0.1));"></div>
                 </div>
 
-                <!-- Memory Card 02 -->
-                <div class="reveal-section scrapbook-card scrapbook-card-rotate-2" id="jchapter-1" onclick="toggleJourneyChapter(1)" style="transition-delay:0.08s">
-                    <div class="scrapbook-tape scrapbook-tape-top-left"></div>
-                    <div class="scrapbook-tape scrapbook-tape-top-right"></div>
-                    <div class="scrapbook-card-inner">
-                        <div class="scrapbook-card-label" style="color: #D4A5A5;">Sky Portugal</div>
-                        <div class="scrapbook-card-meta">
-                            <span class="scrapbook-date">JUL—SEP 2024</span>
+                <!-- Memory #2 - Sky Portugal -->
+                <div class="reveal-section memory-page memory-page-2" id="jchapter-1" onclick="toggleJourneyChapter(1)">
+                    <!-- Polaroid photo -->
+                    <div class="memory-photo" style="background: linear-gradient(135deg, #D4A5A5 0%, #B87D64 100%);">
+                        <div class="memory-photo-label">Sky</div>
+                    </div>
+                    
+                    <!-- Handwritten note -->
+                    <div class="memory-note memory-note-2" style="border-left: 4px solid #D4A5A5;">
+                        <h3 class="memory-title" style="color: #D4A5A5;">Sky Portugal</h3>
+                        <p class="memory-subtitle">Front-End Developer</p>
+                        <p class="memory-date">JUL — SEP 2024</p>
+                        
+                        <div class="memory-quote">Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</div>
+                        
+                        <div class="memory-tags">
+                            <span class="mem-tag" style="--cc:#D4A5A5">Vue.js</span>
+                            <span class="mem-tag" style="--cc:#A8C5D9">REST APIs</span>
+                            <span class="mem-tag" style="--cc:#E8C07D">Fast</span>
                         </div>
-                        <div class="scrapbook-card-role">Front-End Developer</div>
-                        <div class="scrapbook-quote">Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</div>
-                        <div class="scrapbook-tags">
-                            <span class="scrapbook-tag" style="--cc:#D4A5A5">Vue.js</span>
-                            <span class="scrapbook-tag" style="--cc:#A8C5D9">REST APIs</span>
-                            <span class="scrapbook-tag" style="--cc:#E8C07D">Quick Win</span>
+
+                        <div class="memory-full-story" id="jstory-1">
+                            <p>Built an internal system for the operations team to manage hardware devices. Got the core functionality done in two weeks instead of two months because the requirements were clear and I stayed focused on what they actually needed.</p>
                         </div>
                     </div>
-                    <div class="scrapbook-story" id="jstory-1">
-                        <div class="scrapbook-story-divider"></div>
-                        <p>Built an internal system for the operations team to manage hardware devices. Got the core functionality done in two weeks instead of two months because the requirements were clear and I stayed focused on what they actually needed.</p>
-                    </div>
+                    
+                    <!-- Washi tape effect -->
+                    <div class="memory-tape memory-tape-2" style="background: linear-gradient(45deg, rgba(212,165,165,0.3), rgba(212,165,165,0.1));"></div>
                 </div>
 
-                <!-- Memory Card 03 -->
-                <div class="reveal-section scrapbook-card scrapbook-card-rotate-3" id="jchapter-2" onclick="toggleJourneyChapter(2)" style="transition-delay:0.12s">
-                    <div class="scrapbook-tape scrapbook-tape-top-left"></div>
-                    <div class="scrapbook-tape scrapbook-tape-top-right"></div>
-                    <div class="scrapbook-card-inner">
-                        <div class="scrapbook-card-label" style="color: #B8A9C9;">Diferencial</div>
-                        <div class="scrapbook-card-meta">
-                            <span class="scrapbook-date">MAR 2022—MAY 2023</span>
+                <!-- Memory #3 - Diferencial -->
+                <div class="reveal-section memory-page memory-page-3" id="jchapter-2" onclick="toggleJourneyChapter(2)">
+                    <!-- Polaroid photo -->
+                    <div class="memory-photo" style="background: linear-gradient(135deg, #B8A9C9 0%, #8B6B8E 100%);">
+                        <div class="memory-photo-label">HR</div>
+                    </div>
+                    
+                    <!-- Handwritten note -->
+                    <div class="memory-note memory-note-3" style="border-left: 4px solid #B8A9C9;">
+                        <h3 class="memory-title" style="color: #B8A9C9;">Diferencial</h3>
+                        <p class="memory-subtitle">Head of HR</p>
+                        <p class="memory-date">MAR 2022 — MAY 2023</p>
+                        
+                        <div class="memory-quote">Created HR structure from zero. Built the processes and systems the team needed.</div>
+                        
+                        <div class="memory-tags">
+                            <span class="mem-tag" style="--cc:#B8A9C9">HR</span>
+                            <span class="mem-tag" style="--cc:#9CAF88">Recruitment</span>
+                            <span class="mem-tag" style="--cc:#D4A5A5">Leadership</span>
                         </div>
-                        <div class="scrapbook-card-role">Head of HR</div>
-                        <div class="scrapbook-quote">Created HR structure from zero. Built the processes and systems the team needed.</div>
-                        <div class="scrapbook-tags">
-                            <span class="scrapbook-tag" style="--cc:#B8A9C9">HR Processes</span>
-                            <span class="scrapbook-tag" style="--cc:#9CAF88">Recruitment</span>
-                            <span class="scrapbook-tag" style="--cc:#D4A5A5">Leadership</span>
+
+                        <div class="memory-full-story" id="jstory-2">
+                            <p>Created HR from zero. Built recruitment process, onboarding templates, team structure. A position that didn't exist before—I shaped it by looking at what the team actually needed.</p>
                         </div>
                     </div>
-                    <div class="scrapbook-story" id="jstory-2">
-                        <div class="scrapbook-story-divider"></div>
-                        <p>Created HR from zero. Built recruitment process, onboarding templates, team structure. A position that didn't exist before—I shaped it by looking at what the team actually needed.</p>
-                    </div>
+                    
+                    <!-- Washi tape effect -->
+                    <div class="memory-tape memory-tape-3" style="background: linear-gradient(45deg, rgba(184,169,201,0.3), rgba(184,169,201,0.1));"></div>
                 </div>
 
-                <!-- Memory Card 04 -->
-                <div class="reveal-section scrapbook-card scrapbook-card-rotate-4" id="jchapter-3" onclick="toggleJourneyChapter(3)" style="transition-delay:0.16s">
-                    <div class="scrapbook-tape scrapbook-tape-top-left"></div>
-                    <div class="scrapbook-tape scrapbook-tape-top-right"></div>
-                    <div class="scrapbook-card-inner">
-                        <div class="scrapbook-card-label" style="color: #9CAF88;">SINFO</div>
-                        <div class="scrapbook-card-meta">
-                            <span class="scrapbook-date">MAR 2022—MAY 2025</span>
+                <!-- Memory #4 - SINFO -->
+                <div class="reveal-section memory-page memory-page-4" id="jchapter-3" onclick="toggleJourneyChapter(3)">
+                    <!-- Polaroid photo -->
+                    <div class="memory-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);">
+                        <div class="memory-photo-label">SINFO</div>
+                    </div>
+                    
+                    <!-- Handwritten note -->
+                    <div class="memory-note memory-note-4" style="border-left: 4px solid #9CAF88;">
+                        <h3 class="memory-title" style="color: #9CAF88;">SINFO</h3>
+                        <p class="memory-subtitle">Coordinator & Designer</p>
+                        <p class="memory-date">MAR 2022 — MAY 2025</p>
+                        
+                        <div class="memory-quote">Ran a conference with 5,000+ attendees and 85+ companies.</div>
+                        
+                        <div class="memory-tags">
+                            <span class="mem-tag" style="--cc:#9CAF88">Design</span>
+                            <span class="mem-tag" style="--cc:#E8C07D">Events</span>
+                            <span class="mem-tag" style="--cc:#B8A9C9">Impact</span>
                         </div>
-                        <div class="scrapbook-card-role">Coordinator & Designer</div>
-                        <div class="scrapbook-quote">Ran a conference with 5,000+ attendees and 85+ companies. Designed visuals, managed logistics, coordinated sponsors.</div>
-                        <div class="scrapbook-tags">
-                            <span class="scrapbook-tag" style="--cc:#9CAF88">Design</span>
-                            <span class="scrapbook-tag" style="--cc:#E8C07D">Events</span>
-                            <span class="scrapbook-tag" style="--cc:#B8A9C9">Leadership</span>
+
+                        <div class="memory-full-story" id="jstory-3">
+                            <p>Went from team member to coordinator. Designed graphics for a huge event, managed sponsor coordination, dealt with logistics. Got experience coordinating a major conference.</p>
                         </div>
                     </div>
-                    <div class="scrapbook-story" id="jstory-3">
-                        <div class="scrapbook-story-divider"></div>
-                        <p>Went from team member to coordinator. Designed graphics for a huge event, managed sponsor coordination, dealt with logistics. Got experience coordinating a major conference.</p>
-                    </div>
+                    
+                    <!-- Washi tape effect -->
+                    <div class="memory-tape memory-tape-4" style="background: linear-gradient(45deg, rgba(156,175,136,0.3), rgba(156,175,136,0.1));"></div>
                 </div>
 
-                <!-- Memory Card 05 -->
-                <div class="reveal-section scrapbook-card scrapbook-card-rotate-1" id="jchapter-4" onclick="toggleJourneyChapter(4)" style="transition-delay:0.2s">
-                    <div class="scrapbook-tape scrapbook-tape-top-left"></div>
-                    <div class="scrapbook-tape scrapbook-tape-top-right"></div>
-                    <div class="scrapbook-card-inner">
-                        <div class="scrapbook-card-label" style="color: #E8C07D;">Tutoring</div>
-                        <div class="scrapbook-card-meta">
-                            <span class="scrapbook-date">2021—Today</span>
+                <!-- Memory #5 - Tutoring -->
+                <div class="reveal-section memory-page memory-page-5" id="jchapter-4" onclick="toggleJourneyChapter(4)">
+                    <!-- Polaroid photo -->
+                    <div class="memory-photo" style="background: linear-gradient(135deg, #E8C07D 0%, #C9A96E 100%);">
+                        <div class="memory-photo-label">Teaching</div>
+                    </div>
+                    
+                    <!-- Handwritten note -->
+                    <div class="memory-note memory-note-5" style="border-left: 4px solid #E8C07D;">
+                        <h3 class="memory-title" style="color: #E8C07D;">Tutoring</h3>
+                        <p class="memory-subtitle">Private Tutor</p>
+                        <p class="memory-date">2021 — TODAY</p>
+                        
+                        <div class="memory-quote">Taught students to actually understand concepts instead of just memorizing.</div>
+                        
+                        <div class="memory-tags">
+                            <span class="mem-tag" style="--cc:#E8C07D">Education</span>
+                            <span class="mem-tag" style="--cc:#C9A96E">Teaching</span>
+                            <span class="mem-tag" style="--cc:#B87D64">Impact</span>
                         </div>
-                        <div class="scrapbook-card-role">Private Tutor</div>
-                        <div class="scrapbook-quote">Taught students to actually understand concepts instead of just memorizing.</div>
-                        <div class="scrapbook-tags">
-                            <span class="scrapbook-tag" style="--cc:#E8C07D">Education</span>
-                            <span class="scrapbook-tag" style="--cc:#C9A96E">Teaching</span>
-                            <span class="scrapbook-tag" style="--cc:#B87D64">Impact</span>
+
+                        <div class="memory-full-story" id="jstory-4">
+                            <p>Tutored high school and university students one-on-one. Focused on helping them actually understand material. Learned how different people learn differently.</p>
                         </div>
                     </div>
-                    <div class="scrapbook-story" id="jstory-4">
-                        <div class="scrapbook-story-divider"></div>
-                        <p>Tutored high school and university students one-on-one. Focused on helping them actually understand material. Learned how different people learn differently.</p>
-                    </div>
+                    
+                    <!-- Washi tape effect -->
+                    <div class="memory-tape memory-tape-5" style="background: linear-gradient(45deg, rgba(232,192,125,0.3), rgba(232,192,125,0.1));"></div>
                 </div>
 
-            </div><!-- end scrapbook-grid -->
+            </div><!-- end memory-book-container -->
         </div>
     </section>
 
