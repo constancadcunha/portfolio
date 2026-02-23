@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="mt-16 opacity-0" id="scrollHint">
-                <p class="text-[9px] font-bold uppercase tracking-[0.4em] mb-3 opacity-50">Begin Your Journey</p>
+                <p class="text-[9px] font-bold uppercase tracking-[0.4em] mb-3 opacity-50">Scroll</p>
                 <div class="w-7 h-12 border-2 border-cottage-forest/50 dark:border-accentGold/50 rounded-full mx-auto flex justify-center pt-2"><div class="w-1.5 h-3 bg-cottage-forest/50 dark:bg-accentGold/50 rounded-full animate-bounce"></div></div>
             </div>
         </div>
@@ -183,7 +183,7 @@
                         </div>
                         <div class="camera-polaroid-eject" id="cameraPolaroid">
                             <div class="polaroid-top-quote">
-                                <p class="font-display italic text-sm leading-snug">"Good design starts with listening to users, not assumptions."</p>
+                                <p class="font-display italic text-sm leading-snug">"I design best when I actually talk to the people who'll use the thing."</p>
                             </div>
                             <img src="Constanca.jpg" alt="Constança" class="w-full h-[240px] object-cover rounded-sm" loading="lazy">
                             <div class="polaroid-photo-caption">
@@ -204,8 +204,8 @@
                     <div class="grid grid-cols-2 gap-3 pt-2">
                         <div class="skill-greenhouse greenhouse-container p-4">
                             <svg class="w-6 h-6 mb-2 text-cottage-sage dark:text-cottage-honey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
-                            <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Relocate or Remote</h4>
-                            <p class="text-sm opacity-70">Flexible on where I work</p>
+                            <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Location</h4>
+                            <p class="text-sm opacity-70">Lisbon — open to relocate or remote</p>
                         </div>
                         <div class="skill-greenhouse greenhouse-container p-4">
                             <svg class="w-6 h-6 mb-2 text-cottage-honey dark:text-cottage-sage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -218,133 +218,332 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - MEMORY BOOK -->
+    <!-- JOURNEY SECTION -->
     <section id="artifacts" class="journey-section relative overflow-hidden">
-        <!-- Fireflies -->
         <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
-        <!-- Bottom fog -->
         <div class="journey-fog" aria-hidden="true"></div>
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+            <svg class="w-full h-full"><pattern id="labGrid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#labGrid)" /></svg>
+        </div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10 py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-8 relative z-10 py-24">
+
             <!-- Header -->
             <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">Open the Pages</p>
-                <h2 class="text-5xl sm:text-6xl font-cursive text-vintageCream">Memory Book</h2>
-                <p class="text-xs opacity-40 mt-4 font-cursive text-base">~ click a page to read more ~</p>
+                <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">A few chapters of</p>
+                <h2 class="text-4xl sm:text-6xl font-serif italic text-vintageCream">MY STORY</h2>
             </div>
 
-            <!-- The actual book -->
-            <div class="memory-book-wrapper">
-                <div class="memory-book">
-                    <!-- Book spine -->
-                    <div class="book-spine"></div>
-                    
-                    <!-- Book pages container -->
-                    <div class="book-pages">
+            <!-- Tab navigation -->
+            <div class="jchap-tabs reveal-section" id="jchapTabs" style="transition-delay:0.1s">
+                <button class="jchap-tab active" id="jtab-0" onclick="gotoChapter(0)" style="--jc:#9CAF88">
+                    <span class="jt-num">01</span>
+                    <span class="jt-name">NexFlat CH</span>
+                </button>
+                <button class="jchap-tab" id="jtab-1" onclick="gotoChapter(1)" style="--jc:#D4A5A5">
+                    <span class="jt-num">02</span>
+                    <span class="jt-name">Sky Portugal</span>
+                </button>
+                <button class="jchap-tab" id="jtab-2" onclick="gotoChapter(2)" style="--jc:#E8C07D">
+                    <span class="jt-num">03</span>
+                    <span class="jt-name">SINFO</span>
+                </button>
+                <button class="jchap-tab" id="jtab-3" onclick="gotoChapter(3)" style="--jc:#B8A9C9">
+                    <span class="jt-num">04</span>
+                    <span class="jt-name">Diferencial</span>
+                </button>
+                <button class="jchap-tab" id="jtab-4" onclick="gotoChapter(4)" style="--jc:#C9A96E">
+                    <span class="jt-num">05</span>
+                    <span class="jt-name">Tutoring</span>
+                </button>
+            </div>
 
-                    <!-- Page 1: NexFlat -->
-                    <div class="book-page reveal-section" id="jchapter-0" onclick="toggleJourneyChapter(0)">
-                        <div class="page-number">1</div>
-                        <div class="page-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);"></div>
-                        <div class="page-content">
-                            <h3 class="page-title" style="color: #9CAF88;">NexFlat CH</h3>
-                            <p class="page-role">Product Design & Frontend</p>
-                            <p class="page-date" style="color: #9CAF88;">SEP 2025 — NOW</p>
-                            <div class="page-quote">Contributed to product design and frontend work on a live real estate platform.</div>
-                            <div class="page-tags">
-                                <span style="--cc:#9CAF88">React</span>
-                                <span style="--cc:#E8C07D">TypeScript</span>
-                                <span style="--cc:#B8A9C9">Design</span>
+            <!-- Chapter panels -->
+            <div class="jchap-panels" id="jchapPanels">
+                <!-- Ghost cards — visible stack behind active card, click to go next -->
+                <div class="pc-ghost pc-ghost-2" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
+                <div class="pc-ghost pc-ghost-1" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
+
+                <!-- 01 — NexFlat CH -->
+                <div class="jchap-panel active" id="jpanel-0" style="--jc:#9CAF88">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-label">POST CARD</span>
+                            <div class="pc-stamp-box"><span>01</span></div>
+                        </div>
+                        <div class="pc-header-rule"></div>
+                        <div class="pc-body">
+                            <div class="pc-message">
+                                <p class="pc-salutation">Dear reader,</p>
+                                <blockquote class="pc-quote">"From Figma file to merged PR — same person."</blockquote>
+                                <ul class="pc-hls">
+                                    <li><span class="material-icons-outlined">palette</span>Designed the component system in Figma, token by token</li>
+                                    <li><span class="material-icons-outlined">code</span>Implemented everything in React + TypeScript, end to end</li>
+                                    <li><span class="material-icons-outlined">hub</span>Real product — real tenants in Zurich use it every day</li>
+                                </ul>
+                                <div class="pc-stats">
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">6mo+</span><span class="pc-stat-lbl">Ongoing</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">2</span><span class="pc-stat-lbl">Roles</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">5</span><span class="pc-stat-lbl">Stack</span></div>
+                                </div>
+                                <div class="pc-chips">
+                                    <span class="pc-chip">React</span>
+                                    <span class="pc-chip">TypeScript</span>
+                                    <span class="pc-chip">Figma</span>
+                                    <span class="pc-chip">Node.js</span>
+                                    <span class="pc-chip">PostgreSQL</span>
+                                </div>
                             </div>
-                            <div class="page-story" id="jstory-0">
-                                <p>Worked with the design and frontend team at a Swiss real estate startup. Helped improve the app's interface, contributed React components, and learned how design actually works in a production environment.</p>
+                            <div class="pc-divider"></div>
+                            <div class="pc-address">
+                                <div class="pc-postmark">
+                                    <span class="pc-pm-city">ZURICH</span>
+                                    <span class="pc-pm-year">2025</span>
+                                </div>
+                                <span class="pc-badge">Current</span>
+                                <div class="pc-addr-rule"></div>
+                                <h3 class="pc-company">NexFlat CH</h3>
+                                <p class="pc-role">Product Design &amp; Frontend Intern</p>
+                                <div class="pc-loc">
+                                    <span class="material-icons-outlined">place</span>
+                                    Zurich
+                                    <img src="https://flagcdn.com/w20/ch.png" width="16" height="11" alt="CH" loading="lazy">
+                                </div>
+                                <div class="pc-date">SEP 2025 — NOW</div>
+                                <div class="pc-addr-rule"></div>
+                                <p class="pc-story">Real product, real users. Every screen I designed ended up shipped. Still running, still being used.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Page 2: Sky Portugal -->
-                    <div class="book-page reveal-section" id="jchapter-1" onclick="toggleJourneyChapter(1)">
-                        <div class="page-number">2</div>
-                        <div class="page-photo" style="background: linear-gradient(135deg, #D4A5A5 0%, #B87D64 100%);"></div>
-                        <div class="page-content">
-                            <h3 class="page-title" style="color: #D4A5A5;">Sky Portugal</h3>
-                            <p class="page-role">Front-End Developer</p>
-                            <p class="page-date" style="color: #D4A5A5;">JUL — SEP 2024</p>
-                            <div class="page-quote">Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</div>
-                            <div class="page-tags">
-                                <span style="--cc:#D4A5A5">Vue.js</span>
-                                <span style="--cc:#A8C5D9">REST APIs</span>
-                                <span style="--cc:#E8C07D">Fast</span>
+                <!-- 02 — Sky Portugal -->
+                <div class="jchap-panel" id="jpanel-1" style="--jc:#D4A5A5">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-label">POST CARD</span>
+                            <div class="pc-stamp-box"><span>02</span></div>
+                        </div>
+                        <div class="pc-header-rule"></div>
+                        <div class="pc-body">
+                            <div class="pc-message">
+                                <p class="pc-salutation">Dear reader,</p>
+                                <blockquote class="pc-quote">"Delivered the 2-month roadmap in 2 weeks."</blockquote>
+                                <ul class="pc-hls">
+                                    <li><span class="material-icons-outlined">inventory_2</span>Full device inventory tool for Sky's internal IT team</li>
+                                    <li><span class="material-icons-outlined">speed</span>Scoped at 2 months — I shipped it in 2 weeks</li>
+                                    <li><span class="material-icons-outlined">api</span>REST API + CSV import/export, built from scratch</li>
+                                </ul>
+                                <div class="pc-stats">
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">2wk</span><span class="pc-stat-lbl">Delivery</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">3mo</span><span class="pc-stat-lbl">Contract</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">1</span><span class="pc-stat-lbl">Tool built</span></div>
+                                </div>
+                                <div class="pc-chips">
+                                    <span class="pc-chip">Vue.js</span>
+                                    <span class="pc-chip">REST APIs</span>
+                                    <span class="pc-chip">CSV tooling</span>
+                                </div>
                             </div>
-                            <div class="page-story" id="jstory-1">
-                                <p>Built an internal system for the operations team to manage hardware devices. Got the core functionality done in two weeks instead of two months because the requirements were clear and I stayed focused on what they actually needed.</p>
+                            <div class="pc-divider"></div>
+                            <div class="pc-address">
+                                <div class="pc-postmark">
+                                    <span class="pc-pm-city">LISBON</span>
+                                    <span class="pc-pm-year">2024</span>
+                                </div>
+                                <div class="pc-addr-rule"></div>
+                                <h3 class="pc-company">Sky Portugal</h3>
+                                <p class="pc-role">Front-End Developer Intern</p>
+                                <div class="pc-loc">
+                                    <span class="material-icons-outlined">place</span>
+                                    Lisbon
+                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
+                                </div>
+                                <div class="pc-date">JUL — SEP 2024</div>
+                                <div class="pc-addr-rule"></div>
+                                <p class="pc-story">They scoped it for two months. I asked the right questions early, kept the scope clean, and was done in two weeks. First internship, first real lesson in what focused actually means.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Page 3: Diferencial -->
-                    <div class="book-page reveal-section" id="jchapter-2" onclick="toggleJourneyChapter(2)">
-                        <div class="page-number">3</div>
-                        <div class="page-photo" style="background: linear-gradient(135deg, #B8A9C9 0%, #8B6B8E 100%);"></div>
-                        <div class="page-content">
-                            <h3 class="page-title" style="color: #B8A9C9;">Diferencial</h3>
-                            <p class="page-role">Head of HR</p>
-                            <p class="page-date" style="color: #B8A9C9;">MAR 2022 — MAY 2023</p>
-                            <div class="page-quote">Created HR structure from zero. Built the processes and systems the team needed.</div>
-                            <div class="page-tags">
-                                <span style="--cc:#B8A9C9">HR</span>
-                                <span style="--cc:#9CAF88">Recruitment</span>
-                                <span style="--cc:#D4A5A5">Leadership</span>
+                <!-- 03 — SINFO -->
+                <div class="jchap-panel" id="jpanel-2" style="--jc:#E8C07D">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-label">POST CARD</span>
+                            <div class="pc-stamp-box"><span>03</span></div>
+                        </div>
+                        <div class="pc-header-rule"></div>
+                        <div class="pc-body">
+                            <div class="pc-message">
+                                <p class="pc-salutation">Dear reader,</p>
+                                <blockquote class="pc-quote">"Three years. Two full editions. Every single detail."</blockquote>
+                                <ul class="pc-hls">
+                                    <li><span class="material-icons-outlined">celebration</span>5,000+ attendees per edition</li>
+                                    <li><span class="material-icons-outlined">business</span>85+ company partners, coordinated from scratch</li>
+                                    <li><span class="material-icons-outlined">palette</span>30+ pieces designed — posters, schedules, socials, signage</li>
+                                </ul>
+                                <div class="pc-stats">
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">5k+</span><span class="pc-stat-lbl">Attendees</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#E8C07D">85+</span><span class="pc-stat-lbl">Companies</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">30+</span><span class="pc-stat-lbl">Visuals</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">3</span><span class="pc-stat-lbl">Years</span></div>
+                                </div>
+                                <div class="pc-chips">
+                                    <span class="pc-chip">Visual Design</span>
+                                    <span class="pc-chip">Event Ops</span>
+                                    <span class="pc-chip">Sponsorship</span>
+                                </div>
                             </div>
-                            <div class="page-story" id="jstory-2">
-                                <p>Created HR from zero. Built recruitment process, onboarding templates, team structure. A position that didn't exist before—I shaped it by looking at what the team actually needed.</p>
+                            <div class="pc-divider"></div>
+                            <div class="pc-address">
+                                <div class="pc-postmark">
+                                    <span class="pc-pm-city">LISBON</span>
+                                    <span class="pc-pm-year">2025</span>
+                                </div>
+                                <div class="pc-addr-rule"></div>
+                                <h3 class="pc-company">SINFO</h3>
+                                <p class="pc-role">Coordinator &amp; Designer</p>
+                                <div class="pc-loc">
+                                    <span class="material-icons-outlined">place</span>
+                                    Lisbon
+                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
+                                </div>
+                                <div class="pc-date">MAR 2022 — MAY 2025</div>
+                                <div class="pc-addr-rule"></div>
+                                <p class="pc-story">Three years putting together Portugal's biggest student tech conference. If you were in the room and looked at anything — the signage, the schedule, the brand — some of that came from me.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Page 4: SINFO -->
-                    <div class="book-page reveal-section" id="jchapter-3" onclick="toggleJourneyChapter(3)">
-                        <div class="page-number">4</div>
-                        <div class="page-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);"></div>
-                        <div class="page-content">
-                            <h3 class="page-title" style="color: #9CAF88;">SINFO</h3>
-                            <p class="page-role">Coordinator & Designer</p>
-                            <p class="page-date" style="color: #9CAF88;">MAR 2022 — MAY 2025</p>
-                            <div class="page-quote">Ran a conference with 5,000+ attendees and 85+ companies.</div>
-                            <div class="page-tags">
-                                <span style="--cc:#9CAF88">Design</span>
-                                <span style="--cc:#E8C07D">Events</span>
-                                <span style="--cc:#B8A9C9">Impact</span>
+                <!-- 04 — Diferencial -->
+                <div class="jchap-panel" id="jpanel-3" style="--jc:#B8A9C9">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-label">POST CARD</span>
+                            <div class="pc-stamp-box"><span>04</span></div>
+                        </div>
+                        <div class="pc-header-rule"></div>
+                        <div class="pc-body">
+                            <div class="pc-message">
+                                <p class="pc-salutation">Dear reader,</p>
+                                <blockquote class="pc-quote">"The HR department didn't exist. Then it did."</blockquote>
+                                <ul class="pc-hls">
+                                    <li><span class="material-icons-outlined">group_add</span>Built the recruitment pipeline from nothing</li>
+                                    <li><span class="material-icons-outlined">assignment</span>Wrote onboarding processes the next person could actually inherit</li>
+                                    <li><span class="material-icons-outlined">people</span>Grew and structured a team of 20+ people</li>
+                                </ul>
+                                <div class="pc-stats">
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">15mo</span><span class="pc-stat-lbl">Tenure</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">20+</span><span class="pc-stat-lbl">Team</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">0→1</span><span class="pc-stat-lbl">HR dept</span></div>
+                                </div>
+                                <div class="pc-chips">
+                                    <span class="pc-chip">HR Process</span>
+                                    <span class="pc-chip">Recruitment</span>
+                                    <span class="pc-chip">Onboarding</span>
+                                </div>
                             </div>
-                            <div class="page-story" id="jstory-3">
-                                <p>Went from team member to coordinator. Designed graphics for a huge event, managed sponsor coordination, dealt with logistics. Got experience coordinating a major conference.</p>
+                            <div class="pc-divider"></div>
+                            <div class="pc-address">
+                                <div class="pc-postmark">
+                                    <span class="pc-pm-city">LISBON</span>
+                                    <span class="pc-pm-year">2022</span>
+                                </div>
+                                <div class="pc-addr-rule"></div>
+                                <h3 class="pc-company">Diferencial</h3>
+                                <p class="pc-role">Head of HR</p>
+                                <div class="pc-loc">
+                                    <span class="material-icons-outlined">place</span>
+                                    Lisbon
+                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
+                                </div>
+                                <div class="pc-date">MAR 2022 — MAY 2023</div>
+                                <div class="pc-addr-rule"></div>
+                                <p class="pc-story">Built the HR department from nothing. When I left, the next person had something to inherit.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Page 5: Tutoring -->
-                    <div class="book-page reveal-section" id="jchapter-4" onclick="toggleJourneyChapter(4)">
-                        <div class="page-number">5</div>
-                        <div class="page-photo" style="background: linear-gradient(135deg, #E8C07D 0%, #C9A96E 100%);"></div>
-                        <div class="page-content">
-                            <h3 class="page-title" style="color: #E8C07D;">Tutoring</h3>
-                            <p class="page-role">Private Tutor</p>
-                            <p class="page-date" style="color: #E8C07D;">2021 — 2023</p>
-                            <div class="page-quote">Taught students to actually understand concepts instead of just memorizing.</div>
-                            <div class="page-tags">
-                                <span style="--cc:#E8C07D">Education</span>
-                                <span style="--cc:#C9A96E">Teaching</span>
-                                <span style="--cc:#B87D64">Impact</span>
+                <!-- 05 — Private Tutoring -->
+                <div class="jchap-panel" id="jpanel-4" style="--jc:#C9A96E">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-label">POST CARD</span>
+                            <div class="pc-stamp-box"><span>05</span></div>
+                        </div>
+                        <div class="pc-header-rule"></div>
+                        <div class="pc-body">
+                            <div class="pc-message">
+                                <p class="pc-salutation">Dear reader,</p>
+                                <blockquote class="pc-quote">"Explaining things until they actually click."</blockquote>
+                                <ul class="pc-hls">
+                                    <li><span class="material-icons-outlined">school</span>High school and university students</li>
+                                    <li><span class="material-icons-outlined">calculate</span>Maths, Physics, Chemistry — one subject at a time</li>
+                                    <li><span class="material-icons-outlined">psychology</span>Adjusted to how each student actually thinks, not the other way</li>
+                                </ul>
+                                <div class="pc-stats">
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">2yrs</span><span class="pc-stat-lbl">Duration</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">3</span><span class="pc-stat-lbl">Subjects</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">1:1</span><span class="pc-stat-lbl">Sessions</span></div>
+                                </div>
+                                <div class="pc-chips">
+                                    <span class="pc-chip">Maths</span>
+                                    <span class="pc-chip">Physics</span>
+                                    <span class="pc-chip">Chemistry</span>
+                                </div>
                             </div>
-                            <div class="page-story" id="jstory-4">
-                                <p>Tutored high school and university students one-on-one. Focused on helping them actually understand material. Learned how different people learn differently.</p>
+                            <div class="pc-divider"></div>
+                            <div class="pc-address">
+                                <div class="pc-postmark">
+                                    <span class="pc-pm-city">LISBON</span>
+                                    <span class="pc-pm-year">2023</span>
+                                </div>
+                                <div class="pc-addr-rule"></div>
+                                <h3 class="pc-company">Private Tutoring</h3>
+                                <p class="pc-role">Maths, Physics &amp; Chemistry Tutor</p>
+                                <div class="pc-loc">
+                                    <span class="material-icons-outlined">place</span>
+                                    Lisbon
+                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
+                                </div>
+                                <div class="pc-date">2021 — 2023</div>
+                                <div class="pc-addr-rule"></div>
+                                <p class="pc-story">Two years of private tutoring in maths, physics, and chemistry. The goal was never just to get through the material — it was to make it actually click.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-            </div><!-- end memory-book-container -->
+            </div><!-- end jchap-panels -->
+
+            <!-- Flipcard navigation -->
+            <div class="jchap-footer reveal-section" style="transition-delay:0.2s">
+                <div class="jflip-nav">
+                    <button class="jflip-btn" onclick="gotoChapter(currentJourneyChapter - 1)" aria-label="Previous card">
+                        <span class="material-icons-outlined">chevron_left</span>
+                    </button>
+                    <div class="jflip-stack" id="jflipStack" role="tablist" aria-label="Card navigation">
+                        <button class="jflip-card active" data-num="01" style="--jc:#9CAF88" onclick="gotoChapter(0)" role="tab" aria-label="NexFlat CH" aria-selected="true"></button>
+                        <button class="jflip-card" data-num="02" style="--jc:#D4A5A5" onclick="gotoChapter(1)" role="tab" aria-label="Sky Portugal" aria-selected="false"></button>
+                        <button class="jflip-card" data-num="03" style="--jc:#E8C07D" onclick="gotoChapter(2)" role="tab" aria-label="SINFO" aria-selected="false"></button>
+                        <button class="jflip-card" data-num="04" style="--jc:#B8A9C9" onclick="gotoChapter(3)" role="tab" aria-label="Diferencial" aria-selected="false"></button>
+                        <button class="jflip-card" data-num="05" style="--jc:#C9A96E" onclick="gotoChapter(4)" role="tab" aria-label="Tutoring" aria-selected="false"></button>
+                    </div>
+                    <button class="jflip-btn" onclick="gotoChapter(currentJourneyChapter + 1)" aria-label="Next card">
+                        <span class="material-icons-outlined">chevron_right</span>
+                    </button>
+                </div>
+                <p class="jchap-hint">swipe · arrow keys</p>
+            </div>
+
         </div>
     </section>
+
+
 
     <!-- STUDIO SECTION -->
     <section id="studio" class="py-20 relative whimsy-section">
@@ -425,7 +624,7 @@
                     <div class="magic-card p-6">
                         <p class="text-cottage-rose font-bold text-[10px] uppercase tracking-widest mb-2">Complete Collection</p>
                         <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">And more...</h3>
-                        <p class="text-base opacity-75 leading-relaxed mb-6">Everything else I've built. All my projects and work in one place. Check it out if you want to see more.</p>
+                        <p class="text-base opacity-75 leading-relaxed mb-6">Everything else I've made. Not just the highlight reel — the full thing.</p>
                         <div class="ghost-button-container">
                             <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-rose text-white rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold">Explore Complete Website</a>
                         </div>
@@ -473,7 +672,7 @@
                 <div class="gallery-frame" onclick="openModal('Designs/mcdonalds.png')">
                     <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image" loading="lazy"></div>
                     <h4>McDonald's Reimagined</h4>
-                    <p>Bold reinterpretation of classic branding.</p>
+                    <p>Same arches, darker mood.</p>
                     <div class="gallery-plaque">Golden Arches</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/hacky x horror.png')">
@@ -491,26 +690,26 @@
                 <div class="gallery-frame" onclick="openModal('Designs/mupi.png')">
                     <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image" loading="lazy"></div>
                     <h4>MUPI Poster</h4>
-                    <p>Real-world promotional design.</p>
+                    <p>Went up on actual street stands.</p>
                     <div class="gallery-plaque">Street Display</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Recruitment Poster.png')">
                     <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image" loading="lazy"></div>
                     <h4>Recruitment Poster</h4>
-                    <p>Dynamic member attraction.</p>
+                    <p>Designed to get people to apply.</p>
                     <div class="gallery-plaque">Join Us</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Science Day.png')">
                     <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image" loading="lazy"></div>
                     <h4>Science Day</h4>
-                    <p>Educational event promotion.</p>
+                    <p>For a day where people just got to explore.</p>
                     <div class="gallery-plaque">Discovery</div>
                 </div>
                 <!-- Duplicate for infinite scroll -->
                 <div class="gallery-frame" onclick="openModal('Designs/mcdonalds.png')">
                     <div class="gallery-image-container"><img src="Designs/mcdonalds.png" alt="McDonald's" class="gallery-image" loading="lazy"></div>
                     <h4>McDonald's Reimagined</h4>
-                    <p>Bold reinterpretation of classic branding.</p>
+                    <p>Same arches, darker mood.</p>
                     <div class="gallery-plaque">Golden Arches</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/hacky x horror.png')">
@@ -528,19 +727,19 @@
                 <div class="gallery-frame" onclick="openModal('Designs/mupi.png')">
                     <div class="gallery-image-container"><img src="Designs/mupi.png" alt="MUPI" class="gallery-image" loading="lazy"></div>
                     <h4>MUPI Poster</h4>
-                    <p>Real-world promotional design.</p>
+                    <p>Went up on actual street stands.</p>
                     <div class="gallery-plaque">Street Display</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Recruitment Poster.png')">
                     <div class="gallery-image-container"><img src="Designs/Recruitment Poster.png" alt="Recruitment" class="gallery-image" loading="lazy"></div>
                     <h4>Recruitment Poster</h4>
-                    <p>Dynamic member attraction.</p>
+                    <p>Designed to get people to apply.</p>
                     <div class="gallery-plaque">Join Us</div>
                 </div>
                 <div class="gallery-frame" onclick="openModal('Designs/Science Day.png')">
                     <div class="gallery-image-container"><img src="Designs/Science Day.png" alt="Science Day" class="gallery-image" loading="lazy"></div>
                     <h4>Science Day</h4>
-                    <p>Educational event promotion.</p>
+                    <p>For a day where people just got to explore.</p>
                     <div class="gallery-plaque">Discovery</div>
                 </div>
             </div>
@@ -596,13 +795,13 @@
                         <div class="flex items-start justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-serif text-2xl italic">Personal Website</h3>
-                                <p class="text-xs font-mono opacity-40 mt-0.5">Cottagecore · Interactive · Portfolio</p>
+                                <p class="text-xs font-mono opacity-40 mt-0.5">HTML · CSS · JS · Tailwind</p>
                             </div>
                             <button class="web-expand-btn" onclick="toggleWebsite(0)" title="View case study">
                                 <span class="material-icons-outlined web-expand-icon" id="web-expand-0">add</span>
                             </button>
                         </div>
-                        <p class="text-sm opacity-70 mb-4 leading-relaxed">Digital portfolio with personality. Interactive elements that make visitors want to explore, not just skim.</p>
+                        <p class="text-sm opacity-70 mb-4 leading-relaxed">You're looking at it. Built from scratch with HTML, CSS and JS. Interactive because static felt boring.</p>
                         <div class="web-tech-chips">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Tailwind</span>
                         </div>
@@ -617,12 +816,12 @@
                             <div class="web-case-divider"></div>
                             <div class="web-case-row">
                                 <div class="web-case-block">
-                                    <p class="web-case-label">Challenge</p>
-                                    <p class="web-case-text">Stand out among thousands of portfolios without losing authenticity or accessibility.</p>
+                                    <p class="web-case-label">Why</p>
+                                    <p class="web-case-text">Wanted a portfolio that didn't look like every other portfolio. Made it interactive and cozy instead.</p>
                                 </div>
                                 <div class="web-case-block">
-                                    <p class="web-case-label">Solution</p>
-                                    <p class="web-case-text">Cottagecore interactive design system with scroll-driven reveals and camera/garden mechanics.</p>
+                                    <p class="web-case-label">What's in it</p>
+                                    <p class="web-case-text">Camera widget, garden skills section, postcard timeline. Everything designed and built by me.</p>
                                 </div>
                             </div>
                         </div>
@@ -654,7 +853,7 @@
                         <div class="flex items-start justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-serif text-2xl italic">Resumos LEIC</h3>
-                                <p class="text-xs font-mono opacity-40 mt-0.5">Community · Knowledge Hub · Open Source</p>
+                                <p class="text-xs font-mono opacity-40 mt-0.5">Open Source · Student-run</p>
                             </div>
                             <button class="web-expand-btn" onclick="toggleWebsite(1)" title="View case study">
                                 <span class="material-icons-outlined web-expand-icon" id="web-expand-1">add</span>
@@ -675,12 +874,12 @@
                             <div class="web-case-divider"></div>
                             <div class="web-case-row">
                                 <div class="web-case-block">
-                                    <p class="web-case-label">Challenge</p>
-                                    <p class="web-case-text">No central place for students to find and share course study materials.</p>
+                                    <p class="web-case-label">Context</p>
+                                    <p class="web-case-text">Students were scattering notes across random drives and group chats. Needed a proper home for it all.</p>
                                 </div>
                                 <div class="web-case-block">
                                     <p class="web-case-label">Role</p>
-                                    <p class="web-case-text">Led UX design and frontend development of a community-driven platform used by hundreds.</p>
+                                    <p class="web-case-text">UX and frontend. Still used by students every exam season.</p>
                                 </div>
                             </div>
                         </div>
@@ -1255,7 +1454,7 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal-section">
                 <p class="font-cursive text-3xl sm:text-4xl mb-4 text-cottage-sage">Ready to grow something?</p>
-                <h2 class="text-4xl sm:text-5xl font-serif mb-8 italic">LET'S <span class="text-cottage-sage underline">CONNECT</span></h2>
+                <h2 class="text-4xl sm:text-5xl font-serif mb-8 italic">LET'S <span class="text-cottage-sage underline">TALK</span></h2>
                 <div class="space-y-6">
                     <a href="mailto:constancadcunha@gmail.com" class="flex items-center gap-5 group">
                         <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-cottage-sage group-hover:scale-110 transition-all duration-300">
@@ -1283,7 +1482,7 @@
                         </div>
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Your Message</label>
-                            <textarea name="message" rows="3" placeholder="Let's build something magical..." required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors resize-none"></textarea>
+                            <textarea name="message" rows="3" placeholder="What's on your mind?" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors resize-none"></textarea>
                         </div>
                         <div id="formMessage" class="form-message"></div>
                         <button type="submit" class="ghost-button w-full py-4 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold uppercase tracking-[0.15em] text-xs hover:scale-[1.02] transition-transform">Send Message <span class="material-icons-outlined align-middle">grass</span></button>
@@ -1299,7 +1498,7 @@
         <div class="close-btn" onclick="dismissDialogue()"><span class="material-icons-outlined" style="font-size:14px;line-height:1">close</span></div>
         <div class="w-12 h-12 bg-gradient-to-br from-cottage-forest to-cottage-moss rounded-full flex items-center justify-center text-white text-lg font-serif italic border-2 border-cottage-sage shrink-0">CC</div>
         <div class="flex-1">
-            <p id="dialogueText" class="text-sm font-medium italic opacity-85 leading-snug">Welcome to my garden of designs. <span class="material-icons-outlined align-middle">eco</span></p>
+            <p id="dialogueText" class="text-sm font-medium italic opacity-85 leading-snug">Hi — take a look around. <span class="material-icons-outlined align-middle">eco</span></p>
         </div>
     </div>
 

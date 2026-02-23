@@ -28,9 +28,9 @@ function initSite() {
     initWebsiteSignals();
     initOsClock();
     initOsBattery();
-    // New sections
+    // Journey section
     initJourneyFireflies();
-    initJourneyInteractions();
+    initStoryBook();
     initGardenButterflies();
 }
 
@@ -252,15 +252,15 @@ function closeModal() {
 
 function initDialogueSystem() {
     const dialogueMap = {
-        hero: "Welcome to my garden of designs. Pull up a chair and stay a while. <span class='material-icons-outlined align-middle'>eco</span>",
-        about: "Based in Lisbon, but my roots can grow anywhere in the world. <span class='material-icons-outlined align-middle'>public</span>",
-        artifacts: "Three years of professional growth—from conferences to startups. <span class='material-icons-outlined align-middle'>grass</span>",
-        studio: "Scroll through my case studies! Watch the phone change with each project. <span class='material-icons-outlined align-middle'>phone_iphone</span>",
-        designs: "Click any piece to see it full size! Each one tells a story. <span class='material-icons-outlined align-middle'>auto_awesome</span>",
-        websites: "Websites I've nurtured from seedlings to full bloom. <span class='material-icons-outlined align-middle'>spa</span>",
-        certificates: "Click a folder to open a certificate! <span class='material-icons-outlined align-middle'>computer</span>",
-        wisdom: "Skills cultivated through years of practice and curiosity. <span class='material-icons-outlined align-middle'>grass</span>",
-        contact: "Let's grow something beautiful together! <span class='material-icons-outlined align-middle'>favorite</span>"
+        hero: "Hi — take a look around. <span class='material-icons-outlined align-middle'>eco</span>",
+        about: "Lisbon-based. Open to relocate or go remote. <span class='material-icons-outlined align-middle'>public</span>",
+        artifacts: "Click through the postcards to see where I've been. <span class='material-icons-outlined align-middle'>grass</span>",
+        studio: "Scroll through — the phone preview updates with each project. <span class='material-icons-outlined align-middle'>phone_iphone</span>",
+        designs: "Click anything to see it full size. <span class='material-icons-outlined align-middle'>auto_awesome</span>",
+        websites: "A couple of sites I built. <span class='material-icons-outlined align-middle'>spa</span>",
+        certificates: "Click a folder to open a certificate. <span class='material-icons-outlined align-middle'>computer</span>",
+        wisdom: "Water the plants to see what's inside each one. <span class='material-icons-outlined align-middle'>grass</span>",
+        contact: "Say hello if you want to work together. <span class='material-icons-outlined align-middle'>favorite</span>"
     };
 
     const dialogueContainer = document.getElementById('dialogueContainer');
@@ -1188,32 +1188,26 @@ function waterPlant(potIdx) {
 }
 
 function initJourneyInteractions() {
-    const cards = document.querySelectorAll('.journey-card');
+    const cards = document.querySelectorAll('.tl-card');
     cards.forEach((card) => {
         let ticking = false;
         card.addEventListener('mousemove', (event) => {
             if (!ticking) {
                 requestAnimationFrame(() => {
                     const rect = card.getBoundingClientRect();
-                    const x = ((event.clientX - rect.left) / rect.width) * 100;
-                    const y = ((event.clientY - rect.top) / rect.height) * 100;
-                    card.style.setProperty('--mx', x + '%');
-                    card.style.setProperty('--my', y + '%');
-                    
-                    // 3D tilt effect
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
-                    const rotateX = ((event.clientY - centerY) / (rect.height / 2)) * -8;
-                    const rotateY = ((event.clientX - centerX) / (rect.width / 2)) * 8;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05) translateY(-8px)`;
+                    const rotateX = ((event.clientY - centerY) / (rect.height / 2)) * -5;
+                    const rotateY = ((event.clientX - centerX) / (rect.width / 2)) * 5;
+                    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02) translateY(-3px)`;
                     ticking = false;
                 });
                 ticking = true;
             }
         });
-        
+
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateY(0)';
+            card.style.transform = '';
         });
     });
 
@@ -1247,30 +1241,291 @@ function initJourneyInteractions() {
 }
 
 // =================================
-// JOURNEY — Chapter Toggle
+// STORY BOOK — Chapter data
 // =================================
 
-function toggleJourneyChapter(idx) {
-    const story = document.getElementById('jstory-' + idx);
-    if (!story) return;
+// =================================
+// JOURNEY — Postcard collection
+// =================================
 
-    const chapter = document.getElementById('jchapter-' + idx);
-    const isOpen = story.classList.contains('open');
+var currentJourneyChapter = 0;
+var _postcardFlipping = false;
 
-    // Close all open chapters (accordion behaviour)
-    for (let i = 0; i < 5; i++) {
-        const s  = document.getElementById('jstory-'   + i);
-        const ch = document.getElementById('jchapter-' + i);
-        if (s)  s.classList.remove('open');
-        if (ch) ch.classList.remove('expanded');
+function _updateCounter(idx) {
+    var pips = document.querySelectorAll('.jflip-card');
+    pips.forEach(function(p, i) {
+        p.classList.toggle('active', i === idx);
+        p.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+}
+
+function gotoChapter(idx) {
+    if (idx < 0 || idx > 4) return;
+    if (idx === currentJourneyChapter || _postcardFlipping) return;
+
+    _postcardFlipping = true;
+
+    var tabs   = document.querySelectorAll('.jchap-tab');
+    var panels = document.querySelectorAll('.jchap-panel');
+    var fromPanel = panels[currentJourneyChapter];
+    var toPanel   = panels[idx];
+    var dir = idx > currentJourneyChapter ? 1 : -1;
+
+    // --- Shuffle the ghost cards ---
+    var g1 = document.querySelector('.pc-ghost-1');
+    var g2 = document.querySelector('.pc-ghost-2');
+    if (g1) { g1.classList.remove('shuffle'); void g1.offsetWidth; g1.classList.add('shuffle'); }
+    if (g2) { g2.classList.remove('shuffle'); void g2.offsetWidth; g2.classList.add('shuffle'); }
+
+    // Clear any tilt state on the outgoing card
+    var fromCard = fromPanel ? fromPanel.querySelector('.pc-card') : null;
+    if (fromCard) {
+        fromCard.classList.remove('js-tilt-active');
     }
 
-    // Open clicked chapter if it was closed
-    if (!isOpen) {
-        story.classList.add('open');
-        if (chapter) chapter.classList.add('expanded');
+    // --- Slide current card OUT ---
+    if (fromCard) {
+        fromCard.style.transition = 'transform 0.18s cubic-bezier(0.4, 0, 1, 1), opacity 0.15s ease-in';
+        fromCard.style.transform  = 'translateX(' + (dir * -48) + 'px) scale(0.94)';
+        fromCard.style.opacity    = '0';
+    }
+
+    setTimeout(function() {
+        // Swap active classes
+        panels.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+        tabs.forEach(function(t, i)   { t.classList.toggle('active', i === idx); });
+        currentJourneyChapter = idx;
+        _updateCounter(idx);
+
+        // --- Slide new card IN from opposite side ---
+        var toCard = toPanel ? toPanel.querySelector('.pc-card') : null;
+        if (toCard) {
+            toCard.style.transition = 'none';
+            toCard.style.transform  = 'translateX(' + (-dir * 48) + 'px) scale(0.94)';
+            toCard.style.opacity    = '0';
+
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    toCard.style.transition = 'transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease';
+                    toCard.style.transform  = '';
+                    toCard.style.opacity    = '1';
+
+                    // Trigger postmark stamp animation
+                    var pm = toPanel ? toPanel.querySelector('.pc-postmark') : null;
+                    if (pm) {
+                        pm.classList.remove('stamping');
+                        void pm.offsetWidth;
+                        setTimeout(function() { pm.classList.add('stamping'); }, 140);
+                    }
+
+                    setTimeout(function() {
+                        // Clear inline styles so CSS hover / tilt take over
+                        toCard.style.transition = '';
+                        toCard.style.transform  = '';
+                        toCard.style.opacity    = '';
+                        toCard.classList.add('js-tilt-active');
+                        _postcardFlipping = false;
+                        typewriteQuote(toPanel);
+                    }, 200);
+                });
+            });
+        } else {
+            _postcardFlipping = false;
+        }
+    }, 160);
+}
+
+// Aliases
+function flipToChapter(idx) { gotoChapter(idx); }
+function toggleJourneyChapter(idx) {}
+
+// =================================
+// POSTCARD — Typewriter quote effect
+// =================================
+var _twTimer = null;
+
+function typewriteQuote(panel) {
+    // Cancel any in-progress typewriter
+    if (_twTimer) { clearTimeout(_twTimer); _twTimer = null; }
+
+    var quote = panel ? panel.querySelector('.pc-quote') : null;
+    if (!quote) return;
+
+    // Store original text on first run
+    var full = quote.getAttribute('data-full');
+    if (!full) {
+        full = quote.textContent.trim();
+        quote.setAttribute('data-full', full);
+    }
+
+    // Build fresh inner structure
+    quote.innerHTML = '<span class="pc-tw-text"></span><span class="pc-cursor" aria-hidden="true">|</span>';
+    var textEl  = quote.querySelector('.pc-tw-text');
+    var cursor  = quote.querySelector('.pc-cursor');
+
+    function tick(i) {
+        textEl.textContent = full.slice(0, i);
+        if (i >= full.length) {
+            _twTimer = null;
+            setTimeout(function() { if (cursor) cursor.classList.add('pc-cursor-done'); }, 520);
+            return;
+        }
+        // Pause after sentence-ending punctuation for rhythm
+        var justTyped = i > 0 ? full[i - 1] : '';
+        var delay = (justTyped === '.' || justTyped === '!') ? 190 :
+                    (justTyped === ',') ? 70 :
+                    18 + Math.floor(Math.random() * 10);
+        _twTimer = setTimeout(function() { tick(i + 1); }, delay);
+    }
+
+    // Short pause so card slides in before text starts appearing
+    _twTimer = setTimeout(function() { tick(1); }, 80);
+}
+
+function initStoryBook() {
+
+    // --- Keyboard navigation ---
+    document.addEventListener('keydown', function(e) {
+        var panels = document.getElementById('jchapPanels');
+        if (!panels) return;
+        var rect = panels.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault(); gotoChapter(currentJourneyChapter + 1);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault(); gotoChapter(currentJourneyChapter - 1);
+        }
+    });
+
+    // --- Touch swipe (fixed: clientX, horizontal dominance, lower threshold) ---
+    var panelsEl = document.getElementById('jchapPanels');
+    if (panelsEl) {
+        var _touchX = 0, _touchY = 0;
+        panelsEl.addEventListener('touchstart', function(e) {
+            _touchX = e.changedTouches[0].clientX;
+            _touchY = e.changedTouches[0].clientY;
+        }, { passive: true });
+        panelsEl.addEventListener('touchend', function(e) {
+            var dx = e.changedTouches[0].clientX - _touchX;
+            var dy = e.changedTouches[0].clientY - _touchY;
+            // Only fire on clearly horizontal swipes
+            if (Math.abs(dx) < 38 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+            if (dx < 0) gotoChapter(currentJourneyChapter + 1);
+            else        gotoChapter(currentJourneyChapter - 1);
+        }, { passive: true });
+    }
+
+    // --- Mouse drag-to-flip ---
+    if (panelsEl) {
+        var _drag = { on: false, startX: 0, lastX: 0 };
+
+        panelsEl.addEventListener('mousedown', function(e) {
+            if (e.button !== 0) return;
+            if (e.target.closest && e.target.closest('.pc-ghost')) return;
+            if (_postcardFlipping) return;
+            _drag.on = true;
+            _drag.startX = e.clientX;
+            _drag.lastX  = e.clientX;
+            e.preventDefault(); // prevent text selection while dragging
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!_drag.on || _postcardFlipping) return;
+            _drag.lastX = e.clientX;
+
+            var panel = document.querySelector('.jchap-panel.active');
+            var card  = panel ? panel.querySelector('.pc-card') : null;
+            if (!card) return;
+
+            var dx = e.clientX - _drag.startX;
+
+            // Rubber-band resistance at boundaries
+            var atEdge = (dx < 0 && currentJourneyChapter >= 4) || (dx > 0 && currentJourneyChapter <= 0);
+            var pull  = dx * (atEdge ? 0.12 : 0.38);
+            var tilt  = dx * 0.016;
+            var fade  = 1 - Math.min(Math.abs(dx) / 350, 0.32);
+
+            card.style.transition = 'none';
+            card.style.transform  = 'translateX(' + pull + 'px) rotate(' + tilt + 'deg)';
+            card.style.opacity    = String(Math.max(0.68, fade));
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (!_drag.on) return;
+            _drag.on = false;
+
+            var panel = document.querySelector('.jchap-panel.active');
+            var card  = panel ? panel.querySelector('.pc-card') : null;
+            var dx = _drag.lastX - _drag.startX;
+
+            if (Math.abs(dx) > 78 && !_postcardFlipping) {
+                // Enough drag — flip
+                if (dx < 0) gotoChapter(currentJourneyChapter + 1);
+                else        gotoChapter(currentJourneyChapter - 1);
+            } else {
+                // Not enough — spring back
+                if (card) {
+                    card.style.transition = 'transform 0.46s cubic-bezier(0.25,1,0.5,1), opacity 0.3s ease';
+                    card.style.transform  = '';
+                    card.style.opacity    = '';
+                    setTimeout(function() {
+                        card.style.transition = '';
+                        card.style.transform  = '';
+                        card.style.opacity    = '';
+                    }, 460);
+                }
+            }
+        });
+    }
+
+    // Fire typewriter on first card after entry animation settles
+    setTimeout(function() {
+        var firstPanel = document.getElementById('jpanel-0');
+        if (firstPanel) {
+            typewriteQuote(firstPanel);
+            var firstCard = firstPanel.querySelector('.pc-card');
+            if (firstCard) firstCard.classList.add('js-tilt-active');
+        }
+    }, 550);
+
+    // --- 3D mouse-tilt on active postcard ---
+    if (panelsEl) {
+        panelsEl.addEventListener('mousemove', function(e) {
+            if (_postcardFlipping || _drag.on) return;
+            var panel = document.querySelector('.jchap-panel.active');
+            var card  = panel ? panel.querySelector('.pc-card') : null;
+            if (!card || !card.classList.contains('js-tilt-active')) return;
+
+            var rect = card.getBoundingClientRect();
+            var cx = rect.left + rect.width  / 2;
+            var cy = rect.top  + rect.height / 2;
+            var nx = (e.clientX - cx) / (rect.width  / 2);  // -1 to 1
+            var ny = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+
+            var maxTilt = 6;
+            var rx =  ny * maxTilt * -1;  // tilt up/down
+            var ry =  nx * maxTilt;       // tilt left/right
+
+            card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
+            card.style.transform  = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(6px)';
+            card.style.boxShadow  =
+                '0 ' + (20 + Math.abs(ny) * 16) + 'px ' + (55 + Math.abs(ny) * 24) + 'px rgba(0,0,0,' + (0.38 + Math.abs(ny) * 0.1) + '),' +
+                '0 ' + (4  + Math.abs(ny) * 6)  + 'px 16px rgba(0,0,0,0.2),' +
+                'inset 0 1px 0 rgba(255,255,255,0.72)';
+        });
+
+        panelsEl.addEventListener('mouseleave', function() {
+            var panel = document.querySelector('.jchap-panel.active');
+            var card  = panel ? panel.querySelector('.pc-card') : null;
+            if (!card) return;
+            card.style.transition = 'transform 0.55s cubic-bezier(0.25,1,0.5,1), box-shadow 0.55s ease';
+            card.style.transform  = '';
+            card.style.boxShadow  = '';
+        });
     }
 }
+
 
 // =================================
 // CREDENTIALS — Interactive Book
