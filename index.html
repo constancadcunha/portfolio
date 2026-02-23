@@ -218,179 +218,129 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - REAL MEMORY BOOK STYLE -->
+    <!-- JOURNEY SECTION - MEMORY BOOK -->
     <section id="artifacts" class="journey-section relative overflow-hidden">
         <!-- Fireflies -->
         <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
         <!-- Bottom fog -->
         <div class="journey-fog" aria-hidden="true"></div>
-        <!-- Scribbles and doodles -->
-        <svg class="memory-doodles" aria-hidden="true" viewBox="0 0 1200 400">
-            <path d="M 100 50 Q 150 30 200 50" stroke="rgba(201,169,110,0.15)" stroke-width="2" fill="none"/>
-            <circle cx="950" cy="80" r="20" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="1.5"/>
-            <path d="M 50 300 L 80 320 L 50 340" stroke="rgba(201,169,110,0.12)" stroke-width="2" fill="none"/>
-        </svg>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10 py-20">
             <!-- Header -->
             <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">A Collection of Memories</p>
-                <h2 class="text-5xl sm:text-7xl font-cursive text-vintageCream memory-book-title">My Journey</h2>
-                <p class="text-xs opacity-40 mt-4 font-cursive text-base">~ click to expand the stories ~</p>
+                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">Open the Pages</p>
+                <h2 class="text-5xl sm:text-6xl font-cursive text-vintageCream">Memory Book</h2>
+                <p class="text-xs opacity-40 mt-4 font-cursive text-base">~ click a page to read more ~</p>
             </div>
 
-            <!-- Memory book pages -->
-            <div class="memory-book-container">
-
-                <!-- Memory #1 - NexFlat -->
-                <div class="reveal-section memory-page memory-page-1" id="jchapter-0" onclick="toggleJourneyChapter(0)">
-                    <!-- Polaroid photo -->
-                    <div class="memory-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);">
-                        <div class="memory-photo-label">NexFlat</div>
-                    </div>
+            <!-- The actual book -->
+            <div class="memory-book-wrapper">
+                <div class="memory-book">
+                    <!-- Book spine -->
+                    <div class="book-spine"></div>
                     
-                    <!-- Handwritten note -->
-                    <div class="memory-note memory-note-1" style="border-left: 4px solid #9CAF88;">
-                        <h3 class="memory-title" style="color: #9CAF88;">NexFlat CH</h3>
-                        <p class="memory-subtitle">Product Design & Frontend</p>
-                        <p class="memory-date">SEP 2025 — NOW</p>
-                        
-                        <div class="memory-quote">Contributed to product design and frontend work on a live real estate platform.</div>
-                        
-                        <div class="memory-tags">
-                            <span class="mem-tag" style="--cc:#9CAF88">React</span>
-                            <span class="mem-tag" style="--cc:#E8C07D">TypeScript</span>
-                            <span class="mem-tag" style="--cc:#B8A9C9">Design</span>
-                        </div>
+                    <!-- Book pages container -->
+                    <div class="book-pages">
 
-                        <div class="memory-full-story" id="jstory-0">
-                            <p>Worked with the design and frontend team at a Swiss real estate startup. Helped improve the app's interface, contributed React components, and learned how design actually works in a production environment.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Washi tape effect -->
-                    <div class="memory-tape memory-tape-1" style="background: linear-gradient(45deg, rgba(156,175,136,0.3), rgba(156,175,136,0.1));"></div>
-                </div>
-
-                <!-- Memory #2 - Sky Portugal -->
-                <div class="reveal-section memory-page memory-page-2" id="jchapter-1" onclick="toggleJourneyChapter(1)">
-                    <!-- Polaroid photo -->
-                    <div class="memory-photo" style="background: linear-gradient(135deg, #D4A5A5 0%, #B87D64 100%);">
-                        <div class="memory-photo-label">Sky</div>
-                    </div>
-                    
-                    <!-- Handwritten note -->
-                    <div class="memory-note memory-note-2" style="border-left: 4px solid #D4A5A5;">
-                        <h3 class="memory-title" style="color: #D4A5A5;">Sky Portugal</h3>
-                        <p class="memory-subtitle">Front-End Developer</p>
-                        <p class="memory-date">JUL — SEP 2024</p>
-                        
-                        <div class="memory-quote">Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</div>
-                        
-                        <div class="memory-tags">
-                            <span class="mem-tag" style="--cc:#D4A5A5">Vue.js</span>
-                            <span class="mem-tag" style="--cc:#A8C5D9">REST APIs</span>
-                            <span class="mem-tag" style="--cc:#E8C07D">Fast</span>
-                        </div>
-
-                        <div class="memory-full-story" id="jstory-1">
-                            <p>Built an internal system for the operations team to manage hardware devices. Got the core functionality done in two weeks instead of two months because the requirements were clear and I stayed focused on what they actually needed.</p>
+                    <!-- Page 1: NexFlat -->
+                    <div class="book-page reveal-section" id="jchapter-0" onclick="toggleJourneyChapter(0)">
+                        <div class="page-number">1</div>
+                        <div class="page-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);"></div>
+                        <div class="page-content">
+                            <h3 class="page-title" style="color: #9CAF88;">NexFlat CH</h3>
+                            <p class="page-role">Product Design & Frontend</p>
+                            <p class="page-date" style="color: #9CAF88;">SEP 2025 — NOW</p>
+                            <div class="page-quote">Contributed to product design and frontend work on a live real estate platform.</div>
+                            <div class="page-tags">
+                                <span style="--cc:#9CAF88">React</span>
+                                <span style="--cc:#E8C07D">TypeScript</span>
+                                <span style="--cc:#B8A9C9">Design</span>
+                            </div>
+                            <div class="page-story" id="jstory-0">
+                                <p>Worked with the design and frontend team at a Swiss real estate startup. Helped improve the app's interface, contributed React components, and learned how design actually works in a production environment.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Washi tape effect -->
-                    <div class="memory-tape memory-tape-2" style="background: linear-gradient(45deg, rgba(212,165,165,0.3), rgba(212,165,165,0.1));"></div>
-                </div>
 
-                <!-- Memory #3 - Diferencial -->
-                <div class="reveal-section memory-page memory-page-3" id="jchapter-2" onclick="toggleJourneyChapter(2)">
-                    <!-- Polaroid photo -->
-                    <div class="memory-photo" style="background: linear-gradient(135deg, #B8A9C9 0%, #8B6B8E 100%);">
-                        <div class="memory-photo-label">HR</div>
-                    </div>
-                    
-                    <!-- Handwritten note -->
-                    <div class="memory-note memory-note-3" style="border-left: 4px solid #B8A9C9;">
-                        <h3 class="memory-title" style="color: #B8A9C9;">Diferencial</h3>
-                        <p class="memory-subtitle">Head of HR</p>
-                        <p class="memory-date">MAR 2022 — MAY 2023</p>
-                        
-                        <div class="memory-quote">Created HR structure from zero. Built the processes and systems the team needed.</div>
-                        
-                        <div class="memory-tags">
-                            <span class="mem-tag" style="--cc:#B8A9C9">HR</span>
-                            <span class="mem-tag" style="--cc:#9CAF88">Recruitment</span>
-                            <span class="mem-tag" style="--cc:#D4A5A5">Leadership</span>
-                        </div>
-
-                        <div class="memory-full-story" id="jstory-2">
-                            <p>Created HR from zero. Built recruitment process, onboarding templates, team structure. A position that didn't exist before—I shaped it by looking at what the team actually needed.</p>
+                    <!-- Page 2: Sky Portugal -->
+                    <div class="book-page reveal-section" id="jchapter-1" onclick="toggleJourneyChapter(1)">
+                        <div class="page-number">2</div>
+                        <div class="page-photo" style="background: linear-gradient(135deg, #D4A5A5 0%, #B87D64 100%);"></div>
+                        <div class="page-content">
+                            <h3 class="page-title" style="color: #D4A5A5;">Sky Portugal</h3>
+                            <p class="page-role">Front-End Developer</p>
+                            <p class="page-date" style="color: #D4A5A5;">JUL — SEP 2024</p>
+                            <div class="page-quote">Completed a full 2-month development roadmap in just <strong>2 weeks</strong>.</div>
+                            <div class="page-tags">
+                                <span style="--cc:#D4A5A5">Vue.js</span>
+                                <span style="--cc:#A8C5D9">REST APIs</span>
+                                <span style="--cc:#E8C07D">Fast</span>
+                            </div>
+                            <div class="page-story" id="jstory-1">
+                                <p>Built an internal system for the operations team to manage hardware devices. Got the core functionality done in two weeks instead of two months because the requirements were clear and I stayed focused on what they actually needed.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Washi tape effect -->
-                    <div class="memory-tape memory-tape-3" style="background: linear-gradient(45deg, rgba(184,169,201,0.3), rgba(184,169,201,0.1));"></div>
-                </div>
 
-                <!-- Memory #4 - SINFO -->
-                <div class="reveal-section memory-page memory-page-4" id="jchapter-3" onclick="toggleJourneyChapter(3)">
-                    <!-- Polaroid photo -->
-                    <div class="memory-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);">
-                        <div class="memory-photo-label">SINFO</div>
-                    </div>
-                    
-                    <!-- Handwritten note -->
-                    <div class="memory-note memory-note-4" style="border-left: 4px solid #9CAF88;">
-                        <h3 class="memory-title" style="color: #9CAF88;">SINFO</h3>
-                        <p class="memory-subtitle">Coordinator & Designer</p>
-                        <p class="memory-date">MAR 2022 — MAY 2025</p>
-                        
-                        <div class="memory-quote">Ran a conference with 5,000+ attendees and 85+ companies.</div>
-                        
-                        <div class="memory-tags">
-                            <span class="mem-tag" style="--cc:#9CAF88">Design</span>
-                            <span class="mem-tag" style="--cc:#E8C07D">Events</span>
-                            <span class="mem-tag" style="--cc:#B8A9C9">Impact</span>
-                        </div>
-
-                        <div class="memory-full-story" id="jstory-3">
-                            <p>Went from team member to coordinator. Designed graphics for a huge event, managed sponsor coordination, dealt with logistics. Got experience coordinating a major conference.</p>
+                    <!-- Page 3: Diferencial -->
+                    <div class="book-page reveal-section" id="jchapter-2" onclick="toggleJourneyChapter(2)">
+                        <div class="page-number">3</div>
+                        <div class="page-photo" style="background: linear-gradient(135deg, #B8A9C9 0%, #8B6B8E 100%);"></div>
+                        <div class="page-content">
+                            <h3 class="page-title" style="color: #B8A9C9;">Diferencial</h3>
+                            <p class="page-role">Head of HR</p>
+                            <p class="page-date" style="color: #B8A9C9;">MAR 2022 — MAY 2023</p>
+                            <div class="page-quote">Created HR structure from zero. Built the processes and systems the team needed.</div>
+                            <div class="page-tags">
+                                <span style="--cc:#B8A9C9">HR</span>
+                                <span style="--cc:#9CAF88">Recruitment</span>
+                                <span style="--cc:#D4A5A5">Leadership</span>
+                            </div>
+                            <div class="page-story" id="jstory-2">
+                                <p>Created HR from zero. Built recruitment process, onboarding templates, team structure. A position that didn't exist before—I shaped it by looking at what the team actually needed.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Washi tape effect -->
-                    <div class="memory-tape memory-tape-4" style="background: linear-gradient(45deg, rgba(156,175,136,0.3), rgba(156,175,136,0.1));"></div>
-                </div>
 
-                <!-- Memory #5 - Tutoring -->
-                <div class="reveal-section memory-page memory-page-5" id="jchapter-4" onclick="toggleJourneyChapter(4)">
-                    <!-- Polaroid photo -->
-                    <div class="memory-photo" style="background: linear-gradient(135deg, #E8C07D 0%, #C9A96E 100%);">
-                        <div class="memory-photo-label">Teaching</div>
-                    </div>
-                    
-                    <!-- Handwritten note -->
-                    <div class="memory-note memory-note-5" style="border-left: 4px solid #E8C07D;">
-                        <h3 class="memory-title" style="color: #E8C07D;">Tutoring</h3>
-                        <p class="memory-subtitle">Private Tutor</p>
-                        <p class="memory-date">2021 — TODAY</p>
-                        
-                        <div class="memory-quote">Taught students to actually understand concepts instead of just memorizing.</div>
-                        
-                        <div class="memory-tags">
-                            <span class="mem-tag" style="--cc:#E8C07D">Education</span>
-                            <span class="mem-tag" style="--cc:#C9A96E">Teaching</span>
-                            <span class="mem-tag" style="--cc:#B87D64">Impact</span>
-                        </div>
-
-                        <div class="memory-full-story" id="jstory-4">
-                            <p>Tutored high school and university students one-on-one. Focused on helping them actually understand material. Learned how different people learn differently.</p>
+                    <!-- Page 4: SINFO -->
+                    <div class="book-page reveal-section" id="jchapter-3" onclick="toggleJourneyChapter(3)">
+                        <div class="page-number">4</div>
+                        <div class="page-photo" style="background: linear-gradient(135deg, #9CAF88 0%, #6B7F5E 100%);"></div>
+                        <div class="page-content">
+                            <h3 class="page-title" style="color: #9CAF88;">SINFO</h3>
+                            <p class="page-role">Coordinator & Designer</p>
+                            <p class="page-date" style="color: #9CAF88;">MAR 2022 — MAY 2025</p>
+                            <div class="page-quote">Ran a conference with 5,000+ attendees and 85+ companies.</div>
+                            <div class="page-tags">
+                                <span style="--cc:#9CAF88">Design</span>
+                                <span style="--cc:#E8C07D">Events</span>
+                                <span style="--cc:#B8A9C9">Impact</span>
+                            </div>
+                            <div class="page-story" id="jstory-3">
+                                <p>Went from team member to coordinator. Designed graphics for a huge event, managed sponsor coordination, dealt with logistics. Got experience coordinating a major conference.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Washi tape effect -->
-                    <div class="memory-tape memory-tape-5" style="background: linear-gradient(45deg, rgba(232,192,125,0.3), rgba(232,192,125,0.1));"></div>
-                </div>
+
+                    <!-- Page 5: Tutoring -->
+                    <div class="book-page reveal-section" id="jchapter-4" onclick="toggleJourneyChapter(4)">
+                        <div class="page-number">5</div>
+                        <div class="page-photo" style="background: linear-gradient(135deg, #E8C07D 0%, #C9A96E 100%);"></div>
+                        <div class="page-content">
+                            <h3 class="page-title" style="color: #E8C07D;">Tutoring</h3>
+                            <p class="page-role">Private Tutor</p>
+                            <p class="page-date" style="color: #E8C07D;">2021 — 2023</p>
+                            <div class="page-quote">Taught students to actually understand concepts instead of just memorizing.</div>
+                            <div class="page-tags">
+                                <span style="--cc:#E8C07D">Education</span>
+                                <span style="--cc:#C9A96E">Teaching</span>
+                                <span style="--cc:#B87D64">Impact</span>
+                            </div>
+                            <div class="page-story" id="jstory-4">
+                                <p>Tutored high school and university students one-on-one. Focused on helping them actually understand material. Learned how different people learn differently.</p>
+                            </div>
+                        </div>
+                    </div>
 
             </div><!-- end memory-book-container -->
         </div>
