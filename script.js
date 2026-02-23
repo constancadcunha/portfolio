@@ -1257,7 +1257,7 @@ function toggleJourneyChapter(idx) {
     const isOpen = story.classList.contains('open');
 
     // Close all open chapters (accordion behaviour)
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
         const s  = document.getElementById('jstory-'   + i);
         const ch = document.getElementById('jchapter-' + i);
         if (s)  s.classList.remove('open');

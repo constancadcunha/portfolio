@@ -2047,448 +2047,413 @@ nav {
    JOURNEY — New Chapter Layout
    ================================= */
 
+/* =================================
+   JOURNEY SECTION - SCRAPBOOK STYLE
+   ================================= */
+
 .journey-section {
     background: linear-gradient(160deg, #1A2421 0%, #0d1a10 45%, #1e2d1e 100%);
     color: #FDF6E3;
     position: relative;
 }
 
-.journey-chapters {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+.scrapbook-title {
+    letter-spacing: -0.02em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Chapter row */
-.journey-chapter {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    position: relative;
-}
-
-.journey-chapter::before {
-    content: '';
-    position: absolute;
-    left: -14px;
-    top: 14px;
-    bottom: 14px;
-    width: 3px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, transparent, rgba(156,175,136,0.85), transparent);
-    opacity: 0;
-    transform: scaleY(0.7);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.journey-chapter.expanded::before {
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-.journey-chapter-inner {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    max-width: 760px;
-    width: 100%;
-}
-
-.journey-chapter-right {
-    justify-content: flex-end;
-}
-.journey-chapter-inner-right {
-    justify-content: flex-end;
-}
-
-/* Decorative chapter numbers */
-.journey-chapter-num {
-    position: absolute;
-    left: -0.5rem;
-    top: -1.5rem;
-    font-size: clamp(4rem, 10vw, 7rem);
-    font-weight: 900;
-    font-family: 'Playfair Display', serif;
-    color: rgba(156, 175, 136, 0.15);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -0.04em;
-}
-
-.journey-chapter-num-right {
-    left: auto;
-    right: -0.5rem;
-}
-
-/* Journey Pin (the dot) */
-.journey-pin {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    z-index: 5;
-    margin-top: 1.2rem;
-}
-
-.journey-pin:hover {
-    transform: scale(1.12);
-}
-
-.journey-pin-sage   { background: linear-gradient(135deg, #9CAF88, #6B7F5E); box-shadow: 0 0 0 4px rgba(156,175,136,0.2), 0 8px 24px rgba(0,0,0,0.4); }
-.journey-pin-rose   { background: linear-gradient(135deg, #D4A5A5, #B87D64); box-shadow: 0 0 0 4px rgba(212,165,165,0.2), 0 8px 24px rgba(0,0,0,0.4); }
-.journey-pin-lavender { background: linear-gradient(135deg, #B8A9C9, #8B6B8E); box-shadow: 0 0 0 4px rgba(184,169,201,0.2), 0 8px 24px rgba(0,0,0,0.4); }
-
-.journey-pin-ring {
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    border: 2px solid currentColor;
-    opacity: 0.2;
-    animation: pin-ring-pulse 3s ease-in-out infinite;
-}
-
-.journey-pin-sage   .journey-pin-ring { color: #9CAF88; }
-.journey-pin-rose   .journey-pin-ring { color: #D4A5A5; }
-.journey-pin-lavender .journey-pin-ring { color: #B8A9C9; }
-
-@keyframes pin-ring-pulse {
-    0%, 100% { transform: scale(1); opacity: 0.2; }
-    50%       { transform: scale(1.15); opacity: 0.5; }
-}
-
-/* Journey Cards */
-.journey-card {
-    flex: 1;
-    border-radius: 1.25rem;
-    overflow: hidden;
-    background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    position: relative;
-    transform-origin: center;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-}
-
-.journey-card::before {
-    content: '';
+/* Decorative doodles background */
+.scrapbook-doodles {
     position: absolute;
     inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent 40%, rgba(255,255,255,0.1));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.5;
-    transition: opacity 0.5s ease;
+    opacity: 0.08;
+    background-image: 
+        radial-gradient(circle at 10% 20%, 40px 40px, transparent 40px),
+        radial-gradient(circle at 80% 80%, 30px 30px, transparent 30px),
+        radial-gradient(circle at 60% 30%, 25px 25px, transparent 25px);
 }
 
-.journey-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    background: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.15), transparent 40%);
-    transition: opacity 0.3s ease;
-}
-
-.journey-card:hover {
-    background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-    border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.5), 0 0 30px rgba(201,169,110,0.3);
+/* Scrapbook grid layout */
+.scrapbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    position: relative;
     z-index: 10;
-    transform: scale(1.04) translateY(-8px) rotateX(2deg) rotateY(-2deg);
 }
 
-.journey-card:hover::before {
-    opacity: 1;
-    background: linear-gradient(135deg, rgba(255,255,255,0.8), transparent 40%, rgba(255,255,255,0.3));
+/* Scrapbook cards */
+.scrapbook-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(253, 246, 227, 0.95), rgba(253, 246, 227, 0.88));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(253, 246, 227, 0.6);
 }
 
-.journey-card:hover::after {
-    opacity: 1;
+.scrapbook-card-rotate-1 { transform: rotate(-1.5deg); }
+.scrapbook-card-rotate-2 { transform: rotate(1.2deg); }
+.scrapbook-card-rotate-3 { transform: rotate(-0.9deg); }
+.scrapbook-card-rotate-4 { transform: rotate(1.8deg); }
+
+.scrapbook-card:hover {
+    transform: rotate(0deg) scale(1.03) translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-.journey-card-accent {
-    height: 4px;
-    width: 100%;
+/* Tape effects */
+.scrapbook-tape {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+    border-radius: 2px;
+    box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(0, 0, 0, 0.15);
+    transform: rotate(-3deg);
+    z-index: 20;
 }
 
-.journey-card-body {
-    padding: 1.4rem 1.6rem 1.2rem;
+.scrapbook-tape::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    border-radius: inherit;
 }
 
-.journey-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.scrapbook-tape-top-left {
+    top: -8px;
+    left: 20px;
+    transform: rotate(-8deg);
 }
 
-.journey-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #FDF6E3, #E8C07D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-    margin: 0 0 0.2rem;
+.scrapbook-tape-top-right {
+    top: -8px;
+    right: 30px;
+    transform: rotate(5deg);
 }
 
-.journey-card-role {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(253,246,227,0.65);
-    margin: 0;
-}
-
-.journey-card-meta {
+.scrapbook-card-inner {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 0.3rem;
-    flex-shrink: 0;
+    gap: 0.8rem;
 }
 
-.journey-card-date {
-    font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
+.scrapbook-card-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #9CAF88, #E8C07D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
-    letter-spacing: 0.06em;
+    margin: 0;
+    letter-spacing: -0.02em;
 }
 
-.journey-expand-caret {
-    font-size: 20px !important;
-    color: rgba(253,246,227,0.4);
-    transition: transform 0.3s ease, color 0.3s ease;
+.scrapbook-card-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.journey-chapter.expanded .journey-expand-caret {
-    transform: rotate(180deg);
-    color: rgba(253,246,227,0.8);
-}
-
-/* Live badge */
-.journey-badge {
+.scrapbook-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    font-size: 0.6rem;
-    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.55rem;
+    font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    background: rgba(156,175,136,0.25);
-    color: #9CAF88;
-    border: 1px solid rgba(156,175,136,0.3);
+    background: linear-gradient(135deg, #9CAF88, #6B7F5E);
+    color: white;
+    box-shadow: 0 2px 6px rgba(156, 175, 136, 0.3);
+    animation: badge-pulse 2s ease-in-out infinite;
 }
 
-.journey-badge-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #9CAF88;
-    animation: badge-blink 1.5s ease-in-out infinite;
+@keyframes badge-pulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
 }
 
-@keyframes badge-blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
+.scrapbook-date {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.8rem;
+    color: rgba(74, 93, 78, 0.7);
+    font-weight: 600;
 }
 
-/* Impact quote */
-.journey-impact-quote {
-    display: flex;
-    gap: 0.5rem;
-    align-items: flex-start;
-    background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
-    border-left: 3px solid rgba(232,192,125,0.8);
-    border-radius: 0 0.5rem 0.5rem 0;
-    padding: 0.8rem 1rem;
-    margin-bottom: 1rem;
-    color: rgba(253,246,227,0.9);
+.scrapbook-card-role {
     font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(74, 93, 78, 0.8);
     font-style: italic;
-    font-size: 1rem;
-    line-height: 1.5;
-    box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
-}
-
-/* Highlights */
-.journey-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-}
-
-.journey-highlight {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.6rem;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: all 0.3s ease;
-}
-
-.journey-highlight:hover {
-    background: rgba(255,255,255,0.08);
-    transform: translateX(4px);
-    border-color: rgba(255,255,255,0.15);
-}
-
-.jh-icon {
-    font-size: 18px !important;
-    flex-shrink: 0;
-}
-
-.jh-title {
-    font-weight: 700;
-    font-size: 0.78rem;
-    color: rgba(253,246,227,0.9);
-    margin: 0 0 1px;
-}
-
-.jh-desc {
-    font-size: 0.7rem;
-    color: rgba(253,246,227,0.45);
     margin: 0;
 }
 
-/* Stats row (SINFO) */
-.journey-stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+.scrapbook-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(74, 93, 78, 0.85);
+    border-left: 4px solid currentColor;
+    border-radius: 0 4px 4px 0;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+    line-height: 1.5;
 }
 
-.journey-stat {
+.scrapbook-tags {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 0.55rem 0.25rem;
-    background: rgba(255,255,255,0.04);
-    border-radius: 0.6rem;
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: transform 0.3s ease;
-    cursor: default;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
 }
 
-.journey-stat:hover { transform: scale(1.06); }
-
-.journey-stat-value {
-    font-size: 1.4rem;
-    font-weight: 900;
-    line-height: 1;
-}
-
-.journey-stat-label {
-    font-size: 0.55rem;
+.scrapbook-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: linear-gradient(135deg, rgba(var(--r, 156), var(--g, 175), var(--b, 136), 0.15), rgba(var(--r, 156), var(--g, 175), var(--b, 136), 0.08));
+    border: 1px solid rgba(74, 93, 78, 0.2);
+    border-radius: 16px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--cc, #9CAF88);
+    font-family: 'Plus Jakarta Sans', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(253,246,227,0.4);
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+}
+
+.scrapbook-tag:hover {
+    background: var(--cc);
+    color: white;
+    transform: scale(1.05);
 }
 
 /* Expandable story */
-.journey-story {
+.scrapbook-story {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.48s ease, opacity 0.38s ease, padding 0.3s ease;
+    transition: max-height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    padding: 0;
 }
 
-.journey-story.open {
-    max-height: 360px;
+.scrapbook-card.expanded .scrapbook-story {
+    max-height: 300px;
     opacity: 1;
+    padding: 0.75rem 0 0 0;
 }
 
-.journey-chapter.expanded .journey-card {
-    box-shadow: 0 0 0 1px rgba(201,169,110,0.35), 0 24px 60px rgba(0,0,0,0.45);
+.scrapbook-story-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(74, 93, 78, 0.2), transparent);
+    margin-bottom: 0.75rem;
 }
 
-.journey-story-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    margin: 0.9rem 0 0.75rem;
-}
-
-.journey-story-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-bottom: 0.65rem;
-}
-
-.journey-story-text {
-    font-size: 0.82rem;
-    line-height: 1.65;
-    color: rgba(253,246,227,0.6);
+.scrapbook-story p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(74, 93, 78, 0.75);
+    margin: 0;
     font-style: italic;
 }
 
-/* Connector between chapters */
-.journey-connector {
-    display: flex;
-    flex-direction: column;
+/* Dark mode adjustments */
+.dark .scrapbook-card {
+    background: linear-gradient(135deg, rgba(45, 58, 46, 0.96), rgba(26, 36, 33, 0.92));
+    border-color: rgba(201, 169, 110, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark .scrapbook-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark .scrapbook-card-label {
+    color: #C9A96E;
+}
+
+.dark .scrapbook-card-role {
+    color: rgba(201, 169, 110, 0.8);
+}
+
+.dark .scrapbook-quote {
+    color: rgba(201, 169, 110, 0.9);
+    border-left-color: rgba(201, 169, 110, 0.5);
+}
+
+.dark .scrapbook-story p {
+    color: rgba(201, 169, 110, 0.7);
+}
+
+@media (max-width: 640px) {
+    .scrapbook-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .scrapbook-card {
+        padding: 1.2rem;
+    }
+    
+    .scrapbook-card-label {
+        font-size: 1.2rem;
+    }
+    
+    .scrapbook-card-role {
+        font-size: 0.9rem;
+    }
+    
+    .scrapbook-quote {
+        font-size: 0.9rem;
+    }
+}
+
+/* =================================
+   JOURNEY TIMELINE STYLES (legacy — kept for safety)
+   ================================= */
+
+.timeline-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(156, 175, 136, 0.2) 0%, 
+        rgba(232, 192, 125, 0.3) 50%, 
+        rgba(184, 169, 201, 0.2) 100%);
+}
+
+.dark .timeline-line {
+    background: linear-gradient(180deg, 
+        rgba(156, 175, 136, 0.3) 0%, 
+        rgba(232, 192, 125, 0.4) 50%, 
+        rgba(184, 169, 201, 0.3) 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 2rem;
     align-items: center;
-    margin: 0.5rem 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    grid-column: 3;
+}
+
+.timeline-item:nth-child(even) .timeline-empty {
+    grid-column: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    grid-column: 1;
+    text-align: right;
+}
+
+.timeline-dot {
+    grid-column: 2;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9CAF88, #E8C07D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px #FDF6E3, 0 0 0 8px rgba(156, 175, 136, 0.2);
+    z-index: 10;
+    transition: all 0.3s ease;
     position: relative;
 }
 
-.journey-connector-line {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(180deg, rgba(232,192,125,0.3), rgba(156,175,136,0.2));
-    animation: connector-pulse 3s ease-in-out infinite;
+.dark .timeline-dot {
+    box-shadow: 0 0 0 4px #1A2421, 0 0 0 8px rgba(201, 169, 110, 0.2);
+    background: linear-gradient(135deg, #C9A96E, #E8C07D);
 }
 
-.journey-connector-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(232,192,125,0.5);
-    margin-top: 3px;
-    animation: connector-pulse 3s ease-in-out infinite 1s;
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px #FDF6E3, 0 0 0 12px rgba(156, 175, 136, 0.3);
 }
 
-@keyframes connector-pulse {
-    0%, 100% { opacity: 0.4; }
-    50%       { opacity: 0.9; }
+.dark .timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 0 4px #1A2421, 0 0 0 12px rgba(201, 169, 110, 0.3);
+}
+
+.timeline-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 241, 232, 0.8));
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(156, 175, 136, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.dark .timeline-content {
+    background: linear-gradient(135deg, rgba(45, 58, 46, 0.9), rgba(26, 36, 33, 0.8));
+    border-color: rgba(201, 169, 110, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.dark .timeline-content:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-empty {
+    height: 100%;
 }
 
 @media (max-width: 768px) {
-    .journey-chapter-inner,
-    .journey-chapter-inner-right {
-        flex-direction: column;
-        gap: 0.75rem;
+    .timeline-item {
+        grid-template-columns: 60px 1fr;
+        gap: 1rem;
     }
-    .journey-pin { margin-top: 0; width: 50px; height: 50px; }
-    .journey-stats-row { grid-template-columns: repeat(2, 1fr); }
-    .journey-chapter-right { justify-content: flex-start; }
-    .journey-chapter-num-right { right: auto; left: -0.5rem; }
+
+    .timeline-line {
+        left: 30px;
+    }
+
+    .timeline-dot {
+        grid-column: 1;
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .timeline-empty {
+        display: none;
+    }
 }
 
 /* =================================
