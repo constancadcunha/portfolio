@@ -139,6 +139,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+nav.nav-scrolled-hidden {
+    transform: translateY(-110%);
 }
 
 .nav-inner {
@@ -2682,6 +2687,7 @@ nav {
 .jchap-panel.active .pc-hls li:nth-child(1) { animation-delay: 0.14s; }
 .jchap-panel.active .pc-hls li:nth-child(2) { animation-delay: 0.21s; }
 .jchap-panel.active .pc-hls li:nth-child(3) { animation-delay: 0.28s; }
+.jchap-panel.active .pc-hls li:nth-child(4) { animation-delay: 0.35s; }
 
 /* Stats fly in */
 .jchap-panel.active .pc-stat {
@@ -2830,15 +2836,22 @@ nav {
             transparent 8px
         );
         margin: 0 1.3rem;
+        order: 2; /* sits between address and message */
     }
-    .pc-address { padding-top: 1rem; }
+    /* On mobile: show address (company, role, dates) FIRST, then message */
+    .pc-address {
+        order: 1;
+        padding: 0.8rem 1rem 0.6rem;
+    }
+    .pc-message {
+        order: 3;
+        padding: 0.6rem 1rem 0.6rem;
+    }
     .pc-postmark { width: 52px; height: 52px; }
     .pc-company { font-size: 1.05rem; }
     .pc-quote { font-size: 0.95rem; }
     .pc-header { padding: 0.7rem 1rem 0.5rem; }
     .pc-header-rule { margin: 0 1rem; }
-    .pc-message { padding: 0.2rem 1rem 0.6rem; }
-    .pc-address { padding: 0.8rem 1rem 0.6rem; }
     .pc-card { border-radius: 0 8px 8px 8px; }
     .pc-ghost-1, .pc-ghost-2 { display: none; }
 }
@@ -4406,6 +4419,15 @@ img {
 }
 
 /* CSS Mouse */
+.desk-mouse-standalone {
+    position: absolute;
+    bottom: 40px;
+    left: calc(50% + 155px);
+    transform: scale(1.65);
+    transform-origin: bottom left;
+    z-index: 1;
+}
+
 .mouse-body {
     width: 24px;
     height: 36px;
@@ -4413,7 +4435,6 @@ img {
     border-radius: 12px 12px 8px 8px;
     border: 1.5px solid #C9B89A;
     position: relative;
-    order: 1;
 }
 
 .mouse-body::before {
@@ -6840,4 +6861,271 @@ img {
 
 .dark .web-visit-btn:hover {
     background: #E8C07D;
+}
+
+/* =================================
+   MOBILE NAVIGATION HAMBURGER
+   ================================= */
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: currentColor;
+    transition: background 0.2s;
+}
+
+.nav-hamburger:hover {
+    background: rgba(156, 175, 136, 0.15);
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(253, 246, 227, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 98;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.dark .mobile-nav-overlay {
+    background: rgba(26, 36, 33, 0.97);
+}
+
+.mobile-nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-nav-overlay a {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    color: #4A5D4E;
+    padding: 0.65rem 2.5rem;
+    border-radius: 100px;
+    transition: background 0.2s, color 0.2s;
+    width: min(280px, 80vw);
+    text-align: center;
+}
+
+.dark .mobile-nav-overlay a {
+    color: #C9A96E;
+}
+
+.mobile-nav-overlay a:hover,
+.mobile-nav-overlay a:active {
+    background: rgba(156, 175, 136, 0.2);
+}
+
+/* =================================
+   GLOBAL MOBILE — 768px and below
+   ================================= */
+
+@media (max-width: 768px) {
+    /* ---- Nav ---- */
+    .nav-pill {
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+    .nav-pill > a.nav-link {
+        display: none;
+    }
+    .nav-hamburger {
+        display: flex;
+    }
+    .mobile-nav-overlay {
+        display: flex;
+    }
+
+    /* ---- Hero ---- */
+    .hero-section {
+        padding-top: 5.5rem !important;
+    }
+
+    /* ---- About ---- */
+    .camera-photo-widget {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* ---- Journey: horizontal-scroll tabs on small phones ---- */
+    .jchap-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 1px;
+    }
+    .jchap-tabs::-webkit-scrollbar { display: none; }
+    .jchap-tab {
+        flex-shrink: 0;
+    }
+
+    /* ---- Studio ---- */
+    .studio-content {
+        min-height: auto;
+    }
+    .archive-wrapper {
+        padding: 0;
+    }
+
+    /* ---- Museum controls: compact ---- */
+    .museum-controls {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        gap: 0.2rem;
+    }
+    .museum-control-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* ---- Websites: hide space decorations ---- */
+    .web-satellite,
+    .web-planet {
+        display: none;
+    }
+
+    /* ---- Certificates: boost folder icon size within zoomed scene ---- */
+    .os-folder-grid {
+        zoom: 1.2;
+    }
+
+    /* ---- Certificates: scale entire scene proportionally (same look as desktop) ---- */
+    .cert-scene-row {
+        padding: 0;
+    }
+    .cottage-table-scene {
+        zoom: 0.52;
+        width: 720px;
+        margin: 0 auto;
+    }
+    .cottage-monitor-outer {
+        width: 720px !important;
+    }
+    .cottage-desk-surface {
+        height: auto;
+        min-height: 150px;
+        overflow: visible;
+        padding: 0 4% 10px;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .cottage-desk-legs {
+        zoom: 1;
+    }
+
+    /* ---- Dialogue box: full width on mobile ---- */
+    .dialogue-box {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+    }
+}
+
+/* =================================
+   SMALL MOBILE — 480px and below
+   ================================= */
+
+@media (max-width: 480px) {
+    /* Hero name bigger breathing room */
+    .hero-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* About grid: center everything */
+    .camera-photo-widget {
+        max-width: 100%;
+    }
+
+    /* Journey: cards fit correctly */
+    .jchap-panels {
+        overflow: visible;
+    }
+    .pc-card {
+        width: 100%;
+    }
+
+    /* Monitor: keep at 720px for zoom-based scaling from 768px block */
+    .cottage-monitor-outer {
+        width: 720px !important;
+    }
+
+    /* Garden: ensure pots fit */
+    .flower-pot-card {
+        min-width: 0;
+        padding: 0.5rem;
+    }
+    .water-can-btn svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* iPod: scale down on tiny screens */
+    .ipod-container {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+
+    /* Contact tag: relative on mobile */
+    .contact-tag {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+    .contact-form {
+        padding-top: 1.5rem !important;
+    }
+
+    /* Scroll progress thinner */
+    #scrollProgress {
+        height: 3px;
+    }
+
+    /* Footer links */
+    footer .grid {
+        gap: 2rem;
+    }
 }

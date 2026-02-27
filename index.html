@@ -101,9 +101,26 @@
                     <svg class="w-4 h-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
                     <svg class="w-4 h-4 hidden dark:block text-accentGold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                 </button>
+                <!-- Hamburger: mobile only -->
+                <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <a href="#hero" onclick="closeMobileNav()">Home</a>
+        <a href="#about" onclick="closeMobileNav()">Origins</a>
+        <a href="#artifacts" onclick="closeMobileNav()">Journey</a>
+        <a href="#studio" onclick="closeMobileNav()">Studio</a>
+        <a href="#designs" onclick="closeMobileNav()">Gallery</a>
+        <a href="#websites" onclick="closeMobileNav()">Websites</a>
+        <a href="#certificates" onclick="closeMobileNav()">Certificates</a>
+        <a href="#wisdom" onclick="closeMobileNav()">Garden</a>
+        <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    </div>
 
     <!-- HERO SECTION -->
     <section id="hero" class="hero-section px-4 sm:px-8 pt-28 relative overflow-hidden">
@@ -238,7 +255,7 @@
             <div class="jchap-tabs reveal-section" id="jchapTabs" style="transition-delay:0.1s">
                 <button class="jchap-tab active" id="jtab-0" onclick="gotoChapter(0)" style="--jc:#9CAF88">
                     <span class="jt-num">01</span>
-                    <span class="jt-name">NexFlat CH</span>
+                    <span class="jt-name">nextflat CH</span>
                 </button>
                 <button class="jchap-tab" id="jtab-1" onclick="gotoChapter(1)" style="--jc:#D4A5A5">
                     <span class="jt-num">02</span>
@@ -264,7 +281,7 @@
                 <div class="pc-ghost pc-ghost-2" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
                 <div class="pc-ghost pc-ghost-1" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
 
-                <!-- 01 — NexFlat CH -->
+                <!-- 01 — nextflat CH -->
                 <div class="jchap-panel active" id="jpanel-0" style="--jc:#9CAF88">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -275,43 +292,43 @@
                         <div class="pc-body">
                             <div class="pc-message">
                                 <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"From Figma file to merged PR — same person."</blockquote>
+                                <blockquote class="pc-quote">"From Figma file to production — the whole thing, same person."</blockquote>
                                 <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">palette</span>Designed the component system in Figma, token by token</li>
-                                    <li><span class="material-icons-outlined">code</span>Implemented everything in React + TypeScript, end to end</li>
-                                    <li><span class="material-icons-outlined">hub</span>Real product — real tenants in Zurich use it every day</li>
+                                    <li><span class="material-icons-outlined">manage_accounts</span>Owned UI/UX strategy for a live platform with 500+ users</li>
+                                    <li><span class="material-icons-outlined">palette</span>Built atomic design system &amp; reusable components with CSS modules</li>
+                                    <li><span class="material-icons-outlined">dashboard</span>Redesigned homepage, dashboards &amp; feed — shipped to production</li>
+                                    <li><span class="material-icons-outlined">groups</span>Primary design decision-maker within the engineering team</li>
                                 </ul>
                                 <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">6mo+</span><span class="pc-stat-lbl">Ongoing</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">2</span><span class="pc-stat-lbl">Roles</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">5</span><span class="pc-stat-lbl">Stack</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">6mo</span><span class="pc-stat-lbl">Duration</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">500+</span><span class="pc-stat-lbl">Users</span></div>
+                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">2-in-1</span><span class="pc-stat-lbl">Design+Dev</span></div>
                                 </div>
                                 <div class="pc-chips">
-                                    <span class="pc-chip">React</span>
-                                    <span class="pc-chip">TypeScript</span>
                                     <span class="pc-chip">Figma</span>
-                                    <span class="pc-chip">Node.js</span>
-                                    <span class="pc-chip">PostgreSQL</span>
+                                    <span class="pc-chip">CSS Modules</span>
+                                    <span class="pc-chip">Atomic Design</span>
+                                    <span class="pc-chip">React</span>
+                                    <span class="pc-chip">Product Strategy</span>
                                 </div>
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
                                 <div class="pc-postmark">
                                     <span class="pc-pm-city">ZURICH</span>
-                                    <span class="pc-pm-year">2025</span>
+                                    <span class="pc-pm-year">2026</span>
                                 </div>
-                                <span class="pc-badge">Current</span>
                                 <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">NexFlat CH</h3>
-                                <p class="pc-role">Product Design &amp; Frontend Intern</p>
+                                <h3 class="pc-company">nextflat CH</h3>
+                                <p class="pc-role">Product Design &amp; Frontend Engineering Intern</p>
                                 <div class="pc-loc">
                                     <span class="material-icons-outlined">place</span>
-                                    Zurich
+                                    Zurich (Remote)
                                     <img src="https://flagcdn.com/w20/ch.png" width="16" height="11" alt="CH" loading="lazy">
                                 </div>
-                                <div class="pc-date">SEP 2025 — NOW</div>
+                                <div class="pc-date">SEP 2025 — MAR 2026</div>
                                 <div class="pc-addr-rule"></div>
-                                <p class="pc-story">Real product, real users. Every screen I designed ended up shipped. Still running, still being used.</p>
+                                <p class="pc-story">Real product, 500+ real users. Owned the entire design-to-code loop — strategy, system, and shipping. Every screen I designed made it to production.</p>
                             </div>
                         </div>
                     </div>
@@ -527,7 +544,7 @@
                         <span class="material-icons-outlined">chevron_left</span>
                     </button>
                     <div class="jflip-stack" id="jflipStack" role="tablist" aria-label="Card navigation">
-                        <button class="jflip-card active" data-num="01" style="--jc:#9CAF88" onclick="gotoChapter(0)" role="tab" aria-label="NexFlat CH" aria-selected="true"></button>
+                        <button class="jflip-card active" data-num="01" style="--jc:#9CAF88" onclick="gotoChapter(0)" role="tab" aria-label="nextflat CH" aria-selected="true"></button>
                         <button class="jflip-card" data-num="02" style="--jc:#D4A5A5" onclick="gotoChapter(1)" role="tab" aria-label="Sky Portugal" aria-selected="false"></button>
                         <button class="jflip-card" data-num="03" style="--jc:#E8C07D" onclick="gotoChapter(2)" role="tab" aria-label="SINFO" aria-selected="false"></button>
                         <button class="jflip-card" data-num="04" style="--jc:#B8A9C9" onclick="gotoChapter(3)" role="tab" aria-label="Diferencial" aria-selected="false"></button>
@@ -1041,6 +1058,10 @@
                         <!-- Left: standing books + plant -->
                         <div class="desk-deco-left">
                         </div>
+                        <!-- Mouse: next to keyboard -->
+                        <div class="desk-mouse-standalone">
+                            <div class="mouse-body"></div>
+                        </div>
                         <!-- Center: keyboard -->
                         <div class="desk-deco-center">
                             <!-- Keyboard below -->
@@ -1079,7 +1100,6 @@
                                 </div>
                                 <div class="mug-saucer"></div>
                             </div>
-                            <div class="mouse-body" style="margin-bottom:6px"></div>
                             <!-- Cute CSS kitten sitting on desk -->
                             <div class="desk-kitten" title="A cozy helper">
                                 <div class="kitty-body-wrap">

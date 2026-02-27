@@ -1,4 +1,21 @@
 // =================================
+// SCROLL POSITION PERSISTENCE (soft refresh only)
+// =================================
+(function () {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    const saved = sessionStorage.getItem('portfolioScrollY');
+    if (saved) {
+        window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
+        sessionStorage.removeItem('portfolioScrollY');
+    }
+    window.addEventListener('beforeunload', function () {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+    });
+})();
+
+// =================================
 // INITIALIZATION - Wait for GSAP to load
 // =================================
 
@@ -1726,3 +1743,62 @@ function ipodGoBack() {
 document.addEventListener('DOMContentLoaded', function() {
     updateIpodMenu();
 });
+
+// =================================
+// MOBILE NAVIGATION
+// =================================
+
+function toggleMobileNav() {
+    const btn = document.getElementById('navHamburger');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const nav = document.querySelector('nav');
+    if (!btn || !overlay) return;
+    // Always make nav visible when opening menu
+    if (nav) nav.classList.remove('nav-scrolled-hidden');
+    const isOpen = overlay.classList.contains('open');
+    btn.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
+function closeMobileNav() {
+    const btn = document.getElementById('navHamburger');
+    const overlay = document.getElementById('mobileNavOverlay');
+    if (btn) btn.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// =================================
+// AUTO-HIDE NAV ON MOBILE SCROLL
+// =================================
+
+(function() {
+    let lastScrollY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            const nav = document.querySelector('nav');
+            if (!nav) { ticking = false; return; }
+
+            if (window.innerWidth <= 900) {
+                // Scrolling DOWN past 80px → hide nav
+                if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                    nav.classList.add('nav-scrolled-hidden');
+                } else {
+                    // Scrolling UP → show nav
+                    nav.classList.remove('nav-scrolled-hidden');
+                }
+            } else {
+                nav.classList.remove('nav-scrolled-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        });
+        ticking = true;
+    }, { passive: true });
+})();
