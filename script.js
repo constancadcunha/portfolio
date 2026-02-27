@@ -25,30 +25,61 @@ function initSite() {
         gsap.registerPlugin(ScrollTrigger);
     }
 
+    const initWhenVisible = (selector, initFn, rootMargin = '220px') => {
+        const target = document.querySelector(selector);
+        if (!target || typeof initFn !== 'function') return;
+
+        if (!('IntersectionObserver' in window)) {
+            initFn();
+            return;
+        }
+
+        let initialized = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!initialized && entry.isIntersecting) {
+                    initialized = true;
+                    initFn();
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin });
+
+        observer.observe(target);
+    };
+
     initHeroAnimations();
     initRevealSections();
     initStudioIphone();
     initImageModal();
     initDialogueSystem();
     initTheme();
-    initMuseumGallery();
     initContactForm();
     initSmoothScroll();
     initStatCounters();
-    initAboutParticles();
-    initCameraWidget();
-    initFlowerPots();
-    // Creative enhancements
     initBrowserTyping();
-    initSkillWatering();
-    initTimelinePulse();
-    initWebsiteSignals();
-    initOsClock();
-    initOsBattery();
-    // Journey section
-    initJourneyFireflies();
-    initStoryBook();
-    initGardenButterflies();
+
+    initWhenVisible('#about', () => {
+        initAboutParticles();
+        initCameraWidget();
+    }, '260px');
+
+    initWhenVisible('#featured-cases', initTimelinePulse, '260px');
+    initWhenVisible('#artifacts', () => {
+        initJourneyFireflies();
+        initStoryBook();
+    }, '300px');
+    initWhenVisible('#designs', initMuseumGallery, '300px');
+    initWhenVisible('#websites', initWebsiteSignals, '260px');
+    initWhenVisible('#certificates', () => {
+        initOsClock();
+        initOsBattery();
+    }, '260px');
+    initWhenVisible('#wisdom', () => {
+        initFlowerPots();
+        initSkillWatering();
+        initGardenButterflies();
+    }, '300px');
 }
 
 // Wait for GSAP to be available
@@ -112,13 +143,17 @@ window.addEventListener('scroll', () => {
 // =================================
 
 function initHeroAnimations() {
-    gsap.to('#heroSubtitle', { opacity: 1, duration: 1, delay: 0.3 });
-    gsap.to('#heroName1', { opacity: 1, duration: 1, delay: 0.5 });
-    gsap.to('#heroName2', { opacity: 1, duration: 1, delay: 0.7 });
-    gsap.to('#badge1', { opacity: 1, duration: 0.6, delay: 0.9 });
-    gsap.to('#badge2', { opacity: 1, duration: 0.6, delay: 1.1 });
-    gsap.to('#badge3', { opacity: 1, duration: 0.6, delay: 1.3 });
-    gsap.to('#scrollHint', { opacity: 1, duration: 1, delay: 1.6 });
+    // Set initial states
+    gsap.set(['#heroTag', '#heroName1', '#heroSubline', '#heroCTA', '#heroGallery'], { y: 30 });
+    
+    // Animate in
+    gsap.to('#heroTag', { opacity: 1, y: 0, duration: 0.8, delay: 0.3 });
+    gsap.to('#heroName1', { opacity: 1, y: 0, duration: 1, delay: 0.6 });
+    gsap.to('#heroSubline', { opacity: 1, y: 0, duration: 0.8, delay: 1.0 });
+    gsap.to('#heroCTA', { opacity: 1, y: 0, duration: 0.8, delay: 1.4 });
+    gsap.to('#heroGallery', { opacity: 1, y: 0, duration: 1, delay: 1.8 });
+    gsap.to('#heroLocation', { opacity: 1, duration: 0.6, delay: 2.2 });
+    gsap.to('#scrollHint', { opacity: 1, duration: 1, delay: 2.6 });
 }
 
 // =================================
@@ -149,7 +184,6 @@ function initStudioIphone() {
     const archiveProject = document.getElementById('archive-project');
 
     if (!iphoneFixed || !viewportImg) return;
-
     iphoneFixed.style.display = 'none';
 
     // Create a ScrollTrigger for the entire studio section
@@ -1758,6 +1792,7 @@ function toggleMobileNav() {
     const isOpen = overlay.classList.contains('open');
     btn.classList.toggle('open');
     overlay.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
     document.body.style.overflow = isOpen ? '' : 'hidden';
 }
 
@@ -1765,6 +1800,7 @@ function closeMobileNav() {
     const btn = document.getElementById('navHamburger');
     const overlay = document.getElementById('mobileNavOverlay');
     if (btn) btn.classList.remove('open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
     if (overlay) overlay.classList.remove('open');
     document.body.style.overflow = '';
 }
