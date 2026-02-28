@@ -1038,30 +1038,9 @@ function triggerCameraShoot(e) {
 function fireShutter(body, polaroid, hint) {
     cameraIsAnimating = true;
 
-    // Get or create flash overlay
-    let overlay = document.getElementById('cameraFlashBurst');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'cameraFlashBurst';
-        overlay.className = 'camera-flash-burst';
-        document.body.appendChild(overlay);
-    }
-
     // Shake camera body
     body.classList.add('shooting');
     setTimeout(() => body.classList.remove('shooting'), 300);
-
-    // Flash
-    overlay.classList.add('active');
-    setTimeout(() => overlay.classList.remove('active'), 120);
-
-    // Flash unit flare
-    const flashUnit = body.querySelector('.camera-flash-unit');
-    if (flashUnit) {
-        flashUnit.style.background = 'white';
-        flashUnit.style.boxShadow = '0 0 20px 8px rgba(255,255,255,0.7)';
-        setTimeout(() => { flashUnit.style.background = ''; flashUnit.style.boxShadow = ''; }, 200);
-    }
 
     // Eject polaroid — animation class triggers CSS keyframe
     setTimeout(() => {
@@ -1169,22 +1148,22 @@ function waterPlant(potIdx) {
         canBtn.classList.remove('watering');
         void canBtn.offsetWidth;
         canBtn.classList.add('watering');
-        setTimeout(() => canBtn.classList.remove('watering'), 620);
+        setTimeout(() => canBtn.classList.remove('watering'), 1650);
     }
 
     // Bloom the pot (and mark as watered to suppress hover tooltip)
     potEl.classList.add('bloomed', 'watered');
 
-    // Water drops falling onto plant
-    for (let i = 0; i < 6; i++) {
+    // Water drops falling onto plant — timed to when can reaches pour position (~720ms)
+    for (let i = 0; i < 9; i++) {
         setTimeout(() => {
             const drop = document.createElement('div');
             drop.className = 'garden-water-drop';
-            drop.style.left = (30 + Math.random() * 40) + '%';
-            drop.style.top = '0';
+            drop.style.left = (12 + Math.random() * 22) + '%';
+            drop.style.top = '-4px';
             plantArea.appendChild(drop);
             setTimeout(() => drop.remove(), 750);
-        }, i * 70);
+        }, 680 + i * 60);
     }
 
     // Flying skill petals (fun visual burst)
@@ -1690,14 +1669,54 @@ let ipodInDetailView = false;
 
 const credentialData = [
     {
-        title: "Cambridge Proficiency",
-        subtitle: "C2 Level",
+        title: "M.Sc. Computer Science",
+        subtitle: "Interaction & Visualization (2024–Present)",
+        description: "Master's degree at Instituto Superior Técnico specializing in interaction design, data visualization techniques, and human-computer interaction."
+    },
+    {
+        title: "B.Sc. Computer Science",
+        subtitle: "Instituto Superior Técnico (2020–2024)",
+        description: "Bachelor's degree in Computer Science, building a strong foundation in software engineering, algorithms, and system design."
+    },
+    {
+        title: "Portuguese",
+        subtitle: "Native Speaker",
+        description: "Native fluency in Portuguese with deep cultural understanding and professional communication skills."
+    },
+    {
+        title: "English",
+        subtitle: "C2 Level - Cambridge Proficiency",
         description: "Advanced English proficiency certification demonstrating mastery of the English language at the highest level."
     },
     {
-        title: "Interaction & Visualization",
-        subtitle: "M.Sc. Degree",
-        description: "Master's degree specializing in interaction design, data visualization techniques, and human-computer interaction."
+        title: "French",
+        subtitle: "B2 Level",
+        description: "Upper-intermediate French proficiency with strong reading, writing, and conversational abilities."
+    },
+    {
+        title: "Spanish",
+        subtitle: "B1 Level",
+        description: "Intermediate Spanish proficiency enabling effective communication in familiar contexts."
+    },
+    {
+        title: "WebSummit Volunteer",
+        subtitle: "2023",
+        description: "Volunteered at one of Europe's largest tech conferences, supporting event operations and attendee experience."
+    },
+    {
+        title: "ReFood Volunteer",
+        subtitle: "2016–2020",
+        description: "Reduced food waste and redistributed meals to families in need. Sorted, organized, and prepared food donations in collaboration with volunteer teams."
+    },
+    {
+        title: "Banco Alimentar Volunteer",
+        subtitle: "2012–2020",
+        description: "Long-term volunteer commitment across multiple national campaigns, supporting large-scale food collection and distribution initiatives for families facing food insecurity."
+    },
+    {
+        title: "Ballet Teacher Assistant",
+        subtitle: "Dance Academy (2015–2019)",
+        description: "Assisted in ballet instruction and class coordination. Supported choreography planning and live performances while mentoring young dancers in technique and discipline."
     }
 ];
 
@@ -1773,9 +1792,79 @@ function ipodGoBack() {
     ipodInDetailView = false;
 }
 
+// Update iPod time
+function updateIpodTime() {
+    const timeEl = document.getElementById('ipodTime');
+    if (timeEl) {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        timeEl.textContent = `${hours}:${minutes}`;
+    }
+}
+
+// Update iPod battery level
+function updateIpodBattery() {
+    const batteryEl = document.getElementById('batteryLevel');
+    if (batteryEl && 'getBattery' in navigator) {
+        navigator.getBattery().then(battery => {
+            const level = Math.round(battery.level * 100);
+            batteryEl.style.width = `${level}%`;
+            
+            // Change color based on level
+            if (level > 50) {
+                batteryEl.style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A)';
+            } else if (level > 20) {
+                batteryEl.style.background = 'linear-gradient(90deg, #FFC107, #FFD54F)';
+            } else {
+                batteryEl.style.background = 'linear-gradient(90deg, #F44336, #E57373)';
+            }
+            
+            // Update when battery changes
+            battery.addEventListener('levelchange', () => updateIpodBattery());
+        });
+    }
+}
+
+// Update iPod internet status
+function updateIpodInternet() {
+    const wifiEl = document.getElementById('ipodWifi');
+    if (wifiEl) {
+        const online = navigator.onLine;
+        wifiEl.style.opacity = online ? '1' : '0.3';
+        wifiEl.title = online ? 'Connected' : 'Offline';
+    }
+}
+
+// Add click handlers to menu items
+function initIpodClickHandlers() {
+    const menuItems = document.querySelectorAll('.ipod-menu-item');
+    menuItems.forEach((item, index) => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+            if (!ipodInDetailView) {
+                currentIpodIndex = index;
+                updateIpodMenu();
+                showIpodDetail();
+            }
+        });
+    });
+}
+
 // Initialize iPod
 document.addEventListener('DOMContentLoaded', function() {
     updateIpodMenu();
+    updateIpodTime();
+    updateIpodBattery();
+    updateIpodInternet();
+    initIpodClickHandlers();
+    
+    // Update time every minute
+    setInterval(updateIpodTime, 60000);
+    
+    // Update internet status on change
+    window.addEventListener('online', updateIpodInternet);
+    window.addEventListener('offline', updateIpodInternet);
 });
 
 // =================================

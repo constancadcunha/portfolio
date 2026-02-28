@@ -407,9 +407,14 @@
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
-                                <div class="pc-postmark">
-                                    <span class="pc-pm-city">ZURICH</span>
-                                    <span class="pc-pm-year">2026</span>
+                                <div class="pc-postmark-company-row">
+                                    <div class="pc-postmark">
+                                        <span class="pc-pm-city">ZURICH</span>
+                                        <span class="pc-pm-year">2026</span>
+                                    </div>
+                                    <div class="pc-company-badge">
+                                        <img src="https://nextflat.ch/icons/favicon-black.svg" alt="nextflat" class="pc-company-logo" />
+                                    </div>
                                 </div>
                                 <div class="pc-addr-rule"></div>
                                 <h3 class="pc-company">nextflat CH</h3>
@@ -457,9 +462,14 @@
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
-                                <div class="pc-postmark">
-                                    <span class="pc-pm-city">LISBON</span>
-                                    <span class="pc-pm-year">2024</span>
+                                <div class="pc-postmark-company-row">
+                                    <div class="pc-postmark">
+                                        <span class="pc-pm-city">LISBON</span>
+                                        <span class="pc-pm-year">2024</span>
+                                    </div>
+                                    <div class="pc-company-badge">
+                                        <img src="https://sinfo.org/images/companies/plats/sky.svg" alt="Sky" class="pc-company-logo" />
+                                    </div>
                                 </div>
                                 <div class="pc-addr-rule"></div>
                                 <h3 class="pc-company">Sky Portugal</h3>
@@ -508,9 +518,14 @@
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
-                                <div class="pc-postmark">
-                                    <span class="pc-pm-city">LISBON</span>
-                                    <span class="pc-pm-year">2025</span>
+                                <div class="pc-postmark-company-row">
+                                    <div class="pc-postmark">
+                                        <span class="pc-pm-city">LISBON</span>
+                                        <span class="pc-pm-year">2025</span>
+                                    </div>
+                                    <div class="pc-company-badge">
+                                        <img src="sinfo.png" alt="SINFO" class="pc-company-logo" />
+                                    </div>
                                 </div>
                                 <div class="pc-addr-rule"></div>
                                 <h3 class="pc-company">SINFO</h3>
@@ -558,9 +573,14 @@
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
-                                <div class="pc-postmark">
-                                    <span class="pc-pm-city">LISBON</span>
-                                    <span class="pc-pm-year">2022</span>
+                                <div class="pc-postmark-company-row">
+                                    <div class="pc-postmark">
+                                        <span class="pc-pm-city">LISBON</span>
+                                        <span class="pc-pm-year">2022</span>
+                                    </div>
+                                    <div class="pc-company-badge">
+                                        <img src="diferencial.png" alt="Diferencial" class="pc-company-logo" />
+                                    </div>
                                 </div>
                                 <div class="pc-addr-rule"></div>
                                 <h3 class="pc-company">Diferencial</h3>
@@ -608,9 +628,14 @@
                             </div>
                             <div class="pc-divider"></div>
                             <div class="pc-address">
-                                <div class="pc-postmark">
-                                    <span class="pc-pm-city">LISBON</span>
-                                    <span class="pc-pm-year">2023</span>
+                                <div class="pc-postmark-company-row">
+                                    <div class="pc-postmark">
+                                        <span class="pc-pm-city">LISBON</span>
+                                        <span class="pc-pm-year">2023</span>
+                                    </div>
+                                    <div class="pc-company-badge">
+                                        <span class="material-icons-outlined">school</span>
+                                    </div>
                                 </div>
                                 <div class="pc-addr-rule"></div>
                                 <h3 class="pc-company">Private Tutoring</h3>
@@ -1280,7 +1305,7 @@
             <div class="text-center mb-12 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Skills cultivated in my</p>
                 <h2 class="text-4xl sm:text-5xl font-serif italic">KNOWLEDGE GARDEN</h2>
-                <p class="text-xs opacity-50 mt-2 font-display italic">Click the watering can to bloom each plant <span class="material-icons-outlined align-middle text-xs">watering_can</span></p>
+                <p class="text-xs opacity-75 mt-2 mb-8 font-display italic font-semibold" style="text-align:center;display:block;width:100%">Click the watering can to bloom each plant <span class="material-icons-outlined" style="font-size:14px;vertical-align:middle">watering_can</span></p>
             </div>
 
             <!-- Flower pot row -->
@@ -1288,6 +1313,7 @@
 
                 <!-- Pot 1: Languages -->
                 <div class="flower-pot-card reveal-section" id="pot-0">
+                    <div class="flower-skill-labels" id="skill-labels-0"></div>
                     <div class="flower-plant-area">
                         <button class="water-can-btn" onclick="waterPlant(0)" title="Water this plant!">
                             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -1308,7 +1334,7 @@
                             <div class="petal" style="background:#9CAF88"></div>
                             <div class="flower-center" style="background:#4A5D4E;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">eco</span></div>
                         </div>
-                        <div class="flower-stem-body" style="height:50px">
+                        <div class="flower-stem-body" style="height:55px">
                             <div class="stem-leaf left"></div>
                             <div class="stem-leaf right"></div>
                         </div>
@@ -1316,8 +1342,6 @@
                         <div class="flower-skills-tooltip">
                             Python &amp; TypeScript<br>Java &amp; C/C++<br>Julia &amp; Prolog<br>JavaScript
                         </div>
-                        <!-- Permanent skill labels (revealed by watering) -->
-                        <div class="flower-skill-labels" id="skill-labels-0"></div>
                     </div>
                     <div class="pot-vessel">
                         <div class="pot-rim"></div>
@@ -1329,6 +1353,7 @@
 
                 <!-- Pot 2: Frontend -->
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.1s" id="pot-1">
+                    <div class="flower-skill-labels" id="skill-labels-1"></div>
                     <div class="flower-plant-area">
                         <button class="water-can-btn" onclick="waterPlant(1)" title="Water this plant!">
                             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -1349,14 +1374,13 @@
                             <div class="petal" style="background:#E8C07D"></div>
                             <div class="flower-center" style="background:#B87D64;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">local_florist</span></div>
                         </div>
-                        <div class="flower-stem-body" style="height:60px">
+                        <div class="flower-stem-body" style="height:55px">
                             <div class="stem-leaf left"></div>
                             <div class="stem-leaf right"></div>
                         </div>
                         <div class="flower-skills-tooltip">
                             React &amp; SwiftUI<br>Tailwind CSS<br>Design Systems<br>Next.js
                         </div>
-                        <div class="flower-skill-labels" id="skill-labels-1"></div>
                     </div>
                     <div class="pot-vessel">
                         <div class="pot-rim"></div>
@@ -1368,6 +1392,7 @@
 
                 <!-- Pot 3: Design Tools -->
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.2s" id="pot-2">
+                    <div class="flower-skill-labels" id="skill-labels-2"></div>
                     <div class="flower-plant-area">
                         <button class="water-can-btn" onclick="waterPlant(2)" title="Water this plant!">
                             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -1395,7 +1420,6 @@
                         <div class="flower-skills-tooltip">
                             Figma Expert<br>Adobe Illustrator<br>Photoshop<br>Motion Design
                         </div>
-                        <div class="flower-skill-labels" id="skill-labels-2"></div>
                     </div>
                     <div class="pot-vessel">
                         <div class="pot-rim"></div>
@@ -1407,6 +1431,7 @@
 
                 <!-- Pot 4: Soft Skills -->
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.3s" id="pot-3">
+                    <div class="flower-skill-labels" id="skill-labels-3"></div>
                     <div class="flower-plant-area">
                         <button class="water-can-btn" onclick="waterPlant(3)" title="Water this plant!">
                             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -1427,14 +1452,13 @@
                             <div class="petal" style="background:#B8A9C9"></div>
                             <div class="flower-center" style="background:#6B5580;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">auto_awesome</span></div>
                         </div>
-                        <div class="flower-stem-body" style="height:64px">
+                        <div class="flower-stem-body" style="height:55px">
                             <div class="stem-leaf left"></div>
                             <div class="stem-leaf right"></div>
                         </div>
                         <div class="flower-skills-tooltip">
                             Strategic Leadership<br>Product Thinking<br>Rapid Delivery<br>User Empathy
                         </div>
-                        <div class="flower-skill-labels" id="skill-labels-3"></div>
                     </div>
                     <div class="pot-vessel">
                         <div class="pot-rim"></div>
@@ -1502,8 +1526,12 @@
                         <div class="ipod-screen">
                             <div class="ipod-screen-inner">
                                 <div class="ipod-status-bar">
-                                    <div class="ipod-battery">
-                                        <div class="battery-level"></div>
+                                    <div class="ipod-time" id="ipodTime">12:00</div>
+                                    <div class="ipod-status-icons">
+                                        <span class="ipod-wifi" id="ipodWifi">📶</span>
+                                        <div class="ipod-battery">
+                                            <div class="battery-level" id="batteryLevel"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Content Display -->
@@ -1512,11 +1540,43 @@
                                     <div class="ipod-menu" id="ipodMenu">
                                         <div class="ipod-menu-item active" data-index="0">
                                             <span class="ipod-item-icon">►</span>
-                                            <span>Cambridge C2</span>
+                                            <span>M.Sc. Computer Science</span>
                                         </div>
                                         <div class="ipod-menu-item" data-index="1">
                                             <span class="ipod-item-icon">►</span>
-                                            <span>M.Sc. Interaction</span>
+                                            <span>B.Sc. Computer Science</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="2">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>Portuguese (Native)</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="3">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>English (C2)</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="4">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>French (B2)</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="5">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>Spanish (B1)</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="6">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>WebSummit Volunteer</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="7">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>ReFood Volunteer</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="8">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>Banco Alimentar</span>
+                                        </div>
+                                        <div class="ipod-menu-item" data-index="9">
+                                            <span class="ipod-item-icon">►</span>
+                                            <span>Ballet Teacher Asst.</span>
                                         </div>
                                     </div>
                                 </div>
