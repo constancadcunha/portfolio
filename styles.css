@@ -7387,3 +7387,205 @@ img {
 .animation-delay-4000 {
     animation-delay: 4s;
 }
+
+/* =================================
+   CONVERSATIONAL INTRO OVERLAY
+   ================================= */
+
+#intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #FDF6E3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+    transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.dark #intro-overlay {
+    background: #1A2421;
+}
+
+#intro-overlay.intro-leaving {
+    transform: translateY(-100%);
+}
+
+#intro-overlay.intro-hidden {
+    display: none;
+}
+
+#intro-stage {
+    text-align: left;
+    max-width: 640px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.intro-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5.5vw, 3.8rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    color: #4A5D4E;
+    margin-bottom: 0.15em;
+    opacity: 0;
+    min-height: 1.2em;
+    transition: opacity 0.1s;
+}
+
+.dark .intro-line {
+    color: #FDF6E3;
+}
+
+.intro-reply {
+    color: #9CAF88 !important;
+    font-style: normal;
+}
+
+.dark .intro-reply {
+    color: #C9A96E !important;
+}
+
+.intro-line.intro-visible {
+    opacity: 1;
+}
+
+.intro-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.75em;
+    background: #9CAF88;
+    margin-left: 3px;
+    vertical-align: middle;
+    border-radius: 1px;
+    animation: introCursorBlink 0.75s step-end infinite;
+}
+
+.dark .intro-cursor {
+    background: #C9A96E;
+}
+
+@keyframes introCursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.intro-actions {
+    margin-top: 2.2rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.intro-actions.intro-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-btn-primary {
+    color: #4A5D4E;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1.5px solid #9CAF88;
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+
+.intro-btn-primary:hover {
+    color: #9CAF88;
+    border-color: #9CAF88;
+}
+
+.dark .intro-btn-primary {
+    color: #C9A96E;
+    border-color: #C9A96E;
+}
+
+.dark .intro-btn-primary:hover {
+    color: #E8C07D;
+}
+
+.intro-btn-secondary {
+    color: #4A5D4E;
+    opacity: 0.4;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.intro-btn-secondary:hover {
+    opacity: 0.65;
+}
+
+.dark .intro-btn-secondary {
+    color: #FDF6E3;
+}
+
+.intro-actions-sep {
+    opacity: 0.25;
+    color: #4A5D4E;
+    user-select: none;
+}
+
+.dark .intro-actions-sep {
+    color: #FDF6E3;
+}
+
+/* Botanical corner decorations */
+.intro-botanical-br {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 260px;
+    height: 260px;
+    color: #9CAF88;
+    opacity: 0.13;
+    pointer-events: none;
+    transform: rotate(0deg);
+}
+
+.dark .intro-botanical-br {
+    opacity: 0.08;
+    color: #C9A96E;
+}
+
+.intro-botanical-tl {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 180px;
+    height: 180px;
+    color: #9CAF88;
+    opacity: 0.09;
+    pointer-events: none;
+}
+
+.dark .intro-botanical-tl {
+    opacity: 0.06;
+    color: #C9A96E;
+}
+
+@media (max-width: 640px) {
+    .intro-line {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+    }
+    .intro-botanical-br {
+        width: 180px;
+        height: 180px;
+    }
+    .intro-botanical-tl {
+        width: 120px;
+        height: 120px;
+    }
+}

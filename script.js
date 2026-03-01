@@ -48,7 +48,8 @@ function initSite() {
         observer.observe(target);
     };
 
-    initHeroAnimations();
+    // Intro overlay controls hero animation timing
+    initIntroOverlay(initHeroAnimations);
     initRevealSections();
     initStudioIphone();
     initImageModal();
@@ -137,6 +138,103 @@ window.addEventListener('scroll', () => {
         ticking = true;
     }
 }, { passive: true });
+
+// =================================
+// CONVERSATIONAL INTRO OVERLAY
+// =================================
+
+function initIntroOverlay(onComplete) {
+    const overlay = document.getElementById('intro-overlay');
+    if (!overlay) { if (onComplete) onComplete(); return; }
+
+    // Check if intro was already shown in this session
+    if (sessionStorage.getItem('introShown')) {
+        if (onComplete) onComplete();
+        overlay.classList.add('intro-hidden');
+        return;
+    }
+
+    // Mark intro as shown in this session
+    sessionStorage.setItem('introShown', 'true');
+
+    // Scroll to top before showing intro
+    window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
+
+    const SCRIPT = [
+        { id: 'intro-l1', text: "hi. i\u2019m constan\u00e7a." },
+        { id: 'intro-l2', text: "product designer." },
+        { id: 'intro-l3', text: "crafting cozy digital experiences" },
+        { id: 'intro-l4', text: "one detail at a time." },
+    ];
+
+    const actions = document.getElementById('intro-actions');
+
+    function typeText(el, text, speed, onDone) {
+        el.classList.add('intro-visible');
+        el.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'intro-cursor';
+        el.appendChild(cursor);
+
+        let i = 0;
+        function tick() {
+            if (i < text.length) {
+                el.insertBefore(document.createTextNode(text[i]), cursor);
+                i++;
+                setTimeout(tick, speed);
+            } else {
+                cursor.remove();
+                if (onDone) onDone();
+            }
+        }
+        tick();
+    }
+
+    function runSequence(index) {
+        if (index >= SCRIPT.length) {
+            setTimeout(() => actions.classList.add('intro-visible'), 200);
+            return;
+        }
+        const { id, text } = SCRIPT[index];
+        const el = document.getElementById(id);
+        const delayBefore = index === 0 ? 200 : 120;
+        const charSpeed = index === 0 ? 35 : 28;
+
+        setTimeout(() => {
+            typeText(el, text, charSpeed, () => {
+                setTimeout(() => runSequence(index + 1), 150);
+            });
+        }, delayBefore);
+    }
+
+    function closeIntro() {
+        if (onComplete) onComplete();
+        overlay.classList.add('intro-leaving');
+        setTimeout(() => {
+            overlay.classList.add('intro-hidden');
+            document.body.style.overflow = '';
+        }, 1100);
+    }
+
+    document.getElementById('intro-say-hi').addEventListener('click', (e) => {
+        e.preventDefault();
+        actions.classList.remove('intro-visible');
+        const replyEl = document.getElementById('intro-l5');
+        setTimeout(() => {
+            typeText(replyEl, "lovely to meet you. welcome in.", 35, () => {
+                setTimeout(closeIntro, 400);
+            });
+        }, 120);
+    });
+
+    document.getElementById('intro-skip').addEventListener('click', (e) => {
+        e.preventDefault();
+        closeIntro();
+    });
+
+    runSequence(0);
+}
 
 // =================================
 // HERO ANIMATIONS

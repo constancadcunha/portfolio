@@ -84,6 +84,39 @@
         <img src="" alt="Full size image" id="modalImage">
     </div>
 
+    <!-- Conversational Intro Overlay -->
+    <div id="intro-overlay">
+        <!-- Botanical corner decoration -->
+        <svg class="intro-botanical-br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M180 180 Q140 120 80 100 Q40 88 20 20" stroke-linecap="round"/>
+            <path d="M180 180 Q160 130 120 90 Q90 60 100 20" stroke-linecap="round"/>
+            <path d="M80 100 Q70 70 90 40" stroke-linecap="round"/>
+            <path d="M120 90 Q130 60 110 30" stroke-linecap="round"/>
+            <ellipse cx="75" cy="95" rx="14" ry="9" transform="rotate(-30 75 95)"/>
+            <ellipse cx="115" cy="85" rx="12" ry="8" transform="rotate(20 115 85)"/>
+            <ellipse cx="100" cy="60" rx="10" ry="7" transform="rotate(-10 100 60)"/>
+        </svg>
+        <svg class="intro-botanical-tl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M20 20 Q60 60 80 120" stroke-linecap="round"/>
+            <path d="M20 20 Q70 50 90 100" stroke-linecap="round"/>
+            <ellipse cx="55" cy="55" rx="12" ry="8" transform="rotate(40 55 55)"/>
+            <ellipse cx="72" cy="80" rx="10" ry="7" transform="rotate(-20 72 80)"/>
+        </svg>
+
+        <div id="intro-stage">
+            <p class="intro-line" id="intro-l1"></p>
+            <p class="intro-line" id="intro-l2"></p>
+            <p class="intro-line" id="intro-l3"></p>
+            <p class="intro-line" id="intro-l4"></p>
+            <p class="intro-line intro-reply" id="intro-l5"></p>
+            <div class="intro-actions" id="intro-actions">
+                <a href="#" id="intro-say-hi" class="intro-btn-primary">say hi back</a>
+                <span class="intro-actions-sep">/</span>
+                <a href="#" id="intro-skip" class="intro-btn-secondary">skip</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-inner">
