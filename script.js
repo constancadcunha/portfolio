@@ -245,7 +245,7 @@ function initRevealSections() {
 }
 
 function initStudioIphone() {
-    const projectEntries = document.querySelectorAll('.project-entry');
+    const projectEntries = document.querySelectorAll('#studio .project-entry');
     const viewportImg = document.getElementById('viewportImg');
     const iphoneWrapper = document.getElementById('iphoneWrapper');
     const iphoneFixed = document.getElementById('iphoneFixed');
@@ -260,7 +260,7 @@ function initStudioIphone() {
         start: 'top 40%',
         end: 'bottom bottom',
         onEnter: () => {
-            const firstNonArchive = document.querySelector('.project-entry:not(#archive-project)');
+            const firstNonArchive = document.querySelector('#studio .project-entry:not(#archive-project)');
             if (firstNonArchive) {
                 updatePhone(firstNonArchive);
                 iphoneFixed.style.display = 'block';
@@ -367,6 +367,7 @@ function initDialogueSystem() {
         about: "Lisbon-based. Open to relocate or go remote. <span class='material-icons-outlined align-middle'>public</span>",
         artifacts: "Click through the postcards to see where I've been. <span class='material-icons-outlined align-middle'>grass</span>",
         studio: "Scroll through — the phone preview updates with each project. <span class='material-icons-outlined align-middle'>phone_iphone</span>",
+        'vinyl-lab': "Side B projects: quick experiments with stronger product logic. <span class='material-icons-outlined align-middle'>album</span>",
         designs: "Click anything to see it full size. <span class='material-icons-outlined align-middle'>auto_awesome</span>",
         websites: "A couple of sites I built. <span class='material-icons-outlined align-middle'>spa</span>",
         certificates: "Click a folder to open a certificate. <span class='material-icons-outlined align-middle'>computer</span>",
@@ -878,6 +879,61 @@ const CERT_DATA = [
     { name: 'Design Thinking Co-Creator',       color: '#9CAF88', issuer: 'IBM',        desc: 'Cross-functional collaboration, workshop facilitation, and co-creation techniques at scale.',            link: 'certificates/Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf' },
 ];
 
+let certWindowInMonitor = false;
+let certWindowRaf = null;
+
+function positionCertWindowInMonitor() {
+    const win = document.getElementById('osWindow');
+    const monitorScreen = document.querySelector('.cottage-monitor-screen');
+    const backdrop = document.getElementById('osBackdrop');
+    if (!win || !monitorScreen || !backdrop || win.classList.contains('hidden') || !certWindowInMonitor) return;
+
+    const screenW = monitorScreen.clientWidth;
+    const screenH = monitorScreen.clientHeight;
+    const menubarH = 24;
+    const pad = 12;
+
+    const usableH = Math.max(220, screenH - menubarH - pad * 2);
+    const winW = Math.min(520, Math.max(300, Math.round(screenW * 0.78)));
+    const winH = Math.min(440, Math.max(230, Math.round(usableH * 0.74)));
+    const left = Math.max(pad, Math.round((screenW - winW) / 2));
+    const top = menubarH + Math.max(pad, Math.round((usableH - winH) / 2));
+
+    Object.assign(backdrop.style, {
+        position: 'absolute',
+        top: menubarH + 'px',
+        left: '0',
+        bottom: 'auto',
+        right: 'auto',
+        width: '100%',
+        height: `calc(100% - ${menubarH}px)`,
+        borderRadius: '0 0 0.6rem 0.6rem',
+        background: 'rgba(0,0,0,0.45)',
+        backdropFilter: 'blur(2px)',
+        zIndex: '20'
+    });
+
+    Object.assign(win.style, {
+        position: 'absolute',
+        transform: 'none',
+        top: top + 'px',
+        left: left + 'px',
+        width: winW + 'px',
+        maxHeight: winH + 'px',
+        overflowY: 'auto',
+        zIndex: '30'
+    });
+}
+
+function scheduleCertWindowPosition() {
+    if (!certWindowInMonitor) return;
+    if (certWindowRaf !== null) return;
+    certWindowRaf = requestAnimationFrame(() => {
+        certWindowRaf = null;
+        positionCertWindowInMonitor();
+    });
+}
+
 function openCertWindow(idx) {
     const cert = CERT_DATA[idx];
     if (!cert) return;
@@ -896,47 +952,30 @@ function openCertWindow(idx) {
     const monitorScreen = document.querySelector('.cottage-monitor-screen');
 
     if (monitorScreen && win) {
-        const rect = monitorScreen.getBoundingClientRect();
-        const menubarH = 24; 
-        const pad = 10;
-
-        
-        Object.assign(backdrop.style, {
-            top: rect.top + 'px',
-            left: rect.left + 'px',
-            bottom: 'auto',
-            right: 'auto',
-            width: rect.width + 'px',
-            height: rect.height + 'px',
-            borderRadius: '0.6rem',
-            background: 'rgba(0,0,0,0.45)',
-            backdropFilter: 'blur(2px)'
-        });
-
-        
-        Object.assign(win.style, {
-            position: 'fixed',
-            transform: 'none',
-            top: (rect.top + menubarH + pad) + 'px',
-            left: (rect.left + pad) + 'px',
-            width: (rect.width - pad * 2) + 'px',
-            maxHeight: (rect.height - menubarH - pad * 2) + 'px',
-            overflowY: 'auto'
-        });
+        if (backdrop.parentElement !== monitorScreen) monitorScreen.appendChild(backdrop);
+        if (win.parentElement !== monitorScreen) monitorScreen.appendChild(win);
+        certWindowInMonitor = true;
+        positionCertWindowInMonitor();
         win.classList.add('in-monitor');
     } else {
+        if (backdrop.parentElement !== document.body) document.body.appendChild(backdrop);
+        if (win && win.parentElement !== document.body) document.body.appendChild(win);
+        certWindowInMonitor = false;
         
         Object.assign(backdrop.style, {
+            position: 'fixed',
             top: '0', left: '0', bottom: '0', right: '0',
             width: '', height: '', borderRadius: '0',
-            background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(3px)'
+            background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(3px)',
+            zIndex: '9499'
         });
         Object.assign(win.style, {
             position: 'fixed',
             transform: 'translate(-50%,-50%)',
             top: '50%', left: '50%',
             width: 'min(520px, 92vw)',
-            maxHeight: '', overflowY: ''
+            maxHeight: '', overflowY: '',
+            zIndex: '9500'
         });
         win.classList.remove('in-monitor');
     }
@@ -980,7 +1019,11 @@ function closeCertWindow() {
     if (win) win.classList.add('hidden');
     const bd = document.getElementById('osBackdrop');
     if (bd) bd.style.display = 'none';
+    certWindowInMonitor = false;
 }
+
+window.addEventListener('scroll', scheduleCertWindowPosition, { passive: true });
+window.addEventListener('resize', scheduleCertWindowPosition);
 
 function initCameraWidget() {
     const widget = document.getElementById('cameraWidget');
