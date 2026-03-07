@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Constança Cunha | Product Designer</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='25' y='20' width='50' height='60' rx='10' fill='%23B8B8B8' stroke='%23888' stroke-width='2'/><rect x='30' y='25' width='40' height='32' rx='3' fill='%23C8E6F5'/><circle cx='50' cy='68' r='10' fill='%23E5E5E5' stroke='%23999' stroke-width='1.5'/><circle cx='50' cy='68' r='7' fill='%23F5F5F5'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23121917'/><stop offset='1' stop-color='%231a2a25'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><circle cx='50' cy='50' r='31' fill='%23070707' stroke='%23242f2c' stroke-width='2'/><circle cx='50' cy='50' r='17' fill='%23d8b777'/><circle cx='50' cy='50' r='4.3' fill='%23f5e7c8'/><path d='M70 25c6 8 7 18 2 28' fill='none' stroke='%23d8b777' stroke-width='3' stroke-linecap='round'/><text x='50' y='56' text-anchor='middle' font-family='Georgia,serif' font-size='14' font-weight='700' fill='%23141d1a'>CC</text></svg>">
     
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -793,19 +793,21 @@
     <section id="vinyl-lab" class="py-24 relative whimsy-section vinyl-lab-section">
         <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-14 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Side B Archive</p>
-                <h2 class="text-4xl sm:text-6xl font-serif italic tracking-wide">VINYL RECORDS</h2>
-                <p class="text-sm mt-4 opacity-75 max-w-2xl mx-auto">Built like a record crate: sleeve, disc, and liner notes. Same projects, clearer product logic.</p>
+                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">Side B Archive</p>
+                <h2 class="text-4xl sm:text-6xl font-serif italic tracking-wide text-[#d8b777]">VINYL RECORDS</h2>
+                <p class="text-sm mt-4 opacity-75 max-w-2xl mx-auto text-[#e5d5ad]">Built like a record crate: sleeve, disc, and liner notes. Same projects, clearer product logic.</p>
             </div>
 
             <div class="vinyl-crate reveal-section">
                 <article class="record-entry" style="--recordAccent:#E8C07D;">
-                    <div class="record-sleeve">
-                        <img src="cottage-tunes-1.webp" alt="CottageTunes vinyl sleeve" class="record-sleeve-image" loading="lazy">
-                        <span class="record-catalog">CT-001</span>
-                    </div>
-                    <div class="record-disc-wrap" aria-hidden="true">
-                        <div class="record-disc"><div class="record-disc-label">SIDE A</div></div>
+                    <div class="record-visual">
+                        <div class="record-disc-wrap" aria-hidden="true">
+                            <div class="record-disc"><div class="record-disc-label">SIDE A</div></div>
+                        </div>
+                        <div class="record-sleeve">
+                            <img src="cottage-tunes-1.webp" alt="CottageTunes vinyl sleeve" class="record-sleeve-image" loading="lazy">
+                            <span class="record-catalog">CT-001</span>
+                        </div>
                     </div>
                     <div class="record-notes">
                         <p class="font-bold text-[10px] uppercase tracking-widest mb-2 text-cottage-honey">Music Product</p>
@@ -821,16 +823,18 @@
                 </article>
 
                 <article class="record-entry record-entry-alt" style="--recordAccent:#9CAF88;">
-                    <div class="record-sleeve">
-                        <div class="record-sleeve-empty" aria-hidden="true">
-                            <span class="record-empty-title">DEBUG QUEST</span>
-                            <span class="record-empty-sub">TERMINAL ADVENTURE</span>
-                            <span class="record-empty-ascii">&gt;_</span>
+                    <div class="record-visual">
+                        <div class="record-disc-wrap" aria-hidden="true">
+                            <div class="record-disc"><div class="record-disc-label">SIDE B</div></div>
                         </div>
-                        <span class="record-catalog">DQ-002</span>
-                    </div>
-                    <div class="record-disc-wrap" aria-hidden="true">
-                        <div class="record-disc"><div class="record-disc-label">SIDE B</div></div>
+                        <div class="record-sleeve">
+                            <div class="record-sleeve-empty" aria-hidden="true">
+                                <span class="record-empty-title">DEBUG QUEST</span>
+                                <span class="record-empty-sub">TERMINAL ADVENTURE</span>
+                                <span class="record-empty-ascii">&gt;_</span>
+                            </div>
+                            <span class="record-catalog">DQ-002</span>
+                        </div>
                     </div>
                     <div class="record-notes">
                         <p class="font-bold text-[10px] uppercase tracking-widest mb-2 text-cottage-sage">Learning Product</p>
@@ -848,6 +852,35 @@
                             <div class="record-stat"><span class="record-stat-num">MIT</span><span class="record-stat-label">License</span></div>
                         </div>
                         <a href="https://github.com/constancadcunha/DebugQuest" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
+                    </div>
+                </article>
+
+                <article class="record-entry" style="--recordAccent:#D4A5A5;">
+                    <div class="record-visual">
+                        <div class="record-disc-wrap" aria-hidden="true">
+                            <div class="record-disc"><div class="record-disc-label">SIDE C</div></div>
+                        </div>
+                        <div class="record-sleeve">
+                            <img src="bookPod.png" alt="bookPod vinyl sleeve" class="record-sleeve-image" loading="lazy">
+                            <span class="record-catalog">BP-003</span>
+                        </div>
+                    </div>
+                    <div class="record-notes">
+                        <p class="font-bold text-[10px] uppercase tracking-widest mb-2 text-cottage-rose">Reading Product</p>
+                        <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">bookPod</h3>
+                        <p class="text-sm opacity-85 leading-relaxed mb-4">A book discovery interface that feels like a classic iPod. Users spin the click wheel, press the center button, and browse books by mood, aesthetic, read-time, or pure shuffle energy.</p>
+                        <ul class="record-tracklist mb-5">
+                            <li><span class="material-icons-outlined">album</span>Library: curated collection of <strong>110 books</strong>, organized by vibe not ratings</li>
+                            <li><span class="material-icons-outlined">album</span>Interaction: click-wheel navigation, tactile menu flow, and nostalgic sound design</li>
+                            <li><span class="material-icons-outlined">album</span>Build: vanilla single-page app with CSS themes, Web Audio API, and Open Library covers</li>
+                        </ul>
+                        <div class="record-stats mb-5" aria-label="bookPod stats">
+                            <div class="record-stat"><span class="record-stat-num">110</span><span class="record-stat-label">Books</span></div>
+                            <div class="record-stat"><span class="record-stat-num">5</span><span class="record-stat-label">Mood tracks</span></div>
+                            <div class="record-stat"><span class="record-stat-num">3</span><span class="record-stat-label">Art themes</span></div>
+                            <div class="record-stat"><span class="record-stat-num">SPA</span><span class="record-stat-label">No framework</span></div>
+                        </div>
+                        <a href="https://github.com/constancadcunha/bookPod" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
                     </div>
                 </article>
             </div>
