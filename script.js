@@ -249,7 +249,6 @@ function initStudioIphone() {
     const viewportImg = document.getElementById('viewportImg');
     const iphoneWrapper = document.getElementById('iphoneWrapper');
     const iphoneFixed = document.getElementById('iphoneFixed');
-    const archiveProject = document.getElementById('archive-project');
 
     if (!iphoneFixed || !viewportImg) return;
     iphoneFixed.style.display = 'none';
@@ -258,14 +257,18 @@ function initStudioIphone() {
     ScrollTrigger.create({
         trigger: '#studio',
         start: 'top 40%',
-        end: 'bottom bottom',
+        end: 'bottom 60%',
         onEnter: () => {
-            const firstNonArchive = document.querySelector('#studio .project-entry:not(#archive-project)');
-            if (firstNonArchive) {
-                updatePhone(firstNonArchive);
+            const firstProject = document.querySelector('#studio .project-entry');
+            if (firstProject) {
+                updatePhone(firstProject);
                 iphoneFixed.style.display = 'block';
                 iphoneFixed.style.opacity = '1';
             }
+        },
+        onLeave: () => {
+            iphoneFixed.style.opacity = '0';
+            setTimeout(() => { iphoneFixed.style.display = 'none'; }, 200);
         },
         onLeaveBack: () => {
             iphoneFixed.style.opacity = '0';
@@ -276,45 +279,16 @@ function initStudioIphone() {
     
     
     projectEntries.forEach(entry => {
-        if (entry !== archiveProject) {
-            ScrollTrigger.create({
-                trigger: entry,
-                start: "top 65%",
-                end: "bottom 35%",
-                onEnter: () => updatePhone(entry),
-                onEnterBack: () => updatePhone(entry),
-            });
-        }
+        ScrollTrigger.create({
+            trigger: entry,
+            start: "top 65%",
+            end: "bottom 35%",
+            onEnter: () => updatePhone(entry),
+            onEnterBack: () => updatePhone(entry),
+        });
     });
 
-    
-    if (archiveProject) {
-        ScrollTrigger.create({
-            trigger: archiveProject,
-            start: "top 65%",
-            onEnter: () => {
-                iphoneFixed.style.opacity = '0';
-                setTimeout(() => { iphoneFixed.style.display = 'none'; }, 200);
-            },
-            onLeaveBack: () => {
-                const prevProject = archiveProject.previousElementSibling;
-                
-                let target = prevProject;
-                while (target && !target.classList.contains('project-entry')) {
-                    target = target.previousElementSibling;
-                }
-                if (target && target.classList.contains('project-entry') && target !== archiveProject) {
-                    updatePhone(target);
-                    iphoneFixed.style.display = 'block';
-                    iphoneFixed.style.opacity = '1';
-                }
-            }
-        });
-    }
-
     function updatePhone(entry) {
-        if (entry === archiveProject) return;
-
         const img = entry.dataset.img;
         const color = entry.dataset.color;
 
