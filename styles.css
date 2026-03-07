@@ -1,6 +1,4 @@
-/* =================================
-   BASE STYLES & RESET
-   ================================= */
+
 
 * {
     margin: 0;
@@ -24,7 +22,7 @@ body {
         radial-gradient(circle at 50% 50%, rgba(184, 169, 201, 0.08) 0%, transparent 50%);
     background-size: cover;
     background-position: center;
-    /* Removed gentleFloat animation — was causing continuous full-page repaints */
+    
 }
 
 .dark body {
@@ -35,10 +33,6 @@ body {
         radial-gradient(circle at 80% 20%, rgba(201, 169, 110, 0.08) 0%, transparent 40%),
         radial-gradient(circle at 50% 50%, rgba(139, 107, 142, 0.05) 0%, transparent 50%);
 }
-
-/* =================================
-   SCROLLBAR STYLING
-   ================================= */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -63,10 +57,6 @@ body {
     border: 2px solid #1A2421;
 }
 
-/* =================================
-   NOISE OVERLAY
-   ================================= */
-
 .noise {
     position: fixed;
     top: 0;
@@ -79,10 +69,6 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* =================================
-   TYPOGRAPHY
-   ================================= */
-
 .text-hero {
     font-size: clamp(2.6rem, 9vw, 7.2rem);
     font-weight: 900;
@@ -94,10 +80,6 @@ body {
     color: transparent;
     -webkit-text-stroke: 2px currentColor;
 }
-
-/* =================================
-   SCROLL PROGRESS BAR
-   ================================= */
 
 #scrollProgress {
     position: fixed;
@@ -124,10 +106,6 @@ body {
         background-position: 100% 50%;
     }
 }
-
-/* =================================
-   NAVIGATION
-   ================================= */
 
 nav {
     padding: 1rem 2rem;
@@ -199,10 +177,6 @@ nav.nav-scrolled-hidden {
     width: 100%;
 }
 
-/* =================================
-   BUTTON STYLES
-   ================================= */
-
 .ghost-button {
     position: relative;
     overflow: hidden;
@@ -235,10 +209,6 @@ nav.nav-scrolled-hidden {
     width: 300%;
     height: 300%;
 }
-
-/* =================================
-   DIALOGUE BOX
-   ================================= */
 
 .dialogue-box {
     position: fixed;
@@ -293,10 +263,6 @@ nav.nav-scrolled-hidden {
 .close-btn:hover {
     transform: scale(1.2) rotate(90deg);
 }
-
-/* =================================
-   STUDIO SECTION - iPhone
-   ================================= */
 
 #studio {
     position: relative;
@@ -406,10 +372,6 @@ nav.nav-scrolled-hidden {
     }
 }
 
-/* =================================
-   MUSEUM SECTION
-   ================================= */
-
 .museum-section {
     background: #FDF6E3;
     padding: 6rem 0;
@@ -482,7 +444,6 @@ nav.nav-scrolled-hidden {
     }
 }
 
-/* Museum Spotlight Cursor */
 #museum-cursor-spotlight {
     position: fixed;
     width: 300px;
@@ -497,7 +458,6 @@ nav.nav-scrolled-hidden {
     transform: translate(-50%, -50%);
 }
 
-/* Museum Controls */
 .museum-controls {
     position: absolute;
     bottom: 2rem;
@@ -655,10 +615,6 @@ nav.nav-scrolled-hidden {
     bottom: -35px;
 }
 
-/* =================================
-   IMAGE MODAL
-   ================================= */
-
 .image-modal {
     position: fixed;
     top: 0;
@@ -710,10 +666,6 @@ nav.nav-scrolled-hidden {
     transform: rotate(90deg);
 }
 
-/* =================================
-   WHIMSY SECTION
-   ================================= */
-
 .whimsy-section {
     position: relative;
     overflow: hidden;
@@ -724,10 +676,6 @@ nav.nav-scrolled-hidden {
     pointer-events: none;
     opacity: 0.08;
 }
-
-/* =================================
-   MAGIC CARDS
-   ================================= */
 
 .magic-card {
     position: relative;
@@ -749,10 +697,6 @@ nav.nav-scrolled-hidden {
     box-shadow: 0 25px 50px rgba(74, 93, 78, 0.2);
     border-color: #9CAF88;
 }
-
-/* =================================
-   SKILL GREENHOUSE
-   ================================= */
 
 .greenhouse-container {
     perspective: 1200px;
@@ -816,10 +760,6 @@ nav.nav-scrolled-hidden {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(201, 169, 110, 0.2);
 }
 
-/* =================================
-   CREDENTIAL FLOWERS
-   ================================= */
-
 .credential-flower {
     position: relative;
     padding: 1.5rem 2rem;
@@ -864,10 +804,6 @@ nav.nav-scrolled-hidden {
     border-color: #C9A96E;
 }
 
-/* =================================
-   IPOD CLASSIC - CREDENTIALS
-   ================================= */
-
 .ipod-container {
     max-width: 400px;
     margin: 0 auto;
@@ -907,7 +843,6 @@ nav.nav-scrolled-hidden {
     opacity: 0.7;
 }
 
-/* Additional background decorative elements */
 .ipod-body::before {
     content: '';
     position: absolute;
@@ -941,7 +876,6 @@ nav.nav-scrolled-hidden {
     50% { opacity: 1; transform: scale(1.1); }
 }
 
-/* iPod Background Sparkles and Orbs */
 .ipod-sparkle {
     position: absolute;
     width: 8px;
@@ -1095,7 +1029,6 @@ nav.nav-scrolled-hidden {
     }
 }
 
-/* Screen */
 .ipod-screen {
     width: 100%;
     height: 200px;
@@ -1126,7 +1059,6 @@ nav.nav-scrolled-hidden {
     padding: 8px;
 }
 
-/* Status Bar */
 .ipod-status-bar {
     display: flex;
     justify-content: space-between;
@@ -1184,7 +1116,6 @@ nav.nav-scrolled-hidden {
     border-radius: 1px;
 }
 
-/* Content Area */
 .ipod-content {
     height: calc(100% - 30px);
     overflow: hidden;
@@ -1202,7 +1133,6 @@ nav.nav-scrolled-hidden {
     background: transparent;
 }
 
-/* Menu Items */
 .ipod-menu {
     display: flex;
     flex-direction: column;
@@ -1258,7 +1188,6 @@ nav.nav-scrolled-hidden {
     opacity: 1;
 }
 
-/* Detail View */
 .ipod-detail-view {
     position: absolute;
     inset: 0;
@@ -1321,7 +1250,6 @@ nav.nav-scrolled-hidden {
     line-height: 1.7;
 }
 
-/* Floating Music Notes */
 .music-note {
     position: absolute;
     font-size: 32px;
@@ -1422,7 +1350,6 @@ nav.nav-scrolled-hidden {
     }
 }
 
-/* Vinyl Records */
 .vinyl-disc {
     position: absolute;
     width: 140px;
@@ -1491,7 +1418,6 @@ nav.nav-scrolled-hidden {
     background: radial-gradient(circle at center, #2a2a2a 0%, #1a1a1a 20%, #2a2a2a 40%, #1a1a1a 60%, #2a2a2a 80%, #1a1a1a 100%);
 }
 
-/* Click Wheel */
 .ipod-wheel {
     width: 200px;
     height: 200px;
@@ -1531,7 +1457,7 @@ nav.nav-scrolled-hidden {
 
 .ipod-wheel-center:active {
     background: linear-gradient(145deg, #D0D0D0, #B0B0B0);
-    /* Click animation removed */
+    
 }
 
 .ipod-center-button {
@@ -1547,7 +1473,6 @@ nav.nav-scrolled-hidden {
     font-size: 24px;
 }
 
-/* Wheel Buttons */
 .ipod-wheel-btn {
     position: absolute;
     background: transparent;
@@ -1568,8 +1493,6 @@ nav.nav-scrolled-hidden {
     background: rgba(156, 175, 136, 0.15);
     color: #4A5D4E;
 }
-
-
 
 .ipod-wheel-btn .material-icons-outlined {
     font-size: 22px;
@@ -1599,7 +1522,6 @@ nav.nav-scrolled-hidden {
     transform: translateX(-50%);
 }
 
-/* Dark mode */
 .dark .ipod-body {
     background: linear-gradient(145deg, #3A3A3A, #2A2A2A);
 }
@@ -1622,7 +1544,6 @@ nav.nav-scrolled-hidden {
     background: rgba(201, 169, 110, 0.15);
 }
 
-/* Mobile responsiveness */
 @media (max-width: 640px) {
     .ipod-body {
         width: 260px;
@@ -1643,10 +1564,6 @@ nav.nav-scrolled-hidden {
         height: 70px;
     }
 }
-
-/* =================================
-   LABORATORY CARDS
-   ================================= */
 
 .lab-card {
     position: relative;
@@ -1740,10 +1657,6 @@ nav.nav-scrolled-hidden {
     opacity: 1;
 }
 
-/* =================================
-   WEB CARDS
-   ================================= */
-
 .web-card {
     position: relative;
     background: linear-gradient(145deg, #FDF6E3, #F5EED6);
@@ -1782,10 +1695,6 @@ nav.nav-scrolled-hidden {
     box-shadow: 6px 6px 0 #C9A96E;
 }
 
-/* =================================
-   POLAROID
-   ================================= */
-
 .polaroid {
     background: white;
     padding: 0.75rem;
@@ -1806,10 +1715,6 @@ nav.nav-scrolled-hidden {
     padding-top: 0.6rem;
 }
 
-/* =================================
-   REVEAL SECTIONS
-   ================================= */
-
 .reveal-section {
     opacity: 0;
     transform: translateY(40px);
@@ -1820,10 +1725,6 @@ nav.nav-scrolled-hidden {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* =================================
-   FLOATING BOTANICALS
-   ================================= */
 
 .botanical {
     position: absolute;
@@ -1839,10 +1740,6 @@ nav.nav-scrolled-hidden {
         transform: translateY(-20px) rotate(5deg);
     }
 }
-
-/* =================================
-   WISDOM GARDEN
-   ================================= */
 
 .garden-row {
     display: grid;
@@ -1865,10 +1762,6 @@ nav.nav-scrolled-hidden {
 .credential-garden {
     position: relative;
 }
-
-/* =================================
-   CONTACT FORM
-   ================================= */
 
 .contact-tag {
     position: absolute;
@@ -1951,10 +1844,6 @@ nav.nav-scrolled-hidden {
     border: 1px solid #D4A5A5;
 }
 
-/* =================================
-   HERO SECTION DIVIDER
-   ================================= */
-
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -1987,10 +1876,6 @@ nav.nav-scrolled-hidden {
 .contact-form label {
     pointer-events: none !important;
 }
-
-/* =================================
-   ARCHIVE PROJECT STYLING
-   ================================= */
 
 .archive-project {
     text-align: center !important;
@@ -2103,10 +1988,6 @@ nav.nav-scrolled-hidden {
     background: #D4A5A5 !important;
 }
 
-/* =================================
-   JOURNEY — New Chapter Layout
-   ================================= */
-
 .journey-section {
     background: #FDF6E3;
     color: #1A2421;
@@ -2118,17 +1999,12 @@ nav.nav-scrolled-hidden {
     color: #FDF6E3;
 }
 
-/* =================================
-   JOURNEY — Postcard collection
-   ================================= */
-
-/* ---- Tab navigation ---- */
 .jchap-tabs {
     display: flex;
     gap: 3px;
     flex-wrap: wrap;
     position: relative;
-    z-index: 10; /* always above the 3D-transformed cards */
+    z-index: 10; 
 }
 
 .jchap-tab {
@@ -2164,12 +2040,10 @@ nav.nav-scrolled-hidden {
     color: rgba(253,246,227,0.7);
 }
 
-/* Physical press feedback */
 .jchap-tab:active {
     transform: scale(0.95) translateY(1px);
 }
 
-/* Active tab turns cream — merges with the postcard */
 .jchap-tab.active {
     background: #F5ECD6;
     color: #3D2612;
@@ -2181,7 +2055,6 @@ nav.nav-scrolled-hidden {
 
 .jchap-tab.active .jt-num { opacity: 0.4; }
 
-/* Chapter color accent bar at top of active tab */
 .jchap-tab.active::before {
     content: '';
     position: absolute;
@@ -2208,12 +2081,11 @@ nav.nav-scrolled-hidden {
     line-height: 1.2;
 }
 
-/* ---- Panel container ---- */
 .jchap-panels {
     position: relative;
-    z-index: 1; /* below .jchap-tabs (z-index:10) */
+    z-index: 1; 
     min-height: 360px;
-    overflow: visible; /* ghost cards peek out */
+    overflow: visible; 
     perspective: 1200px;
 }
 
@@ -2227,7 +2099,6 @@ nav.nav-scrolled-hidden {
     display: block;
 }
 
-/* ---- Ghost stacked cards ---- */
 .pc-ghost {
     position: absolute;
     inset: 0;
@@ -2236,7 +2107,6 @@ nav.nav-scrolled-hidden {
     cursor: pointer;
 }
 
-/* Idle breathing — cards gently drift like they're resting on a desk */
 @keyframes ghost-idle-1 {
     0%, 100% { transform: translate(6px, 9px); }
     50%       { transform: translate(8px, 7px); }
@@ -2251,7 +2121,7 @@ nav.nav-scrolled-hidden {
     z-index: 1;
     box-shadow: 0 10px 30px rgba(0,0,0,0.14);
     animation: ghost-idle-1 5s ease-in-out infinite;
-    transition: animation 0s; /* don't transition on hover — animation handles it */
+    transition: animation 0s; 
 }
 
 .pc-ghost-1:hover,
@@ -2284,7 +2154,6 @@ nav.nav-scrolled-hidden {
 }
 .pc-ghost-2.shuffle { animation: ghost-shuffle-2 0.45s cubic-bezier(0.25,1,0.5,1) both; }
 
-/* Ghost card next-card hint on hover */
 .pc-ghost-1::after,
 .pc-ghost-2::after {
     content: '›';
@@ -2301,7 +2170,6 @@ nav.nav-scrolled-hidden {
 .pc-ghost-1:hover::after,
 .pc-ghost-2:hover::after { opacity: 1; }
 
-/* Stamp press animation */
 @keyframes stamp-press {
     0%   { transform: scale(1) rotate(0deg); }
     30%  { transform: scale(0.78) rotate(-8deg); opacity: 0.5; }
@@ -2311,10 +2179,6 @@ nav.nav-scrolled-hidden {
 .pc-postmark.stamping {
     animation: stamp-press 0.52s cubic-bezier(0.25, 1.2, 0.5, 1) both;
 }
-
-/* =================================
-   THE POSTCARD
-   ================================= */
 
 .pc-card {
     background: #EDE1C7;
@@ -2330,14 +2194,13 @@ nav.nav-scrolled-hidden {
     transition: box-shadow 0.28s ease, transform 0.28s ease;
     will-change: transform;
     transform-origin: center center;
-    /* Subtle paper grain */
+    
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
     background-size: 300px 300px;
 }
 
 .pc-card:active { cursor: grabbing; }
 
-/* hover handled by JS mouse tilt; keep a fallback for non-JS */
 .pc-card:not(.js-tilt-active):hover {
     transform: translateY(-4px) rotateX(1.5deg);
     box-shadow:
@@ -2346,7 +2209,6 @@ nav.nav-scrolled-hidden {
         inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
-/* Left chapter color accent stripe */
 .pc-card::before {
     content: '';
     position: absolute;
@@ -2358,7 +2220,6 @@ nav.nav-scrolled-hidden {
     pointer-events: none;
 }
 
-/* Airmail-style bottom stripe — replaces ugly corner fold */
 .pc-card::after {
     content: '';
     position: absolute;
@@ -2376,18 +2237,15 @@ nav.nav-scrolled-hidden {
     opacity: 0.6;
 }
 
-/* ---- Card entry animations ---- */
 @keyframes pc-appear {
     from { opacity: 0; transform: scale(0.95) translateY(8px); }
     to   { opacity: 1; transform: none; }
 }
 
-/* Only fires on first load (JS overrides for subsequent transitions) */
 #jpanel-0.active .pc-card {
     animation: pc-appear 0.55s cubic-bezier(0.25,1,0.5,1) both;
 }
 
-/* ---- PC Header ---- */
 .pc-header {
     display: flex;
     align-items: center;
@@ -2415,7 +2273,6 @@ nav.nav-scrolled-hidden {
     margin: 0 1.3rem;
 }
 
-/* Postage stamp — double-rule border like a real stamp */
 .pc-stamp-box {
     width: 50px;
     height: 56px;
@@ -2428,7 +2285,7 @@ nav.nav-scrolled-hidden {
     background: rgba(255,255,255,0.72);
     border: 2px solid var(--jc);
     border-radius: 2px;
-    /* White gap + outer rule = classic stamp look */
+    
     box-shadow:
         0 0 0 2px rgba(245,236,214,0.9),
         0 0 0 4px var(--jc),
@@ -2443,14 +2300,12 @@ nav.nav-scrolled-hidden {
     letter-spacing: 0.03em;
 }
 
-/* ---- PC Body ---- */
 .pc-body {
     display: grid;
     grid-template-columns: 1fr 1px 42%;
     padding: 1rem 0 1.4rem;
 }
 
-/* Message area */
 .pc-message {
     padding: 0.2rem 1.4rem 0.6rem;
 }
@@ -2515,7 +2370,6 @@ nav.nav-scrolled-hidden {
     letter-spacing: 0.03em;
 }
 
-/* Stats (SINFO) */
 .pc-stats {
     display: flex;
     gap: 0.55rem;
@@ -2550,7 +2404,6 @@ nav.nav-scrolled-hidden {
     margin-top: 2px;
 }
 
-/* Dotted vertical divider */
 .pc-divider {
     background: repeating-linear-gradient(
         to bottom,
@@ -2563,7 +2416,6 @@ nav.nav-scrolled-hidden {
     margin: 0.5rem 0;
 }
 
-/* ---- Address area ---- */
 .pc-address {
     padding: 0.2rem 1.3rem 0.6rem;
     display: flex;
@@ -2571,7 +2423,6 @@ nav.nav-scrolled-hidden {
     gap: 0.3rem;
 }
 
-/* Postmark + Company Badge Row */
 .pc-postmark-company-row {
     display: flex;
     align-items: center;
@@ -2579,7 +2430,6 @@ nav.nav-scrolled-hidden {
     margin-bottom: 0.7rem;
 }
 
-/* Postmark */
 .pc-postmark {
     width: 66px;
     height: 66px;
@@ -2738,11 +2588,6 @@ nav.nav-scrolled-hidden {
     font-style: italic;
 }
 
-/* =================================
-   ENTRY ANIMATIONS
-   ================================= */
-
-/* Postmark stamps itself onto the card */
 @keyframes stamp-on {
     0%   { transform: scale(1.7) rotate(-18deg); opacity: 0; }
     55%  { transform: scale(0.88) rotate(3deg);  opacity: 0.65; }
@@ -2754,12 +2599,10 @@ nav.nav-scrolled-hidden {
     animation: stamp-on 0.55s 0.12s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
-/* Quote text is handled by typewriter JS — no CSS animation needed */
 .jchap-panel.active .pc-quote {
     opacity: 1;
 }
 
-/* Typewriter cursor */
 .pc-cursor {
     display: inline-block;
     color: var(--jc);
@@ -2780,7 +2623,6 @@ nav.nav-scrolled-hidden {
     transition: opacity 0.4s ease;
 }
 
-/* Highlights fly in one by one */
 @keyframes slide-up {
     from { opacity: 0; transform: translateY(9px); }
     to   { opacity: 1; transform: none; }
@@ -2794,7 +2636,6 @@ nav.nav-scrolled-hidden {
 .jchap-panel.active .pc-hls li:nth-child(3) { animation-delay: 0.28s; }
 .jchap-panel.active .pc-hls li:nth-child(4) { animation-delay: 0.35s; }
 
-/* Stats fly in */
 .jchap-panel.active .pc-stat {
     animation: slide-up 0.32s cubic-bezier(0.25,1,0.5,1) both;
 }
@@ -2803,7 +2644,6 @@ nav.nav-scrolled-hidden {
 .jchap-panel.active .pc-stat:nth-child(3) { animation-delay: 0.40s; }
 .jchap-panel.active .pc-stat:nth-child(4) { animation-delay: 0.46s; }
 
-/* Chips fly in like stamps being placed */
 .jchap-panel.active .pc-chip {
     animation: slide-up 0.28s cubic-bezier(0.25,1,0.5,1) both;
 }
@@ -2813,14 +2653,9 @@ nav.nav-scrolled-hidden {
 .jchap-panel.active .pc-chip:nth-child(4) { animation-delay: 0.50s; }
 .jchap-panel.active .pc-chip:nth-child(5) { animation-delay: 0.56s; }
 
-/* Company name slides in from address side */
 .jchap-panel.active .pc-company {
     animation: slide-up 0.38s 0.08s cubic-bezier(0.25,1,0.5,1) both;
 }
-
-/* =================================
-   FOOTER — FLIPCARD NAV
-   ================================= */
 
 .jchap-footer {
     display: flex;
@@ -2837,7 +2672,6 @@ nav.nav-scrolled-hidden {
     gap: 14px;
 }
 
-/* Prev / Next buttons */
 .jflip-btn {
     width: 34px;
     height: 34px;
@@ -2861,7 +2695,6 @@ nav.nav-scrolled-hidden {
 .jflip-btn:active { transform: scale(0.88); }
 .jflip-btn .material-icons-outlined { font-size: 18px !important; }
 
-/* Card-edge stack — looks like looking at a deck of cards from below */
 .jflip-stack {
     display: flex;
     align-items: flex-end;
@@ -2922,10 +2755,6 @@ nav.nav-scrolled-hidden {
     text-transform: uppercase;
 }
 
-/* =================================
-   MOBILE RESPONSIVE
-   ================================= */
-
 @media (max-width: 640px) {
     .jchap-tabs { gap: 2px; }
     .jchap-tab { min-width: 58px; padding: 0.4rem 0.6rem 0.55rem; }
@@ -2941,9 +2770,9 @@ nav.nav-scrolled-hidden {
             transparent 8px
         );
         margin: 0 1.3rem;
-        order: 2; /* sits between address and message */
+        order: 2; 
     }
-    /* On mobile: show address (company, role, dates) FIRST, then message */
+    
     .pc-address {
         order: 1;
         padding: 0.8rem 1rem 0.6rem;
@@ -2960,12 +2789,6 @@ nav.nav-scrolled-hidden {
     .pc-card { border-radius: 0 8px 8px 8px; }
     .pc-ghost-1, .pc-ghost-2 { display: none; }
 }
-
-
-
-/* =================================
-   ABOUT PARTICLES
-   ================================= */
 
 .about-particles {
     position: absolute;
@@ -2999,10 +2822,6 @@ nav.nav-scrolled-hidden {
         transform: translateY(-100vh) rotate(360deg);
     }
 }
-
-/* =================================
-   CERTIFICATE FLIP CARDS (Enhancement #8)
-   ================================= */
 
 .cert-flip-card {
     perspective: 1000px;
@@ -3059,10 +2878,6 @@ nav.nav-scrolled-hidden {
     border-color: rgba(201, 169, 110, 0.6);
 }
 
-/* =================================
-   STAT COUNTER ANIMATION (Enhancement #8)
-   ================================= */
-
 .stat-counter {
     transition: transform 0.3s ease;
 }
@@ -3074,10 +2889,6 @@ nav.nav-scrolled-hidden {
 .stat-counter.counted .counter-value {
     transition: none;
 }
-
-/* =================================
-   PERFORMANCE OPTIMIZATIONS (FIX #6)
-   ================================= */
 
 img {
     content-visibility: auto;
@@ -3104,11 +2915,6 @@ img {
     }
 }
 
-/* =================================
-   CREATIVE ENHANCEMENTS
-   ================================= */
-
-/* Cursor sparkle particles */
 .cursor-sparkle {
     position: fixed;
     pointer-events: none;
@@ -3133,7 +2939,6 @@ img {
     }
 }
 
-/* Browser chrome elements */
 .browser-bar {
     display: flex;
     align-items: center;
@@ -3161,7 +2966,6 @@ img {
 .dot-yellow { background: #FFBD2E; }
 .dot-green  { background: #28CA41; }
 
-/* Browser URL typewriter animation */
 .browser-url {
     font-size: 0.65rem;
     font-family: 'SF Mono', 'Fira Code', monospace;
@@ -3175,12 +2979,10 @@ img {
     overflow: hidden;
 }
 
-/* Browser content spacing */
 .browser-content {
     padding-top: 1.1rem;
 }
 
-/* Water drop animation for skill watering */
 .water-drop {
     position: absolute;
     width: 4px;
@@ -3198,7 +3000,6 @@ img {
     100% { transform: translateY(80px) scaleY(1.2); opacity: 0; }
 }
 
-/* Archive project wrapper - properly centered outside studio-projects */
 .archive-wrapper {
     display: flex;
     justify-content: center;
@@ -3207,7 +3008,6 @@ img {
     width: 100%;
 }
 
-/* Hero letter hover shimmer */
 #heroName1,
 #heroName2 {
     transition: filter 0.3s ease;
@@ -3219,7 +3019,6 @@ img {
     cursor: default;
 }
 
-/* Websites section - enhanced browser card URL */
 .browser-card .browser-url::after {
     content: '|';
     opacity: 0;
@@ -3236,7 +3035,6 @@ img {
     50%       { opacity: 0; }
 }
 
-/* Watered glow on skill greenhouse */
 .skill-greenhouse.watered {
     animation: water-glow 0.6s ease-out;
 }
@@ -3247,7 +3045,6 @@ img {
     100% { box-shadow: none; }
 }
 
-/* Timeline dot pulse on enter viewport */
 .timeline-dot.pulse-in {
     animation: dot-pulse 0.5s ease-out;
 }
@@ -3258,13 +3055,11 @@ img {
     100% { transform: scale(1); }
 }
 
-/* Hero section magnetic text effect */
 .hero-magnetic-word {
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Certificate stamp effect on hover flip */
 .cert-stamp {
     position: absolute;
     top: 50%;
@@ -3290,13 +3085,11 @@ img {
     transform: translate(-50%, -50%) rotate(-15deg) scale(1);
 }
 
-/* Skill icon grow on water */
 .skill-greenhouse .material-icons-outlined {
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
     display: block;
 }
 
-/* Section heading letter split animation */
 .letter-reveal {
     display: inline-block;
     animation: letter-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -3307,7 +3100,6 @@ img {
     100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Ghost button paper-plane send animation */
 @keyframes paper-plane-send {
     0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
     50%  { transform: translateX(30px) translateY(-15px) rotate(15deg); opacity: 0.5; }
@@ -3319,25 +3111,16 @@ img {
     animation: paper-plane-send 0.8s ease-in-out;
 }
 
-/* Archive project - override since it's now in archive-wrapper */
 .archive-wrapper .archive-project {
     margin: 0 !important;
     width: 100%;
     max-width: 700px;
 }
 
-/* =================================
-   PERFORMANCE: GPU layers for heavy animated elements
-   ================================= */
-
 .credential-flower,
 .skill-greenhouse {
     will-change: transform;
 }
-
-/* =================================
-   CERTIFICATE DESKTOP OS SECTION
-   ================================= */
 
 .cert-desktop-section {
     background: linear-gradient(160deg, #0d1117 0%, #161b22 55%, #0a0f1a 100%);
@@ -3345,7 +3128,6 @@ img {
     position: relative;
 }
 
-/* Menu Bar */
 .os-menubar {
     background: rgba(237, 224, 204, 0.97);
     backdrop-filter: blur(12px);
@@ -3393,7 +3175,6 @@ img {
     opacity: 0.7;
 }
 
-/* Desktop Area */
 .os-desktop {
     padding: 1rem 1rem 1.5rem;
     min-height: 0;
@@ -3433,7 +3214,6 @@ img {
     color: rgba(40, 200, 64, 0.5);
 }
 
-/* Folder Grid */
 .os-folder-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -3444,7 +3224,6 @@ img {
     z-index: 2;
 }
 
-/* Individual Folder */
 .os-folder {
     display: flex;
     flex-direction: column;
@@ -3474,7 +3253,6 @@ img {
 
 .os-folder:active .os-folder-icon { transform: scale(0.93); }
 
-/* Folder Icon */
 .os-folder-icon {
     position: relative;
     width: 62px;
@@ -3532,7 +3310,6 @@ img {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-/* Certificate Window */
 .os-window {
     position: fixed;
     top: 50%;
@@ -3554,7 +3331,6 @@ img {
     100% { transform: translate(-50%, -50%) scale(1);    opacity: 1; }
 }
 
-/* Window Title Bar */
 .os-win-titlebar {
     background: rgba(255, 255, 255, 0.04);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -3599,7 +3375,6 @@ img {
 
 .os-win-body { padding: 1.5rem; }
 
-/* Backdrop */
 .os-backdrop {
     position: fixed;
     inset: 0;
@@ -3608,10 +3383,6 @@ img {
     backdrop-filter: blur(3px);
     display: none;
 }
-
-/* =================================
-   WEBSITES SIGNAL SECTION
-   ================================= */
 
 .websites-signal-section {
     background: #FDF6E3;
@@ -3622,7 +3393,6 @@ img {
     background: linear-gradient(135deg, #070b14 0%, #0d1524 55%, #070b14 100%);
 }
 
-/* Override text colors for dark bg */
 .websites-signal-section .font-cursive { color: #3D2612 !important; }
 .dark .websites-signal-section .font-cursive { color: #9CAF88 !important; }
 
@@ -3645,7 +3415,6 @@ img {
     50%       { opacity: 0.75; transform: scale(1.4); }
 }
 
-/* Browser card overrides for dark section */
 .websites-signal-section .web-card {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(253, 246, 227, 0.95));
     border-color: rgba(156, 175, 136, 0.4);
@@ -3676,7 +3445,6 @@ img {
 .dark .websites-signal-section h3 { color: #FDF6E3; }
 .dark .websites-signal-section p  { color: rgba(253, 246, 227, 0.7); }
 
-/* Signal rings that pulse out on hover */
 .signal-rings {
     position: absolute;
     inset: 0;
@@ -3706,7 +3474,6 @@ img {
     100% { transform: scale(1.18); opacity: 0;   }
 }
 
-/* LIVE badge */
 .site-live-badge {
     position: absolute;
     top: 0.7rem;
@@ -3728,7 +3495,6 @@ img {
     50%       { opacity: 0.55; }
 }
 
-/* Floating code particles */
 .code-orbital {
     position: absolute;
     font-family: 'Courier New', monospace;
@@ -3746,10 +3512,6 @@ img {
     25%  { opacity: 0.9; }
     100% { opacity: 0;   transform: translateY(-52px) scale(1.1); }
 }
-
-/* =================================
-   CAMERA WIDGET (About Section)
-   ================================= */
 
 .camera-photo-widget {
     position: relative;
@@ -3831,7 +3593,6 @@ img {
     align-items: center;
 }
 
-/* Lens */
 .camera-lens-housing {
     width: 130px;
     height: 130px;
@@ -3891,7 +3652,6 @@ img {
     border: 2px solid rgba(168,197,217,0.12);
 }
 
-/* Camera controls */
 .camera-controls-panel {
     display: flex;
     flex-direction: column;
@@ -4026,7 +3786,6 @@ img {
     50% { opacity: 1; }
 }
 
-/* Polaroid eject — falls out from film slot */
 .camera-polaroid-eject {
     background: white;
     padding: 0.75rem;
@@ -4035,8 +3794,8 @@ img {
     box-shadow: 0 20px 60px rgba(74,93,78,0.3), 0 4px 15px rgba(0,0,0,0.15);
     position: relative;
     z-index: 1;
-    margin-top: -6px; /* tuck under film slot */
-    /* Hidden state — tucked behind camera body above */
+    margin-top: -6px; 
+    
     opacity: 0;
     transform: translateY(-98%) rotate(0.5deg);
     transform-origin: top center;
@@ -4111,10 +3870,6 @@ img {
     75% { transform: rotate(-2deg) translateX(-1px); }
 }
 
-/* =================================
-   CERTIFICATES — Cottagecore Table
-   ================================= */
-
 .cert-cottage-section {
     background: linear-gradient(160deg, #F5EDE0 0%, #EDE0CC 45%, #E8D5BC 100%);
     padding: 4rem 0 0;
@@ -4144,10 +3899,6 @@ img {
     z-index: 2;
 }
 
-/* =================================
-   CERTIFICATES — Wall Decor
-   ================================= */
-
 .cert-wall-decor {
     position: relative;
     width: 100%;
@@ -4161,7 +3912,6 @@ img {
     pointer-events: none;
 }
 
-/* Picture frames */
 .wall-frame {
     position: absolute;
     top: 10px;
@@ -4190,7 +3940,6 @@ img {
 }
 .wall-art-svg { width: 90%; height: 90%; }
 
-/* Floating shelf */
 .wall-shelf {
     position: absolute;
     top: 14px;
@@ -4224,7 +3973,6 @@ img {
 .shelf-bracket.left  { left: 12px; }
 .shelf-bracket.right { right: 12px; border-radius: 0 0 0 3px; }
 
-/* Tiny shelf plant */
 .shelf-tiny-plant { display: flex; flex-direction: column; align-items: center; }
 .stp-pot {
     width: 20px;
@@ -4250,7 +3998,6 @@ img {
 .stp-leaf.left  { left: -9px; top: 4px; transform: rotate(-20deg); }
 .stp-leaf.right { left: 2px;  top: 10px; transform: rotate(20deg); }
 
-/* Tiny shelf books */
 .shelf-tiny-book {
     width: 12px;
     height: 38px;
@@ -4259,7 +4006,6 @@ img {
     flex-shrink: 0;
 }
 
-/* Tiny shelf candle */
 .shelf-tiny-candle { display: flex; flex-direction: column; align-items: center; }
 .sth-flame {
     width: 6px;
@@ -4282,7 +4028,6 @@ img {
     border: 1px solid rgba(0,0,0,0.08);
 }
 
-/* String lights */
 .wall-string-lights {
     position: absolute;
     top: 0;
@@ -4329,11 +4074,6 @@ img {
     50% { opacity: 1; box-shadow: 0 0 10px 4px rgba(232,192,125,0.7); }
 }
 
-/* =================================
-   CERTIFICATES — New Desk Items
-   ================================= */
-
-/* Center keyboard */
 .desk-deco-center {
     position: absolute;
     bottom: 40px;
@@ -4359,8 +4099,6 @@ img {
     border: 1px solid #9A8670;
     box-shadow: 0 3px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
 }
-
-
 
 .kb-row {
     display: flex;
@@ -4388,9 +4126,6 @@ img {
 .kb-key.wider  { width: 22px; }
 .kb-key.space  { width: 64px; height: 7px; }
 
-
-
-/* Table scene container */
 .cottage-table-scene {
     position: relative;
     display: flex;
@@ -4398,7 +4133,6 @@ img {
     align-items: center;
 }
 
-/* Monitor wrapper */
 .cottage-monitor-outer {
     position: relative;
     z-index: 2;
@@ -4406,7 +4140,6 @@ img {
     margin: 0 auto;
 }
 
-/* Monitor bezel (outer frame) */
 .cottage-monitor-frame {
     background: linear-gradient(165deg, #e8dcc8, #d4c4a8, #cbbaa0);
     border-radius: 1rem 1rem 0.4rem 0.4rem;
@@ -4442,7 +4175,6 @@ img {
     background: rgba(255,255,255,0.08);
 }
 
-/* The screen (dark OS inside) */
 .cottage-monitor-screen {
     background: #DDD0B8;
     border-radius: 0.6rem;
@@ -4460,14 +4192,12 @@ img {
 .dark .cottage-monitor-screen::-webkit-scrollbar-track { background: #0d1117; }
 .cottage-monitor-screen::-webkit-scrollbar-thumb { background: #9CAF88; border-radius: 3px; }
 
-/* Inside monitor: fill the aspect-ratio space */
 .cottage-os-desktop {
     min-height: unset !important;
     padding: 0.75rem 0.75rem 1rem !important;
     height: 100%;
 }
 
-/* Monitor stand neck */
 .cottage-monitor-neck {
     width: 56px;
     height: 0;
@@ -4481,7 +4211,6 @@ img {
     background: linear-gradient(180deg, #2a2018, #3a2e24);
 }
 
-/* Monitor base plate */
 .cottage-monitor-base-plate {
     width: 180px;
     height: 14px;
@@ -4498,7 +4227,6 @@ img {
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Desk surface — z-index 3 puts everything here (bg + items) in front of monitor (z-index 2) */
 .cottage-desk-surface {
     width: 100%;
     min-height: 150px;
@@ -4535,7 +4263,6 @@ img {
     background: linear-gradient(180deg, rgba(255,255,255,0.14), transparent);
 }
 
-/* Desk edge (front of desk) */
 .cottage-desk-edge {
     width: 100%;
     height: 18px;
@@ -4545,7 +4272,6 @@ img {
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 
-/* Desk legs */
 .cottage-desk-legs {
     display: flex;
     justify-content: space-between;
@@ -4570,7 +4296,6 @@ img {
     box-shadow: 3px 0 8px rgba(0,0,0,0.2);
 }
 
-/* Desk decorations */
 .desk-deco-left,
 .desk-deco-right {
     display: flex;
@@ -4591,7 +4316,6 @@ img {
     transform-origin: bottom right;
 }
 
-/* CSS Mouse */
 .desk-mouse-standalone {
     position: absolute;
     bottom: 40px;
@@ -4630,10 +4354,6 @@ img {
     background: #9A8670;
 }
 
-/* =================================
-   SKILLS GARDEN — Flower Pots
-   ================================= */
-
 .garden-pots-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -4654,7 +4374,6 @@ img {
     position: relative;
 }
 
-/* Plant area sits above the pot */
 .flower-plant-area {
     display: flex;
     flex-direction: column;
@@ -4662,7 +4381,6 @@ img {
     position: relative;
 }
 
-/* Bloom cluster (petals + center) */
 .flower-bloom {
     position: relative;
     width: 80px;
@@ -4682,7 +4400,6 @@ img {
     opacity: 1;
 }
 
-/* 6 petals arranged radially */
 .petal {
     position: absolute;
     width: 22px;
@@ -4691,7 +4408,7 @@ img {
     transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
     box-shadow: inset 0 -4px 6px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.15);
     transform-origin: center bottom;
-    margin-top: -36px; /* Align bottom to center */
+    margin-top: -36px; 
 }
 
 .petal::after {
@@ -4741,7 +4458,6 @@ img {
 
 .flower-pot-card:hover .flower-center { transform: scale(1.2); }
 
-/* Skill names float on hover as a tooltip */
 .flower-skills-tooltip {
     position: absolute;
     bottom: calc(100% + 12px);
@@ -4781,7 +4497,6 @@ img {
     display: none !important;
 }
 
-/* Stem */
 .flower-stem-body {
     width: 4px;
     background: linear-gradient(180deg, #6B7F5E, #4A5D4E);
@@ -4809,7 +4524,6 @@ img {
 .stem-leaf.left  { left:  3px; top: 28%; transform: rotate(-40deg); }
 .stem-leaf.right { right: 3px; top: 52%; transform: rotate(40deg) scaleX(-1); }
 
-/* Pot vessel */
 .pot-vessel {
     width: 88px;
     position: relative;
@@ -4852,10 +4566,6 @@ img {
     margin-top: 0.55rem;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
-
-/* =================================
-   CREDENTIALS — Botanical Journal
-   ================================= */
 
 .botanical-journal {
     background: linear-gradient(145deg, #FDF6E3, #F5EED6);
@@ -4972,10 +4682,6 @@ img {
     100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-/* =================================
-   CAMERA — Rainbow Stripe & Upgrades
-   ================================= */
-
 .camera-rainbow-stripe {
     height: 5px;
     background: linear-gradient(90deg,
@@ -4992,7 +4698,6 @@ img {
     box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
-/* OS Window close dot tiny icon */
 .os-dot-x {
     font-size: 8px !important;
     line-height: 1 !important;
@@ -5001,10 +4706,6 @@ img {
 }
 
 .os-dot-close:hover .os-dot-x { color: rgba(0,0,0,0.6); }
-
-/* =================================
-   CERTIFICATES — Picture Frame Plaque
-   ================================= */
 
 .wall-frame-plaque {
     position: absolute;
@@ -5020,7 +4721,7 @@ img {
         inset 0 0 0 1px rgba(255,255,255,0.07),
         0 0 0 2px rgba(201,169,110,0.2);
     pointer-events: none;
-    /* subtle swing */
+    
     animation: frame-sway 6s ease-in-out infinite;
     transform-origin: top center;
 }
@@ -5099,10 +4800,6 @@ img {
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
-
-/* =================================
-   CERTIFICATES — Desk Lamp
-   ================================= */
 
 .desk-lamp {
     position: relative;
@@ -5221,10 +4918,6 @@ img {
     filter: blur(5px);
 }
 
-/* =================================
-   JOURNEY — Fireflies & Atmosphere
-   ================================= */
-
 .journey-fireflies {
     position: absolute;
     inset: 0;
@@ -5267,10 +4960,8 @@ img {
     z-index: 2;
 }
 
-/* Journey section relative positioning for absolute children */
 #artifacts > .max-w-6xl { position: relative; z-index: 3; }
 
-/* Glowing timeline line */
 .timeline-line {
     animation: timeline-glow-pulse 4s ease-in-out infinite;
 }
@@ -5280,7 +4971,6 @@ img {
     50%       { filter: drop-shadow(0 0 18px rgba(232,192,125,0.5)); }
 }
 
-/* Journey timeline dot: animated outer ring */
 .timeline-dot::after {
     content: '';
     position: absolute;
@@ -5295,15 +4985,10 @@ img {
     50%       { transform: scale(1.12); opacity: 0.6; }
 }
 
-/* Journey content card enhanced hover */
 .timeline-content:hover {
     box-shadow: 0 25px 70px rgba(0,0,0,0.3), 0 0 30px rgba(232,192,125,0.1);
     border-color: rgba(232,192,125,0.2);
 }
-
-/* =================================
-   KNOWLEDGE GARDEN — Atmosphere
-   ================================= */
 
 .garden-sky-deco {
     position: absolute;
@@ -5345,7 +5030,6 @@ img {
     to { transform: rotate(360deg); }
 }
 
-/* Clouds */
 .garden-cloud {
     position: absolute;
     background: rgba(255,255,255,0.55);
@@ -5382,7 +5066,6 @@ img {
     50%       { transform: translateX(20px); }
 }
 
-/* Butterflies */
 .garden-butterfly {
     position: absolute;
     width: 24px;
@@ -5445,10 +5128,8 @@ img {
     100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
 }
 
-/* Garden section z-index fix */
 #wisdom .max-w-5xl { position: relative; z-index: 1; }
 
-/* Garden ground strip */
 .garden-ground-strip {
     width: 100%;
     height: 28px;
@@ -5475,7 +5156,6 @@ img {
     opacity: 0.6;
 }
 
-/* Position grass away from pots */
 .grass-1 { left: 5%; }
 .grass-2 { left: 18%; }
 .grass-3 { left: 32%; }
@@ -5485,10 +5165,6 @@ img {
 .grass-7 { left: 82%; }
 .grass-8 { left: 92%; }
 .grass-9 { left: 12%; }
-
-/* =================================
-   CREDENTIALS — Journal Ribbon & Enhancements
-   ================================= */
 
 .journal-ribbon {
     position: absolute;
@@ -5534,10 +5210,6 @@ img {
 .dark .journal-ribbon::before { border-top-color: #8B6B3A; }
 .dark .journal-ribbon::after  { border-top-color: #8B6B3A; }
 
-/* =================================
-   WEBSITES — Holographic Title
-   ================================= */
-
 .web-holo-title {
     background: linear-gradient(90deg, #fff 0%, #9CAF88 20%, #A8C5D9 40%, #E8C07D 60%, #B8A9C9 80%, #fff 100%);
     background-size: 300% auto;
@@ -5550,10 +5222,6 @@ img {
 @keyframes holo-shimmer {
     to { background-position: 300% center; }
 }
-
-/* =================================
-   WEBSITES — Satellite & Planet
-   ================================= */
 
 .web-satellite {
     position: absolute;
@@ -5676,11 +5344,6 @@ img {
     to { filter: hue-rotate(10deg); }
 }
 
-/* =================================
-   CERTIFICATES — Three-Column Scene Layout
-   ================================= */
-
-/* String lights bar across section top */
 .cert-string-bar {
     position: relative;
     width: 100%;
@@ -5703,7 +5366,6 @@ img {
     border-radius: 1px;
 }
 
-/* Three-column row: left side | center | right side */
 .cert-scene-row {
     display: flex;
     align-items: flex-end;
@@ -5715,7 +5377,6 @@ img {
     gap: 5rem;
 }
 
-/* Side decoration columns */
 .cert-side-deco {
     flex: 0 0 150px;
     display: flex;
@@ -5732,14 +5393,12 @@ img {
 .cert-side-left  { padding-right: 0.5rem; }
 .cert-side-right { padding-left: 0.5rem; }
 
-/* Center area */
 .cert-center-area {
     flex: 1;
     min-width: 0;
     max-width: 860px;
 }
 
-/* Side picture frames (in-flow, no longer absolute) */
 .cert-side-frame {
     background: linear-gradient(145deg, #5D4E37, #3a2e20);
     padding: 7px;
@@ -5761,13 +5420,11 @@ img {
     50%       { transform: rotate(1.5deg); }
 }
 
-/* Side shelf (reuse existing .shelf-surface, .shelf-items etc) */
 .cert-side-shelf {
     position: relative;
     width: 104px;
 }
 
-/* Side plaque */
 .cert-side-plaque {
     background: linear-gradient(145deg, #5D4E37, #3a2e20);
     padding: 7px;
@@ -5820,19 +5477,13 @@ img {
     opacity: 0.7;
 }
 
-/* Monitor sizing — increased width */
 .cottage-monitor-outer {
     width: min(620px, 92vw);
 }
 
-/* Hide side columns on small screens */
 @media (max-width: 768px) {
     .cert-side-deco { display: none; }
 }
-
-/* =================================
-   CERTIFICATES — OS Window in Monitor
-   ================================= */
 
 .os-window.in-monitor {
     animation: os-win-open-monitor 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -5844,12 +5495,6 @@ img {
     0%   { transform: scale(0.82); opacity: 0; }
     100% { transform: scale(1);    opacity: 1; }
 }
-
-
-
-/* =================================
-   CERTIFICATES — Cozy Mug
-   ================================= */
 
 .deco-cozy-mug {
     display: flex;
@@ -5960,7 +5605,6 @@ img {
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* Tea bag in mug */
 .mug-teabag {
     position: absolute;
     left: 16px;
@@ -6002,10 +5646,6 @@ img {
 .dark .teabag-string {
     background: rgba(80,60,40,0.9);
 }
-
-/* =================================
-   CERTIFICATES — CSS Kitten
-   ================================= */
 
 .desk-kitten {
     display: flex;
@@ -6095,10 +5735,6 @@ img {
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     margin: 2px auto 0;
 }
-
-/* =================================
-   GARDEN — Water Can Button & Flying Petals
-   ================================= */
 
 .water-can-btn {
     position: absolute;
@@ -6194,10 +5830,6 @@ img {
     100% { transform: translate(-15px, 32px) scale(0.5); opacity: 0; }
 }
 
-/* =================================
-   JOURNEY — Timeline Story Expansion
-   ================================= */
-
 .timeline-content {
     position: relative;
     cursor: default;
@@ -6265,13 +5897,9 @@ img {
     font-style: italic;
 }
 
-/* =================================
-   GARDEN — Permanent Skill Labels
-   ================================= */
-
 .flower-skill-labels {
     position: absolute;
-    /* positioned relative to .flower-pot-card; bloom is at pot card top, so 100%+10px clears it */
+    
     bottom: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
@@ -6306,7 +5934,6 @@ img {
     transform: translateY(0) scale(1);
 }
 
-/* Hide hover tooltip once labels are shown */
 .flower-pot-card.watered .flower-skills-tooltip {
     display: none;
 }
@@ -6314,14 +5941,6 @@ img {
 .flower-pot-card .flower-skills-tooltip {
     display: none;
 }
-
-/* =================================
-   CREDENTIALS — Interactive Book
-   ================================= */
-
-/* =================================
-   CREDENTIALS — Open Book (Real)
-   ================================= */
 
 .cred-book-scene {
     display: flex;
@@ -6346,7 +5965,6 @@ img {
     transform: rotateX(6deg) rotateY(-4deg);
 }
 
-/* Drop shadow */
 .cred-open-book::before {
     content: '';
     position: absolute;
@@ -6361,8 +5979,6 @@ img {
     pointer-events: none;
     display: none;
 }
-
-/* ---- BOARDS ---- */
 
 .book-left-board {
     position: absolute;
@@ -6418,8 +6034,6 @@ img {
     pointer-events: none;
 }
 
-/* ---- SPINE ---- */
-
 .book-spine-center {
     position: absolute;
     left: 50%;
@@ -6443,8 +6057,6 @@ img {
     height: 84%;
     background: repeating-linear-gradient(to bottom, rgba(156,175,136,0.4) 0px, rgba(156,175,136,0.4) 5px, transparent 5px, transparent 11px);
 }
-
-/* ---- EDGES (3D page thickness) ---- */
 
 .book-edge-top {
     position: absolute;
@@ -6476,7 +6088,6 @@ img {
     pointer-events: none;
 }
 
-/* Gutter shadow at spine */
 .book-gutter-shadow {
     position: absolute;
     left: calc(50% - 24px);
@@ -6489,9 +6100,6 @@ img {
     transition: opacity 0.45s ease;
 }
 
-/* ---- CLOSED BOOK STATES ---- */
-
-/* Front cover: hide left board and gutter so it reads as a closed book */
 .cred-open-book.book-is-closed .book-left-board,
 .cred-open-book.book-is-closed .book-gutter-shadow {
     opacity: 0;
@@ -6504,13 +6112,11 @@ img {
     left: calc(50% + 7px);
 }
 
-/* Hide back cover when book is in closed (front) state */
 .cred-open-book.book-is-closed .book-backcover-page {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Tighten the 3D tilt — more frontal, like holding a closed book to show the cover */
 .cred-open-book.book-is-closed {
     transform: rotateX(6deg) rotateY(-18deg);
 }
@@ -6518,7 +6124,6 @@ img {
     transform: rotateX(3deg) rotateY(-12deg);
 }
 
-/* Back cover: tilt the other way so the back-cover page reads correctly */
 .cred-open-book.book-is-closed-back {
     transform: rotateX(6deg) rotateY(8deg);
 }
@@ -6538,20 +6143,16 @@ img {
     left: 0;
 }
 
-/* Hide regular pages when showing back cover */
 .cred-open-book.book-is-closed-back .book-page:not(.book-backcover-page) {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Show only back cover page */
 .cred-open-book.book-is-closed-back .book-backcover-page {
     left: 0;
     opacity: 1;
     pointer-events: auto;
 }
-
-/* ---- PAGES ---- */
 
 .book-page {
     position: absolute;
@@ -6567,7 +6168,6 @@ img {
     pointer-events: none;
 }
 
-/* Pages that are flipped or the first page (when book opens) should be visible */
 .book-page.flipped,
 .book-page.book-cover-page {
     opacity: 1;
@@ -6584,8 +6184,6 @@ img {
     pointer-events: auto;
 }
 
-/* PAGE FACES */
-
 .bp-front, .bp-back {
     position: absolute;
     width: 100%;
@@ -6601,7 +6199,6 @@ img {
     box-shadow: inset -10px 0 22px rgba(0,0,0,0.07), 1px 0 6px rgba(0,0,0,0.1);
 }
 
-/* Left gutter shadow on front face */
 .bp-front::before {
     content: '';
     position: absolute;
@@ -6619,7 +6216,6 @@ img {
     box-shadow: inset 10px 0 22px rgba(0,0,0,0.07), -1px 0 6px rgba(0,0,0,0.1);
 }
 
-/* Right gutter shadow on back face */
 .bp-back::before {
     content: '';
     position: absolute;
@@ -6637,12 +6233,10 @@ img {
     background: linear-gradient(70deg, #1a2018 0%, #1d2720 15%, #222e22 55%, #1c2820 100%);
 }
 
-/* Hover highlight on unflipped pages - only active unflipped pages */
 .book-page:not(.book-backcover-page):not(.flipped):hover .bp-front {
     box-shadow: inset -10px 0 22px rgba(0,0,0,0.07), 1px 0 6px rgba(0,0,0,0.1), inset 0 0 80px rgba(255,255,255,0.06);
 }
 
-/* COVER FACE */
 .bp-cover {
     background: linear-gradient(145deg, #2d3a2e 0%, #3e5040 35%, #4a5e3c 60%, #2a3a2c 100%) !important;
     display: flex;
@@ -6668,7 +6262,6 @@ img {
     padding: 1rem;
 }
 
-/* ENDPAPER */
 .bp-endpaper {
     background: linear-gradient(135deg, #DEC9A2, #CCB48E) !important;
 }
@@ -6685,7 +6278,6 @@ img {
     pointer-events: none;
 }
 
-/* BACK COVER face */
 .bp-back-cover {
     background: linear-gradient(145deg, #2d3a2e 0%, #3e5040 35%, #4a5e3c 60%, #2a3a2c 100%) !important;
     display: flex;
@@ -6713,7 +6305,6 @@ img {
     padding: 1rem;
 }
 
-/* LINED back page */
 .bp-lined {
     background: repeating-linear-gradient(transparent, transparent 27px, rgba(156,175,136,0.28) 27px, rgba(156,175,136,0.28) 28px),
                 linear-gradient(110deg, #EDE0C8, #FDF6E3) !important;
@@ -6723,7 +6314,6 @@ img {
                 linear-gradient(110deg, #1a2018, #1e2720) !important;
 }
 
-/* PAGE CONTENT */
 .bp-content {
     padding: 2rem 1.4rem 1.5rem;
     height: 100%;
@@ -6733,7 +6323,6 @@ img {
     overflow: hidden;
 }
 
-/* BOOK TITLE / DECO / SUBTITLE (reused from before) */
 .cred-book-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
@@ -6757,7 +6346,6 @@ img {
     opacity: 0.75;
 }
 
-/* Page number */
 .cred-page-number {
     position: absolute;
     bottom: 1rem;
@@ -6850,12 +6438,6 @@ img {
     color: var(--ct, #9CAF88);
 }
 
-
-/* =================================
-   WEBSITES — Enhanced Browser Cards
-   ================================= */
-
-/* Screen preview area */
 .browser-screen-preview {
     background: rgba(16,22,20,0.85);
     margin: 0 -2rem;
@@ -6874,7 +6456,6 @@ img {
     pointer-events: none;
 }
 
-/* Scan-line shimmer on hover */
 .browser-card:hover .browser-screen-preview::after {
     content: '';
     position: absolute;
@@ -6891,7 +6472,6 @@ img {
     to   { left: 120%; }
 }
 
-/* Nav bar mockup */
 .bsp-nav {
     display: flex;
     gap: 6px;
@@ -6907,7 +6487,6 @@ img {
     background: rgba(255,255,255,0.15);
 }
 
-/* Hero text mockup */
 .bsp-hero {
     margin-bottom: 0.65rem;
 }
@@ -6928,7 +6507,6 @@ img {
     background: rgba(156,175,136,0.25);
 }
 
-/* Cards mockup */
 .bsp-cards-row {
     display: flex;
     gap: 6px;
@@ -6941,7 +6519,6 @@ img {
     background: rgba(255,255,255,0.07);
 }
 
-/* Floating icon */
 .bsp-icon {
     position: absolute;
     bottom: 0.5rem;
@@ -6955,7 +6532,6 @@ img {
     transform: scale(1.15);
 }
 
-/* Expand button */
 .web-expand-btn {
     width: 32px;
     height: 32px;
@@ -6990,7 +6566,6 @@ img {
     transform: rotate(45deg);
 }
 
-/* Tech chips */
 .web-tech-chips {
     display: flex;
     flex-wrap: wrap;
@@ -7016,7 +6591,6 @@ img {
     color: #9CAF88;
 }
 
-/* Expandable case study */
 .web-button-row {
     margin-top: 1rem;
     padding-top: 0.75rem;
@@ -7096,10 +6670,6 @@ img {
     background: #E8C07D;
 }
 
-/* =================================
-   MOBILE NAVIGATION HAMBURGER
-   ================================= */
-
 .nav-hamburger {
     display: none;
     flex-direction: column;
@@ -7137,7 +6707,6 @@ img {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile overlay */
 .mobile-nav-overlay {
     display: none;
     position: fixed;
@@ -7187,12 +6756,8 @@ img {
     background: rgba(156, 175, 136, 0.2);
 }
 
-/* =================================
-   GLOBAL MOBILE — 768px and below
-   ================================= */
-
 @media (max-width: 768px) {
-    /* ---- Nav ---- */
+    
     .nav-pill {
         padding: 0.5rem 1rem;
         gap: 0.5rem;
@@ -7207,18 +6772,18 @@ img {
         display: flex;
     }
 
-    /* ---- Hero ---- */
+    
     .hero-section {
         padding-top: 5.5rem !important;
     }
 
-    /* ---- About ---- */
+    
     .camera-photo-widget {
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* ---- Journey: horizontal-scroll tabs on small phones ---- */
+    
     .jchap-tabs {
         overflow-x: auto;
         flex-wrap: nowrap;
@@ -7231,7 +6796,7 @@ img {
         flex-shrink: 0;
     }
 
-    /* ---- Studio ---- */
+    
     .studio-content {
         min-height: auto;
     }
@@ -7239,7 +6804,7 @@ img {
         padding: 0;
     }
 
-    /* ---- Museum controls: compact ---- */
+    
     .museum-controls {
         bottom: 0.75rem;
         right: 0.75rem;
@@ -7251,18 +6816,18 @@ img {
         height: 30px;
     }
 
-    /* ---- Websites: hide space decorations ---- */
+    
     .web-satellite,
     .web-planet {
         display: none;
     }
 
-    /* ---- Certificates: boost folder icon size within zoomed scene ---- */
+    
     .os-folder-grid {
         zoom: 1.2;
     }
 
-    /* ---- Certificates: scale entire scene proportionally (same look as desktop) ---- */
+    
     .cert-scene-row {
         padding: 0;
     }
@@ -7286,7 +6851,7 @@ img {
         zoom: 1;
     }
 
-    /* ---- Dialogue box: full width on mobile ---- */
+    
     .dialogue-box {
         width: calc(100vw - 2rem);
         right: 1rem;
@@ -7295,23 +6860,19 @@ img {
     }
 }
 
-/* =================================
-   SMALL MOBILE — 480px and below
-   ================================= */
-
 @media (max-width: 480px) {
-    /* Hero name bigger breathing room */
+    
     .hero-section {
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
-    /* About grid: center everything */
+    
     .camera-photo-widget {
         max-width: 100%;
     }
 
-    /* Journey: cards fit correctly */
+    
     .jchap-panels {
         overflow: visible;
     }
@@ -7319,12 +6880,12 @@ img {
         width: 100%;
     }
 
-    /* Monitor: keep at 720px for zoom-based scaling from 768px block */
+    
     .cottage-monitor-outer {
         width: 720px !important;
     }
 
-    /* Garden: ensure pots fit */
+    
     .flower-pot-card {
         min-width: 0;
         padding: 0.5rem;
@@ -7334,13 +6895,13 @@ img {
         height: 36px;
     }
 
-    /* iPod: scale down on tiny screens */
+    
     .ipod-container {
         transform: scale(0.9);
         transform-origin: top center;
     }
 
-    /* Contact tag: relative on mobile */
+    
     .contact-tag {
         position: relative;
         top: auto;
@@ -7352,18 +6913,17 @@ img {
         padding-top: 1.5rem !important;
     }
 
-    /* Scroll progress thinner */
+    
     #scrollProgress {
         height: 3px;
     }
 
-    /* Footer links */
+    
     footer .grid {
         gap: 2rem;
     }
 }
 
-/* Blob animation for hero background */
 @keyframes blob {
     0%, 100% {
         transform: translate(0, 0) scale(1);
@@ -7387,10 +6947,6 @@ img {
 .animation-delay-4000 {
     animation-delay: 4s;
 }
-
-/* =================================
-   CONVERSATIONAL INTRO OVERLAY
-   ================================= */
 
 #intro-overlay {
     position: fixed;
@@ -7542,7 +7098,6 @@ img {
     color: #FDF6E3;
 }
 
-/* Botanical corner decorations */
 .intro-botanical-br {
     position: absolute;
     bottom: -30px;

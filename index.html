@@ -7,21 +7,21 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='25' y='20' width='50' height='60' rx='10' fill='%23B8B8B8' stroke='%23888' stroke-width='2'/><rect x='30' y='25' width='40' height='32' rx='3' fill='%23C8E6F5'/><circle cx='50' cy='68' r='10' fill='%23E5E5E5' stroke='%23999' stroke-width='1.5'/><circle cx='50' cy='68' r='7' fill='%23F5F5F5'/></svg>">
     
-    <!-- Google Fonts - Preconnect for speed -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-    <!-- Material Icons - loaded async to avoid render blocking -->
+    
     <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"></noscript>
     
-    <!-- Tailwind -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- EmailJS SDK - deferred for performance -->
+    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
-    <!-- Tailwind Config -->
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -62,31 +62,31 @@
         }
     </script>
 
-    <!-- Custom Styles -->
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="selection:bg-cottage-sage selection:text-white dark:selection:bg-accentGold/30">
     <div class="noise"></div>
     <div id="scrollProgress"><div class="progress-bar" id="progressBar"></div></div>
 
-    <!-- Museum Spotlight Cursor -->
+    
     <div id="museum-cursor-spotlight"></div>
 
-    <!-- Audio Element for Whimsical Sound -->
-    <!-- Audio: preload=none for performance, loads on first user interaction -->
+    
+    
     <audio id="whimsicalSound" preload="none">
         <source src="https://assets.mixkit.co/music/preview/mixkit-fairy-fantasy-1115.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Image Modal -->
+    
     <div class="image-modal" id="imageModal">
         <div class="modal-close" onclick="closeModal()"><span class="material-icons-outlined" style="font-size:22px;line-height:1">close</span></div>
         <img src="" alt="Full size image" id="modalImage">
     </div>
 
-    <!-- Conversational Intro Overlay -->
+    
     <div id="intro-overlay">
-        <!-- Botanical corner decoration -->
+        
         <svg class="intro-botanical-br" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M180 180 Q140 120 80 100 Q40 88 20 20" stroke-linecap="round"/>
             <path d="M180 180 Q160 130 120 90 Q90 60 100 20" stroke-linecap="round"/>
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    
     <nav>
         <div class="nav-inner">
             <div class="nav-pill">
@@ -131,7 +131,7 @@
                     <svg class="w-4 h-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
                     <svg class="w-4 h-4 hidden dark:block text-accentGold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                 </button>
-                <!-- Hamburger: mobile only -->
+                
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation" aria-controls="mobileNavOverlay" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -139,7 +139,7 @@
         </div>
     </nav>
 
-    <!-- Mobile nav overlay -->
+    
     <div class="mobile-nav-overlay" id="mobileNavOverlay" role="menu" aria-label="Mobile navigation">
         <a href="#hero" onclick="closeMobileNav()">Home</a>
         <a href="#about" onclick="closeMobileNav()">About</a>
@@ -149,9 +149,9 @@
         <a href="#contact" onclick="closeMobileNav()">Contact</a>
     </div>
 
-    <!-- HERO SECTION -->
+    
     <section id="hero" class="hero-section px-4 sm:px-8 pt-24 pb-12 relative overflow-hidden">
-        <!-- Cottagecore botanical decorations -->
+        
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <svg class="botanical absolute top-[15%] left-[8%] w-20 h-20 sm:w-28 sm:h-28 text-cottage-sage opacity-40" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5a4.5 4.5 0 1 0-4.5 4.5M12 7.5V9m-4.5 3 .75-1.5M17 12l-.75-1.5M12 12l2 5.5M12 12l-2 5.5M12 12V17"/></svg>
             <svg class="botanical absolute top-[50%] right-[10%] w-24 h-24 sm:w-32 sm:h-32 text-cottage-honey opacity-30" style="animation: floatBotanical 10s ease-in-out infinite 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 2.5-1 7.5c3-1 5.5 0 5.5 0S19 14 14 15.5"/></svg>
@@ -184,7 +184,7 @@
                 </div>
             </div>
             
-            <!-- Featured work preview grid -->
+            
             <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto mb-6 opacity-0" id="heroGallery">
                 <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
                     <img src="sagebook.webp" alt="SageBook" class="w-full h-40 sm:h-48 object-cover">
@@ -217,7 +217,7 @@
                 <span class="text-cottage-bark dark:text-cottage-cream">Open to remote</span>
             </div>
             
-            <!-- Scroll indicator -->
+            
             <div class="opacity-0 text-center" id="scrollHint">
                 <p class="text-[9px] font-bold uppercase tracking-[0.4em] mb-3 opacity-50 text-cottage-forest dark:text-accentGold">Scroll</p>
                 <div class="w-7 h-12 border-2 border-cottage-forest/50 dark:border-accentGold/50 rounded-full mx-auto flex justify-center pt-2">
@@ -229,15 +229,15 @@
         <div class="hero-divider"></div>
     </section>
 
-    <!-- ABOUT SECTION - Enhanced with floating particles & tilt -->
+    
     <section id="about" class="py-20 relative whimsy-section mt-12">
-        <!-- Floating seed particles -->
+        
         <div class="about-particles" id="aboutParticles"></div>
         <div class="max-w-6xl mx-auto px-4 sm:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="relative reveal-section">
                     <div class="absolute -top-8 -left-8 w-72 h-72 bg-gradient-to-br from-cottage-sage/20 to-cottage-lavender/10 rounded-full blur-[80px] -z-10"></div>
-                    <!-- Camera that takes a photo -->
+                    
                     <div class="camera-photo-widget" id="cameraWidget">
                         <div class="camera-body" id="cameraBody">
                             <div class="camera-top-strip">
@@ -307,7 +307,7 @@
         </div>
     </section>
 
-    <!-- FEATURED PRODUCT CASE STUDIES -->
+    
     <section id="featured-cases" class="py-20 relative whimsy-section overflow-hidden">
         <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div class="absolute -top-20 -left-16 w-72 h-72 bg-gradient-to-br from-cottage-sage/25 to-cottage-lavender/10 rounded-full blur-3xl"></div>
@@ -361,7 +361,7 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION -->
+    
     <section id="artifacts" class="journey-section relative overflow-hidden">
         <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
         <div class="journey-fog" aria-hidden="true"></div>
@@ -371,13 +371,13 @@
 
         <div class="max-w-4xl mx-auto px-4 sm:px-8 relative z-10 py-24">
 
-            <!-- Header -->
+            
             <div class="text-center mb-12 reveal-section">
                 <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">A few chapters of</p>
                 <h2 class="text-4xl sm:text-6xl font-serif italic text-vintageCream">MY STORY</h2>
             </div>
 
-            <!-- Tab navigation -->
+            
             <div class="jchap-tabs reveal-section" id="jchapTabs" style="transition-delay:0.1s">
                 <button class="jchap-tab active" id="jtab-0" onclick="gotoChapter(0)" style="--jc:#9CAF88">
                     <span class="jt-num">01</span>
@@ -401,13 +401,13 @@
                 </button>
             </div>
 
-            <!-- Chapter panels -->
+            
             <div class="jchap-panels" id="jchapPanels">
-                <!-- Ghost cards — visible stack behind active card, click to go next -->
+                
                 <div class="pc-ghost pc-ghost-2" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
                 <div class="pc-ghost pc-ghost-1" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
 
-                <!-- 01 — nextflat CH -->
+                
                 <div class="jchap-panel active" id="jpanel-0" style="--jc:#9CAF88">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -465,7 +465,7 @@
                     </div>
                 </div>
 
-                <!-- 02 — Sky Portugal -->
+                
                 <div class="jchap-panel" id="jpanel-1" style="--jc:#D4A5A5">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -520,7 +520,7 @@
                     </div>
                 </div>
 
-                <!-- 03 — SINFO -->
+                
                 <div class="jchap-panel" id="jpanel-2" style="--jc:#E8C07D">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -576,7 +576,7 @@
                     </div>
                 </div>
 
-                <!-- 04 — Diferencial -->
+                
                 <div class="jchap-panel" id="jpanel-3" style="--jc:#B8A9C9">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -631,7 +631,7 @@
                     </div>
                 </div>
 
-                <!-- 05 — Private Tutoring -->
+                
                 <div class="jchap-panel" id="jpanel-4" style="--jc:#C9A96E">
                     <div class="pc-card">
                         <div class="pc-header">
@@ -686,9 +686,9 @@
                     </div>
                 </div>
 
-            </div><!-- end jchap-panels -->
+            </div>
 
-            <!-- Flipcard navigation -->
+            
             <div class="jchap-footer reveal-section" style="transition-delay:0.2s">
                 <div class="jflip-nav">
                     <button class="jflip-btn" onclick="gotoChapter(currentJourneyChapter - 1)" aria-label="Previous card">
@@ -711,9 +711,7 @@
         </div>
     </section>
 
-
-
-    <!-- STUDIO SECTION -->
+    
     <section id="studio" class="py-20 relative whimsy-section">
         <div class="studio-container">
             <div class="text-center mb-16 reveal-section">
@@ -723,7 +721,7 @@
             
             <div class="studio-content">
                 <div class="studio-projects space-y-16">
-                    <!-- SageBook -->
+                    
                     <div class="project-entry reveal-section" data-img="sagebook.png" data-color="#9CAF88">
                         <div class="magic-card p-6">
                             <p class="text-cottage-bark dark:text-cottage-mushroom font-bold text-[10px] uppercase tracking-widest mb-2">Case Study 01</p>
@@ -736,7 +734,7 @@
                         </div>
                     </div>
 
-                    <!-- CottageTunes -->
+                    
                     <div class="project-entry reveal-section" data-img="cottage-tunes-1.png" data-color="#E8C07D">
                         <div class="magic-card p-6">
                             <p class="text-cottage-honey font-bold text-[10px] uppercase tracking-widest mb-2">Project</p>
@@ -748,7 +746,7 @@
                         </div>
                     </div>
 
-                    <!-- Clicky -->
+                    
                     <div class="project-entry reveal-section" data-img="clicky.png" data-color="#B8A9C9">
                         <div class="magic-card p-6">
                             <p class="text-cottage-lavender font-bold text-[10px] uppercase tracking-widest mb-2">Project</p>
@@ -760,7 +758,7 @@
                         </div>
                     </div>
 
-                    <!-- Debug Quest -->
+                    
                     <div class="project-entry reveal-section" data-img="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" data-color="#4A5D4E">
                         <div class="magic-card p-6">
                             <p class="text-cottage-forest dark:text-cottage-mushroom font-bold text-[10px] uppercase tracking-widest mb-2">Project</p>
@@ -772,7 +770,7 @@
                         </div>
                     </div>
 
-                    <!-- ReMi -->
+                    
                     <div class="project-entry reveal-section" data-img="remi.png" data-color="#A8C5D9">
                         <div class="magic-card p-6">
                             <p class="text-cottage-sky font-bold text-[10px] uppercase tracking-widest mb-2">Case Study 02</p>
@@ -786,7 +784,7 @@
                     </div>
 
                 </div>
-            <!-- Archive Project - Complete Collection - Centered as sibling of studio-projects -->
+            
             <div class="archive-wrapper">
                 <div class="project-entry reveal-section archive-project" id="archive-project" data-img="archive.png" data-color="#D4A5A5">
                     <div class="magic-card p-6">
@@ -802,7 +800,7 @@
             </div>
         </div>
 
-        <!-- Fixed iPhone -->
+        
         <div class="iphone-fixed-wrapper" id="iphoneFixed">
             <div class="iphone-wrapper" id="iphoneWrapper">
                 <div class="iphone-island"></div>
@@ -811,7 +809,7 @@
         </div>
     </section>
 
-    <!-- MUSEUM SECTION - NOT TOUCHED AT ALL -->
+    
     <section id="designs" class="museum-section">
         <div class="museum-controls">
             <button class="museum-control-btn" id="speedUpBtn" title="Speed up">
@@ -873,7 +871,7 @@
                     <p>For a day where people just got to explore.</p>
                     <div class="gallery-plaque">Discovery</div>
                 </div>
-                <!-- Duplicate for infinite scroll -->
+                
                 <div class="gallery-frame" onclick="openModal('Designs/mcdonalds.webp')">
                     <div class="gallery-image-container"><img src="Designs/mcdonalds.webp" alt="McDonald's" class="gallery-image" loading="lazy"></div>
                     <h4>McDonald's Reimagined</h4>
@@ -914,11 +912,11 @@
         </div>
     </section>
 
-    <!-- WEBSITES SECTION - Holographic Signal Broadcast -->
+    
     <section id="websites" class="py-20 whimsy-section websites-signal-section">
-        <!-- Starfield background -->
+        
         <div class="websites-starfield" id="websiteStarfield" aria-hidden="true"></div>
-        <!-- Satellite decoration -->
+        
         <div class="web-satellite" aria-hidden="true">
             <div class="sat-body"></div>
             <div class="sat-panel-left"></div>
@@ -928,7 +926,7 @@
             <div class="sat-signal-ring sat-sig-2"></div>
             <div class="sat-signal-ring sat-sig-3"></div>
         </div>
-        <!-- Planet decoration -->
+        
         <div class="web-planet" aria-hidden="true"></div>
         <div class="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-12 reveal-section">
@@ -938,7 +936,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-8">
 
-                <!-- Card 1: Personal Website -->
+                
                 <div class="web-card reveal-section browser-card" id="web-card-0">
                     <div class="browser-bar">
                         <div class="browser-dots">
@@ -948,7 +946,7 @@
                         </div>
                         <div class="browser-url" id="web-url-0">constancadcunha.github.io</div>
                     </div>
-                    <!-- Screen preview -->
+                    
                     <div class="browser-screen-preview" style="--sp-accent:#9CAF88">
                         <div class="bsp-nav"><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div></div>
                         <div class="bsp-hero"><div class="bsp-hero-line bsp-h1"></div><div class="bsp-hero-line bsp-h2"></div></div>
@@ -973,13 +971,13 @@
                         <div class="web-tech-chips">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Tailwind</span>
                         </div>
-                        <!-- Always visible visit button -->
+                        
                         <div class="web-button-row">
                             <a href="https://constancadcunha.github.io/constancacunha/" target="_blank" class="web-visit-btn">
                                 Visit Site <span class="material-icons-outlined align-middle text-sm">open_in_new</span>
                             </a>
                         </div>
-                        <!-- Expandable case study -->
+                        
                         <div class="web-case-study" id="web-study-0">
                             <div class="web-case-divider"></div>
                             <div class="web-case-row">
@@ -996,7 +994,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Resumos LEIC -->
+                
                 <div class="web-card reveal-section browser-card" id="web-card-1" style="transition-delay: 0.1s">
                     <div class="browser-bar">
                         <div class="browser-dots">
@@ -1006,7 +1004,7 @@
                         </div>
                         <div class="browser-url" id="web-url-1">resumos.leic.pt</div>
                     </div>
-                    <!-- Screen preview -->
+                    
                     <div class="browser-screen-preview" style="--sp-accent:#C9A96E">
                         <div class="bsp-nav"><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div><div class="bsp-nav-dot"></div></div>
                         <div class="bsp-hero"><div class="bsp-hero-line bsp-h1" style="background:rgba(201,169,110,0.5)"></div><div class="bsp-hero-line bsp-h2" style="background:rgba(201,169,110,0.3)"></div></div>
@@ -1031,13 +1029,13 @@
                         <div class="web-tech-chips" style="--wt:#C9A96E">
                             <span>UX Design</span><span>Frontend Dev</span><span>Community</span>
                         </div>
-                        <!-- Always visible visit button -->
+                        
                         <div class="web-button-row">
                             <a href="https://resumos.leic.pt/" target="_blank" class="web-visit-btn">
                                 Visit Site <span class="material-icons-outlined align-middle text-sm">open_in_new</span>
                             </a>
                         </div>
-                        <!-- Expandable case study -->
+                        
                         <div class="web-case-study" id="web-study-1">
                             <div class="web-case-divider"></div>
                             <div class="web-case-row">
@@ -1058,17 +1056,17 @@
         </div>
     </section>
 
-    <!-- CERTIFICATES SECTION - Cottagecore Desk Setup -->
+    
     <section id="certificates" class="cert-cottage-section">
 
-        <!-- Section header (compact) -->
+        
         <div class="cert-cottage-header reveal-section">
             <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-1">Certificates I've</p>
             <h2 class="text-4xl sm:text-5xl font-serif italic text-cottage-forest dark:text-vintageCream">EARNED & FRAMED</h2>
             <p class="text-xs text-cottage-forest/50 dark:text-vintageCream/40 mt-1 font-display italic">Click a folder to open a certificate — right on the screen</p>
         </div>
 
-        <!-- String lights across the top -->
+        
         <div class="cert-string-bar" aria-hidden="true">
             <div class="cert-string-wire"></div>
             <div class="string-bulb" style="--bd:0s"></div>
@@ -1083,10 +1081,10 @@
             <div class="string-bulb" style="--bd:1.35s"></div>
         </div>
 
-        <!-- Three-column scene: left decor | center monitor | right decor -->
+        
         <div class="cert-scene-row">
 
-            <!-- Left side wall decorations -->
+            
             <div class="cert-side-deco cert-side-left" aria-hidden="true">
                 <div class="cert-side-frame">
                     <div class="wall-frame-mat">
@@ -1121,15 +1119,15 @@
                 </div>
             </div>
 
-            <!-- Center: monitor + desk -->
+            
             <div class="cert-center-area">
                 <div class="cottage-table-scene">
 
-                    <!-- Monitor -->
+                    
                     <div class="cottage-monitor-outer reveal-section" style="transition-delay:0.2s">
                         <div class="cottage-monitor-frame">
                             <div class="cottage-monitor-screen">
-                                <!-- OS Menu Bar inside the screen -->
+                                
                                 <div class="os-menubar">
                                     <div class="os-menubar-left">
                                         <span class="os-logo material-icons-outlined" style="font-size:15px">eco</span>
@@ -1144,7 +1142,7 @@
                                         <span class="os-menu-clock" id="osClock">--:--</span>
                                     </div>
                                 </div>
-                                <!-- OS desktop inside the screen -->
+                                
                                 <div class="os-desktop cottage-os-desktop">
                                     <div class="os-scanlines" aria-hidden="true"></div>
                                     <p class="os-terminal-hint" style="text-align:center;padding:0.25rem 0 0.25rem;margin-top:-0.5rem;">$ ls ~/certificates/ — 9 items found</p>
@@ -1189,14 +1187,14 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Monitor stand -->
+                        
                         <div class="cottage-monitor-neck"></div>
                         <div class="cottage-monitor-base-plate"></div>
                     </div>
 
-                    <!-- Desk surface with decorations -->
+                    
                     <div class="cottage-desk-surface">
-                        <!-- Lamp -->
+                        
                         <div class="desk-lamp" aria-hidden="true">
                             <div class="lamp-arm-1"></div>
                             <div class="lamp-arm-2"></div>
@@ -1206,16 +1204,16 @@
                             <div class="lamp-glow"></div>
                             <div class="lamp-base"></div>
                         </div>
-                        <!-- Left: standing books + plant -->
+                        
                         <div class="desk-deco-left">
                         </div>
-                        <!-- Mouse: next to keyboard -->
+                        
                         <div class="desk-mouse-standalone">
                             <div class="mouse-body"></div>
                         </div>
-                        <!-- Center: keyboard -->
+                        
                         <div class="desk-deco-center">
-                            <!-- Keyboard below -->
+                            
                             <div class="deco-keyboard">
                                 <div class="kb-row">
                                     <div class="kb-key wide"></div>
@@ -1232,9 +1230,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Right: improved cozy mug + mouse + kitten -->
+                        
                         <div class="desk-deco-right">
-                            <!-- Cozy mug -->
+                            
                             <div class="deco-cozy-mug">
                                 <div class="mug-steam">
                                     <span class="steam-wisp"></span>
@@ -1251,7 +1249,7 @@
                                 </div>
                                 <div class="mug-saucer"></div>
                             </div>
-                            <!-- Cute CSS kitten sitting on desk -->
+                            
                             <div class="desk-kitten" title="A cozy helper">
                                 <div class="kitty-body-wrap">
                                     <div class="kitty-tail"></div>
@@ -1268,9 +1266,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Desk front edge -->
+                    
                     <div class="cottage-desk-edge"></div>
-                    <!-- Desk legs -->
+                    
                     <div class="cottage-desk-legs">
                         <div class="desk-leg"></div>
                         <div class="desk-leg"></div>
@@ -1278,7 +1276,7 @@
                 </div>
             </div>
 
-            <!-- Right side wall decorations -->
+            
             <div class="cert-side-deco cert-side-right" aria-hidden="true">
                 <div class="cert-side-frame cert-side-frame-abstract">
                     <div class="wall-frame-mat">
@@ -1303,9 +1301,9 @@
                 </div>
             </div>
 
-        </div><!-- end cert-scene-row -->
+        </div>
 
-        <!-- Certificate modal window — positioned within monitor screen by JS -->
+        
         <div class="os-window hidden" id="osWindow">
             <div class="os-win-titlebar">
                 <div class="os-win-controls">
@@ -1320,9 +1318,9 @@
         </div>
     </section>
 
-    <!-- WISDOM/SKILLS SECTION — Flower Garden -->
+    
     <section id="wisdom" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
-        <!-- Garden atmosphere -->
+        
         <div class="garden-sky-deco" aria-hidden="true">
             <div class="garden-sun"></div>
             <div class="garden-cloud garden-cloud-1"></div>
@@ -1341,10 +1339,10 @@
                 <p class="text-xs opacity-75 mt-2 mb-8 font-display italic font-semibold" style="text-align:center;display:block;width:100%">Click the watering can to bloom each plant <span class="material-icons-outlined" style="font-size:14px;vertical-align:middle">watering_can</span></p>
             </div>
 
-            <!-- Flower pot row -->
+            
             <div class="garden-pots-row" id="gardenPotsRow">
 
-                <!-- Pot 1: Languages -->
+                
                 <div class="flower-pot-card reveal-section" id="pot-0">
                     <div class="flower-skill-labels" id="skill-labels-0"></div>
                     <div class="flower-plant-area">
@@ -1371,7 +1369,7 @@
                             <div class="stem-leaf left"></div>
                             <div class="stem-leaf right"></div>
                         </div>
-                        <!-- Hidden fallback tooltip (kept for accessibility structure) -->
+                        
                         <div class="flower-skills-tooltip">
                             Python &amp; TypeScript<br>Java &amp; C/C++<br>Julia &amp; Prolog<br>JavaScript
                         </div>
@@ -1384,7 +1382,7 @@
                     <p class="pot-label-text text-cottage-forest dark:text-cottage-sage">Languages</p>
                 </div>
 
-                <!-- Pot 2: Frontend -->
+                
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.1s" id="pot-1">
                     <div class="flower-skill-labels" id="skill-labels-1"></div>
                     <div class="flower-plant-area">
@@ -1423,7 +1421,7 @@
                     <p class="pot-label-text text-cottage-forest dark:text-cottage-honey">Frontend</p>
                 </div>
 
-                <!-- Pot 3: Design Tools -->
+                
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.2s" id="pot-2">
                     <div class="flower-skill-labels" id="skill-labels-2"></div>
                     <div class="flower-plant-area">
@@ -1462,7 +1460,7 @@
                     <p class="pot-label-text text-cottage-forest dark:text-cottage-rose">Design Tools</p>
                 </div>
 
-                <!-- Pot 4: Soft Skills -->
+                
                 <div class="flower-pot-card reveal-section" style="transition-delay:0.3s" id="pot-3">
                     <div class="flower-skill-labels" id="skill-labels-3"></div>
                     <div class="flower-plant-area">
@@ -1501,8 +1499,8 @@
                     <p class="pot-label-text text-cottage-forest dark:text-cottage-lavender">Soft Skills</p>
                 </div>
 
-            </div><!-- end garden-pots-row -->
-            <!-- Garden ground strip -->
+            </div>
+            
             <div class="garden-ground-strip" aria-hidden="true">
                 <div class="garden-grass-tufts">
                     <div class="grass-tuft grass-1"></div>
@@ -1519,14 +1517,14 @@
 
             <div class="section-separator reveal-section"></div>
 
-            <!-- Credentials — iPod Classic -->
+            
             <div class="max-w-4xl mx-auto mt-16 px-4">
                 <div class="text-center mb-10 reveal-section">
                     <h3 class="text-2xl font-serif italic text-center mb-8 reveal-section">My Credentials <span class="material-icons-outlined">headphones</span></h3>
                 </div>
 
                 <div class="ipod-container reveal-section">
-                    <!-- Background decorative elements -->
+                    
                     <div class="ipod-sparkle ipod-sparkle-1"></div>
                     <div class="ipod-sparkle ipod-sparkle-2"></div>
                     <div class="ipod-sparkle ipod-sparkle-3"></div>
@@ -1537,7 +1535,7 @@
                     <div class="ipod-glow-orb ipod-orb-2"></div>
                     <div class="ipod-glow-orb ipod-orb-3"></div>
                     
-                    <!-- Floating music notes -->
+                    
                     <div class="music-note music-note-1">♪</div>
                     <div class="music-note music-note-2">♫</div>
                     <div class="music-note music-note-3">♪</div>
@@ -1549,13 +1547,13 @@
                     <div class="music-note music-note-9">♪</div>
                     <div class="music-note music-note-10">♫</div>
                     
-                    <!-- Vinyl records -->
+                    
                     <div class="vinyl-disc vinyl-1"></div>
                     <div class="vinyl-disc vinyl-2"></div>
                     
-                    <!-- The iPod -->
+                    
                     <div class="ipod-body">
-                        <!-- Screen -->
+                        
                         <div class="ipod-screen">
                             <div class="ipod-screen-inner">
                                 <div class="ipod-status-bar">
@@ -1567,7 +1565,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Content Display -->
+                                
                                 <div class="ipod-content" id="ipodContent">
                                     <div class="ipod-menu-title">Credentials</div>
                                     <div class="ipod-menu" id="ipodMenu">
@@ -1613,7 +1611,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Detail View (hidden initially) -->
+                                
                                 <div class="ipod-detail-view" id="ipodDetail">
                                     <div class="ipod-detail-back" onclick="ipodGoBack()">
                                         <span class="material-icons-outlined">arrow_back</span>
@@ -1624,7 +1622,7 @@
                             </div>
                         </div>
                         
-                        <!-- Click Wheel -->
+                        
                         <div class="ipod-wheel">
                             <div class="ipod-wheel-center" onclick="ipodSelect()">
                                 <div class="ipod-center-button">
@@ -1651,7 +1649,7 @@
         </div>
     </section>
 
-    <!-- FOOTER/CONTACT - FIX #9: EmailJS integration, visually identical -->
+    
     <footer id="contact" class="py-20 bg-gradient-to-br from-cottage-forest via-deepForest to-cottage-moss text-vintageCream relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
             <svg class="botanical absolute top-[20%] left-[8%] w-24 h-24" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -1700,7 +1698,7 @@
         <p class="text-center mt-12 text-[9px] font-bold uppercase tracking-[0.4em] opacity-30">© 2026 Constança Cunha • Grown with Love & Care</p>
     </footer>
 
-    <!-- Dialogue Box -->
+    
     <div class="dialogue-box" id="dialogueContainer">
         <div class="close-btn" onclick="dismissDialogue()"><span class="material-icons-outlined" style="font-size:14px;line-height:1">close</span></div>
         <div class="w-12 h-12 bg-gradient-to-br from-cottage-forest to-cottage-moss rounded-full flex items-center justify-center text-white text-lg font-serif italic border-2 border-cottage-sage shrink-0">CC</div>
@@ -1709,13 +1707,13 @@
         </div>
     </div>
 
-    <!-- Defer heavy scripts, load GSAP only when needed -->
-    <!-- FIX #6: Defer heavy scripts, load GSAP only when needed -->
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     
-    <!-- Main JavaScript - deferred -->
+    
     <script src="script.js" defer></script>
 </body>
 </html>

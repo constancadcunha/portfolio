@@ -1,6 +1,5 @@
-// =================================
-// SCROLL POSITION PERSISTENCE (soft refresh only)
-// =================================
+
+
 (function () {
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
@@ -15,12 +14,8 @@
     });
 })();
 
-// =================================
-// INITIALIZATION - Wait for GSAP to load
-// =================================
-
 function initSite() {
-    // Register GSAP plugins
+    
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
     }
@@ -48,7 +43,7 @@ function initSite() {
         observer.observe(target);
     };
 
-    // Intro overlay controls hero animation timing
+    
     initIntroOverlay(initHeroAnimations);
     initRevealSections();
     initStudioIphone();
@@ -83,7 +78,6 @@ function initSite() {
     }, '300px');
 }
 
-// Wait for GSAP to be available
 function waitForGSAP() {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         initSite();
@@ -97,10 +91,6 @@ if (document.readyState === 'loading') {
 } else {
     waitForGSAP();
 }
-
-// =================================
-// WHIMSICAL SOUND
-// =================================
 
 const whimsicalSound = document.getElementById('whimsicalSound');
 if (whimsicalSound) whimsicalSound.volume = 0.3;
@@ -121,10 +111,6 @@ document.addEventListener('click', function initSound() {
     }
 });
 
-// =================================
-// SCROLL PROGRESS BAR
-// =================================
-
 let ticking = false;
 window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -139,25 +125,21 @@ window.addEventListener('scroll', () => {
     }
 }, { passive: true });
 
-// =================================
-// CONVERSATIONAL INTRO OVERLAY
-// =================================
-
 function initIntroOverlay(onComplete) {
     const overlay = document.getElementById('intro-overlay');
     if (!overlay) { if (onComplete) onComplete(); return; }
 
-    // Check if intro was already shown in this session
+    
     if (sessionStorage.getItem('introShown')) {
         if (onComplete) onComplete();
         overlay.classList.add('intro-hidden');
         return;
     }
 
-    // Mark intro as shown in this session
+    
     sessionStorage.setItem('introShown', 'true');
 
-    // Scroll to top before showing intro
+    
     window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
 
@@ -236,15 +218,11 @@ function initIntroOverlay(onComplete) {
     runSequence(0);
 }
 
-// =================================
-// HERO ANIMATIONS
-// =================================
-
 function initHeroAnimations() {
-    // Set initial states
+    
     gsap.set(['#heroTag', '#heroName1', '#heroSubline', '#heroCTA', '#heroGallery'], { y: 30 });
     
-    // Animate in
+    
     gsap.to('#heroTag', { opacity: 1, y: 0, duration: 0.8, delay: 0.3 });
     gsap.to('#heroName1', { opacity: 1, y: 0, duration: 1, delay: 0.6 });
     gsap.to('#heroSubline', { opacity: 1, y: 0, duration: 0.8, delay: 1.0 });
@@ -253,10 +231,6 @@ function initHeroAnimations() {
     gsap.to('#heroLocation', { opacity: 1, duration: 0.6, delay: 2.2 });
     gsap.to('#scrollHint', { opacity: 1, duration: 1, delay: 2.6 });
 }
-
-// =================================
-// REVEAL SECTIONS ON SCROLL
-// =================================
 
 function initRevealSections() {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -270,10 +244,6 @@ function initRevealSections() {
     document.querySelectorAll('.reveal-section').forEach(s => revealObserver.observe(s));
 }
 
-// =================================
-// STUDIO IPHONE FUNCTIONALITY - FIX #5: ReMi timing
-// =================================
-
 function initStudioIphone() {
     const projectEntries = document.querySelectorAll('.project-entry');
     const viewportImg = document.getElementById('viewportImg');
@@ -284,7 +254,7 @@ function initStudioIphone() {
     if (!iphoneFixed || !viewportImg) return;
     iphoneFixed.style.display = 'none';
 
-    // Create a ScrollTrigger for the entire studio section
+    
     ScrollTrigger.create({
         trigger: '#studio',
         start: 'top 40%',
@@ -303,8 +273,8 @@ function initStudioIphone() {
         }
     });
 
-    // FIX #5: Create observers for all project entries except archive
-    // Using broader start/end ranges so ReMi stays visible longer
+    
+    
     projectEntries.forEach(entry => {
         if (entry !== archiveProject) {
             ScrollTrigger.create({
@@ -317,7 +287,7 @@ function initStudioIphone() {
         }
     });
 
-    // Special observer for archive project to hide iPhone
+    
     if (archiveProject) {
         ScrollTrigger.create({
             trigger: archiveProject,
@@ -328,7 +298,7 @@ function initStudioIphone() {
             },
             onLeaveBack: () => {
                 const prevProject = archiveProject.previousElementSibling;
-                // Skip the spacer div
+                
                 let target = prevProject;
                 while (target && !target.classList.contains('project-entry')) {
                     target = target.previousElementSibling;
@@ -369,10 +339,6 @@ function initStudioIphone() {
     }
 }
 
-// =================================
-// IMAGE MODAL
-// =================================
-
 function initImageModal() {
     document.getElementById('imageModal')?.addEventListener('click', (e) => {
         if (e.target === document.getElementById('imageModal')) closeModal();
@@ -394,10 +360,6 @@ function closeModal() {
     document.getElementById('imageModal').classList.remove('active');
     document.body.style.overflow = '';
 }
-
-// =================================
-// DIALOGUE SYSTEM
-// =================================
 
 function initDialogueSystem() {
     const dialogueMap = {
@@ -450,10 +412,6 @@ function dismissDialogue() {
     document.getElementById('dialogueContainer')?.classList.add('hidden');
 }
 
-// =================================
-// THEME TOGGLE
-// =================================
-
 function initTheme() {
     if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -465,10 +423,6 @@ function toggleTheme() {
     localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     playWhimsicalSound();
 }
-
-// =================================
-// MUSEUM GALLERY CONTROLS - UNTOUCHED
-// =================================
 
 function initMuseumGallery() {
     const galleryTrack = document.getElementById('galleryTrack');
@@ -567,16 +521,6 @@ function initMuseumGallery() {
     }
 }
 
-// =================================
-// CONTACT FORM - Web3Forms (reliable, no backend needed)
-// =================================
-// SETUP (takes 2 min):
-//   1. Go to https://web3forms.com
-//   2. Enter your email: constancadcunha@gmail.com
-//   3. Check your inbox and click "Create Access Key"
-//   4. Paste the access key below replacing REPLACE_WITH_WEB3FORMS_KEY
-// =================================
-
 const WEB3FORMS_KEY = '7cedf946-821c-462b-abe0-8c888a0d19d1';
 
 function initContactForm() {
@@ -585,7 +529,7 @@ function initContactForm() {
 
     if (!contactForm) return;
 
-    // Ensure form inputs are clickable
+    
     contactForm.querySelectorAll('input, textarea').forEach(input => {
         input.addEventListener('mousedown', (e) => e.stopPropagation());
         input.addEventListener('click', (e) => {
@@ -609,7 +553,7 @@ function initContactForm() {
 
         let sent = false;
 
-        // Method 1: Web3Forms — primary (no backend, no config needed after key)
+        
         if (WEB3FORMS_KEY !== 'REPLACE_WITH_WEB3FORMS_KEY') {
             try {
                 const res = await fetch('https://api.web3forms.com/submit', {
@@ -631,7 +575,7 @@ function initContactForm() {
             }
         }
 
-        // Method 2: EmailJS fallback (if you configured it separately)
+        
         if (!sent && typeof emailjs !== 'undefined') {
             try {
                 await emailjs.send(
@@ -645,11 +589,11 @@ function initContactForm() {
             }
         }
 
-        // Method 3: mailto fallback — always works, opens email client
+        
         if (!sent) {
             const mailtoLink = `mailto:constancadcunha@gmail.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message)}`;
             window.open(mailtoLink, '_blank');
-            sent = true; // mailto is always "sent" (opens client)
+            sent = true; 
         }
 
         if (sent) {
@@ -672,10 +616,6 @@ function initContactForm() {
     });
 }
 
-// =================================
-// SMOOTH SCROLL
-// =================================
-
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -686,10 +626,6 @@ function initSmoothScroll() {
         });
     });
 }
-
-// =================================
-// STAT COUNTERS
-// =================================
 
 function initStatCounters() {
     const counters = document.querySelectorAll('.stat-counter');
@@ -722,17 +658,13 @@ function initStatCounters() {
     counters.forEach(c => counterObserver.observe(c));
 }
 
-// =================================
-// ABOUT SECTION PARTICLES (Enhancement #8)
-// =================================
-
 function initAboutParticles() {
     const container = document.getElementById('aboutParticles');
     if (!container) return;
 
     const colors = ['#9CAF88', '#E8C07D', '#B8A9C9', '#D4A5A5', '#A8C5D9'];
     
-    // Reduce number of particles from 6 to 3 to save memory and CPU
+    
     for (let i = 0; i < 3; i++) {
         const particle = document.createElement('div');
         particle.className = 'seed-particle';
@@ -746,12 +678,6 @@ function initAboutParticles() {
         container.appendChild(particle);
     }
 }
-
-// Cursor sparkles removed per user request
-
-// =================================
-// CREATIVE ENHANCEMENT: Browser URL Typewriter
-// =================================
 
 function initBrowserTyping() {
     document.querySelectorAll('.browser-card').forEach(card => {
@@ -780,14 +706,10 @@ function initBrowserTyping() {
     });
 }
 
-// =================================
-// CREATIVE ENHANCEMENT: Skill Greenhouse Watering
-// =================================
-
 function initSkillWatering() {
     document.querySelectorAll('.skill-greenhouse').forEach(gh => {
         gh.addEventListener('click', () => {
-            // Water drop burst
+            
             for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
                     const drop = document.createElement('div');
@@ -800,7 +722,7 @@ function initSkillWatering() {
                 }, i * 60);
             }
 
-            // Icon grow bounce
+            
             const icon = gh.querySelector('.material-icons-outlined');
             if (icon) {
                 icon.style.transform = 'scale(1.4)';
@@ -811,18 +733,12 @@ function initSkillWatering() {
                 }, 350);
             }
 
-            // Glow flash
+            
             gh.classList.add('watered');
             setTimeout(() => gh.classList.remove('watered'), 650);
         });
     });
 }
-
-// Certificate stamps removed — replaced by OS desktop experience
-
-// =================================
-// CREATIVE ENHANCEMENT: Timeline Dot Pulse on Enter
-// =================================
 
 function initTimelinePulse() {
     const dots = document.querySelectorAll('.timeline-dot');
@@ -840,12 +756,8 @@ function initTimelinePulse() {
     dots.forEach(d => obs.observe(d));
 }
 
-// =================================
-// WEBSITE SIGNALS — Holographic Broadcast Effect
-// =================================
-
 function initWebsiteSignals() {
-    // Starfield
+    
     const starfield = document.getElementById('websiteStarfield');
     if (starfield) {
         for (let i = 0; i < 30; i++) {
@@ -865,19 +777,19 @@ function initWebsiteSignals() {
     const snippets = ['<div>', '</div>', '{css}', 'fn()', '→', '.px', 'rgb()', ':root', 'flex', 'async'];
 
     document.querySelectorAll('.browser-card').forEach(card => {
-        // Signal rings
+        
         const rings = document.createElement('div');
         rings.className = 'signal-rings';
         rings.innerHTML = '<div class="signal-ring"></div><div class="signal-ring signal-ring-2"></div><div class="signal-ring signal-ring-3"></div>';
         card.appendChild(rings);
 
-        // LIVE badge
+        
         const live = document.createElement('div');
         live.className = 'site-live-badge';
         live.textContent = '● LIVE';
         card.appendChild(live);
 
-        // 3D tilt on mouse move
+        
         let ticking = false;
         card.addEventListener('mousemove', (e) => {
             if (!ticking) {
@@ -898,7 +810,7 @@ function initWebsiteSignals() {
             setTimeout(() => card.style.transition = '', 500);
         });
 
-        // Floating code particles
+        
         card.addEventListener('mouseenter', () => {
             for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
@@ -915,10 +827,6 @@ function initWebsiteSignals() {
         });
     });
 }
-
-// =================================
-// OS CLOCK & BATTERY — Certificate Desktop
-// =================================
 
 function initOsClock() {
     const clock = document.getElementById('osClock');
@@ -958,10 +866,6 @@ function initOsBattery() {
     }
 }
 
-// =================================
-// CERTIFICATE DESKTOP OS
-// =================================
-
 const CERT_DATA = [
     { name: 'Complete Figma Megacourse',       color: '#9CAF88', issuer: 'Udemy',      desc: 'Comprehensive Figma mastery — from basic shapes to advanced prototyping and design systems.',              link: 'certificates/UC-a1497d98-ab9f-4d61-8f60-92c8a520914f.pdf' },
     { name: 'Digital Skills: User Experience', color: '#E8C07D', issuer: 'Accenture',  desc: 'UX research methods, user journey mapping, wireframing, and usability testing fundamentals.',             link: 'certificates/digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf' },
@@ -978,7 +882,7 @@ function openCertWindow(idx) {
     const cert = CERT_DATA[idx];
     if (!cert) return;
 
-    // Backdrop
+    
     let backdrop = document.getElementById('osBackdrop');
     if (!backdrop) {
         backdrop = document.createElement('div');
@@ -993,10 +897,10 @@ function openCertWindow(idx) {
 
     if (monitorScreen && win) {
         const rect = monitorScreen.getBoundingClientRect();
-        const menubarH = 24; // approx menubar height
+        const menubarH = 24; 
         const pad = 10;
 
-        // Constrain backdrop to monitor screen only
+        
         Object.assign(backdrop.style, {
             top: rect.top + 'px',
             left: rect.left + 'px',
@@ -1009,7 +913,7 @@ function openCertWindow(idx) {
             backdropFilter: 'blur(2px)'
         });
 
-        // Position window within monitor screen
+        
         Object.assign(win.style, {
             position: 'fixed',
             transform: 'none',
@@ -1021,7 +925,7 @@ function openCertWindow(idx) {
         });
         win.classList.add('in-monitor');
     } else {
-        // Fallback: full-page backdrop + centred window
+        
         Object.assign(backdrop.style, {
             top: '0', left: '0', bottom: '0', right: '0',
             width: '', height: '', borderRadius: '0',
@@ -1062,9 +966,9 @@ function openCertWindow(idx) {
             Open Certificate →
         </a>`;
 
-    // Force animation replay on every open
+    
     win.style.animation = 'none';
-    win.offsetHeight; // trigger reflow
+    win.offsetHeight; 
     win.style.animation = '';
 
     win.classList.remove('hidden');
@@ -1078,17 +982,13 @@ function closeCertWindow() {
     if (bd) bd.style.display = 'none';
 }
 
-// =================================
-// CAMERA WIDGET — About Section
-// =================================
-
 function initCameraWidget() {
     const widget = document.getElementById('cameraWidget');
     if (!widget) return;
 
     let hasShot = false;
 
-    // Auto-trigger on first scroll into view (with a natural delay)
+    
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !hasShot) {
@@ -1113,18 +1013,18 @@ function triggerCameraShoot(e) {
 
     if (!body || !polaroid) return;
 
-    // If photo is already showing, retract it first then re-shoot
+    
     if (polaroid.classList.contains('photo-ejected')) {
         cameraIsAnimating = true;
         polaroid.classList.remove('photo-ejected');
         polaroid.classList.add('photo-retracting');
-        // Reset animation on the img so it replays on next shoot
+        
         const img = polaroid.querySelector('img');
         if (img) { img.style.animation = 'none'; img.offsetHeight; img.style.animation = ''; }
         setTimeout(() => {
             polaroid.classList.remove('photo-retracting');
             cameraIsAnimating = false;
-            // Re-trigger the shoot after retraction
+            
             fireShutter(body, polaroid, hint);
         }, 300);
         return;
@@ -1136,15 +1036,15 @@ function triggerCameraShoot(e) {
 function fireShutter(body, polaroid, hint) {
     cameraIsAnimating = true;
 
-    // Shake camera body
+    
     body.classList.add('shooting');
     setTimeout(() => body.classList.remove('shooting'), 300);
 
-    // Eject polaroid — animation class triggers CSS keyframe
+    
     setTimeout(() => {
-        // Force animation replay if class was already there
+        
         polaroid.classList.remove('photo-ejected', 'photo-retracting');
-        polaroid.offsetHeight; // reflow to restart animation
+        polaroid.offsetHeight; 
         polaroid.classList.add('photo-ejected');
         if (hint) hint.textContent = 'Click to take another!';
         cameraIsAnimating = false;
@@ -1153,19 +1053,15 @@ function fireShutter(body, polaroid, hint) {
     playWhimsicalSound();
 }
 
-// =================================
-// FLOWER POTS — Skills Garden Bloom
-// =================================
-
 function initFlowerPots() {
     const pots = document.querySelectorAll('.flower-pot-card');
     if (!pots.length) return;
 
-    // Bloom each pot as it enters the viewport
+    
     const bloomObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Stagger bloom by card index
+                
                 const idx = Array.from(pots).indexOf(entry.target);
                 setTimeout(() => {
                     entry.target.classList.add('bloomed');
@@ -1178,15 +1074,11 @@ function initFlowerPots() {
     pots.forEach(pot => bloomObserver.observe(pot));
 }
 
-// =================================
-// JOURNEY FIREFLIES
-// =================================
-
 function initJourneyFireflies() {
     const container = document.getElementById('journeyFireflies');
     if (!container) return;
 
-    // Reduce number of fireflies from 14 to 6 to save memory and CPU
+    
     for (let i = 0; i < 6; i++) {
         const fly = document.createElement('div');
         fly.className = 'journey-firefly';
@@ -1202,19 +1094,15 @@ function initJourneyFireflies() {
     }
 }
 
-// =================================
-// GARDEN BUTTERFLIES — animated movement
-// =================================
-
 function initGardenButterflies() {
     const butterflies = document.querySelectorAll('.garden-butterfly');
     if (!butterflies.length) return;
 
     butterflies.forEach((bf, i) => {
-        // Give each butterfly a randomized animation duration + delay
+        
         bf.style.animationDuration = (7 + i * 3 + Math.random() * 4) + 's';
         bf.style.animationDelay = (i * 2.5) + 's';
-        // Random starting position within section
+        
         const section = document.getElementById('wisdom');
         if (section) {
             bf.style.left = (10 + Math.random() * 75) + '%';
@@ -1222,10 +1110,6 @@ function initGardenButterflies() {
         }
     });
 }
-
-// =================================
-// GARDEN — Watering Can + Skill Petals
-// =================================
 
 const GARDEN_SKILLS = [
     { skills: ['Python', 'TypeScript', 'Java', 'C/C++', 'Julia', 'JavaScript'], colors: ['#6B7F5E','#7D9B76','#9CAF88','#4A5D4E','#7D9B76','#9CAF88'] },
@@ -1249,10 +1133,10 @@ function waterPlant(potIdx) {
         setTimeout(() => canBtn.classList.remove('watering'), 1650);
     }
 
-    // Bloom the pot (and mark as watered to suppress hover tooltip)
+    
     potEl.classList.add('bloomed', 'watered');
 
-    // Water drops falling onto plant — timed to when can reaches pour position (~720ms)
+    
     for (let i = 0; i < 9; i++) {
         setTimeout(() => {
             const drop = document.createElement('div');
@@ -1264,7 +1148,7 @@ function waterPlant(potIdx) {
         }, 680 + i * 60);
     }
 
-    // Flying skill petals (fun visual burst)
+    
     const data = GARDEN_SKILLS[potIdx];
     if (!data) return;
 
@@ -1275,7 +1159,7 @@ function waterPlant(potIdx) {
             petal.textContent = skill;
             petal.style.setProperty('--color', data.colors[i % data.colors.length]);
 
-            // Spread petals in a fan arc
+            
             const totalSkills = data.skills.length;
             const angleStart = -Math.PI * 0.85;
             const angleEnd = -Math.PI * 0.15;
@@ -1295,7 +1179,7 @@ function waterPlant(potIdx) {
         }, 180 + i * 95);
     });
 
-    // After the burst, show permanent skill label chips
+    
     const labelContainer = document.getElementById('skill-labels-' + potIdx);
     if (labelContainer && labelContainer.children.length === 0) {
         const settlDelay = 180 + data.skills.length * 95 + 400;
@@ -1307,7 +1191,7 @@ function waterPlant(potIdx) {
                     chip.style.setProperty('--chip-bg', data.colors[i % data.colors.length]);
                     chip.textContent = skill;
                     labelContainer.appendChild(chip);
-                    // Double rAF so opacity transition fires
+                    
                     requestAnimationFrame(() => requestAnimationFrame(() => chip.classList.add('visible')));
                 }, i * 90);
             });
@@ -1368,14 +1252,6 @@ function initJourneyInteractions() {
     });
 }
 
-// =================================
-// STORY BOOK — Chapter data
-// =================================
-
-// =================================
-// JOURNEY — Postcard collection
-// =================================
-
 var currentJourneyChapter = 0;
 var _postcardFlipping = false;
 
@@ -1399,19 +1275,19 @@ function gotoChapter(idx) {
     var toPanel   = panels[idx];
     var dir = idx > currentJourneyChapter ? 1 : -1;
 
-    // --- Shuffle the ghost cards ---
+    
     var g1 = document.querySelector('.pc-ghost-1');
     var g2 = document.querySelector('.pc-ghost-2');
     if (g1) { g1.classList.remove('shuffle'); void g1.offsetWidth; g1.classList.add('shuffle'); }
     if (g2) { g2.classList.remove('shuffle'); void g2.offsetWidth; g2.classList.add('shuffle'); }
 
-    // Clear any tilt state on the outgoing card
+    
     var fromCard = fromPanel ? fromPanel.querySelector('.pc-card') : null;
     if (fromCard) {
         fromCard.classList.remove('js-tilt-active');
     }
 
-    // --- Slide current card OUT ---
+    
     if (fromCard) {
         fromCard.style.transition = 'transform 0.18s cubic-bezier(0.4, 0, 1, 1), opacity 0.15s ease-in';
         fromCard.style.transform  = 'translateX(' + (dir * -48) + 'px) scale(0.94)';
@@ -1419,13 +1295,13 @@ function gotoChapter(idx) {
     }
 
     setTimeout(function() {
-        // Swap active classes
+        
         panels.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
         tabs.forEach(function(t, i)   { t.classList.toggle('active', i === idx); });
         currentJourneyChapter = idx;
         _updateCounter(idx);
 
-        // --- Slide new card IN from opposite side ---
+        
         var toCard = toPanel ? toPanel.querySelector('.pc-card') : null;
         if (toCard) {
             toCard.style.transition = 'none';
@@ -1438,7 +1314,7 @@ function gotoChapter(idx) {
                     toCard.style.transform  = '';
                     toCard.style.opacity    = '1';
 
-                    // Trigger postmark stamp animation
+                    
                     var pm = toPanel ? toPanel.querySelector('.pc-postmark') : null;
                     if (pm) {
                         pm.classList.remove('stamping');
@@ -1447,7 +1323,7 @@ function gotoChapter(idx) {
                     }
 
                     setTimeout(function() {
-                        // Clear inline styles so CSS hover / tilt take over
+                        
                         toCard.style.transition = '';
                         toCard.style.transform  = '';
                         toCard.style.opacity    = '';
@@ -1463,30 +1339,26 @@ function gotoChapter(idx) {
     }, 160);
 }
 
-// Aliases
 function flipToChapter(idx) { gotoChapter(idx); }
 function toggleJourneyChapter(idx) {}
 
-// =================================
-// POSTCARD — Typewriter quote effect
-// =================================
 var _twTimer = null;
 
 function typewriteQuote(panel) {
-    // Cancel any in-progress typewriter
+    
     if (_twTimer) { clearTimeout(_twTimer); _twTimer = null; }
 
     var quote = panel ? panel.querySelector('.pc-quote') : null;
     if (!quote) return;
 
-    // Store original text on first run
+    
     var full = quote.getAttribute('data-full');
     if (!full) {
         full = quote.textContent.trim();
         quote.setAttribute('data-full', full);
     }
 
-    // Build fresh inner structure
+    
     quote.innerHTML = '<span class="pc-tw-text"></span><span class="pc-cursor" aria-hidden="true">|</span>';
     var textEl  = quote.querySelector('.pc-tw-text');
     var cursor  = quote.querySelector('.pc-cursor');
@@ -1498,7 +1370,7 @@ function typewriteQuote(panel) {
             setTimeout(function() { if (cursor) cursor.classList.add('pc-cursor-done'); }, 520);
             return;
         }
-        // Pause after sentence-ending punctuation for rhythm
+        
         var justTyped = i > 0 ? full[i - 1] : '';
         var delay = (justTyped === '.' || justTyped === '!') ? 190 :
                     (justTyped === ',') ? 70 :
@@ -1506,13 +1378,13 @@ function typewriteQuote(panel) {
         _twTimer = setTimeout(function() { tick(i + 1); }, delay);
     }
 
-    // Short pause so card slides in before text starts appearing
+    
     _twTimer = setTimeout(function() { tick(1); }, 80);
 }
 
 function initStoryBook() {
 
-    // --- Keyboard navigation ---
+    
     document.addEventListener('keydown', function(e) {
         var panels = document.getElementById('jchapPanels');
         if (!panels) return;
@@ -1526,7 +1398,7 @@ function initStoryBook() {
         }
     });
 
-    // --- Touch swipe (fixed: clientX, horizontal dominance, lower threshold) ---
+    
     var panelsEl = document.getElementById('jchapPanels');
     if (panelsEl) {
         var _touchX = 0, _touchY = 0;
@@ -1537,14 +1409,14 @@ function initStoryBook() {
         panelsEl.addEventListener('touchend', function(e) {
             var dx = e.changedTouches[0].clientX - _touchX;
             var dy = e.changedTouches[0].clientY - _touchY;
-            // Only fire on clearly horizontal swipes
+            
             if (Math.abs(dx) < 38 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
             if (dx < 0) gotoChapter(currentJourneyChapter + 1);
             else        gotoChapter(currentJourneyChapter - 1);
         }, { passive: true });
     }
 
-    // --- Mouse drag-to-flip ---
+    
     if (panelsEl) {
         var _drag = { on: false, startX: 0, lastX: 0 };
 
@@ -1555,7 +1427,7 @@ function initStoryBook() {
             _drag.on = true;
             _drag.startX = e.clientX;
             _drag.lastX  = e.clientX;
-            e.preventDefault(); // prevent text selection while dragging
+            e.preventDefault(); 
         });
 
         document.addEventListener('mousemove', function(e) {
@@ -1568,7 +1440,7 @@ function initStoryBook() {
 
             var dx = e.clientX - _drag.startX;
 
-            // Rubber-band resistance at boundaries
+            
             var atEdge = (dx < 0 && currentJourneyChapter >= 4) || (dx > 0 && currentJourneyChapter <= 0);
             var pull  = dx * (atEdge ? 0.12 : 0.38);
             var tilt  = dx * 0.016;
@@ -1588,11 +1460,11 @@ function initStoryBook() {
             var dx = _drag.lastX - _drag.startX;
 
             if (Math.abs(dx) > 78 && !_postcardFlipping) {
-                // Enough drag — flip
+                
                 if (dx < 0) gotoChapter(currentJourneyChapter + 1);
                 else        gotoChapter(currentJourneyChapter - 1);
             } else {
-                // Not enough — spring back
+                
                 if (card) {
                     card.style.transition = 'transform 0.46s cubic-bezier(0.25,1,0.5,1), opacity 0.3s ease';
                     card.style.transform  = '';
@@ -1607,7 +1479,7 @@ function initStoryBook() {
         });
     }
 
-    // Fire typewriter on first card after entry animation settles
+    
     setTimeout(function() {
         var firstPanel = document.getElementById('jpanel-0');
         if (firstPanel) {
@@ -1617,7 +1489,7 @@ function initStoryBook() {
         }
     }, 550);
 
-    // --- 3D mouse-tilt on active postcard ---
+    
     if (panelsEl) {
         panelsEl.addEventListener('mousemove', function(e) {
             if (_postcardFlipping || _drag.on) return;
@@ -1628,12 +1500,12 @@ function initStoryBook() {
             var rect = card.getBoundingClientRect();
             var cx = rect.left + rect.width  / 2;
             var cy = rect.top  + rect.height / 2;
-            var nx = (e.clientX - cx) / (rect.width  / 2);  // -1 to 1
-            var ny = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+            var nx = (e.clientX - cx) / (rect.width  / 2);  
+            var ny = (e.clientY - cy) / (rect.height / 2);  
 
             var maxTilt = 6;
-            var rx =  ny * maxTilt * -1;  // tilt up/down
-            var ry =  nx * maxTilt;       // tilt left/right
+            var rx =  ny * maxTilt * -1;  
+            var ry =  nx * maxTilt;       
 
             card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
             card.style.transform  = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(6px)';
@@ -1654,11 +1526,6 @@ function initStoryBook() {
     }
 }
 
-
-// =================================
-// CREDENTIALS — Interactive Book
-// =================================
-
 let _bookAnimating = false;
 
 function initCredBook() {
@@ -1666,7 +1533,7 @@ function initCredBook() {
     if (book) book.classList.add('book-is-closed');
     _updateBookZIndices();
     
-    // Improve click detection by ensuring proper pointer-events
+    
     const pages = document.querySelectorAll('.book-page');
     pages.forEach(page => {
         page.style.pointerEvents = 'auto';
@@ -1678,10 +1545,10 @@ function _updateBookZIndices() {
     const total = pages.length;
     pages.forEach((page, i) => {
         if (page.classList.contains('flipped')) {
-            // Left side: later (higher-index) flipped page sits on top
+            
             page.style.zIndex = (i + 1) * 5;
         } else {
-            // Right side: earlier (lower-index) page sits on top
+            
             page.style.zIndex = (total - i) * 5;
         }
     });
@@ -1695,22 +1562,22 @@ function flipBookPage(idx) {
     if (!page) return;
 
     const book = document.getElementById('credBook');
-    // Last content page index (pages.length - 1 is book-backcover-page, never flips)
+    
     const lastContentIdx = pages.length - 2;
 
     const isFlipped = page.classList.contains('flipped');
 
     if (!isFlipped) {
-        // Flip forward — only if every preceding page is already flipped
+        
         for (let i = 0; i < idx; i++) {
             if (!pages[i].classList.contains('flipped')) return;
         }
         _bookAnimating = true;
         page.style.zIndex = 999;
         page.classList.add('flipped');
-        // Opening the front cover → reveal full open book
+        
         if (idx === 0) book.classList.remove('book-is-closed');
-        // Reaching last content page → auto-close back to closed state
+        
         if (idx === lastContentIdx) {
             setTimeout(() => {
                 book.classList.add('book-is-closed-back');
@@ -1718,24 +1585,20 @@ function flipBookPage(idx) {
         }
         setTimeout(() => { _bookAnimating = false; _updateBookZIndices(); }, 1020);
     } else {
-        // Flip back — only the most-recently-flipped page can unflip
+        
         let lastFlipped = -1;
         pages.forEach((p, i) => { if (p.classList.contains('flipped')) lastFlipped = i; });
         if (idx !== lastFlipped) return;
         _bookAnimating = true;
         page.style.zIndex = 999;
         page.classList.remove('flipped');
-        // Closing back to front cover
+        
         if (idx === 0) book.classList.add('book-is-closed');
-        // Leaving back cover state
+        
         if (idx === lastContentIdx) book.classList.remove('book-is-closed-back');
         setTimeout(() => { _bookAnimating = false; _updateBookZIndices(); }, 1020);
     }
 }
-
-// =================================
-// WEBSITES — Case Study Toggle
-// =================================
 
 function toggleWebsite(idx) {
     const study = document.getElementById('web-study-' + idx);
@@ -1744,7 +1607,7 @@ function toggleWebsite(idx) {
 
     const isOpen = study.classList.contains('open');
 
-    // Close others
+    
     for (let i = 0; i < 4; i++) {
         const s = document.getElementById('web-study-' + i);
         const c = document.getElementById('web-card-'  + i);
@@ -1757,10 +1620,6 @@ function toggleWebsite(idx) {
         card && card.classList.add('expanded');
     }
 }
-
-// =================================
-// IPOD CLASSIC — Navigation & Credentials
-// =================================
 
 let currentIpodIndex = 0;
 let ipodInDetailView = false;
@@ -1825,7 +1684,7 @@ function updateIpodMenu() {
     items.forEach((item, idx) => {
         if (idx === currentIpodIndex) {
             item.classList.add('active');
-            // Scroll the active item into view
+            
             item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
             item.classList.remove('active');
@@ -1890,7 +1749,6 @@ function ipodGoBack() {
     ipodInDetailView = false;
 }
 
-// Update iPod time
 function updateIpodTime() {
     const timeEl = document.getElementById('ipodTime');
     if (timeEl) {
@@ -1901,7 +1759,6 @@ function updateIpodTime() {
     }
 }
 
-// Update iPod battery level
 function updateIpodBattery() {
     const batteryEl = document.getElementById('batteryLevel');
     if (batteryEl && 'getBattery' in navigator) {
@@ -1909,7 +1766,7 @@ function updateIpodBattery() {
             const level = Math.round(battery.level * 100);
             batteryEl.style.width = `${level}%`;
             
-            // Change color based on level
+            
             if (level > 50) {
                 batteryEl.style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A)';
             } else if (level > 20) {
@@ -1918,13 +1775,12 @@ function updateIpodBattery() {
                 batteryEl.style.background = 'linear-gradient(90deg, #F44336, #E57373)';
             }
             
-            // Update when battery changes
+            
             battery.addEventListener('levelchange', () => updateIpodBattery());
         });
     }
 }
 
-// Update iPod internet status
 function updateIpodInternet() {
     const wifiEl = document.getElementById('ipodWifi');
     if (wifiEl) {
@@ -1934,7 +1790,6 @@ function updateIpodInternet() {
     }
 }
 
-// Add click handlers to menu items
 function initIpodClickHandlers() {
     const menuItems = document.querySelectorAll('.ipod-menu-item');
     menuItems.forEach((item, index) => {
@@ -1949,7 +1804,6 @@ function initIpodClickHandlers() {
     });
 }
 
-// Initialize iPod
 document.addEventListener('DOMContentLoaded', function() {
     updateIpodMenu();
     updateIpodTime();
@@ -1957,24 +1811,20 @@ document.addEventListener('DOMContentLoaded', function() {
     updateIpodInternet();
     initIpodClickHandlers();
     
-    // Update time every minute
+    
     setInterval(updateIpodTime, 60000);
     
-    // Update internet status on change
+    
     window.addEventListener('online', updateIpodInternet);
     window.addEventListener('offline', updateIpodInternet);
 });
-
-// =================================
-// MOBILE NAVIGATION
-// =================================
 
 function toggleMobileNav() {
     const btn = document.getElementById('navHamburger');
     const overlay = document.getElementById('mobileNavOverlay');
     const nav = document.querySelector('nav');
     if (!btn || !overlay) return;
-    // Always make nav visible when opening menu
+    
     if (nav) nav.classList.remove('nav-scrolled-hidden');
     const isOpen = overlay.classList.contains('open');
     btn.classList.toggle('open');
@@ -1992,10 +1842,6 @@ function closeMobileNav() {
     document.body.style.overflow = '';
 }
 
-// =================================
-// AUTO-HIDE NAV ON MOBILE SCROLL
-// =================================
-
 (function() {
     let lastScrollY = 0;
     let ticking = false;
@@ -2008,11 +1854,11 @@ function closeMobileNav() {
             if (!nav) { ticking = false; return; }
 
             if (window.innerWidth <= 900) {
-                // Scrolling DOWN past 80px → hide nav
+                
                 if (currentScrollY > lastScrollY && currentScrollY > 80) {
                     nav.classList.add('nav-scrolled-hidden');
                 } else {
-                    // Scrolling UP → show nav
+                    
                     nav.classList.remove('nav-scrolled-hidden');
                 }
             } else {
