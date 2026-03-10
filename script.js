@@ -61,20 +61,10 @@ function initSite() {
     }, '260px');
 
     initWhenVisible('#featured-cases', initTimelinePulse, '260px');
-    initWhenVisible('#artifacts', () => {
-        initJourneyFireflies();
-        initStoryBook();
-    }, '300px');
     initWhenVisible('#designs', initMuseumGallery, '300px');
     initWhenVisible('#websites', initWebsiteSignals, '260px');
-    initWhenVisible('#certificates', () => {
-        initOsClock();
-        initOsBattery();
-    }, '260px');
     initWhenVisible('#wisdom', () => {
-        initFlowerPots();
-        initSkillWatering();
-        initGardenButterflies();
+        initSkillsIpod();
     }, '300px');
 }
 
@@ -219,17 +209,15 @@ function initIntroOverlay(onComplete) {
 }
 
 function initHeroAnimations() {
-    
-    gsap.set(['#heroTag', '#heroName1', '#heroSubline', '#heroCTA', '#heroGallery'], { y: 30 });
-    
-    
-    gsap.to('#heroTag', { opacity: 1, y: 0, duration: 0.8, delay: 0.3 });
-    gsap.to('#heroName1', { opacity: 1, y: 0, duration: 1, delay: 0.6 });
-    gsap.to('#heroSubline', { opacity: 1, y: 0, duration: 0.8, delay: 1.0 });
-    gsap.to('#heroCTA', { opacity: 1, y: 0, duration: 0.8, delay: 1.4 });
-    gsap.to('#heroGallery', { opacity: 1, y: 0, duration: 1, delay: 1.8 });
-    gsap.to('#heroLocation', { opacity: 1, duration: 0.6, delay: 2.2 });
-    gsap.to('#scrollHint', { opacity: 1, duration: 1, delay: 2.6 });
+    gsap.set(['#heroTag', '#heroName1', '#heroSubline', '#heroSublineText', '#heroCTA'], { y: 24 });
+
+    gsap.to('#heroTag',         { opacity: 1, y: 0, duration: 0.7, delay: 0.2, ease: 'power2.out' });
+    gsap.to('#heroName1',       { opacity: 1, y: 0, duration: 0.9, delay: 0.5, ease: 'power2.out' });
+    gsap.to('#heroSubline',     { opacity: 1, y: 0, duration: 0.6, delay: 0.9, ease: 'power2.out' });
+    gsap.to('#heroSublineText', { opacity: 1, y: 0, duration: 0.7, delay: 1.1, ease: 'power2.out' });
+    gsap.to('#heroCTA',         { opacity: 1, y: 0, duration: 0.7, delay: 1.4, ease: 'power2.out' });
+    gsap.to('#heroLocation',    { opacity: 1, duration: 0.6, delay: 1.8 });
+    gsap.to('#scrollHint',      { opacity: 0.6, duration: 1, delay: 2.4 });
 }
 
 function initRevealSections() {
@@ -338,6 +326,7 @@ function closeModal() {
 function initDialogueSystem() {
     const dialogueMap = {
         hero: "Hi — take a look around. <span class='material-icons-outlined align-middle'>eco</span>",
+        'featured-cases': "Two deep-dives into real product problems. <span class='material-icons-outlined align-middle'>cases</span>",
         about: "Lisbon-based. Open to relocate or go remote. <span class='material-icons-outlined align-middle'>public</span>",
         artifacts: "Click through the postcards to see where I've been. <span class='material-icons-outlined align-middle'>grass</span>",
         studio: "Scroll through — the phone preview updates with each project. <span class='material-icons-outlined align-middle'>phone_iphone</span>",
@@ -345,7 +334,7 @@ function initDialogueSystem() {
         designs: "Click anything to see it full size. <span class='material-icons-outlined align-middle'>auto_awesome</span>",
         websites: "A couple of sites I built. <span class='material-icons-outlined align-middle'>spa</span>",
         certificates: "Click a folder to open a certificate. <span class='material-icons-outlined align-middle'>computer</span>",
-        wisdom: "Water the plants to see what's inside each one. <span class='material-icons-outlined align-middle'>grass</span>",
+        wisdom: "Spin the wheel to browse skill categories. <span class='material-icons-outlined align-middle'>tune</span>",
         contact: "Say hello if you want to work together. <span class='material-icons-outlined align-middle'>favorite</span>"
     };
 
@@ -1638,203 +1627,320 @@ function toggleWebsite(idx) {
     }
 }
 
-let currentIpodIndex = 0;
-let ipodInDetailView = false;
 
-const credentialData = [
+/* ==========================================
+   SKILLS iPOD — click-wheel interaction
+   ========================================== */
+
+const SKILL_CATEGORIES = [
     {
-        title: "M.Sc. Computer Science",
-        subtitle: "Interaction & Visualization (2024–Present)",
-        description: "Master's degree at Instituto Superior Técnico specializing in interaction design, data visualization techniques, and human-computer interaction."
+        label: 'Languages',
+        color: '#9CAF88',
+        items: [
+            { name: 'Python', note: 'Primary scripting & data language' },
+            { name: 'TypeScript', note: 'Type-safe JS for React & Next.js' },
+            { name: 'JavaScript', note: 'Vanilla & framework-based' },
+            { name: 'Java', note: 'OOP, algorithms, university coursework' },
+            { name: 'C / C++', note: 'Systems & performance programming' },
+            { name: 'Julia', note: 'Numerical computing' },
+            { name: 'Prolog', note: 'Logic programming' },
+        ]
     },
     {
-        title: "B.Sc. Computer Science",
-        subtitle: "Instituto Superior Técnico (2020–2024)",
-        description: "Bachelor's degree in Computer Science, building a strong foundation in software engineering, algorithms, and system design."
+        label: 'Frontend',
+        color: '#E8C07D',
+        items: [
+            { name: 'React', note: 'Component-driven UIs' },
+            { name: 'SwiftUI', note: 'iOS & macOS native apps' },
+            { name: 'Next.js', note: 'SSR & static site generation' },
+            { name: 'Tailwind CSS', note: 'Utility-first styling' },
+            { name: 'CSS Modules', note: 'Scoped styles in React projects' },
+            { name: 'Atomic Design', note: 'Scalable component systems' },
+            { name: 'Vue.js', note: 'Used at Sky Portugal internship' },
+        ]
     },
     {
-        title: "Portuguese",
-        subtitle: "Native Speaker",
-        description: "Native fluency in Portuguese with deep cultural understanding and professional communication skills."
+        label: 'Design Tools',
+        color: '#D4A5A5',
+        items: [
+            { name: 'Figma', note: 'Primary design & prototyping tool' },
+            { name: 'Adobe Illustrator', note: 'Vector graphics & visual identity' },
+            { name: 'Photoshop', note: 'Image editing & compositing' },
+            { name: 'Motion Design', note: 'Micro-interactions & transitions' },
+            { name: 'Design Systems', note: 'Tokens, components, documentation' },
+        ]
     },
     {
-        title: "English",
-        subtitle: "C2 Level - Cambridge Proficiency",
-        description: "Advanced English proficiency certification demonstrating mastery of the English language at the highest level."
+        label: 'Research & UX',
+        color: '#A8C5D9',
+        items: [
+            { name: 'User Interviews', note: 'Structured & contextual' },
+            { name: 'Usability Testing', note: 'Task-based & heuristic evaluation' },
+            { name: 'Friction Mapping', note: 'Journey pain-point analysis' },
+            { name: 'Information Architecture', note: 'Navigation & content structure' },
+            { name: 'Thesis Research', note: 'HCI methodology at IST' },
+        ]
     },
     {
-        title: "French",
-        subtitle: "B2 Level",
-        description: "Upper-intermediate French proficiency with strong reading, writing, and conversational abilities."
-    },
-    {
-        title: "Spanish",
-        subtitle: "B1 Level",
-        description: "Intermediate Spanish proficiency enabling effective communication in familiar contexts."
-    },
-    {
-        title: "WebSummit Volunteer",
-        subtitle: "2023",
-        description: "Volunteered at one of Europe's largest tech conferences, supporting event operations and attendee experience."
-    },
-    {
-        title: "ReFood Volunteer",
-        subtitle: "2016–2020",
-        description: "Reduced food waste and redistributed meals to families in need. Sorted, organized, and prepared food donations in collaboration with volunteer teams."
-    },
-    {
-        title: "Banco Alimentar Volunteer",
-        subtitle: "2012–2020",
-        description: "Long-term volunteer commitment across multiple national campaigns, supporting large-scale food collection and distribution initiatives for families facing food insecurity."
-    },
-    {
-        title: "Ballet Teacher Assistant",
-        subtitle: "Dance Academy (2015–2019)",
-        description: "Assisted in ballet instruction and class coordination. Supported choreography planning and live performances while mentoring young dancers in technique and discipline."
+        label: 'Soft Skills',
+        color: '#B8A9C9',
+        items: [
+            { name: 'Product Thinking', note: 'Problem → decision → outcome' },
+            { name: 'Strategic Leadership', note: 'Led HR dept from 0 at Diferencial' },
+            { name: 'Rapid Delivery', note: '2-month scope shipped in 2 weeks' },
+            { name: 'User Empathy', note: 'Design decisions grounded in research' },
+            { name: 'Cross-functional', note: 'Design + engineering collaboration' },
+        ]
     }
 ];
 
-function updateIpodMenu() {
-    const menu = document.getElementById('ipodMenu');
-    const items = document.querySelectorAll('.ipod-menu-item');
-    
-    items.forEach((item, idx) => {
-        if (idx === currentIpodIndex) {
-            item.classList.add('active');
-            
-            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-            item.classList.remove('active');
+let skillsCatIdx = 0;       // selected category on main menu
+let skillsItemIdx = 0;      // selected item inside a category
+let skillsScreen = 'main';  // 'main' | 'detail'
+let skillsWheelAccum = 0;
+let skillsWheelAngle = null;
+let skillsWheelDragging = false;
+const SKILLS_DEG_TICK = 17;
+
+function initSkillsIpod() {
+    const wheel = document.getElementById('skillsWheel');
+    const track = document.getElementById('skillsWheelTrack');
+    const menuBtn = document.getElementById('skillsMenuBtn');
+    const prevBtn = document.getElementById('skillsPrevBtn');
+    const nextBtn = document.getElementById('skillsNextBtn');
+    const centerBtn = document.getElementById('skillsCenterBtn');
+    const backBtn = document.getElementById('skillsBackBtn');
+
+    if (!wheel) return;
+
+    // Button clicks
+    if (menuBtn) menuBtn.addEventListener('click', skillsHandleMenu);
+    if (prevBtn) prevBtn.addEventListener('click', () => skillsNavigate(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => skillsNavigate(1));
+    if (centerBtn) centerBtn.addEventListener('click', skillsHandleSelect);
+    if (backBtn) backBtn.addEventListener('click', skillsHandleMenu);
+
+    // Click on main menu items directly
+    document.querySelectorAll('#skillsMenu .ipod-menu-item').forEach((el, i) => {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', () => {
+            skillsCatIdx = i;
+            skillsUpdateMainMenu();
+            skillsOpenDetail();
+        });
+    });
+
+    // Wheel drag — angle detection
+    function getAngle(e) {
+        const r = wheel.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const ex = e.touches ? e.touches[0].clientX : e.clientX;
+        const ey = e.touches ? e.touches[0].clientY : e.clientY;
+        const dx = ex - cx;
+        const dy = ey - cy;
+        if (Math.sqrt(dx * dx + dy * dy) < 32) return null; // center zone
+        return Math.atan2(dy, dx) * 180 / Math.PI;
+    }
+
+    function onStart(e) {
+        const a = getAngle(e);
+        if (a === null) return;
+        skillsWheelAngle = a;
+        skillsWheelAccum = 0;
+        skillsWheelDragging = true;
+    }
+
+    function onMove(e) {
+        if (!skillsWheelDragging) return;
+        e.preventDefault();
+        const a = getAngle(e);
+        if (a === null) return;
+
+        let delta = a - skillsWheelAngle;
+        if (delta > 180) delta -= 360;
+        if (delta < -180) delta += 360;
+        skillsWheelAngle = a;
+        skillsWheelAccum += delta;
+
+        // Rotate the track ring visually
+        if (track) {
+            const currentRot = parseFloat(track.dataset.rot || 0);
+            const newRot = currentRot + delta;
+            track.dataset.rot = newRot;
+            track.style.transform = `rotate(${newRot}deg)`;
+        }
+
+        while (skillsWheelAccum >= SKILLS_DEG_TICK) {
+            skillsWheelAccum -= SKILLS_DEG_TICK;
+            skillsNavigate(1);
+            playSkillsTick();
+        }
+        while (skillsWheelAccum <= -SKILLS_DEG_TICK) {
+            skillsWheelAccum += SKILLS_DEG_TICK;
+            skillsNavigate(-1);
+            playSkillsTick();
+        }
+    }
+
+    function onEnd() {
+        skillsWheelDragging = false;
+    }
+
+    wheel.addEventListener('mousedown', onStart);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onEnd);
+    wheel.addEventListener('touchstart', onStart, { passive: true });
+    window.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('touchend', onEnd);
+
+    // Scroll wheel support — most natural iPod metaphor
+    let scrollThrottle = 0;
+    wheel.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const now = Date.now();
+        if (now - scrollThrottle < 120) return;
+        scrollThrottle = now;
+        const dir = e.deltaY > 0 ? 1 : -1;
+        // Rotate track visually
+        if (track) {
+            const cur = parseFloat(track.style.transform?.replace(/[^-\d.]/g, '') || '0');
+            track.style.transform = `rotate(${cur + dir * 36}deg)`;
+        }
+        skillsNavigate(dir);
+    }, { passive: false });
+
+    // Init display
+    skillsUpdateMainMenu();
+    skillsUpdateTime();
+    setInterval(skillsUpdateTime, 60000);
+}
+
+function skillsUpdateTime() {
+    const el = document.getElementById('skillsIpodTime');
+    if (!el) return;
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function skillsNavigate(dir) {
+    if (skillsScreen === 'main') {
+        skillsCatIdx = (skillsCatIdx + dir + SKILL_CATEGORIES.length) % SKILL_CATEGORIES.length;
+        skillsUpdateMainMenu();
+    } else {
+        const items = SKILL_CATEGORIES[skillsCatIdx].items;
+        skillsItemIdx = (skillsItemIdx + dir + items.length) % items.length;
+        skillsUpdateDetailMenu();
+    }
+}
+
+function skillsUpdateMainMenu() {
+    const items = document.querySelectorAll('#skillsMenu .ipod-menu-item');
+    items.forEach((el, i) => {
+        el.classList.toggle('active', i === skillsCatIdx);
+        if (i === skillsCatIdx) {
+            el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
     });
-}
-
-function ipodNext() {
-    if (!ipodInDetailView) {
-        currentIpodIndex = (currentIpodIndex + 1) % credentialData.length;
-        updateIpodMenu();
+    // Accent color
+    const color = SKILL_CATEGORIES[skillsCatIdx]?.color;
+    const screen = document.querySelector('.skills-ipod-body .ipod-screen');
+    if (screen && color) {
+        screen.style.setProperty('--accent', color);
     }
 }
 
-function ipodPrev() {
-    if (!ipodInDetailView) {
-        currentIpodIndex = (currentIpodIndex - 1 + credentialData.length) % credentialData.length;
-        updateIpodMenu();
+function skillsHandleSelect() {
+    if (skillsScreen === 'main') {
+        skillsOpenDetail();
     }
 }
 
-function ipodSelect() {
-    if (!ipodInDetailView) {
-        showIpodDetail();
+function skillsHandleMenu() {
+    if (skillsScreen === 'detail') {
+        skillsCloseDetail();
     }
 }
 
-function ipodPlay() {
-    if (!ipodInDetailView) {
-        showIpodDetail();
-    }
+function skillsOpenDetail() {
+    const cat = SKILL_CATEGORIES[skillsCatIdx];
+    if (!cat) return;
+    skillsItemIdx = 0;
+    skillsScreen = 'detail';
+
+    const mainView = document.getElementById('skillsMainView');
+    const detailView = document.getElementById('skillsDetailView');
+    if (mainView) mainView.style.display = 'none';
+    if (detailView) detailView.classList.add('active');
+
+    skillsRenderDetailItems(cat);
 }
 
-function ipodMenu() {
-    if (ipodInDetailView) {
-        ipodGoBack();
-    }
-}
-
-function showIpodDetail() {
-    const detail = document.getElementById('ipodDetail');
-    const content = document.getElementById('ipodDetailContent');
-    const data = credentialData[currentIpodIndex];
-    
-    if (!detail || !content || !data) return;
-    
-    content.innerHTML = `
-        <div class="ipod-detail-title">${data.title}</div>
-        <div class="ipod-detail-subtitle">${data.subtitle}</div>
-        <div class="ipod-detail-desc">${data.description}</div>
+function skillsRenderDetailItems(cat) {
+    const container = document.getElementById('skillsDetailContent');
+    if (!container) return;
+    container.innerHTML = `
+        <div class="ipod-menu-title" style="color:${cat.color}">${cat.label}</div>
+        <div class="ipod-menu" id="skillsDetailMenu">
+            ${cat.items.map((item, i) => `
+                <div class="ipod-menu-item${i === skillsItemIdx ? ' active' : ''}" data-item="${i}">
+                    <span class="ipod-item-icon">►</span>
+                    <span>${item.name}</span>
+                </div>
+            `).join('')}
+        </div>
+        <div class="skills-item-note" id="skillsItemNote">${cat.items[0]?.note || ''}</div>
     `;
-    
-    detail.classList.add('active');
-    ipodInDetailView = true;
-}
 
-function ipodGoBack() {
-    const detail = document.getElementById('ipodDetail');
-    if (!detail) return;
-    
-    detail.classList.remove('active');
-    ipodInDetailView = false;
-}
-
-function updateIpodTime() {
-    const timeEl = document.getElementById('ipodTime');
-    if (timeEl) {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        timeEl.textContent = `${hours}:${minutes}`;
-    }
-}
-
-function updateIpodBattery() {
-    const batteryEl = document.getElementById('batteryLevel');
-    if (batteryEl && 'getBattery' in navigator) {
-        navigator.getBattery().then(battery => {
-            const level = Math.round(battery.level * 100);
-            batteryEl.style.width = `${level}%`;
-            
-            
-            if (level > 50) {
-                batteryEl.style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A)';
-            } else if (level > 20) {
-                batteryEl.style.background = 'linear-gradient(90deg, #FFC107, #FFD54F)';
-            } else {
-                batteryEl.style.background = 'linear-gradient(90deg, #F44336, #E57373)';
-            }
-            
-            
-            battery.addEventListener('levelchange', () => updateIpodBattery());
-        });
-    }
-}
-
-function updateIpodInternet() {
-    const wifiEl = document.getElementById('ipodWifi');
-    if (wifiEl) {
-        const online = navigator.onLine;
-        wifiEl.style.opacity = online ? '1' : '0.3';
-        wifiEl.title = online ? 'Connected' : 'Offline';
-    }
-}
-
-function initIpodClickHandlers() {
-    const menuItems = document.querySelectorAll('.ipod-menu-item');
-    menuItems.forEach((item, index) => {
-        item.style.cursor = 'pointer';
-        item.addEventListener('click', () => {
-            if (!ipodInDetailView) {
-                currentIpodIndex = index;
-                updateIpodMenu();
-                showIpodDetail();
-            }
+    // Click handlers for detail items
+    document.querySelectorAll('#skillsDetailMenu .ipod-menu-item').forEach((el, i) => {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', () => {
+            skillsItemIdx = i;
+            skillsUpdateDetailMenu();
         });
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    updateIpodMenu();
-    updateIpodTime();
-    updateIpodBattery();
-    updateIpodInternet();
-    initIpodClickHandlers();
-    
-    
-    setInterval(updateIpodTime, 60000);
-    
-    
-    window.addEventListener('online', updateIpodInternet);
-    window.addEventListener('offline', updateIpodInternet);
-});
+function skillsUpdateDetailMenu() {
+    const items = document.querySelectorAll('#skillsDetailMenu .ipod-menu-item');
+    const cat = SKILL_CATEGORIES[skillsCatIdx];
+    items.forEach((el, i) => {
+        el.classList.toggle('active', i === skillsItemIdx);
+    });
+    const noteEl = document.getElementById('skillsItemNote');
+    if (noteEl && cat) {
+        noteEl.textContent = cat.items[skillsItemIdx]?.note || '';
+    }
+}
+
+function skillsCloseDetail() {
+    skillsScreen = 'main';
+    skillsItemIdx = 0;
+
+    const mainView = document.getElementById('skillsMainView');
+    const detailView = document.getElementById('skillsDetailView');
+    if (mainView) mainView.style.display = '';
+    if (detailView) detailView.classList.remove('active');
+}
+
+// Subtle tick sound using Web Audio API
+let skillsAudioCtx = null;
+function playSkillsTick() {
+    try {
+        if (!skillsAudioCtx) skillsAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = skillsAudioCtx.createOscillator();
+        const gain = skillsAudioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(skillsAudioCtx.destination);
+        osc.frequency.value = 1200;
+        osc.type = 'sine';
+        gain.gain.setValueAtTime(0.04, skillsAudioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, skillsAudioCtx.currentTime + 0.04);
+        osc.start(skillsAudioCtx.currentTime);
+        osc.stop(skillsAudioCtx.currentTime + 0.04);
+    } catch (e) {}
+}
 
 function toggleMobileNav() {
     const btn = document.getElementById('navHamburger');

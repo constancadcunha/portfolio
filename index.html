@@ -152,97 +152,60 @@
     </div>
 
     
-    <section id="hero" class="hero-section px-4 sm:px-8 pt-24 pb-12 relative overflow-hidden">
+    <section id="hero" class="hero-section px-4 sm:px-8 relative overflow-hidden">
         
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <svg class="botanical absolute top-[15%] left-[8%] w-20 h-20 sm:w-28 sm:h-28 text-cottage-sage opacity-40" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5a4.5 4.5 0 1 0-4.5 4.5M12 7.5V9m-4.5 3 .75-1.5M17 12l-.75-1.5M12 12l2 5.5M12 12l-2 5.5M12 12V17"/></svg>
-            <svg class="botanical absolute top-[50%] right-[10%] w-24 h-24 sm:w-32 sm:h-32 text-cottage-honey opacity-30" style="animation: floatBotanical 10s ease-in-out infinite 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 2.5-1 7.5c3-1 5.5 0 5.5 0S19 14 14 15.5"/></svg>
-            <svg class="botanical absolute bottom-[20%] left-[12%] w-16 h-16 sm:w-20 sm:h-20 text-cottage-lavender opacity-35" style="animation: floatBotanical 7s ease-in-out infinite 2s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-        </div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto">
-            <div class="text-center mb-8">
-                <div class="inline-block mb-6 px-4 py-2 bg-white/80 dark:bg-cottage-forest/80 backdrop-blur-sm rounded-full border border-cottage-forest/20 dark:border-accentGold/20 opacity-0" id="heroTag">
-                    <p class="text-xs sm:text-sm uppercase tracking-[0.3em] font-bold text-cottage-forest dark:text-accentGold">Product Designer & UX Researcher</p>
-                </div>
-                
-                <h1 class="text-[3rem] sm:text-[4.5rem] lg:text-[6rem] font-black leading-[0.9] tracking-tight mb-5 opacity-0" id="heroName1">
-                    <span class="block text-cottage-forest dark:text-accentGold">CONSTANÇA</span>
-                    <span class="block text-cottage-forest/70 dark:text-accentGold/70 italic -mt-2">CUNHA</span>
-                </h1>
-                
-                <p class="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto leading-snug font-semibold text-cottage-bark dark:text-cottage-cream mb-8 opacity-0" id="heroSubline">
-                    I design products around user friction, business goals, and measurable outcomes
-                </p>
-                
-                <div class="flex flex-wrap justify-center gap-4 mb-6 opacity-0" id="heroCTA">
-                    <a href="#featured-cases" class="group relative px-10 py-5 bg-cottage-forest dark:bg-accentGold text-white rounded-2xl font-bold text-base uppercase tracking-wider overflow-hidden transition-all hover:scale-105 hover:shadow-2xl">
-                        <span class="relative z-10">Explore My Work</span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-cottage-forest/90 to-cottage-honey opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </a>
-                    <a href="#contact" class="px-10 py-5 bg-white/90 dark:bg-cottage-forest/90 backdrop-blur-sm border-2 border-cottage-forest dark:border-accentGold rounded-2xl font-bold text-base text-cottage-forest dark:text-accentGold uppercase tracking-wider hover:bg-cottage-forest hover:text-white dark:hover:bg-accentGold dark:hover:text-cottage-forest transition-all hover:scale-105">
-                        Get in Touch
-                    </a>
-                </div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center">
+
+            <!-- role tag -->
+            <p class="hero-role-tag opacity-0" id="heroTag">Product Designer &amp; UX Researcher</p>
+
+            <!-- name -->
+            <h1 class="hero-name opacity-0" id="heroName1">
+                <span class="block">CONSTANÇA</span>
+                <span class="block hero-name-italic">CUNHA</span>
+            </h1>
+
+            <!-- thin rule -->
+            <div class="hero-rule opacity-0" id="heroSubline" style="--rule-anim: 1;"></div>
+
+            <!-- subline -->
+            <p class="hero-subline opacity-0" id="heroSublineText">
+                I design products around user friction, business goals, and measurable outcomes.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap justify-center gap-4 opacity-0" id="heroCTA">
+                <a href="#featured-cases" class="hero-btn-primary">Explore My Work</a>
+                <a href="#contact" class="hero-btn-secondary">Get in Touch</a>
             </div>
-            
-            
-            <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto mb-6 opacity-0" id="heroGallery">
-                <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
-                    <img src="sagebook.png" alt="SageBook" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="absolute top-3 left-3 px-2 py-1 rounded-full bg-black/55 text-white text-[10px] font-bold uppercase tracking-wide">Case Study</div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent flex items-end p-4">
-                        <p class="text-white font-bold text-sm">SageBook · Meal planning flow (30% faster task completion)</p>
-                    </div>
-                </div>
-                <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
-                    <img src="cottage-tunes-1.webp" alt="Cottage Tunes" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="absolute top-3 left-3 px-2 py-1 rounded-full bg-black/55 text-white text-[10px] font-bold uppercase tracking-wide">Experiment</div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent flex items-end p-4">
-                        <p class="text-white font-bold text-sm">CottageTunes · Search-first music UI for faster picks</p>
-                    </div>
-                </div>
-                <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
-                    <img src="remi.webp" alt="Remi" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="absolute top-3 left-3 px-2 py-1 rounded-full bg-black/55 text-white text-[10px] font-bold uppercase tracking-wide">Case Study</div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent flex items-end p-4">
-                        <p class="text-white font-bold text-sm">ReMi · Young adults, budget + relocation (40% clarity improvement)</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap justify-center items-center gap-4 text-sm opacity-0 mb-8" id="heroLocation">
-                <div class="flex items-center gap-2 px-4 py-2 bg-cottage-sage/20 dark:bg-nightSky-light/70 backdrop-blur-sm rounded-full border border-cottage-forest/20 dark:border-accentGold/20">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="font-bold text-cottage-forest dark:text-cottage-cream">Available now</span>
-                </div>
-                <span class="opacity-50">•</span>
-                <span class="text-cottage-bark dark:text-cottage-cream">Lisbon, Portugal</span>
-                <span class="opacity-50">•</span>
-                <span class="text-cottage-bark dark:text-cottage-cream">Open to remote</span>
-            </div>
-            
-            
-            <div class="opacity-0 text-center" id="scrollHint">
-                <p class="text-[9px] font-bold uppercase tracking-[0.4em] mb-3 opacity-50 text-cottage-forest dark:text-accentGold">Scroll</p>
-                <div class="w-7 h-12 border-2 border-cottage-forest/50 dark:border-accentGold/50 rounded-full mx-auto flex justify-center pt-2">
-                    <div class="w-1.5 h-3 bg-cottage-forest/50 dark:bg-accentGold/50 rounded-full animate-bounce"></div>
-                </div>
+
+            <!-- location + availability -->
+            <div class="flex flex-wrap justify-center items-center gap-5 mt-8 opacity-0" id="heroLocation">
+                <span class="hero-avail-dot"></span>
+                <span class="hero-meta">Available now</span>
+                <span class="hero-meta-sep">·</span>
+                <span class="hero-meta">Lisbon, Portugal</span>
+                <span class="hero-meta-sep">·</span>
+                <span class="hero-meta">Open to remote</span>
             </div>
         </div>
-        
-        <div class="hero-divider"></div>
+
+        <div class="opacity-0 absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" id="scrollHint">
+            <span class="scroll-hint-label">Scroll</span>
+            <svg class="scroll-mouse-svg" xmlns="http://www.w3.org/2000/svg" width="26" height="42" viewBox="0 0 26 42">
+                <rect x="1.5" y="1.5" width="23" height="39" rx="11.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle class="scroll-wheel-dot" cx="13" cy="10" r="2.5" fill="currentColor"/>
+            </svg>
+        </div>
     </section>
 
     
-    <section id="about" class="py-20 relative whimsy-section mt-12">
+    <section id="about" class="py-20 relative whimsy-section">
         
         <div class="about-particles" id="aboutParticles"></div>
         <div class="max-w-6xl mx-auto px-4 sm:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="relative reveal-section">
-                    <div class="absolute -top-8 -left-8 w-72 h-72 bg-gradient-to-br from-cottage-sage/20 to-cottage-lavender/10 rounded-full blur-[80px] -z-10"></div>
-                    
                     <div class="camera-photo-widget" id="cameraWidget">
                         <div class="camera-body" id="cameraBody">
                             <div class="camera-top-strip">
@@ -287,6 +250,7 @@
                     </div>
                 </div>
                 <div class="space-y-6 reveal-section relative z-10" style="transition-delay: 0.2s">
+                    <p class="section-eyebrow">About</p>
                     <h2 class="text-3xl sm:text-4xl font-serif leading-tight dark:text-vintageCream">
                         I design products people actually use — <span class="text-cottage-bark dark:text-cottage-honey italic underline decoration-cottage-sage decoration-3">and I can explain why each decision matters</span>.
                     </h2>
@@ -313,18 +277,12 @@
     </section>
 
     
-    <section id="featured-cases" class="py-20 relative whimsy-section overflow-hidden">
-        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div class="absolute -top-20 -left-16 w-72 h-72 bg-gradient-to-br from-cottage-sage/25 to-cottage-lavender/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-20 -right-16 w-80 h-80 bg-gradient-to-br from-cottage-honey/25 to-cottage-rose/10 rounded-full blur-3xl"></div>
-            <svg class="absolute top-[12%] right-[10%] w-16 h-16 text-cottage-sage/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5a4.5 4.5 0 1 0-4.5 4.5M12 7.5V9m-4.5 3 .75-1.5M17 12l-.75-1.5M12 12l2 5.5M12 12l-2 5.5M12 12V17"/></svg>
-            <svg class="absolute bottom-[14%] left-[8%] w-14 h-14 text-cottage-lavender/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-        </div>
+    <section id="featured-cases" class="py-20 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-8">
             <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Start here:</p>
-                <h2 class="text-4xl sm:text-5xl font-serif italic">FEATURED CASE STUDIES</h2>
-                <p class="text-sm mt-4 opacity-70 max-w-2xl mx-auto">Two core projects showing the problem, the approach, and the outcome—clear and straight to the point.</p>
+                <p class="section-eyebrow">Selected Work</p>
+                <h2 class="text-4xl sm:text-5xl font-serif italic">Featured Case Studies</h2>
+                <p class="text-sm mt-4 opacity-70 max-w-2xl mx-auto">Two core projects showing the problem, the approach, and the outcome — clear and straight to the point.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 mb-8">
@@ -366,362 +324,13 @@
         </div>
     </section>
 
-    
-    <section id="artifacts" class="journey-section relative overflow-hidden">
-        <div class="journey-fireflies" id="journeyFireflies" aria-hidden="true"></div>
-        <div class="journey-fog" aria-hidden="true"></div>
-        <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
-            <svg class="w-full h-full"><pattern id="labGrid" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#labGrid)" /></svg>
-        </div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-8 relative z-10 py-24">
-
-            
-            <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">A few chapters of</p>
-                <h2 class="text-4xl sm:text-6xl font-serif italic text-vintageCream">MY STORY</h2>
-            </div>
-
-            
-            <div class="jchap-tabs reveal-section" id="jchapTabs" style="transition-delay:0.1s">
-                <button class="jchap-tab active" id="jtab-0" onclick="gotoChapter(0)" style="--jc:#9CAF88">
-                    <span class="jt-num">01</span>
-                    <span class="jt-name">nextflat CH</span>
-                </button>
-                <button class="jchap-tab" id="jtab-1" onclick="gotoChapter(1)" style="--jc:#D4A5A5">
-                    <span class="jt-num">02</span>
-                    <span class="jt-name">Sky Portugal</span>
-                </button>
-                <button class="jchap-tab" id="jtab-2" onclick="gotoChapter(2)" style="--jc:#E8C07D">
-                    <span class="jt-num">03</span>
-                    <span class="jt-name">SINFO</span>
-                </button>
-                <button class="jchap-tab" id="jtab-3" onclick="gotoChapter(3)" style="--jc:#B8A9C9">
-                    <span class="jt-num">04</span>
-                    <span class="jt-name">Diferencial</span>
-                </button>
-                <button class="jchap-tab" id="jtab-4" onclick="gotoChapter(4)" style="--jc:#C9A96E">
-                    <span class="jt-num">05</span>
-                    <span class="jt-name">Tutoring</span>
-                </button>
-            </div>
-
-            
-            <div class="jchap-panels" id="jchapPanels">
-                
-                <div class="pc-ghost pc-ghost-2" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
-                <div class="pc-ghost pc-ghost-1" role="button" tabindex="-1" aria-label="Next card" onclick="gotoChapter(currentJourneyChapter + 1)"></div>
-
-                
-                <div class="jchap-panel active" id="jpanel-0" style="--jc:#9CAF88">
-                    <div class="pc-card">
-                        <div class="pc-header">
-                            <span class="pc-label">POST CARD</span>
-                            <div class="pc-stamp-box"><span>01</span></div>
-                        </div>
-                        <div class="pc-header-rule"></div>
-                        <div class="pc-body">
-                            <div class="pc-message">
-                                <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"From Figma to production, end-to-end ownership."</blockquote>
-                                <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">manage_accounts</span>Owned UI/UX strategy for a live platform with 500+ users</li>
-                                    <li><span class="material-icons-outlined">palette</span>Built atomic design system &amp; reusable components with CSS modules</li>
-                                    <li><span class="material-icons-outlined">dashboard</span>Redesigned homepage, dashboards &amp; feed — shipped to production</li>
-                                    <li><span class="material-icons-outlined">groups</span>Primary design decision-maker within the engineering team</li>
-                                </ul>
-                                <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">6mo</span><span class="pc-stat-lbl">Duration</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">500+</span><span class="pc-stat-lbl">Users</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">2-in-1</span><span class="pc-stat-lbl">Design+Dev</span></div>
-                                </div>
-                                <div class="pc-chips">
-                                    <span class="pc-chip">Figma</span>
-                                    <span class="pc-chip">CSS Modules</span>
-                                    <span class="pc-chip">Atomic Design</span>
-                                    <span class="pc-chip">React</span>
-                                    <span class="pc-chip">Product Strategy</span>
-                                </div>
-                            </div>
-                            <div class="pc-divider"></div>
-                            <div class="pc-address">
-                                <div class="pc-postmark-company-row">
-                                    <div class="pc-postmark">
-                                        <span class="pc-pm-city">ZURICH</span>
-                                        <span class="pc-pm-year">2026</span>
-                                    </div>
-                                    <div class="pc-company-badge">
-                                        <img src="https://nextflat.ch/icons/favicon-black.svg" alt="nextflat" class="pc-company-logo" />
-                                    </div>
-                                </div>
-                                <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">nextflat CH</h3>
-                                <p class="pc-role">Product Design &amp; Frontend Engineering Intern</p>
-                                <div class="pc-loc">
-                                    <span class="material-icons-outlined">place</span>
-                                    Zurich (Remote)
-                                    <img src="https://flagcdn.com/w20/ch.png" width="16" height="11" alt="CH" loading="lazy">
-                                </div>
-                                <div class="pc-date">SEP 2025 — MAR 2026</div>
-                                <div class="pc-addr-rule"></div>
-                                <p class="pc-story">Worked on a live product with 500+ users and owned the design-to-code loop across strategy, system design, and delivery. The interfaces I designed were implemented in production.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="jchap-panel" id="jpanel-1" style="--jc:#D4A5A5">
-                    <div class="pc-card">
-                        <div class="pc-header">
-                            <span class="pc-label">POST CARD</span>
-                            <div class="pc-stamp-box"><span>02</span></div>
-                        </div>
-                        <div class="pc-header-rule"></div>
-                        <div class="pc-body">
-                            <div class="pc-message">
-                                <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"Delivered a two-month roadmap in two weeks."</blockquote>
-                                <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">inventory_2</span>Full device inventory tool for Sky's internal IT team</li>
-                                    <li><span class="material-icons-outlined">speed</span>Scoped at 2 months — I shipped it in 2 weeks</li>
-                                    <li><span class="material-icons-outlined">api</span>REST API + CSV import/export, built from scratch</li>
-                                </ul>
-                                <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">2wk</span><span class="pc-stat-lbl">Delivery</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">3mo</span><span class="pc-stat-lbl">Contract</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">1</span><span class="pc-stat-lbl">Tool built</span></div>
-                                </div>
-                                <div class="pc-chips">
-                                    <span class="pc-chip">Vue.js</span>
-                                    <span class="pc-chip">REST APIs</span>
-                                    <span class="pc-chip">CSV tooling</span>
-                                </div>
-                            </div>
-                            <div class="pc-divider"></div>
-                            <div class="pc-address">
-                                <div class="pc-postmark-company-row">
-                                    <div class="pc-postmark">
-                                        <span class="pc-pm-city">LISBON</span>
-                                        <span class="pc-pm-year">2024</span>
-                                    </div>
-                                    <div class="pc-company-badge">
-                                        <img src="https://sinfo.org/images/companies/plats/sky.svg" alt="Sky" class="pc-company-logo" />
-                                    </div>
-                                </div>
-                                <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">Sky Portugal</h3>
-                                <p class="pc-role">Front-End Developer Intern</p>
-                                <div class="pc-loc">
-                                    <span class="material-icons-outlined">place</span>
-                                    Lisbon
-                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
-                                </div>
-                                <div class="pc-date">JUL — SEP 2024</div>
-                                <div class="pc-addr-rule"></div>
-                                <p class="pc-story">A project scoped for two months was completed in two weeks through early requirement clarification and tight scope management. It was my first internship and a strong foundation in focused execution.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="jchap-panel" id="jpanel-2" style="--jc:#E8C07D">
-                    <div class="pc-card">
-                        <div class="pc-header">
-                            <span class="pc-label">POST CARD</span>
-                            <div class="pc-stamp-box"><span>03</span></div>
-                        </div>
-                        <div class="pc-header-rule"></div>
-                        <div class="pc-body">
-                            <div class="pc-message">
-                                <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"Three years, two full editions, end-to-end execution."</blockquote>
-                                <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">celebration</span>5,000+ attendees per edition</li>
-                                    <li><span class="material-icons-outlined">business</span>85+ company partners, coordinated from scratch</li>
-                                    <li><span class="material-icons-outlined">palette</span>30+ pieces designed — posters, schedules, socials, signage</li>
-                                </ul>
-                                <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#9CAF88">5k+</span><span class="pc-stat-lbl">Attendees</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#E8C07D">85+</span><span class="pc-stat-lbl">Companies</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#D4A5A5">30+</span><span class="pc-stat-lbl">Visuals</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">3</span><span class="pc-stat-lbl">Years</span></div>
-                                </div>
-                                <div class="pc-chips">
-                                    <span class="pc-chip">Visual Design</span>
-                                    <span class="pc-chip">Event Ops</span>
-                                    <span class="pc-chip">Sponsorship</span>
-                                </div>
-                            </div>
-                            <div class="pc-divider"></div>
-                            <div class="pc-address">
-                                <div class="pc-postmark-company-row">
-                                    <div class="pc-postmark">
-                                        <span class="pc-pm-city">LISBON</span>
-                                        <span class="pc-pm-year">2025</span>
-                                    </div>
-                                    <div class="pc-company-badge">
-                                        <img src="sinfo.png" alt="SINFO" class="pc-company-logo" />
-                                    </div>
-                                </div>
-                                <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">SINFO</h3>
-                                <p class="pc-role">Coordinator &amp; Designer</p>
-                                <div class="pc-loc">
-                                    <span class="material-icons-outlined">place</span>
-                                    Lisbon
-                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
-                                </div>
-                                <div class="pc-date">MAR 2022 — MAY 2025</div>
-                                <div class="pc-addr-rule"></div>
-                                <p class="pc-story">Contributed over three years to one of Portugal's largest student tech conferences, supporting event execution and visual communication across signage, schedules, and brand assets.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="jchap-panel" id="jpanel-3" style="--jc:#B8A9C9">
-                    <div class="pc-card">
-                        <div class="pc-header">
-                            <span class="pc-label">POST CARD</span>
-                            <div class="pc-stamp-box"><span>04</span></div>
-                        </div>
-                        <div class="pc-header-rule"></div>
-                        <div class="pc-body">
-                            <div class="pc-message">
-                                <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"Built an HR function from the ground up."</blockquote>
-                                <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">group_add</span>Built the recruitment pipeline from nothing</li>
-                                    <li><span class="material-icons-outlined">assignment</span>Built onboarding processes that were clear and transferable</li>
-                                    <li><span class="material-icons-outlined">people</span>Grew and structured a team of 20+ people</li>
-                                </ul>
-                                <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">15mo</span><span class="pc-stat-lbl">Tenure</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">20+</span><span class="pc-stat-lbl">Team</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#B8A9C9">0→1</span><span class="pc-stat-lbl">HR dept</span></div>
-                                </div>
-                                <div class="pc-chips">
-                                    <span class="pc-chip">HR Process</span>
-                                    <span class="pc-chip">Recruitment</span>
-                                    <span class="pc-chip">Onboarding</span>
-                                </div>
-                            </div>
-                            <div class="pc-divider"></div>
-                            <div class="pc-address">
-                                <div class="pc-postmark-company-row">
-                                    <div class="pc-postmark">
-                                        <span class="pc-pm-city">LISBON</span>
-                                        <span class="pc-pm-year">2022</span>
-                                    </div>
-                                    <div class="pc-company-badge">
-                                        <img src="diferencial.png" alt="Diferencial" class="pc-company-logo" />
-                                    </div>
-                                </div>
-                                <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">Diferencial</h3>
-                                <p class="pc-role">Head of HR</p>
-                                <div class="pc-loc">
-                                    <span class="material-icons-outlined">place</span>
-                                    Lisbon
-                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
-                                </div>
-                                <div class="pc-date">MAR 2022 — MAY 2023</div>
-                                <div class="pc-addr-rule"></div>
-                                <p class="pc-story">Established recruitment and onboarding processes from scratch, creating a structure that remained usable and transferable after my tenure.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="jchap-panel" id="jpanel-4" style="--jc:#C9A96E">
-                    <div class="pc-card">
-                        <div class="pc-header">
-                            <span class="pc-label">POST CARD</span>
-                            <div class="pc-stamp-box"><span>05</span></div>
-                        </div>
-                        <div class="pc-header-rule"></div>
-                        <div class="pc-body">
-                            <div class="pc-message">
-                                <p class="pc-salutation">Dear reader,</p>
-                                <blockquote class="pc-quote">"Explaining complex topics until they click."</blockquote>
-                                <ul class="pc-hls">
-                                    <li><span class="material-icons-outlined">school</span>High school and university students</li>
-                                    <li><span class="material-icons-outlined">calculate</span>Maths, Physics, Chemistry — one subject at a time</li>
-                                    <li><span class="material-icons-outlined">psychology</span>Adapted explanations to each student's way of thinking</li>
-                                </ul>
-                                <div class="pc-stats">
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">2yrs</span><span class="pc-stat-lbl">Duration</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">3</span><span class="pc-stat-lbl">Subjects</span></div>
-                                    <div class="pc-stat"><span class="pc-stat-val" style="color:#C9A96E">1:1</span><span class="pc-stat-lbl">Sessions</span></div>
-                                </div>
-                                <div class="pc-chips">
-                                    <span class="pc-chip">Maths</span>
-                                    <span class="pc-chip">Physics</span>
-                                    <span class="pc-chip">Chemistry</span>
-                                </div>
-                            </div>
-                            <div class="pc-divider"></div>
-                            <div class="pc-address">
-                                <div class="pc-postmark-company-row">
-                                    <div class="pc-postmark">
-                                        <span class="pc-pm-city">LISBON</span>
-                                        <span class="pc-pm-year">2023</span>
-                                    </div>
-                                    <div class="pc-company-badge">
-                                        <span class="material-icons-outlined">school</span>
-                                    </div>
-                                </div>
-                                <div class="pc-addr-rule"></div>
-                                <h3 class="pc-company">Private Tutoring</h3>
-                                <p class="pc-role">Maths, Physics &amp; Chemistry Tutor</p>
-                                <div class="pc-loc">
-                                    <span class="material-icons-outlined">place</span>
-                                    Lisbon
-                                    <img src="https://flagcdn.com/w20/pt.png" width="16" height="11" alt="PT" loading="lazy">
-                                </div>
-                                <div class="pc-date">2021 — 2023</div>
-                                <div class="pc-addr-rule"></div>
-                                <p class="pc-story">Delivered one-to-one tutoring in maths, physics, and chemistry for two years, adapting explanations to each student's learning style to improve understanding.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            
-            <div class="jchap-footer reveal-section" style="transition-delay:0.2s">
-                <div class="jflip-nav">
-                    <button class="jflip-btn" onclick="gotoChapter(currentJourneyChapter - 1)" aria-label="Previous card">
-                        <span class="material-icons-outlined">chevron_left</span>
-                    </button>
-                    <div class="jflip-stack" id="jflipStack" role="tablist" aria-label="Card navigation">
-                        <button class="jflip-card active" data-num="01" style="--jc:#9CAF88" onclick="gotoChapter(0)" role="tab" aria-label="nextflat CH" aria-selected="true"></button>
-                        <button class="jflip-card" data-num="02" style="--jc:#D4A5A5" onclick="gotoChapter(1)" role="tab" aria-label="Sky Portugal" aria-selected="false"></button>
-                        <button class="jflip-card" data-num="03" style="--jc:#E8C07D" onclick="gotoChapter(2)" role="tab" aria-label="SINFO" aria-selected="false"></button>
-                        <button class="jflip-card" data-num="04" style="--jc:#B8A9C9" onclick="gotoChapter(3)" role="tab" aria-label="Diferencial" aria-selected="false"></button>
-                        <button class="jflip-card" data-num="05" style="--jc:#C9A96E" onclick="gotoChapter(4)" role="tab" aria-label="Tutoring" aria-selected="false"></button>
-                    </div>
-                    <button class="jflip-btn" onclick="gotoChapter(currentJourneyChapter + 1)" aria-label="Next card">
-                        <span class="material-icons-outlined">chevron_right</span>
-                    </button>
-                </div>
-                <p class="jchap-hint">swipe · arrow keys</p>
-            </div>
-
-        </div>
-    </section>
 
     
     <section id="studio" class="py-20 relative whimsy-section">
         <div class="studio-container">
             <div class="text-center mb-16 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Case Studies from</p>
-                <h2 class="text-4xl sm:text-6xl font-serif italic">THE STUDIO</h2>
+                <p class="section-eyebrow">Projects</p>
+                <h2 class="text-4xl sm:text-6xl font-serif italic">The Studio</h2>
             </div>
             
             <div class="studio-content">
@@ -781,8 +390,8 @@
     <section id="vinyl-lab" class="py-24 relative whimsy-section vinyl-lab-section">
         <div class="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-14 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-honey mb-2">Side B Archive</p>
-                <h2 class="text-4xl sm:text-6xl font-serif italic tracking-wide text-[#d8b777]">VINYL RECORDS</h2>
+                <p class="section-eyebrow" style="color:#C9A96E">Experiments & Builds</p>
+                <h2 class="text-4xl sm:text-6xl font-serif italic tracking-wide text-[#d8b777]">Vinyl Records</h2>
                 <p class="text-sm mt-4 opacity-75 max-w-2xl mx-auto text-[#e5d5ad]">Built like a record crate: sleeve, disc, and liner notes. Same projects, clearer product logic.</p>
             </div>
 
@@ -1063,9 +672,9 @@
         <div class="web-planet" aria-hidden="true"></div>
         <div class="max-w-5xl mx-auto px-4 sm:px-8 relative z-10">
             <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-sage mb-2">Websites I've</p>
-                <h2 class="text-4xl sm:text-5xl font-serif italic web-holo-title">BROUGHT TO LIFE</h2>
-                <p class="text-xs font-mono mt-3 text-green-400/50">&gt; Broadcasting on all frequencies...</p>
+                <p class="section-eyebrow">Live Sites</p>
+                <h2 class="text-4xl sm:text-5xl font-serif italic web-holo-title">Brought to Life</h2>
+                <p class="text-sm mt-4 opacity-70 max-w-2xl mx-auto">Designed and built from scratch — each one a live product.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
 
@@ -1190,608 +799,108 @@
     </section>
 
     
-    <section id="certificates" class="cert-cottage-section">
+    <section id="wisdom" class="skills-ipod-section py-20 relative">
 
-        
-        <div class="cert-cottage-header reveal-section">
-            <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-1">Certificates I've</p>
-            <h2 class="text-4xl sm:text-5xl font-serif italic text-cottage-forest dark:text-vintageCream">EARNED & FRAMED</h2>
-            <p class="text-xs text-cottage-forest/50 dark:text-vintageCream/40 mt-1 font-display italic">Click a folder to open a certificate — right on the screen</p>
+    <div class="max-w-5xl mx-auto px-4 sm:px-8">
+        <div class="text-center mb-14 reveal-section">
+            <p class="section-eyebrow">Knowledge Garden</p>
+            <h2 class="text-4xl sm:text-5xl font-serif italic">Skill Set</h2>
+            <p class="text-xs opacity-60 mt-3 font-display italic">Spin the wheel to navigate — press center to explore</p>
         </div>
 
-        
-        <div class="cert-string-bar" aria-hidden="true">
-            <div class="cert-string-wire"></div>
-            <div class="string-bulb" style="--bd:0s"></div>
-            <div class="string-bulb" style="--bd:0.3s"></div>
-            <div class="string-bulb" style="--bd:0.6s"></div>
-            <div class="string-bulb" style="--bd:0.9s"></div>
-            <div class="string-bulb" style="--bd:1.2s"></div>
-            <div class="string-bulb" style="--bd:0.15s"></div>
-            <div class="string-bulb" style="--bd:0.75s"></div>
-            <div class="string-bulb" style="--bd:1.05s"></div>
-            <div class="string-bulb" style="--bd:0.45s"></div>
-            <div class="string-bulb" style="--bd:1.35s"></div>
+        <div class="skills-ipod-stage reveal-section">
+            <!-- sparkles -->
+            <div class="ipod-sparkle ipod-sparkle-1"></div>
+            <div class="ipod-sparkle ipod-sparkle-2"></div>
+            <div class="ipod-sparkle ipod-sparkle-3"></div>
+            <div class="ipod-glow-orb ipod-orb-1"></div>
+            <div class="ipod-glow-orb ipod-orb-2"></div>
+
+            <div class="ipod-body skills-ipod-body" id="skillsIpodBody">
+
+                <!-- SCREEN -->
+                <div class="ipod-screen">
+                    <div class="ipod-screen-inner">
+                        <div class="ipod-status-bar">
+                            <div class="ipod-time" id="skillsIpodTime">12:00</div>
+                            <div class="ipod-status-icons">
+                                <div class="ipod-battery"><div class="battery-level" style="width:78%"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- MAIN MENU VIEW -->
+                        <div class="ipod-content" id="skillsMainView">
+                            <div class="ipod-menu-title">Skills</div>
+                            <div class="ipod-menu" id="skillsMenu">
+                                <div class="ipod-menu-item active" data-cat="0">
+                                    <span class="ipod-item-icon">►</span>
+                                    <span>Languages</span>
+                                </div>
+                                <div class="ipod-menu-item" data-cat="1">
+                                    <span class="ipod-item-icon">►</span>
+                                    <span>Frontend</span>
+                                </div>
+                                <div class="ipod-menu-item" data-cat="2">
+                                    <span class="ipod-item-icon">►</span>
+                                    <span>Design Tools</span>
+                                </div>
+                                <div class="ipod-menu-item" data-cat="3">
+                                    <span class="ipod-item-icon">►</span>
+                                    <span>Research & UX</span>
+                                </div>
+                                <div class="ipod-menu-item" data-cat="4">
+                                    <span class="ipod-item-icon">►</span>
+                                    <span>Soft Skills</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DETAIL VIEW -->
+                        <div class="ipod-detail-view" id="skillsDetailView">
+                            <div class="ipod-detail-back" id="skillsBackBtn">
+                                <span class="material-icons-outlined" style="font-size:14px;vertical-align:middle">arrow_back_ios</span>
+                                Skills
+                            </div>
+                            <div class="ipod-detail-content" id="skillsDetailContent"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIVIDER between screen and wheel -->
+                <div class="ipod-screen-wheel-gap"></div>
+
+                <!-- CLICK WHEEL -->
+                <div class="ipod-wheel" id="skillsWheel">
+                    <!-- Rotating track ring -->
+                    <div class="skills-wheel-track" id="skillsWheelTrack"></div>
+
+                    <!-- Wheel labels etched on ring -->
+                    <span class="ipod-ring-label ipod-ring-menu" id="skillsMenuBtn">MENU</span>
+                    <span class="ipod-ring-label ipod-ring-prev" id="skillsPrevBtn">⏮</span>
+                    <span class="ipod-ring-label ipod-ring-next" id="skillsNextBtn">⏭</span>
+                    <span class="ipod-ring-label ipod-ring-play" id="skillsPlayBtn">▶⏸</span>
+
+                    <!-- Center select button -->
+                    <div class="ipod-wheel-center" id="skillsCenterBtn" title="Select">
+                        <div class="ipod-center-button"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-        
-        <div class="cert-scene-row">
-
-            
-            <div class="cert-side-deco cert-side-left" aria-hidden="true">
-                <div class="cert-side-frame">
-                    <div class="wall-frame-mat">
-                        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="wall-art-svg">
-                            <path d="M40,52 Q30,36 32,18 Q40,8 48,18 Q50,36 40,52Z" fill="#9CAF88" opacity="0.7"/>
-                            <path d="M40,52 Q37,30 36,16" stroke="#6B7F5E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                            <path d="M36,30 Q28,26 24,20" stroke="#7D9B76" stroke-width="1" fill="none" stroke-linecap="round"/>
-                            <ellipse cx="24" cy="19" rx="5" ry="3.5" fill="#B8A9C9" opacity="0.7" transform="rotate(-20,24,19)"/>
-                            <ellipse cx="30" cy="9" rx="4" ry="3" fill="#D4A5A5" opacity="0.7" transform="rotate(15,30,9)"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="cert-side-shelf">
-                    <div class="shelf-surface"></div>
-                    <div class="shelf-items">
-                        <div class="shelf-tiny-plant">
-                            <div class="stp-pot"></div>
-                            <div class="stp-stem">
-                                <div class="stp-leaf left"></div>
-                                <div class="stp-leaf right"></div>
-                            </div>
-                        </div>
-                        <div class="shelf-tiny-book" style="background:#9CAF88"></div>
-                        <div class="shelf-tiny-book" style="background:#D4A5A5;width:10px"></div>
-                        <div class="shelf-tiny-candle">
-                            <div class="sth-flame"></div>
-                            <div class="sth-body"></div>
-                        </div>
-                    </div>
-                    <div class="shelf-bracket left"></div>
-                    <div class="shelf-bracket right"></div>
-                </div>
-            </div>
-
-            
-            <div class="cert-center-area">
-                <div class="cottage-table-scene">
-
-                    
-                    <div class="cottage-monitor-outer reveal-section" style="transition-delay:0.2s">
-                        <div class="cottage-monitor-frame">
-                            <div class="cottage-monitor-screen">
-                                
-                                <div class="os-menubar">
-                                    <div class="os-menubar-left">
-                                        <span class="os-logo material-icons-outlined" style="font-size:15px">eco</span>
-                                        <span class="os-menu-brand">Certificates.app</span>
-                                        <span class="os-menu-item">File</span>
-                                        <span class="os-menu-item">Edit</span>
-                                        <span class="os-menu-item">View</span>
-                                        <span class="os-menu-item">Help</span>
-                                    </div>
-                                    <div class="os-menubar-right">
-                                        <span class="os-menu-item os-menu-icons"><span class="material-icons-outlined" style="font-size:11px;vertical-align:middle">wifi</span> <span class="material-icons-outlined" id="osBatteryIcon" style="font-size:11px;vertical-align:middle">battery_full</span></span>
-                                        <span class="os-menu-clock" id="osClock">--:--</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="os-desktop cottage-os-desktop">
-                                    <div class="os-scanlines" aria-hidden="true"></div>
-                                    <p class="os-terminal-hint" style="text-align:center;padding:0.25rem 0 0.25rem;margin-top:-0.5rem;">$ ls ~/certificates/ — 9 items found</p>
-                                    <div class="os-folder-grid" id="osFolderGrid">
-                                        <button class="os-folder" onclick="openCertWindow(0)">
-                                            <div class="os-folder-icon" style="--fc:#9CAF88"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">Figma Mega</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(1)">
-                                            <div class="os-folder-icon" style="--fc:#E8C07D"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">UX Basics</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(2)">
-                                            <div class="os-folder-icon" style="--fc:#B8A9C9"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">UI/UX Intro</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(3)">
-                                            <div class="os-folder-icon" style="--fc:#D4A5A5"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">Product Design</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(4)">
-                                            <div class="os-folder-icon" style="--fc:#A8C5D9"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">Figma Web</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(5)">
-                                            <div class="os-folder-icon" style="--fc:#7D9B76"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">Web Dev Boot</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(6)">
-                                            <div class="os-folder-icon" style="--fc:#E8C07D"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">Unity UI</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(7)">
-                                            <div class="os-folder-icon" style="--fc:#8B6B8E"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">IBM Think</span>
-                                        </button>
-                                        <button class="os-folder" onclick="openCertWindow(8)">
-                                            <div class="os-folder-icon" style="--fc:#9CAF88"><div class="os-fi-tab"></div><div class="os-fi-body"><span class="os-fi-badge material-icons-outlined" style="font-size:12px">workspace_premium</span></div></div>
-                                            <span class="os-folder-label">IBM Co-Create</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="cottage-monitor-neck"></div>
-                        <div class="cottage-monitor-base-plate"></div>
-                    </div>
-
-                    
-                    <div class="cottage-desk-surface">
-                        
-                        <div class="desk-lamp" aria-hidden="true">
-                            <div class="lamp-arm-1"></div>
-                            <div class="lamp-arm-2"></div>
-                            <div class="lamp-head">
-                                <div class="lamp-bulb"></div>
-                            </div>
-                            <div class="lamp-glow"></div>
-                            <div class="lamp-base"></div>
-                        </div>
-                        
-                        <div class="desk-deco-left">
-                        </div>
-                        
-                        <div class="desk-mouse-standalone">
-                            <div class="mouse-body"></div>
-                        </div>
-                        
-                        <div class="desk-deco-center">
-                            
-                            <div class="deco-keyboard">
-                                <div class="kb-row">
-                                    <div class="kb-key wide"></div>
-                                    <div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div>
-                                </div>
-                                <div class="kb-row">
-                                    <div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div>
-                                </div>
-                                <div class="kb-row">
-                                    <div class="kb-key wider"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key"></div><div class="kb-key wider"></div>
-                                </div>
-                                <div class="kb-row">
-                                    <div class="kb-key space"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="desk-deco-right">
-                            
-                            <div class="deco-cozy-mug">
-                                <div class="mug-steam">
-                                    <span class="steam-wisp"></span>
-                                    <span class="steam-wisp"></span>
-                                    <span class="steam-wisp"></span>
-                                </div>
-                                <div class="mug-body">
-                                    <div class="mug-pattern"></div>
-                                    <div class="mug-handle"></div>
-                                    <div class="mug-teabag">
-                                        <div class="teabag-string"></div>
-                                        <div class="teabag-bag"></div>
-                                    </div>
-                                </div>
-                                <div class="mug-saucer"></div>
-                            </div>
-                            
-                            <div class="desk-kitten" title="A cozy helper">
-                                <div class="kitty-body-wrap">
-                                    <div class="kitty-tail"></div>
-                                </div>
-                                <div class="kitty-head-wrap">
-                                    <div class="kitty-ear kitty-ear-l"></div>
-                                    <div class="kitty-ear kitty-ear-r"></div>
-                                    <div class="kitty-eyes">
-                                        <div class="kitty-eye"></div>
-                                        <div class="kitty-eye"></div>
-                                    </div>
-                                    <div class="kitty-nose"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="cottage-desk-edge"></div>
-                    
-                    <div class="cottage-desk-legs">
-                        <div class="desk-leg"></div>
-                        <div class="desk-leg"></div>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="cert-side-deco cert-side-right" aria-hidden="true">
-                <div class="cert-side-frame cert-side-frame-abstract">
-                    <div class="wall-frame-mat">
-                        <svg viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="wall-art-svg">
-                            <circle cx="30" cy="25" r="14" fill="#E8C07D" opacity="0.35"/>
-                            <circle cx="22" cy="20" r="9" fill="#D4A5A5" opacity="0.4"/>
-                            <circle cx="36" cy="28" r="7" fill="#B8A9C9" opacity="0.4"/>
-                            <path d="M18,38 Q30,28 42,38" stroke="#9CAF88" stroke-width="1.5" fill="none" opacity="0.7"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="cert-side-plaque">
-                    <div class="wall-frame-mat wall-frame-plaque-mat">
-                        <div class="plaque-content">
-                            <span class="material-icons-outlined plaque-icon">workspace_premium</span>
-                            <p class="plaque-title">Certificate</p>
-                            <p class="plaque-sub">Gallery</p>
-                            <div class="plaque-divider"></div>
-                            <p class="plaque-year">Est. 2024</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        
-        <div class="os-window hidden" id="osWindow">
-            <div class="os-win-titlebar">
-                <div class="os-win-controls">
-                    <button class="os-win-dot os-dot-close" onclick="closeCertWindow()" title="Close"><span class="os-dot-x material-icons-outlined">close</span></button>
-                    <span class="os-win-dot os-dot-min">−</span>
-                    <span class="os-win-dot os-dot-max">+</span>
-                </div>
-                <span class="os-win-title" id="osWinTitle">Certificate</span>
-                <div style="width:70px"></div>
-            </div>
-            <div class="os-win-body" id="osWinBody"></div>
-        </div>
-    </section>
+    </div>
+</section>
 
     
-    <section id="wisdom" class="py-20 bg-gradient-to-br from-vintageCream via-white to-cottage-cream dark:from-nightSky dark:via-deepForest dark:to-nightSky whimsy-section">
-        
-        <div class="garden-sky-deco" aria-hidden="true">
-            <div class="garden-sun"></div>
-            <div class="garden-cloud garden-cloud-1"></div>
-            <div class="garden-cloud garden-cloud-2"></div>
-            <div class="garden-butterfly garden-bf-1" style="animation-delay: 0s;"></div>
-            <div class="garden-butterfly garden-bf-2" style="animation-delay: 2s;"></div>
-            <div class="garden-butterfly garden-bf-1" style="animation-delay: 4s; animation-duration: 10s;"></div>
-            <div class="garden-butterfly garden-bf-2" style="animation-delay: 6s; animation-duration: 9s;"></div>
-            <div class="garden-butterfly garden-bf-1" style="animation-delay: 1s; animation-duration: 11s;"></div>
-            <div class="garden-butterfly garden-bf-2" style="animation-delay: 5s; animation-duration: 8.5s;"></div>
-        </div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-8">
-            <div class="text-center mb-12 reveal-section">
-                <p class="font-cursive text-2xl sm:text-3xl text-cottage-bark dark:text-cottage-honey mb-2">Skills cultivated in my</p>
-                <h2 class="text-4xl sm:text-5xl font-serif italic">KNOWLEDGE GARDEN</h2>
-                <p class="text-xs opacity-75 mt-2 mb-8 font-display italic font-semibold" style="text-align:center;display:block;width:100%">Click the watering can to bloom each plant <span class="material-icons-outlined" style="font-size:14px;vertical-align:middle">watering_can</span></p>
-            </div>
-
-            
-            <div class="garden-pots-row" id="gardenPotsRow">
-
-                
-                <div class="flower-pot-card reveal-section" id="pot-0">
-                    <div class="flower-skill-labels" id="skill-labels-0"></div>
-                    <div class="flower-plant-area">
-                        <button class="water-can-btn" onclick="waterPlant(0)" title="Water this plant!">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
-                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
-                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
-                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
-                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <div class="flower-bloom">
-                            <div class="petal" style="background:#6B7F5E"></div>
-                            <div class="petal" style="background:#7D9B76"></div>
-                            <div class="petal" style="background:#9CAF88"></div>
-                            <div class="petal" style="background:#6B7F5E"></div>
-                            <div class="petal" style="background:#7D9B76"></div>
-                            <div class="petal" style="background:#9CAF88"></div>
-                            <div class="flower-center" style="background:#4A5D4E;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">eco</span></div>
-                        </div>
-                        <div class="flower-stem-body" style="height:55px">
-                            <div class="stem-leaf left"></div>
-                            <div class="stem-leaf right"></div>
-                        </div>
-                        
-                        <div class="flower-skills-tooltip">
-                            Python &amp; TypeScript<br>Java &amp; C/C++<br>Julia &amp; Prolog<br>JavaScript
-                        </div>
-                    </div>
-                    <div class="pot-vessel">
-                        <div class="pot-rim"></div>
-                        <div class="pot-body-shape"></div>
-                        <div class="pot-saucer"></div>
-                    </div>
-                    <p class="pot-label-text text-cottage-forest dark:text-cottage-sage">Languages</p>
-                </div>
-
-                
-                <div class="flower-pot-card reveal-section" style="transition-delay:0.1s" id="pot-1">
-                    <div class="flower-skill-labels" id="skill-labels-1"></div>
-                    <div class="flower-plant-area">
-                        <button class="water-can-btn" onclick="waterPlant(1)" title="Water this plant!">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
-                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
-                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
-                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
-                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <div class="flower-bloom">
-                            <div class="petal" style="background:#C9A96E"></div>
-                            <div class="petal" style="background:#E8C07D"></div>
-                            <div class="petal" style="background:#C9A96E"></div>
-                            <div class="petal" style="background:#E8C07D"></div>
-                            <div class="petal" style="background:#C9A96E"></div>
-                            <div class="petal" style="background:#E8C07D"></div>
-                            <div class="flower-center" style="background:#B87D64;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">local_florist</span></div>
-                        </div>
-                        <div class="flower-stem-body" style="height:55px">
-                            <div class="stem-leaf left"></div>
-                            <div class="stem-leaf right"></div>
-                        </div>
-                        <div class="flower-skills-tooltip">
-                            React &amp; SwiftUI<br>Tailwind CSS<br>Design Systems<br>Next.js
-                        </div>
-                    </div>
-                    <div class="pot-vessel">
-                        <div class="pot-rim"></div>
-                        <div class="pot-body-shape"></div>
-                        <div class="pot-saucer"></div>
-                    </div>
-                    <p class="pot-label-text text-cottage-forest dark:text-cottage-honey">Frontend</p>
-                </div>
-
-                
-                <div class="flower-pot-card reveal-section" style="transition-delay:0.2s" id="pot-2">
-                    <div class="flower-skill-labels" id="skill-labels-2"></div>
-                    <div class="flower-plant-area">
-                        <button class="water-can-btn" onclick="waterPlant(2)" title="Water this plant!">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
-                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
-                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
-                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
-                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <div class="flower-bloom">
-                            <div class="petal" style="background:#D4A5A5"></div>
-                            <div class="petal" style="background:#B87D64"></div>
-                            <div class="petal" style="background:#D4A5A5"></div>
-                            <div class="petal" style="background:#B87D64"></div>
-                            <div class="petal" style="background:#D4A5A5"></div>
-                            <div class="petal" style="background:#B87D64"></div>
-                            <div class="flower-center" style="background:#8B6B8E;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">palette</span></div>
-                        </div>
-                        <div class="flower-stem-body" style="height:55px">
-                            <div class="stem-leaf left"></div>
-                            <div class="stem-leaf right"></div>
-                        </div>
-                        <div class="flower-skills-tooltip">
-                            Figma Expert<br>Adobe Illustrator<br>Photoshop<br>Motion Design
-                        </div>
-                    </div>
-                    <div class="pot-vessel">
-                        <div class="pot-rim"></div>
-                        <div class="pot-body-shape"></div>
-                        <div class="pot-saucer"></div>
-                    </div>
-                    <p class="pot-label-text text-cottage-forest dark:text-cottage-rose">Design Tools</p>
-                </div>
-
-                
-                <div class="flower-pot-card reveal-section" style="transition-delay:0.3s" id="pot-3">
-                    <div class="flower-skill-labels" id="skill-labels-3"></div>
-                    <div class="flower-plant-area">
-                        <button class="water-can-btn" onclick="waterPlant(3)" title="Water this plant!">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M41 32 L56 18 L60 21 L43 36 Z" fill="#A3B8A8"/>
-                                <ellipse cx="58" cy="19.5" rx="2" ry="4" fill="#E8C07D" transform="rotate(45 58 19.5)"/>
-                                <path d="M16 28 C16 20 40 20 40 28 L44 52 C44 58 12 58 12 52 Z" fill="#8BA89A"/>
-                                <ellipse cx="28" cy="28" rx="12" ry="4" fill="#6B8A7A"/>
-                                <path d="M14 42 C2 42 2 26 16 26" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                                <path d="M28 28 C28 12 40 12 40 28" fill="none" stroke="#8BA89A" stroke-width="4" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <div class="flower-bloom">
-                            <div class="petal" style="background:#8B6B8E"></div>
-                            <div class="petal" style="background:#B8A9C9"></div>
-                            <div class="petal" style="background:#8B6B8E"></div>
-                            <div class="petal" style="background:#B8A9C9"></div>
-                            <div class="petal" style="background:#8B6B8E"></div>
-                            <div class="petal" style="background:#B8A9C9"></div>
-                            <div class="flower-center" style="background:#6B5580;"><span class="material-icons-outlined" style="font-size:14px;color:#FDF6E3">auto_awesome</span></div>
-                        </div>
-                        <div class="flower-stem-body" style="height:55px">
-                            <div class="stem-leaf left"></div>
-                            <div class="stem-leaf right"></div>
-                        </div>
-                        <div class="flower-skills-tooltip">
-                            Strategic Leadership<br>Product Thinking<br>Rapid Delivery<br>User Empathy
-                        </div>
-                    </div>
-                    <div class="pot-vessel">
-                        <div class="pot-rim"></div>
-                        <div class="pot-body-shape"></div>
-                        <div class="pot-saucer"></div>
-                    </div>
-                    <p class="pot-label-text text-cottage-forest dark:text-cottage-lavender">Soft Skills</p>
-                </div>
-
-            </div>
-            
-            <div class="garden-ground-strip" aria-hidden="true">
-                <div class="garden-grass-tufts">
-                    <div class="grass-tuft grass-1"></div>
-                    <div class="grass-tuft grass-2"></div>
-                    <div class="grass-tuft grass-3"></div>
-                    <div class="grass-tuft grass-4"></div>
-                    <div class="grass-tuft grass-5"></div>
-                    <div class="grass-tuft grass-6"></div>
-                    <div class="grass-tuft grass-7"></div>
-                    <div class="grass-tuft grass-8"></div>
-                    <div class="grass-tuft grass-9"></div>
-                </div>
-            </div>
-
-            <div class="section-separator reveal-section"></div>
-
-            
-            <div class="max-w-4xl mx-auto mt-16 px-4">
-                <div class="text-center mb-10 reveal-section">
-                    <h3 class="text-2xl font-serif italic text-center mb-8 reveal-section">My Credentials <span class="material-icons-outlined">headphones</span></h3>
-                </div>
-
-                <div class="ipod-container reveal-section">
-                    
-                    <div class="ipod-sparkle ipod-sparkle-1"></div>
-                    <div class="ipod-sparkle ipod-sparkle-2"></div>
-                    <div class="ipod-sparkle ipod-sparkle-3"></div>
-                    <div class="ipod-sparkle ipod-sparkle-4"></div>
-                    <div class="ipod-sparkle ipod-sparkle-5"></div>
-                    <div class="ipod-sparkle ipod-sparkle-6"></div>
-                    <div class="ipod-glow-orb ipod-orb-1"></div>
-                    <div class="ipod-glow-orb ipod-orb-2"></div>
-                    <div class="ipod-glow-orb ipod-orb-3"></div>
-                    
-                    
-                    <div class="music-note music-note-1">♪</div>
-                    <div class="music-note music-note-2">♫</div>
-                    <div class="music-note music-note-3">♪</div>
-                    <div class="music-note music-note-4">♫</div>
-                    <div class="music-note music-note-5">♪</div>
-                    <div class="music-note music-note-6">♫</div>
-                    <div class="music-note music-note-7">♪</div>
-                    <div class="music-note music-note-8">♫</div>
-                    <div class="music-note music-note-9">♪</div>
-                    <div class="music-note music-note-10">♫</div>
-                    
-                    
-                    <div class="vinyl-disc vinyl-1"></div>
-                    <div class="vinyl-disc vinyl-2"></div>
-                    
-                    
-                    <div class="ipod-body">
-                        
-                        <div class="ipod-screen">
-                            <div class="ipod-screen-inner">
-                                <div class="ipod-status-bar">
-                                    <div class="ipod-time" id="ipodTime">12:00</div>
-                                    <div class="ipod-status-icons">
-                                        <span class="ipod-wifi" id="ipodWifi">📶</span>
-                                        <div class="ipod-battery">
-                                            <div class="battery-level" id="batteryLevel"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="ipod-content" id="ipodContent">
-                                    <div class="ipod-menu-title">Credentials</div>
-                                    <div class="ipod-menu" id="ipodMenu">
-                                        <div class="ipod-menu-item active" data-index="0">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>M.Sc. Computer Science</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="1">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>B.Sc. Computer Science</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="2">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>Portuguese (Native)</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="3">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>English (C2)</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="4">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>French (B2)</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="5">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>Spanish (B1)</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="6">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>WebSummit Volunteer</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="7">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>ReFood Volunteer</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="8">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>Banco Alimentar</span>
-                                        </div>
-                                        <div class="ipod-menu-item" data-index="9">
-                                            <span class="ipod-item-icon">►</span>
-                                            <span>Ballet Teacher Asst.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="ipod-detail-view" id="ipodDetail">
-                                    <div class="ipod-detail-back" onclick="ipodGoBack()">
-                                        <span class="material-icons-outlined">arrow_back</span>
-                                        Back
-                                    </div>
-                                    <div class="ipod-detail-content" id="ipodDetailContent"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="ipod-wheel">
-                            <div class="ipod-wheel-center" onclick="ipodSelect()">
-                                <div class="ipod-center-button">
-                                    <span class="material-icons-outlined">check</span>
-                                </div>
-                            </div>
-                            <button class="ipod-wheel-btn ipod-menu-btn" onclick="ipodMenu()" title="Menu">
-                                <span class="material-icons-outlined">menu</span>
-                            </button>
-                            <button class="ipod-wheel-btn ipod-prev-btn" onclick="ipodPrev()" title="Previous">
-                                <span class="material-icons-outlined">skip_previous</span>
-                            </button>
-                            <button class="ipod-wheel-btn ipod-next-btn" onclick="ipodNext()" title="Next">
-                                <span class="material-icons-outlined">skip_next</span>
-                            </button>
-                            <button class="ipod-wheel-btn ipod-play-btn" onclick="ipodPlay()" title="Select">
-                                <span class="material-icons-outlined">play_arrow</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    
-    <footer id="contact" class="py-20 bg-gradient-to-br from-cottage-forest via-deepForest to-cottage-moss text-vintageCream relative overflow-hidden">
+    <footer id="contact" class="py-20 contact-footer text-vintageCream relative overflow-hidden">
         <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
             <svg class="botanical absolute top-[20%] left-[8%] w-24 h-24" style="animation: floatBotanical 8s ease-in-out infinite;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             <svg class="botanical absolute bottom-[25%] right-[10%] w-20 h-20" style="animation: floatBotanical 10s ease-in-out infinite 2s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
         </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal-section">
-                <p class="font-cursive text-3xl sm:text-4xl mb-4 text-cottage-sage">Hiring for product design?</p>
-                <h2 class="text-4xl sm:text-5xl font-serif mb-8 italic">LET'S <span class="text-cottage-sage underline">TALK</span></h2>
+                <p class="section-eyebrow mb-4" style="color:#9CAF88">Hiring for product design?</p>
+                <h2 class="text-4xl sm:text-5xl font-serif mb-8 italic">Let's <span class="text-cottage-sage underline">Talk</span></h2>
                 <p class="text-sm opacity-80 mb-6 max-w-md">I'm open to entry-level and graduate product design opportunities, including remote and relocation roles.</p>
                 <div class="space-y-6">
                     <a href="mailto:constancadcunha@gmail.com" class="flex items-center gap-5 group">
@@ -1835,7 +944,7 @@
     <div class="dialogue-box" id="dialogueContainer">
         <div class="close-btn" onclick="dismissDialogue()"><span class="material-icons-outlined" style="font-size:14px;line-height:1">close</span></div>
         <div class="w-12 h-12 bg-gradient-to-br from-cottage-forest to-cottage-moss rounded-full flex items-center justify-center text-white text-lg font-serif italic border-2 border-cottage-sage shrink-0">CC</div>
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
             <p id="dialogueText" class="text-sm font-medium italic opacity-85 leading-snug">Hi — take a look around. <span class="material-icons-outlined align-middle">eco</span></p>
         </div>
     </div>
