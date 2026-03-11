@@ -24,7 +24,6 @@
     
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -65,7 +64,7 @@
     
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="selection:bg-cottage-sage selection:text-white dark:selection:bg-accentGold/30">
+<body class="selection:bg-cottage-sage selection:text-white">
     <div class="noise"></div>
     <div id="scrollProgress"><div class="progress-bar" id="progressBar"></div></div>
 
@@ -128,11 +127,6 @@
                 <a href="#vinyl-lab" class="nav-link font-bold uppercase tracking-[0.12em] hover:text-cottage-rose transition-colors">Vinyl</a>
                 <a href="#wisdom" class="nav-link font-bold uppercase tracking-[0.12em] hover:text-cottage-rose transition-colors">Skills</a>
                 <a href="#contact" class="nav-link font-bold uppercase tracking-[0.12em] hover:text-cottage-rose transition-colors">Contact</a>
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-cottage-sage/20 dark:hover:bg-accentGold/20 transition-all duration-300 hover:rotate-180">
-                    <svg class="w-4 h-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-                    <svg class="w-4 h-4 hidden dark:block text-accentGold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-                </button>
-                
                 <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()" aria-label="Open navigation" aria-controls="mobileNavOverlay" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -244,29 +238,29 @@
                             </div>
                             <img src="Constanca.webp" alt="Constança" class="w-full h-[240px] object-cover rounded-sm" loading="lazy">
                             <div class="polaroid-photo-caption">
-                                <p class="font-cursive text-lg text-cottage-bark dark:text-cottage-honey">Constança <span class="material-icons-outlined text-lg">eco</span></p>
+                                <p class="font-cursive text-lg text-cottage-bark">Constança <span class="material-icons-outlined text-lg">eco</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="space-y-6 reveal-section relative z-10" style="transition-delay: 0.2s">
                     <p class="section-eyebrow">About</p>
-                    <h2 class="text-3xl sm:text-4xl font-serif leading-tight dark:text-vintageCream">
-                        I design products people actually use — <span class="text-cottage-bark dark:text-cottage-honey italic underline decoration-cottage-sage decoration-3">and I can explain why each decision matters</span>.
+                    <h2 class="text-3xl sm:text-4xl font-serif leading-tight">
+                        I design products people actually use — <span class="text-cottage-bark italic underline decoration-cottage-sage decoration-3">and I can explain why each decision matters</span>.
                     </h2>
-                    <div class="space-y-4 text-base leading-relaxed opacity-85 dark:opacity-90">
+                    <div class="space-y-4 text-base leading-relaxed opacity-85">
                         <p>I am finishing a Master's in <strong>Computer Science</strong> at <strong>Instituto Superior Técnico</strong>, focused on <strong>interaction design and UX research</strong>. I love turning messy user problems into clear product decisions.</p>
                         <p>My thesis work combines heuristic evaluation, task performance, and perceived usability. In practice, that means I do not stop at "this looks better"; I focus on whether the change helps users complete real tasks with less effort.</p>
                         <p>I can also ship frontend when needed, but my main value is product thinking: understanding constraints, prioritizing the right problems, and connecting design choices to measurable outcomes. Based in <strong>Lisbon</strong>, open to remote and relocation.</p>
                     </div>
                     <div class="grid grid-cols-2 gap-3 pt-2">
                         <div class="skill-greenhouse greenhouse-container p-4">
-                            <svg class="w-6 h-6 mb-2 text-cottage-sage dark:text-cottage-honey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
+                            <svg class="w-6 h-6 mb-2 text-cottage-sage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
                             <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Location</h4>
                             <p class="text-sm opacity-70">Lisbon — open to relocate or remote</p>
                         </div>
                         <div class="skill-greenhouse greenhouse-container p-4">
-                            <svg class="w-6 h-6 mb-2 text-cottage-honey dark:text-cottage-sage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                            <svg class="w-6 h-6 mb-2 text-cottage-honey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                             <h4 class="font-bold text-[10px] uppercase tracking-widest mb-1">Languages</h4>
                             <p class="text-sm opacity-70">PT • EN • FR • ES</p>
                         </div>
@@ -296,7 +290,7 @@
                         <li class="flex items-start gap-2"><span class="material-icons-outlined text-base">insights</span>Impact: ~30% reduction in estimated frontend implementation time (based on engineering estimates before and after the design system was in place)</li>
                     </ul>
                     <div class="flex flex-wrap gap-3">
-                        <a href="https://constancadcunha.github.io/nextflat-case-study" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
+                        <a href="https://constancadcunha.github.io/nextflat-case-study" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
                     </div>
                 </article>
 
@@ -310,8 +304,8 @@
                         <li class="flex items-start gap-2"><span class="material-icons-outlined text-base">insights</span>Testing: task timing across usability sessions showed faster setup completion and zero backtracking in v2 vs. 3/5 participants hitting dead ends in v1</li>
                     </ul>
                     <div class="flex flex-wrap gap-3">
-                        <a href="https://constancadcunha.github.io/SageBook/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
-                        <a href="https://sagebook.figma.site/" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest dark:border-accentGold rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold hover:text-white">Prototype</a>
+                        <a href="https://constancadcunha.github.io/SageBook/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
+                        <a href="https://sagebook.figma.site/" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest hover:text-white">Prototype</a>
                     </div>
                 </article>
             </div>
@@ -341,7 +335,7 @@
                             <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">nextflat CH</h3>
                             <p class="text-base opacity-75 leading-relaxed mb-6">Product Designer & Frontend Engineer at a live Swiss real estate platform. Sole designer across 2 release cycles — redesigned the homepage, property feed, and dashboards, then built a component library that reduced estimated frontend implementation time for new features by ~30% (based on engineering estimates before and after). The platform serves 500+ users; every change shipped to production.</p>
                             <div class="flex flex-wrap gap-3 items-center">
-                                <a href="https://constancadcunha.github.io/nextflat-case-study" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
+                                <a href="https://constancadcunha.github.io/nextflat-case-study" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
                                 <span class="text-xs opacity-50 italic">Zurich, Switzerland (Remote) · Sep 2025 – Mar 2026</span>
                             </div>
                         </div>
@@ -349,12 +343,12 @@
 
                     <div class="project-entry reveal-section" data-img="sagebook.png" data-color="#9CAF88">
                         <div class="magic-card p-6">
-                            <p class="text-cottage-bark dark:text-cottage-mushroom font-bold text-[10px] uppercase tracking-widest mb-2">Case Study 02</p>
+                            <p class="text-cottage-bark font-bold text-[10px] uppercase tracking-widest mb-2">Case Study 02</p>
                             <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">SageBook</h3>
                             <p class="text-base opacity-75 leading-relaxed mb-6">Most cooking apps are recipe databases. SageBook is built around the moment people actually fail — mid-recipe, not at the planning stage. Research, UX decisions, prototype, and usability testing documented in the full case study.</p>
                             <div class="flex flex-wrap gap-3">
-                                <a href="https://constancadcunha.github.io/SageBook/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
-                                <a href="https://sagebook.figma.site/" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest dark:border-accentGold rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold hover:text-white">Prototype</a>
+                                <a href="https://constancadcunha.github.io/SageBook/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Read Full Case Study</a>
+                                <a href="https://sagebook.figma.site/" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest hover:text-white">Prototype</a>
                             </div>
                         </div>
                     </div>
@@ -366,7 +360,7 @@
                             <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">Clicky Companion</h3>
                             <p class="text-base opacity-75 leading-relaxed mb-6">A mood-tracking app designed to make daily check-ins feel approachable. Focused on interaction details that support consistency and ease of use.</p>
                             <div class="flex flex-wrap gap-3">
-                                <a href="https://www.figma.com/proto/UC2rBn1q2buoAE2SHOHmMg/App" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Interaction Lab</a>
+                                <a href="https://www.figma.com/proto/UC2rBn1q2buoAE2SHOHmMg/App" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Interaction Lab</a>
                             </div>
                         </div>
                     </div>
@@ -378,7 +372,7 @@
                             <h3 class="text-3xl sm:text-4xl font-serif mb-4 italic">ReMi</h3>
                             <p class="text-base opacity-75 leading-relaxed mb-6">Young adults starting a first job face relocation and budget decisions simultaneously — two cognitively heavy tasks that existing apps handle separately. ReMi combines them into a single guided onboarding flow. A 7-week user-centered design project: research, journey mapping, prototyping, and two rounds of evaluation.</p>
                             <div class="flex flex-wrap gap-3">
-                                <a href="https://www.figma.com/proto/KwwVf95iNG2TyMDblbhMAk/CCU?node-id=295-928" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">View Prototype</a>
+                                <a href="https://www.figma.com/proto/KwwVf95iNG2TyMDblbhMAk/CCU?node-id=295-928" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">View Prototype</a>
                             </div>
                         </div>
                     </div>
@@ -425,7 +419,7 @@
                             <li><span class="material-icons-outlined">album</span>Decision: condensed information hierarchy and clearer search behavior</li>
                             <li><span class="material-icons-outlined">album</span>Impact: <strong>28% faster track selection</strong></li>
                         </ul>
-                        <a href="https://github.com/constancadcunha/CottageTunes" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
+                        <a href="https://github.com/constancadcunha/CottageTunes" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
                     </div>
                 </article>
 
@@ -458,7 +452,7 @@
                             <div class="record-stat"><span class="record-stat-num">ASCII</span><span class="record-stat-label">Retro visuals</span></div>
                             <div class="record-stat"><span class="record-stat-num">MIT</span><span class="record-stat-label">License</span></div>
                         </div>
-                        <a href="https://github.com/constancadcunha/DebugQuest" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
+                        <a href="https://github.com/constancadcunha/DebugQuest" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Open Repository</a>
                     </div>
                 </article>
 
@@ -488,8 +482,8 @@
                             <div class="record-stat"><span class="record-stat-num">SPA</span><span class="record-stat-label">No framework</span></div>
                         </div>
                         <div class="flex flex-wrap gap-3">
-                            <a href="https://constancadcunha.github.io/bookPod/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
-                            <a href="https://github.com/constancadcunha/bookPod" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest dark:border-accentGold rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold hover:text-white">Open Repository</a>
+                            <a href="https://constancadcunha.github.io/bookPod/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
+                            <a href="https://github.com/constancadcunha/bookPod" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest hover:text-white">Open Repository</a>
                         </div>
                     </div>
                 </article>
@@ -520,8 +514,8 @@
                             <div class="record-stat"><span class="record-stat-num">Vanilla</span><span class="record-stat-label">No frameworks</span></div>
                         </div>
                         <div class="flex flex-wrap gap-3">
-                            <a href="https://constancadcunha.github.io/incipit/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
-                            <a href="https://github.com/constancadcunha/incipit" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest dark:border-accentGold rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold hover:text-white">Open Repository</a>
+                            <a href="https://constancadcunha.github.io/incipit/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
+                            <a href="https://github.com/constancadcunha/incipit" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest hover:text-white">Open Repository</a>
                         </div>
                     </div>
                 </article>
@@ -552,8 +546,8 @@
                             <div class="record-stat"><span class="record-stat-num">Vanilla</span><span class="record-stat-label">No framework</span></div>
                         </div>
                         <div class="flex flex-wrap gap-3">
-                            <a href="https://constancadcunha.github.io/skein/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
-                            <a href="https://github.com/constancadcunha/skein" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest dark:border-accentGold rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest dark:hover:bg-accentGold hover:text-white">Open Repository</a>
+                            <a href="https://constancadcunha.github.io/skein/" target="_blank" class="ghost-button px-6 py-3 bg-cottage-forest text-white rounded-full font-bold text-[10px] uppercase tracking-widest">Live Site</a>
+                            <a href="https://github.com/constancadcunha/skein" target="_blank" class="ghost-button px-6 py-3 border-2 border-cottage-forest rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-cottage-forest hover:text-white">Open Repository</a>
                         </div>
                     </div>
                 </article>
@@ -583,7 +577,7 @@
         
         <div class="museum-title text-center px-4 mb-12 reveal-section">
             <h2>DESIGN MUSEUM</h2>
-            <p class="text-cottage-bark dark:text-vintageCream/50 text-base mt-3 font-display italic">Click any piece to view full size <span class="material-icons-outlined">auto_awesome</span></p>
+            <p class="text-cottage-bark text-base mt-3 font-display italic">Click any piece to view full size <span class="material-icons-outlined">auto_awesome</span></p>
         </div>
         <div class="gallery-track-container">
             <div class="gallery-track" id="galleryTrack">
@@ -927,22 +921,22 @@
             <div class="reveal-section relative" style="transition-delay: 0.2s">
                 <div class="contact-tag">To: Constança <span class="material-icons-outlined align-middle text-xs">favorite</span></div>
                 
-                <div class="web-card bg-vintageCream dark:bg-nightSky text-cottage-forest dark:text-vintageCream relative contact-form" style="padding-top: 3rem;">
+                <div class="web-card bg-vintageCream text-cottage-forest relative contact-form" style="padding-top: 3rem;">
                     <form id="contactForm" class="space-y-5">
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Who is calling?</label>
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 py-2 outline-none focus:border-cottage-sage text-base font-display italic transition-colors">
                         </div>
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Where can I find you?</label>
-                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors">
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 py-2 outline-none focus:border-cottage-sage text-base font-display italic transition-colors">
                         </div>
                         <div>
                             <label class="font-bold text-[10px] uppercase tracking-widest opacity-50 block mb-1">Your Message</label>
-                            <textarea name="message" rows="3" placeholder="What's on your mind?" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 dark:border-vintageCream/20 py-2 outline-none focus:border-cottage-sage dark:focus:border-accentGold text-base font-display italic transition-colors resize-none"></textarea>
+                            <textarea name="message" rows="3" placeholder="What's on your mind?" required class="w-full bg-transparent border-b-2 border-cottage-forest/20 py-2 outline-none focus:border-cottage-sage text-base font-display italic transition-colors resize-none"></textarea>
                         </div>
                         <div id="formMessage" class="form-message"></div>
-                        <button type="submit" class="ghost-button w-full py-4 bg-cottage-forest dark:bg-accentGold text-white rounded-full font-bold uppercase tracking-[0.15em] text-xs hover:scale-[1.02] transition-transform">Send Message <span class="material-icons-outlined align-middle">grass</span></button>
+                        <button type="submit" class="ghost-button w-full py-4 bg-cottage-forest text-white rounded-full font-bold uppercase tracking-[0.15em] text-xs hover:scale-[1.02] transition-transform">Send Message <span class="material-icons-outlined align-middle">grass</span></button>
                     </form>
                 </div>
             </div>

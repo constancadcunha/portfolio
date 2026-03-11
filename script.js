@@ -49,7 +49,6 @@ function initSite() {
     initStudioIphone();
     initImageModal();
     initDialogueSystem();
-    initTheme();
     initContactForm();
     initSmoothScroll();
     initStatCounters();
@@ -376,17 +375,6 @@ function dismissDialogue() {
     document.getElementById('dialogueContainer')?.classList.add('hidden');
 }
 
-function initTheme() {
-    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    }
-}
-
-function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    playWhimsicalSound();
-}
 
 function initMuseumGallery() {
     const galleryTrack = document.getElementById('galleryTrack');
