@@ -9,10 +9,9 @@ yarn-error.log*
 
 # Dependencies
 node_modules/
-project-7599075/node_modules/
 
 # Build outputs
-project-7599075/out/
+out/
 dist/
 
 # Local env files
