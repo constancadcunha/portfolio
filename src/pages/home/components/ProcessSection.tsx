@@ -70,6 +70,9 @@ function useInViewOnce(threshold = 0.15) {
 export default function ProcessSection() {
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const headingAccent = isDark
+    ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 56%, #9fb0ff 100%)'
+    : 'linear-gradient(120deg, #9abeda 0%, #f0cfa3 48%, #bad5c4 100%)';
   const { ref: headerRef, inView: headerIn } = useInViewOnce(0.2);
   const { ref: stepsRef, inView: stepsIn } = useInViewOnce(0.1);
   const [activeStep, setActiveStep] = useState<number | null>(null);
@@ -110,7 +113,10 @@ export default function ProcessSection() {
             style={{
               fontSize: 'clamp(2.4rem, 5vw, 4.2rem)',
               lineHeight: 1.08,
-              color: t.text,
+              backgroundImage: headingAccent,
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
               marginBottom: '1.2rem',
             }}
           >
@@ -192,7 +198,7 @@ export default function ProcessSection() {
                 style={{
                   fontSize: '0.55rem',
                   letterSpacing: '0.2em',
-                  color: activeStep === i ? step.accent : t.textFaint,
+                  color: activeStep === i ? step.accent : (isDark ? 'rgba(248,214,111,0.65)' : 'rgba(110,140,166,0.78)'),
                   marginBottom: '1.4rem',
                   transition: 'color 0.3s ease',
                 }}

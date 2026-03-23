@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import FadeIn from '../../../components/base/FadeIn';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
@@ -160,7 +161,9 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       onClick={onClose}
@@ -212,7 +215,8 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -222,7 +226,9 @@ function MoreProjectModal({ project, onClose }: { project: Project; onClose: () 
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       onClick={onClose}
@@ -274,7 +280,8 @@ function MoreProjectModal({ project, onClose }: { project: Project; onClose: () 
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -305,6 +312,10 @@ export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState<FilterTag>('All');
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const headingAccent = isDark
+    ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 55%, #9fb0ff 100%)'
+    : 'linear-gradient(120deg, #b7d3e9 0%, #f2d7a8 45%, #c8ddc0 100%)';
+  const chipBg = isDark ? 'rgba(248,214,111,0.12)' : 'rgba(151,183,210,0.2)';
 
   const handleRowMouseMove = useCallback((e: React.MouseEvent) => {
     setPreviewPos({ x: e.clientX, y: e.clientY });
@@ -322,7 +333,16 @@ export default function ProjectsSection() {
         <FadeIn style={{ marginBottom: '3.5rem' }}>
           <p className="font-dm text-xs tracking-[0.25em] uppercase" style={{ marginBottom: '1rem', color: t.textMuted }}>Selected Work</p>
           <h2 className="font-cormorant font-light leading-tight" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.75rem)', maxWidth: '32rem', color: t.text }}>
-            Problems I solved,<br />
+            <span
+              style={{
+                backgroundImage: headingAccent,
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+              }}
+            >
+              Problems I solved,
+            </span><br />
             <em>not just screens I designed.</em>
           </h2>
           <p className="font-dm" style={{ marginTop: '1.2rem', fontSize: '0.85rem', lineHeight: 1.7, maxWidth: '28rem', color: t.textMuted }}>
@@ -383,7 +403,20 @@ export default function ProjectsSection() {
 
             {/* Header row with filter pills */}
             <div className="flex flex-wrap items-center justify-between gap-3" style={{ marginBottom: '1.5rem' }}>
-              <p className="font-dm uppercase" style={{ fontSize: '0.6rem', letterSpacing: '0.28em', color: t.textFaint }}>Also worth seeing</p>
+              <p
+                className="font-dm uppercase"
+                style={{
+                  fontSize: '0.6rem',
+                  letterSpacing: '0.28em',
+                  color: t.text,
+                  background: chipBg,
+                  border: `1px solid ${t.border}`,
+                  borderRadius: '999px',
+                  padding: '0.32rem 0.72rem',
+                }}
+              >
+                Also worth seeing
+              </p>
               <div className="flex items-center gap-1.5">
                 {FILTER_TAGS.map((tag) => (
                   <button

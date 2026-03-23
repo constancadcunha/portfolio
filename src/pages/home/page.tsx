@@ -75,12 +75,44 @@ function BackToTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.8);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const updateVisibility = () => {
+      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
+      const y = container ? container.scrollTop : window.scrollY;
+      const h = container ? container.clientHeight : window.innerHeight;
+      setShow(y > h * 0.6);
+    };
+
+    const bind = () => {
+      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
+      window.addEventListener('scroll', updateVisibility, { passive: true });
+      container?.addEventListener('scroll', updateVisibility, { passive: true });
+      updateVisibility();
+
+      return () => {
+        window.removeEventListener('scroll', updateVisibility);
+        container?.removeEventListener('scroll', updateVisibility);
+      };
+    };
+
+    let unbind = bind();
+    const onIntroComplete = () => {
+      unbind();
+      unbind = bind();
+    };
+
+    window.addEventListener('introComplete', onIntroComplete);
+    return () => {
+      unbind();
+      window.removeEventListener('introComplete', onIntroComplete);
+    };
   }, []);
 
   const handleClick = useCallback(() => {
+    const container = document.querySelector<HTMLElement>('.portfolio-scroll');
+    if (container) {
+      container.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -269,8 +301,10 @@ function HomeContent() {
   const bottomStripRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [konamiActive, setKonamiActive] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const [introComplete, setIntroComplete] = useState(false);
   const { display: nameDisplay, handleClick: handleNameClick } = useNameScramble('Constança Cunha');
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
@@ -297,23 +331,60 @@ function HomeContent() {
   };
 
   useEffect(() => {
+    const onIntroComplete = () => setIntroComplete(true);
+    window.addEventListener('introComplete', onIntroComplete);
+    return () => window.removeEventListener('introComplete', onIntroComplete);
+  }, []);
+
+  useEffect(() => {
+    const body = document.body;
+    const html = document.documentElement;
+
+    if (introComplete) {
+      body.style.overflow = 'hidden';
+      html.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+      html.style.overflow = '';
+    }
+
+    return () => {
+      body.style.overflow = '';
+      html.style.overflow = '';
+    };
+  }, [introComplete]);
+
+  useEffect(() => {
+    const target: Window | HTMLDivElement = introComplete && scrollContainerRef.current
+      ? scrollContainerRef.current
+      : window;
+
     const onScroll = () => {
-      const y = window.scrollY;
+      const y = target === window ? window.scrollY : target.scrollTop;
       const offset = y * 0.06;
       if (topStripRef.current) topStripRef.current.style.backgroundPositionY = `calc(50% + ${offset}px)`;
       if (bottomStripRef.current) bottomStripRef.current.style.backgroundPositionY = `calc(50% - ${offset}px)`;
 
-      if (progressBarRef.current && cardRef.current) {
-        const cardTop = cardRef.current.getBoundingClientRect().top + y;
-        const scrollable = document.body.scrollHeight - window.innerHeight - cardTop;
-        const scrolled = y - cardTop;
-        const progress = scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
-        progressBarRef.current.style.transform = `scaleX(${progress})`;
+      if (progressBarRef.current) {
+        if (target === window && cardRef.current) {
+          const cardTop = cardRef.current.getBoundingClientRect().top + window.scrollY;
+          const scrollable = document.body.scrollHeight - window.innerHeight - cardTop;
+          const scrolled = window.scrollY - cardTop;
+          const progress = scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
+          progressBarRef.current.style.transform = `scaleX(${progress})`;
+        } else {
+          const c = target as HTMLDivElement;
+          const maxScroll = Math.max(1, c.scrollHeight - c.clientHeight);
+          const progress = Math.min(1, Math.max(0, c.scrollTop / maxScroll));
+          progressBarRef.current.style.transform = `scaleX(${progress})`;
+        }
       }
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+
+    target.addEventListener('scroll', onScroll as EventListener, { passive: true });
+    onScroll();
+    return () => target.removeEventListener('scroll', onScroll as EventListener);
+  }, [introComplete]);
 
   return (
     <div style={{ position: 'relative', ...(isMobile ? {} : desktopBgStyle) }}>
@@ -356,7 +427,7 @@ function HomeContent() {
         <div
           ref={topStripRef}
           style={{
-            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
+            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -364,7 +435,7 @@ function HomeContent() {
         <div
           ref={bottomStripRef}
           style={{
-            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
+            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -375,21 +446,36 @@ function HomeContent() {
         ref={cardRef}
         className="portfolio-card"
         style={{
-          position: 'relative',
+          position: introComplete ? 'fixed' : 'relative',
+          top: introComplete ? (isMobile ? '10vh' : '10vh') : undefined,
+          left: introComplete ? '50%' : undefined,
+          transform: introComplete ? 'translateX(-50%)' : undefined,
           width: isMobile ? '86%' : '82%',
-          marginLeft: 'auto', marginRight: 'auto',
-          marginTop: isMobile ? '-85vh' : '-98vh',
-          marginBottom: isMobile ? '5vh' : '5vh',
+          height: introComplete ? (isMobile ? '80vh' : '80vh') : undefined,
+          marginLeft: introComplete ? undefined : 'auto',
+          marginRight: introComplete ? undefined : 'auto',
+          marginTop: introComplete ? undefined : (isMobile ? '-85vh' : '-98vh'),
+          marginBottom: introComplete ? undefined : (isMobile ? '5vh' : '5vh'),
           borderRadius: isMobile ? '1.5rem' : '1.5rem',
-          overflow: 'clip',
+          overflow: 'hidden',
           background: t.bg,
-          zIndex: 1,
+          zIndex: introComplete ? 2 : 1,
           boxShadow: isDark
             ? '0 0 0 1px rgba(255,255,255,0.04), 0 2px 32px rgba(0,0,0,0.4)'
             : '0 0 0 1px rgba(0,0,0,0.05), 0 2px 32px rgba(0,0,0,0.06)',
           transition: 'background 0.5s ease, box-shadow 0.5s ease',
         }}
       >
+        <div
+          ref={scrollContainerRef}
+          className={introComplete ? 'portfolio-scroll' : undefined}
+          style={{
+            height: '100%',
+            overflowY: introComplete ? 'auto' : 'visible',
+            overflowX: 'hidden',
+            WebkitOverflowScrolling: 'touch',
+          }}
+        >
         {/* ── Hero ── */}
         <section
           id="hero"
@@ -461,6 +547,7 @@ function HomeContent() {
         <AboutSection />
         <ContactSection />
         <PortfolioFooter />
+        </div>
       </div>
 
       <style>{`

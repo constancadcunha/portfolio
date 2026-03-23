@@ -131,6 +131,20 @@ export default function AboutSection() {
   const panelBg = isDark
     ? 'linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.025) 100%)'
     : 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,238,0.98) 100%)';
+  const skillPalettes = isDark
+    ? [
+        'linear-gradient(145deg, rgba(248,214,111,0.12) 0%, rgba(80,96,170,0.2) 100%)',
+        'linear-gradient(145deg, rgba(92,122,168,0.2) 0%, rgba(37,62,120,0.18) 100%)',
+        'linear-gradient(145deg, rgba(255,175,76,0.12) 0%, rgba(46,65,125,0.2) 100%)',
+      ]
+    : [
+        'linear-gradient(145deg, rgba(182,211,233,0.28) 0%, rgba(245,230,206,0.45) 100%)',
+        'linear-gradient(145deg, rgba(199,223,208,0.4) 0%, rgba(236,227,213,0.5) 100%)',
+        'linear-gradient(145deg, rgba(214,227,240,0.35) 0%, rgba(248,220,188,0.45) 100%)',
+      ];
+  const headingAccent = isDark
+    ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 56%, #9fb0ff 100%)'
+    : 'linear-gradient(120deg, #9abeda 0%, #f0cfa3 48%, #bad5c4 100%)';
 
   return (
     <section id="about" style={{ padding: '7rem 5% 7rem', background: t.bgAlt, transition: 'background 0.5s ease' }}>
@@ -177,7 +191,17 @@ export default function AboutSection() {
             <div>
               <div style={{ marginBottom: '1.1rem' }}>
                 <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Core Skills</p>
-                <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
+                <p
+                  className="font-cormorant italic"
+                  style={{
+                    marginTop: '0.35rem',
+                    fontSize: '1.05rem',
+                    backgroundImage: headingAccent,
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
                   The three pillars behind how I work.
                 </p>
               </div>
@@ -199,7 +223,7 @@ export default function AboutSection() {
                       transition: `opacity 0.45s ease ${i * 70}ms, transform 0.45s ease ${i * 70}ms`,
                       borderRadius: '1.1rem',
                       border: `1px solid ${t.border}`,
-                      background: panelBg,
+                      background: skillPalettes[i % skillPalettes.length],
                       padding: '1.05rem 1.1rem',
                       boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
                     }}
@@ -277,13 +301,24 @@ export default function AboutSection() {
                 <div className="relative pl-5" style={{ borderLeft: `1px solid ${t.border}` }}>
                   <div className="absolute rounded-full bg-sage" style={{ left: '-0.35rem', top: '0.35rem', width: '0.65rem', height: '0.65rem' }} />
                   <p className="font-dm text-xs tracking-widest uppercase" style={{ marginBottom: '0.25rem', color: t.textMuted }}>{item.period}</p>
-                  <p className="font-cormorant font-medium leading-tight" style={{ fontSize: '1.15rem', color: t.text }}>{item.role}</p>
+                  <p className="font-cormorant font-medium leading-tight" style={{ fontSize: '1.2rem', color: t.text }}>{item.role}</p>
                   <p className="font-dm text-sage" style={{ fontSize: '0.75rem', marginBottom: '0.5rem' }}>{item.company}</p>
                   <p className="font-dm leading-relaxed" style={{ fontSize: '0.82rem', marginBottom: '0.5rem', color: t.textMuted }}>{item.description}</p>
-                  <p className="font-dm flex items-center gap-1" style={{ fontSize: '0.7rem', color: t.textFaint }}>
+                  <div
+                    className="font-dm flex items-center gap-1"
+                    style={{
+                      fontSize: '0.68rem',
+                      color: t.text,
+                      background: isDark ? 'rgba(248,214,111,0.13)' : 'rgba(155,185,210,0.2)',
+                      border: `1px solid ${t.border}`,
+                      borderRadius: '999px',
+                      width: 'fit-content',
+                      padding: '0.28rem 0.58rem',
+                    }}
+                  >
                     <span className="material-icons-round text-xs leading-none">star_outline</span>
                     {item.achievement}
-                  </p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -293,7 +328,17 @@ export default function AboutSection() {
               <div style={{ marginTop: '1rem', paddingTop: '1.3rem', borderTop: `1px solid ${t.border}` }}>
                 <div style={{ marginBottom: '1rem' }}>
                   <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Certifications</p>
-                  <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
+                  <p
+                    className="font-cormorant italic"
+                    style={{
+                      marginTop: '0.35rem',
+                      fontSize: '1rem',
+                      backgroundImage: headingAccent,
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                    }}
+                  >
                     Credential archive with direct certificate links.
                   </p>
                 </div>
@@ -315,7 +360,7 @@ export default function AboutSection() {
                         lineHeight: 1.4,
                         padding: '0.95rem 1rem',
                         borderRadius: '1rem',
-                        background: panelBg,
+                        background: skillPalettes[index % skillPalettes.length],
                         border: `1px solid ${t.border}`,
                         color: t.textMuted,
                         boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
