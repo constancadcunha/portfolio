@@ -1,0 +1,66 @@
+.bg-brand-color {
+  background-color: #476052;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 200ms ease;
+}
+
+.parallax div {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 200ms ease;
+}
+
+@media (max-height: 600px) {
+  .parallax div {
+    background-size: 100%;
+  }
+}
+
+.one {
+  background-image: url("https://tornis.robbowen.digital/img/mist.png");
+  z-index: 4;
+  animation: side 25s linear infinite;
+}
+
+.two {
+  background-image: url("https://tornis.robbowen.digital/img/tree_top.png");
+  z-index: 3;
+}
+
+.three {
+  background-image: url("https://tornis.robbowen.digital/img/mist.png");
+  z-index: 2;
+  animation: side 25s linear 5s infinite;
+}
+
+.four {
+  background-image: url("https://tornis.robbowen.digital/img/tree_mid.png");
+  z-index: 1;
+}
+
+.five {
+  background-image: url("https://tornis.robbowen.digital/img/tree_base.jpg");
+  z-index: 0;
+}
+
+@keyframes side {
+  20%, 60%, 100% {
+    transform: translateX(15px);
+  }
+  40%, 80% {
+    transform: translateX(-15px);
+  }
+}
