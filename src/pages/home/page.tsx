@@ -413,16 +413,16 @@ function HomeContent() {
         className="portfolio-card"
         style={{
           position: 'fixed',
-          top: isMobile ? '7vh' : '8vh',
+          top: isMobile ? '10vh' : '11vh',
           left: '50%',
           transform: 'translateX(-50%)',
           width: isMobile ? '86%' : '82%',
-          height: isMobile ? '86vh' : '84vh',
+          height: isMobile ? '80vh' : '78vh',
           borderRadius: '1.5rem',
           overflow: 'hidden',
           background: t.bg,
           zIndex: 2,
-          opacity: introComplete ? 1 : 0,
+          opacity: 1,
           pointerEvents: introComplete ? 'auto' : 'none',
           boxShadow: isDark
             ? '0 0 0 1px rgba(255,255,255,0.04), 0 18px 48px rgba(0,0,0,0.28)'

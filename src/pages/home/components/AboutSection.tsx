@@ -248,74 +248,6 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Certifications */}
-            <FadeIn delay={200} style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: `1px solid ${t.border}` }}>
-              <div style={{ marginBottom: '1rem' }}>
-                <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Certifications</p>
-                <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
-                  A small credential archive, with the actual certificates linked.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr',
-                  gap: '0.7rem',
-                }}
-              >
-                {certificateLinks.map((cert, index) => (
-                  <a
-                    key={cert.file}
-                    href={certificateHref(cert.file)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-dm"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '1rem',
-                      fontSize: '0.74rem',
-                      lineHeight: 1.4,
-                      padding: '0.95rem 1rem',
-                      borderRadius: '1rem',
-                      background: panelBg,
-                      border: `1px solid ${t.border}`,
-                      color: t.textMuted,
-                      boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', minWidth: 0 }}>
-                      <div
-                        style={{
-                          width: '2.4rem',
-                          height: '2.4rem',
-                          borderRadius: '999px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          background: isDark ? 'rgba(232,228,218,0.1)' : 'rgba(111, 94, 70, 0.08)',
-                          color: t.text,
-                        }}
-                      >
-                        <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.06em' }}>0{index + 1}</span>
-                      </div>
-                      <span style={{ minWidth: 0 }}>
-                        <span className="font-dm" style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: t.textFaint, marginBottom: '0.15rem' }}>
-                        {cert.issuer}
-                        </span>
-                        <span style={{ display: 'block', color: t.text, fontSize: '0.78rem', lineHeight: 1.45 }}>{cert.title}</span>
-                      </span>
-                    </div>
-                    <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', flexShrink: 0 }}>
-                      Open <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>north_east</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
-
               <div style={{ marginTop: '1.2rem' }}>
                 <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ marginBottom: '0.75rem', color: t.textMuted }}>Languages</p>
                 <div className="flex gap-2 flex-wrap">
@@ -336,7 +268,6 @@ export default function AboutSection() {
                   ))}
                 </div>
               </div>
-            </FadeIn>
           </div>
 
           {/* Right — Timeline */}
@@ -356,6 +287,71 @@ export default function AboutSection() {
                 </div>
               </FadeIn>
             ))}
+
+            {/* Certifications under work experience */}
+            <FadeIn delay={320}>
+              <div style={{ marginTop: '1rem', paddingTop: '1.3rem', borderTop: `1px solid ${t.border}` }}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Certifications</p>
+                  <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
+                    Credential archive with direct certificate links.
+                  </p>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.7rem' }}>
+                  {certificateLinks.map((cert, index) => (
+                    <a
+                      key={cert.file}
+                      href={certificateHref(cert.file)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-dm"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '1rem',
+                        fontSize: '0.74rem',
+                        lineHeight: 1.4,
+                        padding: '0.95rem 1rem',
+                        borderRadius: '1rem',
+                        background: panelBg,
+                        border: `1px solid ${t.border}`,
+                        color: t.textMuted,
+                        boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', minWidth: 0 }}>
+                        <div
+                          style={{
+                            width: '2.4rem',
+                            height: '2.4rem',
+                            borderRadius: '999px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            background: isDark ? 'rgba(232,228,218,0.1)' : 'rgba(111, 94, 70, 0.08)',
+                            color: t.text,
+                          }}
+                        >
+                          <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.06em' }}>0{index + 1}</span>
+                        </div>
+                        <span style={{ minWidth: 0 }}>
+                          <span className="font-dm" style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: t.textFaint, marginBottom: '0.15rem' }}>
+                            {cert.issuer}
+                          </span>
+                          <span style={{ display: 'block', color: t.text, fontSize: '0.78rem', lineHeight: 1.45 }}>{cert.title}</span>
+                        </span>
+                      </div>
+                      <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', flexShrink: 0 }}>
+                        Open <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>north_east</span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>

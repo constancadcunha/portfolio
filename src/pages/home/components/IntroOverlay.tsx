@@ -13,6 +13,7 @@ const STARRY_NIGHT_URL =
 
 export default function IntroOverlay() {
   const spacerRef = useRef<HTMLDivElement>(null);
+  const firedCompleteRef = useRef(false);
   const { isDark } = useDarkMode();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
 
@@ -30,7 +31,12 @@ export default function IntroOverlay() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.5,
-          onLeave: () => window.dispatchEvent(new Event('introComplete')),
+          onUpdate: (self) => {
+            if (!firedCompleteRef.current && self.progress >= 0.96) {
+              firedCompleteRef.current = true;
+              window.dispatchEvent(new Event('introComplete'));
+            }
+          },
         },
       });
 
@@ -99,11 +105,11 @@ export default function IntroOverlay() {
           className="intro-card-cover"
           style={{
             position: 'fixed',
-            top: isMobile ? '7vh' : '8vh',
+            top: isMobile ? '10vh' : '11vh',
             left: '50%',
             transform: 'translateX(-50%)',
             width: isMobile ? '86%' : '82%',
-            height: isMobile ? '86vh' : '84vh',
+            height: isMobile ? '80vh' : '78vh',
             borderRadius: '1.5rem',
             background: isDark ? '#1c1a17' : '#ffffff',
             opacity: 0,
