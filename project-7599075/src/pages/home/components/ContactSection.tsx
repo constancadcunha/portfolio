@@ -31,6 +31,8 @@ export default function ContactSection() {
   const [emailCopied, setEmailCopied] = useState(false);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
+  const resumeHref = `${basePath}${encodeURIComponent('Constança_Cunha_CV.pdf')}`;
 
   const copyEmail = () => {
     navigator.clipboard.writeText('constancadcunha@gmail.com').then(() => {
@@ -147,7 +149,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <a href="https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/1d205c42-53e8-47b3-9650-c7db7ac38b49_Constanca_Cunha_CV.pdf?v=84fc03079b06859b40343c5d41c14d27"
+              <a href={resumeHref}
                 target="_blank" rel="noopener noreferrer"
                 className="font-dm font-medium transition-colors duration-200 cursor-pointer flex items-center gap-2 whitespace-nowrap"
                 style={{ fontSize: '0.8rem', letterSpacing: '0.06em', color: t.text }}>

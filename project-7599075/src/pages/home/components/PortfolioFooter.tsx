@@ -74,7 +74,7 @@ export default function PortfolioFooter() {
       <div
         style={{
           borderTop: `1px solid ${t.borderDivider}`,
-          padding: '1.2rem 8%',
+          padding: '1.2rem 8% calc(1.2rem + env(safe-area-inset-bottom))',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',

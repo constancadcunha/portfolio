@@ -3,21 +3,34 @@ import FadeIn from '../../../components/base/FadeIn';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 
-const skills = [
-  { tag: 'Figma', detail: 'Advanced — every wireframe, system, and handoff lives here.' },
-  { tag: 'User Research', detail: 'Interviews, usability testing, heuristic evaluation — the real stuff.' },
-  { tag: 'Design Systems', detail: 'Built atomic systems with CSS modules used by real engineering teams.' },
-  { tag: 'Prototyping', detail: 'From low-fi sketches to clickable high-fidelity flows.' },
-  { tag: 'Interaction Design', detail: 'Mapping micro-interactions and edge cases with care.' },
-  { tag: 'React', detail: 'Can implement my own designs in production when needed.' },
-  { tag: 'SwiftUI', detail: 'Built SageBook natively — design and code in one pass.' },
-  { tag: 'TypeScript', detail: 'Comfortable in JS/TS frontend codebases beyond just design handoff.' },
-  { tag: 'Usability Testing', detail: 'Run structured tests, synthesise findings, iterate on evidence.' },
-  { tag: 'AI Tools', detail: 'Integrating AI throughout research, ideation, and writing.' },
-  { tag: 'Information Architecture', detail: 'How content is structured matters as much as how it looks.' },
-  { tag: 'Heuristic Evaluation', detail: 'Expert inspection method — built a full platform for it at IST.' },
-  { tag: 'Django', detail: 'Backend work on the multi-method usability research platform at IST.' },
-  { tag: 'Python', detail: 'Scripting, data processing, and backend tooling.' },
+const skillGroups = [
+  {
+    title: 'Product Design',
+    items: [
+      { tag: 'Figma', detail: 'Advanced wireframing, systems, and handoff.' },
+      { tag: 'Interaction Design', detail: 'Micro-interactions and clear user flows.' },
+      { tag: 'Prototyping', detail: 'Low-fi to high-fidelity clickable flows.' },
+      { tag: 'Information Architecture', detail: 'Content structure for clarity and speed.' },
+    ],
+  },
+  {
+    title: 'Research & Validation',
+    items: [
+      { tag: 'User Research', detail: 'Interviews, synthesis, and opportunity framing.' },
+      { tag: 'Usability Testing', detail: 'Task-based tests and evidence-led iteration.' },
+      { tag: 'Heuristic Evaluation', detail: 'Expert inspection with actionable fixes.' },
+      { tag: 'AI Tools', detail: 'AI-assisted ideation and research workflows.' },
+    ],
+  },
+  {
+    title: 'Build & Systems',
+    items: [
+      { tag: 'Design Systems', detail: 'Atomic systems used by engineering teams.' },
+      { tag: 'React + TypeScript', detail: 'Production-ready implementation of designs.' },
+      { tag: 'SwiftUI', detail: 'Native product prototyping and build.' },
+      { tag: 'Django + Python', detail: 'Backend support for research platforms.' },
+    ],
+  },
 ];
 
 const timeline = [
@@ -54,18 +67,22 @@ const timeline = [
 const certificateLinks = [
   {
     title: 'Enterprise Design Thinking Co-Creator — IBM',
+    issuer: 'IBM',
     file: 'Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf',
   },
   {
     title: 'Enterprise Design Thinking Practitioner — IBM',
+    issuer: 'IBM',
     file: 'Enterprise_Design_Thinking_Practitioner_Badge20250125-26-4dyqob.pdf',
   },
   {
     title: 'UI/UX Certificate — Udemy',
+    issuer: 'Udemy',
     file: 'UC-486f6c5c-1406-477b-86bc-709727580248.pdf',
   },
   {
     title: 'UX Achievement Certificate',
+    issuer: 'Accenture',
     file: 'digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf',
   },
 ];
@@ -102,8 +119,7 @@ function useRevealOnScroll<T>(items: T[], threshold = 0.08) {
 }
 
 export default function AboutSection() {
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-  const { ref: skillsRef, revealed: skillsRevealed } = useRevealOnScroll(skills);
+  const { ref: skillsRef, revealed: skillsRevealed } = useRevealOnScroll(skillGroups);
   const { ref: bioRef, revealed: bioRevealed } = useRevealOnScroll([]);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
@@ -156,48 +172,42 @@ export default function AboutSection() {
               <div style={{ marginBottom: '0.9rem' }}>
                 <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Core Skills</p>
                 <p className="font-dm" style={{ marginTop: '0.3rem', fontSize: '0.72rem', color: t.textFaint }}>
-                  Hover or tap each tag to see details.
+                  Grouped by craft so it is easier to scan quickly.
                 </p>
               </div>
-              <div ref={skillsRef} className="flex flex-wrap gap-2" style={{ marginBottom: '1.2rem' }}>
-                {skills.map((s, i) => (
-                  <div key={s.tag} className="relative">
-                    <button
-                      onMouseEnter={() => setHoveredSkill(s.tag)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                      onTouchStart={() => setHoveredSkill(s.tag === hoveredSkill ? null : s.tag)}
-                      className="font-dm text-sm px-3 py-1.5 rounded-full transition-colors duration-200 cursor-pointer whitespace-nowrap"
-                      style={{
-                        fontSize: '0.78rem',
-                        opacity: skillsRevealed ? 1 : 0,
-                        transform: skillsRevealed ? 'scale(1) translateY(0)' : 'scale(0.82) translateY(8px)',
-                        transition: `opacity 0.5s cubic-bezier(0.34,1.56,0.64,1) ${i * 38}ms, transform 0.5s cubic-bezier(0.34,1.56,0.64,1) ${i * 38}ms, background 0.2s ease, color 0.2s ease, border-color 0.2s ease`,
-                        background: isDark ? 'rgba(255,255,255,0.06)' : '#ffffff',
-                        border: `1px solid ${isDark ? 'rgba(232,228,218,0.15)' : 'rgba(31,30,27,0.18)'}`,
-                        color: t.text,
-                      }}
-                    >
-                      {s.tag}
-                    </button>
-                    {hoveredSkill === s.tag && (
-                      <div
-                        className="absolute bottom-full left-0 mb-2 z-10 rounded-lg px-3 py-2 pointer-events-none"
-                        style={{
-                          fontSize: '0.7rem',
-                          fontFamily: 'DM Sans',
-                          width: '13rem',
-                          lineHeight: 1.5,
-                          background: isDark ? '#e8e4da' : '#1f1e1b',
-                          color: isDark ? '#1f1e1b' : '#ffffff',
-                        }}
-                      >
-                        {s.detail}
-                        <div
-                          className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent"
-                          style={{ borderTopColor: isDark ? '#e8e4da' : '#1f1e1b' }}
-                        />
-                      </div>
-                    )}
+              <div
+                ref={skillsRef}
+                style={{
+                  marginBottom: '1.2rem',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+                  gap: '0.65rem',
+                }}
+              >
+                {skillGroups.map((group, i) => (
+                  <div
+                    key={group.title}
+                    style={{
+                      opacity: skillsRevealed ? 1 : 0,
+                      transform: skillsRevealed ? 'translateY(0)' : 'translateY(10px)',
+                      transition: `opacity 0.45s ease ${i * 70}ms, transform 0.45s ease ${i * 70}ms`,
+                      borderRadius: '0.85rem',
+                      border: `1px solid ${t.border}`,
+                      background: isDark ? 'rgba(255,255,255,0.03)' : '#ffffff',
+                      padding: '0.85rem 0.9rem',
+                    }}
+                  >
+                    <p className="font-dm uppercase" style={{ fontSize: '0.62rem', letterSpacing: '0.14em', color: t.textFaint, marginBottom: '0.6rem' }}>
+                      {group.title}
+                    </p>
+                    <div style={{ display: 'grid', gap: '0.45rem' }}>
+                      {group.items.map((item) => (
+                        <div key={item.tag}>
+                          <p className="font-dm" style={{ fontSize: '0.76rem', color: t.text, lineHeight: 1.35 }}>{item.tag}</p>
+                          <p className="font-dm" style={{ fontSize: '0.68rem', color: t.textMuted, lineHeight: 1.45 }}>{item.detail}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -219,7 +229,14 @@ export default function AboutSection() {
                 ))}
               </ul>
 
-              <div style={{ marginTop: '1rem', display: 'grid', gap: '0.5rem' }}>
+              <div
+                style={{
+                  marginTop: '1rem',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+                  gap: '0.55rem',
+                }}
+              >
                 {certificateLinks.map((cert) => (
                   <a
                     key={cert.file}
@@ -234,15 +251,20 @@ export default function AboutSection() {
                       gap: '0.75rem',
                       fontSize: '0.74rem',
                       lineHeight: 1.4,
-                      padding: '0.55rem 0.7rem',
+                      padding: '0.65rem 0.75rem',
                       borderRadius: '0.6rem',
                       background: isDark ? 'rgba(255,255,255,0.04)' : '#ffffff',
                       border: `1px solid ${t.border}`,
                       color: t.textMuted,
                     }}
                   >
-                    <span>{cert.title}</span>
-                    <span style={{ whiteSpace: 'nowrap', color: t.text }}>
+                    <span>
+                      <span className="font-dm" style={{ display: 'block', fontSize: '0.64rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: t.textFaint }}>
+                        {cert.issuer}
+                      </span>
+                      <span>{cert.title}</span>
+                    </span>
+                    <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.68rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                       View certificate <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>open_in_new</span>
                     </span>
                   </a>

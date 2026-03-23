@@ -356,7 +356,7 @@ function HomeContent() {
         <div
           ref={topStripRef}
           style={{
-            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
+            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -364,7 +364,7 @@ function HomeContent() {
         <div
           ref={bottomStripRef}
           style={{
-            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
+            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -383,7 +383,7 @@ function HomeContent() {
           borderRadius: isMobile ? '1.5rem' : '1.5rem',
           overflow: 'clip',
           background: t.bg,
-          zIndex: 1,
+          zIndex: 2,
           boxShadow: isDark
             ? '0 0 0 1px rgba(255,255,255,0.04), 0 2px 32px rgba(0,0,0,0.4)'
             : '0 0 0 1px rgba(0,0,0,0.05), 0 2px 32px rgba(0,0,0,0.06)',
