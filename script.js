@@ -501,7 +501,7 @@ document.getElementById('image-modal')?.addEventListener('click', function(e) {
             msgEl.className = 'success';
             msgEl.textContent = 'Your letter was sent successfully.';
             sendLbl.textContent = 'Sent';
-            showToast('Letter sent! Check your email.');
+            showToast('Letter sent! Thank you for contacting me :).');
             form.reset();
             document.getElementById('letter-wrap')?.classList.remove('matcha-egg');
 
