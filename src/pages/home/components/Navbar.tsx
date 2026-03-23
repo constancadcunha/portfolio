@@ -33,36 +33,23 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      const y = container ? container.scrollTop : window.scrollY;
-      const vh = container ? container.clientHeight : window.innerHeight;
       // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
       const threshold = isMobile ? window.innerHeight * 1.1 : 60;
-      setScrolled(y > (container ? vh * 0.06 : threshold));
+      setScrolled(window.scrollY > threshold);
     };
-    const container = document.querySelector<HTMLElement>('.portfolio-scroll');
     window.addEventListener('scroll', onScroll, { passive: true });
-    container?.addEventListener('scroll', onScroll, { passive: true });
-    const onIntroComplete = () => onScroll();
-    window.addEventListener('introComplete', onIntroComplete);
-    onScroll();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      container?.removeEventListener('scroll', onScroll);
-      window.removeEventListener('introComplete', onIntroComplete);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, [isMobile]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const setup = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
       NAV_SECTIONS.forEach(({ id }) => {
         const el = document.getElementById(id);
         if (!el) return;
         const obs = new IntersectionObserver(
           ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-          { threshold: 0, root: container ?? null, rootMargin: '-30% 0px -60% 0px' }
+          { threshold: 0, rootMargin: '-30% 0px -60% 0px' }
         );
         obs.observe(el);
         observers.push(obs);
@@ -96,12 +83,7 @@ export default function Navbar() {
     setMenuOpen(false);
     setTimeout(() => {
       const el = document.getElementById(id);
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      if (el && container) {
-        container.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
-      } else if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, menuOpen ? 300 : 0);
   }, [menuOpen]);
 

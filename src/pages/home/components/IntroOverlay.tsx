@@ -13,7 +13,6 @@ const STARRY_NIGHT_URL =
 
 export default function IntroOverlay() {
   const spacerRef = useRef<HTMLDivElement>(null);
-  const introCompleteFiredRef = useRef(false);
   const { isDark } = useDarkMode();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
 
@@ -31,12 +30,6 @@ export default function IntroOverlay() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.5,
-          onUpdate: (self) => {
-            if (!introCompleteFiredRef.current && self.progress >= 0.82) {
-              introCompleteFiredRef.current = true;
-              window.dispatchEvent(new Event('introComplete'));
-            }
-          },
         },
       });
 

@@ -41,17 +41,16 @@ export default function HeroQuote() {
     });
 
     const onScroll = () => {
-      const scrollContainer = document.querySelector<HTMLElement>('.portfolio-scroll');
       const outer = outerRef.current;
       if (!outer) return;
 
+      const rect = outer.getBoundingClientRect();
       const outerH = outer.offsetHeight;
-      const winH = scrollContainer?.clientHeight ?? window.innerHeight;
+      const winH = window.innerHeight;
       const scrollRange = outerH - winH;
       if (scrollRange <= 0) return;
 
-      const relativeTop = (scrollContainer?.scrollTop ?? window.scrollY) - outer.offsetTop;
-      const p = Math.max(0, Math.min(1, relativeTop / scrollRange));
+      const p = Math.max(0, Math.min(1, -rect.top / scrollRange));
       if (progressBarRef.current) {
         progressBarRef.current.style.width = `${p * 100}%`;
       }
@@ -63,28 +62,9 @@ export default function HeroQuote() {
       });
     };
 
-    const bind = () => {
-      const scrollContainer = document.querySelector<HTMLElement>('.portfolio-scroll');
-      window.addEventListener('scroll', onScroll, { passive: true });
-      scrollContainer?.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-      return () => {
-        window.removeEventListener('scroll', onScroll);
-        scrollContainer?.removeEventListener('scroll', onScroll);
-      };
-    };
-
-    let unbind = bind();
-    const onIntroComplete = () => {
-      unbind();
-      unbind = bind();
-    };
-
-    window.addEventListener('introComplete', onIntroComplete);
-    return () => {
-      unbind();
-      window.removeEventListener('introComplete', onIntroComplete);
-    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
