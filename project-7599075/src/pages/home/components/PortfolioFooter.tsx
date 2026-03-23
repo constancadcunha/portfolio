@@ -82,13 +82,13 @@ export default function PortfolioFooter() {
           gap: '0.75rem',
         }}
       >
-        <p className="font-dm" style={{ fontSize: '0.68rem', letterSpacing: '0.04em', color: t.textFaint }}>
+        <p className="font-dm" style={{ fontSize: '0.74rem', letterSpacing: '0.04em', color: t.textMuted }}>
           &copy; {new Date().getFullYear()} Constança Cunha. All rights reserved.
         </p>
-        <p className="font-dm" style={{ fontSize: '0.68rem', letterSpacing: '0.04em', color: t.textFaint }}>
+        <p className="font-dm" style={{ fontSize: '0.74rem', letterSpacing: '0.04em', color: t.textMuted }}>
           Last updated March 2026
         </p>
-        <p className="font-cormorant italic" style={{ fontSize: '0.9rem', color: t.textFaint }}>
+        <p className="font-cormorant italic" style={{ fontSize: '0.95rem', color: t.textMuted }}>
           designed &amp; built with care
         </p>
       </div>

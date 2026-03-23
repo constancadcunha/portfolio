@@ -40,15 +40,16 @@ export default function IntroOverlay() {
            physically off-screen, so the screen content fills the viewport. */
         tl.to('.intro-phone-bezel', { opacity: 0, duration: 0.15, ease: 'power2.out' }, 0);
         tl.to('.intro-scroll-hint', { opacity: 0, duration: 0.10, ease: 'power2.out' }, 0);
-        tl.to('.intro-phone-wrap', { scale: 22, ease: 'power4.in' }, 0);
+        tl.to('.intro-phone-wrap', { scale: 20, ease: 'power3.inOut' }, 0);
       } else {
         tl.to('.intro-laptop-body', { opacity: 0, duration: 0.14, ease: 'power2.out' }, 0);
         tl.to('.intro-laptop-hinge, .intro-laptop-base, .intro-scroll-hint', { opacity: 0, duration: 0.10, ease: 'power2.out' }, 0);
-        tl.to('.intro-laptop-wrap', { scale: 22, ease: 'power4.in' }, 0);
+        tl.to('.intro-laptop-wrap', { scale: 20, ease: 'power3.inOut' }, 0);
       }
 
-      tl.to('.intro-white-cover', { opacity: 1, ease: 'power1.in' }, 0.22);
-      tl.to('.intro-fixed-overlay', { opacity: 0, ease: 'power2.inOut' }, 0.88);
+      tl.to('.intro-white-cover', { opacity: 0.88, ease: 'sine.inOut' }, 0.18);
+      tl.fromTo('.portfolio-card', { opacity: 0.78, y: 22, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', ease: 'power2.out' }, 0.56);
+      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(8px)', ease: 'power2.inOut' }, 0.8);
       tl.set('.intro-fixed-overlay', { display: 'none', pointerEvents: 'none' }, 0.998);
     });
 
@@ -233,8 +234,8 @@ export default function IntroOverlay() {
         </div>
       </div>
 
-      {/* 200vh scroll spacer */}
-      <div ref={spacerRef} style={{ height: '200vh' }} />
+      {/* 240vh spacer for a softer handoff into the portfolio content */}
+      <div ref={spacerRef} style={{ height: '240vh' }} />
 
       <style>{`
         @keyframes scrollPulseIntro {

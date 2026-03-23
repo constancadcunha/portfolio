@@ -49,19 +49,24 @@ const timeline = [
     description: 'Built recruitment and onboarding processes from scratch for a 20+ member student team, improving time-to-productivity and first-year retention.',
     achievement: 'Processes built from zero',
   },
+];
+
+const certificateLinks = [
   {
-    period: '2024 — 2026 (expected)',
-    role: 'M.Sc. Computer Science — Interaction & Visualization',
-    company: 'Instituto Superior Técnico · Lisbon',
-    description: 'Specialisation in interaction design and data visualisation. Thesis: extended a Django-based usability testing tool with heuristic evaluation, task analysis, and SAM self-report surveys — turning a single-method video tool into a multi-method usability research suite.',
-    achievement: 'Thesis: live usability research platform',
+    title: 'Enterprise Design Thinking Co-Creator — IBM',
+    file: 'Enterprise_Design_Thinking_Co_Creator_Badge20250125-26-hts2xc.pdf',
   },
   {
-    period: '2020 — 2024',
-    role: 'B.Sc. Computer Science',
-    company: 'Instituto Superior Técnico · Lisbon',
-    description: 'Foundation in algorithms, software engineering, and systems. Led to a natural intersection with design and human-computer interaction.',
-    achievement: 'Graduated 2024',
+    title: 'Enterprise Design Thinking Practitioner — IBM',
+    file: 'Enterprise_Design_Thinking_Practitioner_Badge20250125-26-4dyqob.pdf',
+  },
+  {
+    title: 'UI/UX Certificate — Udemy',
+    file: 'UC-486f6c5c-1406-477b-86bc-709727580248.pdf',
+  },
+  {
+    title: 'UX Achievement Certificate',
+    file: 'digital-skills-user-experience_certificate_of_achievement_57cnwno.pdf',
   },
 ];
 
@@ -102,6 +107,8 @@ export default function AboutSection() {
   const { ref: bioRef, revealed: bioRevealed } = useRevealOnScroll([]);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
+  const certificateHref = (fileName: string) => `${basePath}Certificates/${encodeURIComponent(fileName)}`;
 
   return (
     <section id="about" style={{ padding: '7rem 5% 7rem', background: t.bgAlt, transition: 'background 0.5s ease' }}>
@@ -146,7 +153,12 @@ export default function AboutSection() {
 
             {/* Skills — staggered spring pop-in */}
             <div>
-              <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ marginBottom: '0.9rem', color: t.textMuted }}>Hover to learn more</p>
+              <div style={{ marginBottom: '0.9rem' }}>
+                <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Core Skills</p>
+                <p className="font-dm" style={{ marginTop: '0.3rem', fontSize: '0.72rem', color: t.textFaint }}>
+                  Hover or tap each tag to see details.
+                </p>
+              </div>
               <div ref={skillsRef} className="flex flex-wrap gap-2" style={{ marginBottom: '1.2rem' }}>
                 {skills.map((s, i) => (
                   <div key={s.tag} className="relative">
@@ -206,6 +218,36 @@ export default function AboutSection() {
                   </li>
                 ))}
               </ul>
+
+              <div style={{ marginTop: '1rem', display: 'grid', gap: '0.5rem' }}>
+                {certificateLinks.map((cert) => (
+                  <a
+                    key={cert.file}
+                    href={certificateHref(cert.file)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-dm"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '0.75rem',
+                      fontSize: '0.74rem',
+                      lineHeight: 1.4,
+                      padding: '0.55rem 0.7rem',
+                      borderRadius: '0.6rem',
+                      background: isDark ? 'rgba(255,255,255,0.04)' : '#ffffff',
+                      border: `1px solid ${t.border}`,
+                      color: t.textMuted,
+                    }}
+                  >
+                    <span>{cert.title}</span>
+                    <span style={{ whiteSpace: 'nowrap', color: t.text }}>
+                      View certificate <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>open_in_new</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
 
               <div style={{ marginTop: '1.2rem' }}>
                 <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ marginBottom: '0.75rem', color: t.textMuted }}>Languages</p>
