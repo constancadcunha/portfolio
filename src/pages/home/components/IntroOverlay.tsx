@@ -30,6 +30,7 @@ export default function IntroOverlay() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.5,
+          onLeave: () => window.dispatchEvent(new Event('introComplete')),
         },
       });
 
@@ -47,9 +48,8 @@ export default function IntroOverlay() {
         tl.to('.intro-laptop-wrap', { scale: 20, ease: 'power3.inOut' }, 0);
       }
 
-      tl.to('.intro-white-cover', { opacity: 0.88, ease: 'sine.inOut' }, 0.18);
-      tl.fromTo('.portfolio-card', { opacity: 0.78, y: 22, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', ease: 'power2.out' }, 0.56);
-      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(8px)', ease: 'power2.inOut' }, 0.8);
+      tl.to('.intro-white-cover', { opacity: 0.92, ease: 'sine.inOut' }, 0.16);
+      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(6px)', ease: 'power2.inOut' }, 0.76);
       tl.set('.intro-fixed-overlay', { display: 'none', pointerEvents: 'none' }, 0.998);
     });
 
@@ -234,8 +234,8 @@ export default function IntroOverlay() {
         </div>
       </div>
 
-      {/* 240vh spacer for a softer handoff into the portfolio content */}
-      <div ref={spacerRef} style={{ height: '240vh' }} />
+      {/* Intro scroll exists only to drive the zoom; the actual portfolio lives in a fixed shell underneath. */}
+      <div ref={spacerRef} style={{ height: '220vh' }} />
 
       <style>{`
         @keyframes scrollPulseIntro {

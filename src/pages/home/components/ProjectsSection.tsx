@@ -162,12 +162,12 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-6"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/40" />
       <div
-        className="relative w-full sm:rounded-2xl sm:max-w-2xl sm:max-h-[85vh] overflow-y-auto rounded-t-2xl"
+        className="relative w-full max-w-2xl rounded-2xl overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
         style={{ background: t.card, boxShadow: '0 24px 80px rgba(0,0,0,0.3)', maxHeight: '90vh' }}
       >
@@ -224,12 +224,12 @@ function MoreProjectModal({ project, onClose }: { project: Project; onClose: () 
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-6"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/40" />
       <div
-        className="relative w-full sm:rounded-2xl sm:max-w-lg rounded-t-2xl overflow-hidden"
+        className="relative w-full max-w-lg rounded-2xl overflow-hidden"
         style={{ background: t.card, boxShadow: '0 24px 80px rgba(0,0,0,0.28)', maxHeight: '90vh' }}
         onClick={(e) => e.stopPropagation()}
       >
