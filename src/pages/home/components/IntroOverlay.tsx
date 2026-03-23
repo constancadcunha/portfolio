@@ -13,7 +13,6 @@ const STARRY_NIGHT_URL =
 
 export default function IntroOverlay() {
   const spacerRef = useRef<HTMLDivElement>(null);
-  const firedCompleteRef = useRef(false);
   const { isDark } = useDarkMode();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
 
@@ -31,12 +30,6 @@ export default function IntroOverlay() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.5,
-          onUpdate: (self) => {
-            if (!firedCompleteRef.current && self.progress >= 0.96) {
-              firedCompleteRef.current = true;
-              window.dispatchEvent(new Event('introComplete'));
-            }
-          },
         },
       });
 
@@ -54,18 +47,9 @@ export default function IntroOverlay() {
         tl.to('.intro-laptop-wrap', { scale: 20, ease: 'power3.inOut' }, 0);
       }
 
-      tl.fromTo('.portfolio-card',
-        { opacity: 0, scale: 0.72, yPercent: 3, filter: 'blur(10px)' },
-        { opacity: 1, scale: 1, yPercent: 0, filter: 'blur(0px)', ease: 'power3.out' },
-        0.18
-      );
-      tl.fromTo('.intro-card-cover',
-        { opacity: 0, scale: 0.76, yPercent: 2 },
-        { opacity: 1, scale: 1, yPercent: 0, ease: 'power2.out' },
-        0.16
-      );
-      tl.to('.intro-card-cover', { opacity: 0, ease: 'sine.out' }, 0.72);
-      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(6px)', ease: 'power2.inOut' }, 0.78);
+      tl.to('.intro-white-cover', { opacity: 0.88, ease: 'sine.inOut' }, 0.18);
+      tl.fromTo('.portfolio-card', { opacity: 0.78, y: 22, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', ease: 'power2.out' }, 0.56);
+      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(8px)', ease: 'power2.inOut' }, 0.8);
       tl.set('.intro-fixed-overlay', { display: 'none', pointerEvents: 'none' }, 0.998);
     });
 
@@ -100,24 +84,13 @@ export default function IntroOverlay() {
           pointerEvents: 'none',
         }} />
 
-        {/* Contained card cover so the zoom resolves into a framed rectangle, not a full-page wash */}
+        {/* Cover — same color as portfolio card bg so transition is seamless */}
         <div
-          className="intro-card-cover"
+          className="intro-white-cover"
           style={{
-            position: 'fixed',
-            top: isMobile ? '10vh' : '11vh',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: isMobile ? '86%' : '82%',
-            height: isMobile ? '80vh' : '78vh',
-            borderRadius: '1.5rem',
+            position: 'absolute', inset: 0,
             background: isDark ? '#1c1a17' : '#ffffff',
-            opacity: 0,
-            zIndex: 8,
-            pointerEvents: 'none',
-            boxShadow: isDark
-              ? '0 0 0 1px rgba(255,255,255,0.04), 0 18px 48px rgba(0,0,0,0.28)'
-              : '0 0 0 1px rgba(0,0,0,0.05), 0 18px 48px rgba(0,0,0,0.08)',
+            opacity: 0, zIndex: 8, pointerEvents: 'none',
           }}
         />
 
@@ -261,8 +234,8 @@ export default function IntroOverlay() {
         </div>
       </div>
 
-      {/* Intro scroll exists only to drive the zoom; the actual portfolio lives in a fixed shell underneath. */}
-      <div ref={spacerRef} style={{ height: '220vh' }} />
+      {/* 240vh spacer for a softer handoff into the portfolio content */}
+      <div ref={spacerRef} style={{ height: '240vh' }} />
 
       <style>{`
         @keyframes scrollPulseIntro {

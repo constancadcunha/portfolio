@@ -33,30 +33,23 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      const scrollTop = container?.scrollTop ?? window.scrollY;
-      const viewportHeight = container?.clientHeight ?? window.innerHeight;
       // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
       const threshold = isMobile ? window.innerHeight * 1.1 : 60;
-      setScrolled(scrollTop > (container ? viewportHeight * 0.08 : threshold));
+      setScrolled(window.scrollY > threshold);
     };
-    const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-    const target = container ?? window;
-    target.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => target.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [isMobile]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const setup = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
       NAV_SECTIONS.forEach(({ id }) => {
         const el = document.getElementById(id);
         if (!el) return;
         const obs = new IntersectionObserver(
           ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-          { threshold: 0, root: container ?? null, rootMargin: '-18% 0px -70% 0px' }
+          { threshold: 0, rootMargin: '-30% 0px -60% 0px' }
         );
         obs.observe(el);
         observers.push(obs);
@@ -77,15 +70,12 @@ export default function Navbar() {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    const shellLocked = document.body.dataset.shellScrollLocked === 'true';
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = shellLocked ? 'hidden' : '';
+      document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = shellLocked ? 'hidden' : '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
   const scrollTo = useCallback((id: string) => (e: React.MouseEvent) => {
@@ -93,12 +83,7 @@ export default function Navbar() {
     setMenuOpen(false);
     setTimeout(() => {
       const el = document.getElementById(id);
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      if (el && container) {
-        container.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
-      } else if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, menuOpen ? 300 : 0);
   }, [menuOpen]);
 

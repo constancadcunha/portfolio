@@ -75,20 +75,13 @@ function BackToTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-    if (!container) return;
-
-    const onScroll = () => setShow(container.scrollTop > container.clientHeight * 0.6);
-    container.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => container.removeEventListener('scroll', onScroll);
+    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const handleClick = useCallback(() => {
-    const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-    if (container) {
-      container.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
@@ -276,10 +269,8 @@ function HomeContent() {
   const bottomStripRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [konamiActive, setKonamiActive] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
-  const [introComplete, setIntroComplete] = useState(false);
   const { display: nameDisplay, handleClick: handleNameClick } = useNameScramble('Constança Cunha');
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
@@ -306,51 +297,23 @@ function HomeContent() {
   };
 
   useEffect(() => {
-    const onIntroComplete = () => setIntroComplete(true);
-    window.addEventListener('introComplete', onIntroComplete);
-    return () => window.removeEventListener('introComplete', onIntroComplete);
-  }, []);
-
-  useEffect(() => {
-    const body = document.body;
-    const html = document.documentElement;
-
-    if (introComplete) {
-      body.dataset.shellScrollLocked = 'true';
-      body.style.overflow = 'hidden';
-      html.style.overflow = 'hidden';
-    } else {
-      delete body.dataset.shellScrollLocked;
-      body.style.overflow = '';
-      html.style.overflow = '';
-    }
-
-    return () => {
-      delete body.dataset.shellScrollLocked;
-      body.style.overflow = '';
-      html.style.overflow = '';
-    };
-  }, [introComplete]);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
     const onScroll = () => {
-      const y = container.scrollTop;
-      const maxScroll = Math.max(1, container.scrollHeight - container.clientHeight);
-      const progress = Math.min(1, Math.max(0, y / maxScroll));
+      const y = window.scrollY;
       const offset = y * 0.06;
-
       if (topStripRef.current) topStripRef.current.style.backgroundPositionY = `calc(50% + ${offset}px)`;
       if (bottomStripRef.current) bottomStripRef.current.style.backgroundPositionY = `calc(50% - ${offset}px)`;
-      if (progressBarRef.current) progressBarRef.current.style.transform = `scaleX(${progress})`;
-    };
 
-    container.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => container.removeEventListener('scroll', onScroll);
-  }, [introComplete]);
+      if (progressBarRef.current && cardRef.current) {
+        const cardTop = cardRef.current.getBoundingClientRect().top + y;
+        const scrollable = document.body.scrollHeight - window.innerHeight - cardTop;
+        const scrolled = y - cardTop;
+        const progress = scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
+        progressBarRef.current.style.transform = `scaleX(${progress})`;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div style={{ position: 'relative', ...(isMobile ? {} : desktopBgStyle) }}>
@@ -393,7 +356,7 @@ function HomeContent() {
         <div
           ref={topStripRef}
           style={{
-            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
+            position: 'fixed', top: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -401,7 +364,7 @@ function HomeContent() {
         <div
           ref={bottomStripRef}
           style={{
-            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 0, pointerEvents: 'none',
+            position: 'fixed', bottom: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none',
             backgroundImage: `url("${bgUrl}")`, backgroundSize: 'cover',
             backgroundPositionX: 'center', backgroundPositionY: '50%',
           }}
@@ -412,36 +375,21 @@ function HomeContent() {
         ref={cardRef}
         className="portfolio-card"
         style={{
-          position: 'fixed',
-          top: isMobile ? '10vh' : '11vh',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          position: 'relative',
           width: isMobile ? '86%' : '82%',
-          height: isMobile ? '80vh' : '78vh',
-          borderRadius: '1.5rem',
-          overflow: 'hidden',
+          marginLeft: 'auto', marginRight: 'auto',
+          marginTop: isMobile ? '-85vh' : '-98vh',
+          marginBottom: isMobile ? '5vh' : '5vh',
+          borderRadius: isMobile ? '1.5rem' : '1.5rem',
+          overflow: 'clip',
           background: t.bg,
-          zIndex: 2,
-          opacity: 1,
-          pointerEvents: introComplete ? 'auto' : 'none',
+          zIndex: 1,
           boxShadow: isDark
-            ? '0 0 0 1px rgba(255,255,255,0.04), 0 18px 48px rgba(0,0,0,0.28)'
-            : '0 0 0 1px rgba(0,0,0,0.05), 0 18px 48px rgba(0,0,0,0.08)',
-          transition: 'background 0.5s ease, box-shadow 0.5s ease, opacity 0.35s ease',
+            ? '0 0 0 1px rgba(255,255,255,0.04), 0 2px 32px rgba(0,0,0,0.4)'
+            : '0 0 0 1px rgba(0,0,0,0.05), 0 2px 32px rgba(0,0,0,0.06)',
+          transition: 'background 0.5s ease, box-shadow 0.5s ease',
         }}
       >
-        <div
-          ref={scrollContainerRef}
-          className="portfolio-scroll"
-          style={{
-            height: '100%',
-            overflowY: introComplete ? 'auto' : 'hidden',
-            overflowX: 'hidden',
-            WebkitOverflowScrolling: 'touch',
-            overscrollBehavior: 'contain',
-            background: t.bg,
-          }}
-        >
         {/* ── Hero ── */}
         <section
           id="hero"
@@ -513,7 +461,6 @@ function HomeContent() {
         <AboutSection />
         <ContactSection />
         <PortfolioFooter />
-        </div>
       </div>
 
       <style>{`

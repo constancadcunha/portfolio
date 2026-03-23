@@ -16,7 +16,6 @@ export default function HeroQuote() {
   useEffect(() => {
     const container = textRef.current;
     if (!container) return;
-    const scrollContainer = document.querySelector<HTMLElement>('.portfolio-scroll');
 
     const words = QUOTE.split(' ');
     container.innerHTML = words
@@ -45,13 +44,13 @@ export default function HeroQuote() {
       const outer = outerRef.current;
       if (!outer) return;
 
+      const rect = outer.getBoundingClientRect();
       const outerH = outer.offsetHeight;
-      const winH = scrollContainer?.clientHeight ?? window.innerHeight;
+      const winH = window.innerHeight;
       const scrollRange = outerH - winH;
       if (scrollRange <= 0) return;
 
-      const relativeTop = (scrollContainer?.scrollTop ?? window.scrollY) - outer.offsetTop;
-      const p = Math.max(0, Math.min(1, relativeTop / scrollRange));
+      const p = Math.max(0, Math.min(1, -rect.top / scrollRange));
       if (progressBarRef.current) {
         progressBarRef.current.style.width = `${p * 100}%`;
       }
@@ -63,13 +62,9 @@ export default function HeroQuote() {
       });
     };
 
-    scrollContainer?.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-    return () => {
-      scrollContainer?.removeEventListener('scroll', onScroll);
-      window.removeEventListener('scroll', onScroll);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
