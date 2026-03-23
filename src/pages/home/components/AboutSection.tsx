@@ -6,6 +6,7 @@ import { getTokens } from '../../../utils/darkTokens';
 const skillGroups = [
   {
     title: 'Product Design',
+    accent: 'Systems, flows, and interaction decisions that make products feel inevitable.',
     items: [
       { tag: 'Figma', detail: 'Advanced wireframing, systems, and handoff.' },
       { tag: 'Interaction Design', detail: 'Micro-interactions and clear user flows.' },
@@ -15,6 +16,7 @@ const skillGroups = [
   },
   {
     title: 'Research & Validation',
+    accent: 'Evidence before polish, and testing before confidence.',
     items: [
       { tag: 'User Research', detail: 'Interviews, synthesis, and opportunity framing.' },
       { tag: 'Usability Testing', detail: 'Task-based tests and evidence-led iteration.' },
@@ -24,6 +26,7 @@ const skillGroups = [
   },
   {
     title: 'Build & Systems',
+    accent: 'Enough engineering depth to design for reality, not just presentation.',
     items: [
       { tag: 'Design Systems', detail: 'Atomic systems used by engineering teams.' },
       { tag: 'React + TypeScript', detail: 'Production-ready implementation of designs.' },
@@ -125,6 +128,9 @@ export default function AboutSection() {
   const t = getTokens(isDark);
   const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
   const certificateHref = (fileName: string) => `${basePath}Certificates/${encodeURIComponent(fileName)}`;
+  const panelBg = isDark
+    ? 'linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.025) 100%)'
+    : 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,238,0.98) 100%)';
 
   return (
     <section id="about" style={{ padding: '7rem 5% 7rem', background: t.bgAlt, transition: 'background 0.5s ease' }}>
@@ -169,19 +175,19 @@ export default function AboutSection() {
 
             {/* Skills — staggered spring pop-in */}
             <div>
-              <div style={{ marginBottom: '0.9rem' }}>
+              <div style={{ marginBottom: '1.1rem' }}>
                 <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Core Skills</p>
-                <p className="font-dm" style={{ marginTop: '0.3rem', fontSize: '0.72rem', color: t.textFaint }}>
-                  Grouped by craft so it is easier to scan quickly.
+                <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
+                  The three pillars behind how I work.
                 </p>
               </div>
               <div
                 ref={skillsRef}
                 style={{
-                  marginBottom: '1.2rem',
+                  marginBottom: '1.4rem',
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-                  gap: '0.65rem',
+                  gridTemplateColumns: '1fr',
+                  gap: '0.85rem',
                 }}
               >
                 {skillGroups.map((group, i) => (
@@ -191,20 +197,49 @@ export default function AboutSection() {
                       opacity: skillsRevealed ? 1 : 0,
                       transform: skillsRevealed ? 'translateY(0)' : 'translateY(10px)',
                       transition: `opacity 0.45s ease ${i * 70}ms, transform 0.45s ease ${i * 70}ms`,
-                      borderRadius: '0.85rem',
+                      borderRadius: '1.1rem',
                       border: `1px solid ${t.border}`,
-                      background: isDark ? 'rgba(255,255,255,0.03)' : '#ffffff',
-                      padding: '0.85rem 0.9rem',
+                      background: panelBg,
+                      padding: '1.05rem 1.1rem',
+                      boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
                     }}
                   >
-                    <p className="font-dm uppercase" style={{ fontSize: '0.62rem', letterSpacing: '0.14em', color: t.textFaint, marginBottom: '0.6rem' }}>
-                      {group.title}
-                    </p>
-                    <div style={{ display: 'grid', gap: '0.45rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', marginBottom: '0.9rem' }}>
+                      <div>
+                        <p className="font-cormorant" style={{ fontSize: '1.3rem', lineHeight: 1, color: t.text, marginBottom: '0.35rem' }}>
+                          {group.title}
+                        </p>
+                        <p className="font-dm" style={{ fontSize: '0.72rem', lineHeight: 1.6, color: t.textMuted, maxWidth: '26rem' }}>
+                          {group.accent}
+                        </p>
+                      </div>
+                      <span
+                        className="font-dm"
+                        style={{
+                          flexShrink: 0,
+                          fontSize: '0.62rem',
+                          letterSpacing: '0.16em',
+                          textTransform: 'uppercase',
+                          color: t.textFaint,
+                          paddingTop: '0.2rem',
+                        }}
+                      >
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '0.55rem' }}>
                       {group.items.map((item) => (
-                        <div key={item.tag}>
-                          <p className="font-dm" style={{ fontSize: '0.76rem', color: t.text, lineHeight: 1.35 }}>{item.tag}</p>
-                          <p className="font-dm" style={{ fontSize: '0.68rem', color: t.textMuted, lineHeight: 1.45 }}>{item.detail}</p>
+                        <div
+                          key={item.tag}
+                          style={{
+                            padding: '0.7rem 0.75rem',
+                            borderRadius: '0.85rem',
+                            background: isDark ? 'rgba(255,255,255,0.035)' : 'rgba(245, 239, 232, 0.85)',
+                            border: `1px solid ${isDark ? 'rgba(255,255,255,0.06)' : 'rgba(111, 94, 70, 0.08)'}`,
+                          }}
+                        >
+                          <p className="font-dm" style={{ fontSize: '0.74rem', color: t.text, lineHeight: 1.35, marginBottom: '0.22rem' }}>{item.tag}</p>
+                          <p className="font-dm" style={{ fontSize: '0.66rem', color: t.textMuted, lineHeight: 1.5 }}>{item.detail}</p>
                         </div>
                       ))}
                     </div>
@@ -215,29 +250,21 @@ export default function AboutSection() {
 
             {/* Certifications */}
             <FadeIn delay={200} style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: `1px solid ${t.border}` }}>
-              <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ marginBottom: '0.75rem', color: t.textMuted }}>Certifications</p>
-              <ul className="space-y-1.5">
-                {[
-                  'Enterprise Design Thinking Practitioner & Co-Creator — IBM',
-                  'UI/UX & Figma Specialisation — Udemy · Le Wagon · Accenture',
-                  'Web Developer Bootcamp — Udemy',
-                ].map((c) => (
-                  <li key={c} className="font-dm text-xs flex gap-2 items-start" style={{ color: t.textMuted }}>
-                    <span className="material-icons-round text-xs text-sage leading-none" style={{ marginTop: '2px' }}>verified</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
+              <div style={{ marginBottom: '1rem' }}>
+                <p className="font-dm text-xs tracking-[0.2em] uppercase" style={{ color: t.textMuted }}>Certifications</p>
+                <p className="font-cormorant italic" style={{ marginTop: '0.35rem', fontSize: '1rem', color: t.textMuted }}>
+                  A small credential archive, with the actual certificates linked.
+                </p>
+              </div>
 
               <div
                 style={{
-                  marginTop: '1rem',
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-                  gap: '0.55rem',
+                  gridTemplateColumns: '1fr',
+                  gap: '0.7rem',
                 }}
               >
-                {certificateLinks.map((cert) => (
+                {certificateLinks.map((cert, index) => (
                   <a
                     key={cert.file}
                     href={certificateHref(cert.file)}
@@ -248,24 +275,42 @@ export default function AboutSection() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '0.75rem',
+                      gap: '1rem',
                       fontSize: '0.74rem',
                       lineHeight: 1.4,
-                      padding: '0.65rem 0.75rem',
-                      borderRadius: '0.6rem',
-                      background: isDark ? 'rgba(255,255,255,0.04)' : '#ffffff',
+                      padding: '0.95rem 1rem',
+                      borderRadius: '1rem',
+                      background: panelBg,
                       border: `1px solid ${t.border}`,
                       color: t.textMuted,
+                      boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
                     }}
                   >
-                    <span>
-                      <span className="font-dm" style={{ display: 'block', fontSize: '0.64rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: t.textFaint }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', minWidth: 0 }}>
+                      <div
+                        style={{
+                          width: '2.4rem',
+                          height: '2.4rem',
+                          borderRadius: '999px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          background: isDark ? 'rgba(232,228,218,0.1)' : 'rgba(111, 94, 70, 0.08)',
+                          color: t.text,
+                        }}
+                      >
+                        <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.06em' }}>0{index + 1}</span>
+                      </div>
+                      <span style={{ minWidth: 0 }}>
+                        <span className="font-dm" style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: t.textFaint, marginBottom: '0.15rem' }}>
                         {cert.issuer}
+                        </span>
+                        <span style={{ display: 'block', color: t.text, fontSize: '0.78rem', lineHeight: 1.45 }}>{cert.title}</span>
                       </span>
-                      <span>{cert.title}</span>
-                    </span>
-                    <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.68rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                      View certificate <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>open_in_new</span>
+                    </div>
+                    <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', flexShrink: 0 }}>
+                      Open <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>north_east</span>
                     </span>
                   </a>
                 ))}

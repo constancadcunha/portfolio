@@ -422,7 +422,7 @@ function HomeContent() {
           overflow: 'hidden',
           background: t.bg,
           zIndex: 2,
-          opacity: introComplete ? 1 : 0.98,
+          opacity: introComplete ? 1 : 0,
           pointerEvents: introComplete ? 'auto' : 'none',
           boxShadow: isDark
             ? '0 0 0 1px rgba(255,255,255,0.04), 0 18px 48px rgba(0,0,0,0.28)'

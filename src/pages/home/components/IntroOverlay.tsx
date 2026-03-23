@@ -48,8 +48,18 @@ export default function IntroOverlay() {
         tl.to('.intro-laptop-wrap', { scale: 20, ease: 'power3.inOut' }, 0);
       }
 
-      tl.to('.intro-white-cover', { opacity: 0.92, ease: 'sine.inOut' }, 0.16);
-      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(6px)', ease: 'power2.inOut' }, 0.76);
+      tl.fromTo('.portfolio-card',
+        { opacity: 0, scale: 0.72, yPercent: 3, filter: 'blur(10px)' },
+        { opacity: 1, scale: 1, yPercent: 0, filter: 'blur(0px)', ease: 'power3.out' },
+        0.18
+      );
+      tl.fromTo('.intro-card-cover',
+        { opacity: 0, scale: 0.76, yPercent: 2 },
+        { opacity: 1, scale: 1, yPercent: 0, ease: 'power2.out' },
+        0.16
+      );
+      tl.to('.intro-card-cover', { opacity: 0, ease: 'sine.out' }, 0.72);
+      tl.to('.intro-fixed-overlay', { opacity: 0, filter: 'blur(6px)', ease: 'power2.inOut' }, 0.78);
       tl.set('.intro-fixed-overlay', { display: 'none', pointerEvents: 'none' }, 0.998);
     });
 
@@ -84,13 +94,24 @@ export default function IntroOverlay() {
           pointerEvents: 'none',
         }} />
 
-        {/* Cover — same color as portfolio card bg so transition is seamless */}
+        {/* Contained card cover so the zoom resolves into a framed rectangle, not a full-page wash */}
         <div
-          className="intro-white-cover"
+          className="intro-card-cover"
           style={{
-            position: 'absolute', inset: 0,
+            position: 'fixed',
+            top: isMobile ? '7vh' : '8vh',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: isMobile ? '86%' : '82%',
+            height: isMobile ? '86vh' : '84vh',
+            borderRadius: '1.5rem',
             background: isDark ? '#1c1a17' : '#ffffff',
-            opacity: 0, zIndex: 8, pointerEvents: 'none',
+            opacity: 0,
+            zIndex: 8,
+            pointerEvents: 'none',
+            boxShadow: isDark
+              ? '0 0 0 1px rgba(255,255,255,0.04), 0 18px 48px rgba(0,0,0,0.28)'
+              : '0 0 0 1px rgba(0,0,0,0.05), 0 18px 48px rgba(0,0,0,0.08)',
           }}
         />
 
