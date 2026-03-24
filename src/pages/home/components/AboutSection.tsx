@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import FadeIn from '../../../components/base/FadeIn';
+import { highlightImportantText } from '../../../components/base/highlightImportantText';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 
@@ -43,6 +44,7 @@ const timeline = [
     company: 'nextflat CH · Zurich, Remote',
     description: 'Sole designer on a live Swiss real estate platform (500+ users). Redesigned homepage, property feed, and dashboards across 2 release cycles. Built an atomic design system reducing estimated frontend implementation time by ~30%.',
     achievement: '2 full release cycles shipped',
+    accentTone: 'sky',
   },
   {
     period: 'Jul — Aug 2024',
@@ -50,6 +52,7 @@ const timeline = [
     company: 'Sky Portugal · Lisbon',
     description: 'Designed and built an internal STB device management system in under 2 weeks, reducing device onboarding time from several days to under 4 hours. Automated workflows and built structured data exports used by all operational teams.',
     achievement: 'Device onboarding: days to under 4 hours',
+    accentTone: 'lilac',
   },
   {
     period: 'Mar 2024 — May 2025',
@@ -57,6 +60,7 @@ const timeline = [
     company: 'SINFO · Lisbon',
     description: "Led a 30-person team organising Portugal's largest free tech conference. 5,000+ attendees, 85+ partner companies. Secured Tier-1 sponsorships including Oracle and coordinated national media coverage through CNN Portugal.",
     achievement: '5,000+ attendees · Oracle sponsorship',
+    accentTone: 'honey',
   },
   {
     period: 'Mar 2022 — May 2023',
@@ -64,6 +68,7 @@ const timeline = [
     company: 'Diferencial IST · Lisbon',
     description: 'Built recruitment and onboarding processes from scratch for a 20+ member student team, improving time-to-productivity and first-year retention.',
     achievement: 'Processes built from zero',
+    accentTone: 'mint',
   },
 ];
 
@@ -121,11 +126,24 @@ function useRevealOnScroll<T>(items: T[], threshold = 0.08) {
   return { ref, revealed };
 }
 
+function hexToRgba(hex: string, alpha: number): string {
+  const cleaned = hex.replace('#', '');
+  const full = cleaned.length === 3
+    ? cleaned.split('').map((char) => `${char}${char}`).join('')
+    : cleaned;
+  const value = parseInt(full, 16);
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 export default function AboutSection() {
   const { ref: skillsRef, revealed: skillsRevealed } = useRevealOnScroll(skillGroups);
   const { ref: bioRef, revealed: bioRevealed } = useRevealOnScroll([]);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const websiteLinkColor = isDark ? '#f2c86b' : '#7d9bc1';
   const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
   const certificateHref = (fileName: string) => `${basePath}Certificates/${encodeURIComponent(fileName)}`;
   const panelBg = isDark
@@ -145,6 +163,32 @@ export default function AboutSection() {
   const headingAccent = isDark
     ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 56%, #9fb0ff 100%)'
     : 'linear-gradient(120deg, #9abeda 0%, #f0cfa3 48%, #bad5c4 100%)';
+  const experienceAccents = isDark
+    ? {
+        sky: '#7cb5ff',
+        lilac: '#b493ff',
+        honey: '#f0c35a',
+        mint: '#7ec3a5',
+      }
+    : {
+        sky: '#79a9d8',
+        lilac: '#b59ad9',
+        honey: '#d7b169',
+        mint: '#87bba2',
+      };
+  const certificatePalettes = isDark
+    ? [
+        'linear-gradient(145deg, rgba(124,181,255,0.18) 0%, rgba(56,74,132,0.24) 100%)',
+        'linear-gradient(145deg, rgba(180,147,255,0.18) 0%, rgba(71,53,122,0.24) 100%)',
+        'linear-gradient(145deg, rgba(240,195,90,0.17) 0%, rgba(116,79,27,0.24) 100%)',
+        'linear-gradient(145deg, rgba(126,195,165,0.17) 0%, rgba(41,88,71,0.24) 100%)',
+      ]
+    : [
+        'linear-gradient(145deg, rgba(174,205,235,0.38) 0%, rgba(234,242,249,0.78) 100%)',
+        'linear-gradient(145deg, rgba(210,193,234,0.4) 0%, rgba(245,239,252,0.8) 100%)',
+        'linear-gradient(145deg, rgba(239,218,170,0.42) 0%, rgba(251,246,235,0.82) 100%)',
+        'linear-gradient(145deg, rgba(192,224,210,0.4) 0%, rgba(241,250,246,0.82) 100%)',
+      ];
 
   return (
     <section id="about" style={{ padding: '7rem 5% 7rem', background: t.bgAlt, transition: 'background 0.5s ease' }}>
@@ -182,7 +226,19 @@ export default function AboutSection() {
                 <p className="font-dm text-sm font-medium" style={{ color: t.text }}>Constança Cunha</p>
                 <p className="font-dm text-xs" style={{ marginTop: '0.15rem', color: t.textMuted }}>Lisbon, Portugal · Open to remote</p>
                 <p className="font-dm text-xs leading-relaxed" style={{ marginTop: '0.5rem', color: t.textMuted }}>
-                  Product Designer with a Computer Science background and a master&apos;s in Interaction &amp; Visualization. I&apos;ve worked on live products, built design systems used by engineers, and can implement my own designs in code.
+                  {highlightImportantText("Product Designer with a Computer Science background and a master's in Interaction & Visualization. I've worked on live products, built design systems used by engineers, and can implement my own designs in code.", isDark, 'about-bio')}
+                </p>
+                <p className="font-dm text-xs leading-relaxed" style={{ marginTop: '0.6rem', color: t.textMuted }}>
+                  For a fuller picture of my work experience, degrees, and volunteering, visit my{' '}
+                  <a
+                    href="https://constancadcunha.github.io/constancacunha/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: websiteLinkColor, textDecoration: 'underline', textUnderlineOffset: '0.16em' }}
+                  >
+                    personal website
+                  </a>
+                  .
                 </p>
               </div>
             </div>
@@ -287,7 +343,7 @@ export default function AboutSection() {
                     >
                       <span className="material-icons-round text-xs leading-none" style={{ opacity: 0.5 }}>translate</span>
                       {l.label}
-                      <span style={{ opacity: 0.5 }}>{l.level}</span>
+                      <span style={{ opacity: 0.75 }}>{highlightImportantText(l.level, isDark, l.label)}</span>
                     </span>
                   ))}
                 </div>
@@ -296,20 +352,24 @@ export default function AboutSection() {
 
           {/* Right — Timeline */}
           <div className="space-y-7">
-            {timeline.map((item, i) => (
+            {timeline.map((item, i) => {
+              const accent = experienceAccents[item.accentTone as keyof typeof experienceAccents];
+              const toneKey = `${item.accentTone}-${item.role}`;
+
+              return (
               <FadeIn key={i} delay={i * 80} distance={24}>
                 <div className="relative pl-5" style={{ borderLeft: `1px solid ${t.border}` }}>
-                  <div className="absolute rounded-full bg-sage" style={{ left: '-0.35rem', top: '0.35rem', width: '0.65rem', height: '0.65rem' }} />
-                  <p className="font-dm text-xs tracking-widest uppercase" style={{ marginBottom: '0.25rem', color: t.textMuted }}>{item.period}</p>
+                  <div className="absolute rounded-full" style={{ left: '-0.35rem', top: '0.35rem', width: '0.65rem', height: '0.65rem', background: accent }} />
+                  <p className="font-dm text-xs tracking-widest uppercase" style={{ marginBottom: '0.25rem', color: t.textMuted }}>{highlightImportantText(item.period, isDark, toneKey)}</p>
                   <p className="font-cormorant font-medium leading-tight" style={{ fontSize: '1.2rem', color: t.text }}>{item.role}</p>
-                  <p className="font-dm text-sage" style={{ fontSize: '0.75rem', marginBottom: '0.5rem' }}>{item.company}</p>
-                  <p className="font-dm leading-relaxed" style={{ fontSize: '0.82rem', marginBottom: '0.5rem', color: t.textMuted }}>{item.description}</p>
+                  <p className="font-dm" style={{ fontSize: '0.75rem', marginBottom: '0.5rem', color: accent }}>{item.company}</p>
+                  <p className="font-dm leading-relaxed" style={{ fontSize: '0.82rem', marginBottom: '0.5rem', color: t.textMuted }}>{highlightImportantText(item.description, isDark, toneKey)}</p>
                   <div
                     className="font-dm flex items-center gap-1"
                     style={{
                       fontSize: '0.68rem',
                       color: t.text,
-                      background: isDark ? 'rgba(248,214,111,0.13)' : 'rgba(155,185,210,0.2)',
+                      background: hexToRgba(accent, isDark ? 0.18 : 0.2),
                       border: `1px solid ${t.border}`,
                       borderRadius: '999px',
                       width: 'fit-content',
@@ -317,11 +377,12 @@ export default function AboutSection() {
                     }}
                   >
                     <span className="material-icons-round text-xs leading-none">star_outline</span>
-                    {item.achievement}
+                    {highlightImportantText(item.achievement, isDark, toneKey)}
                   </div>
                 </div>
               </FadeIn>
-            ))}
+              );
+            })}
 
             {/* Certifications under work experience */}
             <FadeIn delay={320}>
@@ -360,7 +421,7 @@ export default function AboutSection() {
                         lineHeight: 1.4,
                         padding: '0.95rem 1rem',
                         borderRadius: '1rem',
-                        background: skillPalettes[index % skillPalettes.length],
+                        background: certificatePalettes[index % certificatePalettes.length],
                         border: `1px solid ${t.border}`,
                         color: t.textMuted,
                         boxShadow: isDark ? 'none' : '0 10px 24px rgba(111, 94, 70, 0.06)',
@@ -380,7 +441,7 @@ export default function AboutSection() {
                             color: t.text,
                           }}
                         >
-                          <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.06em' }}>0{index + 1}</span>
+                          <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.06em' }}>{highlightImportantText(`0${index + 1}`, isDark, cert.title)}</span>
                         </div>
                         <span style={{ minWidth: 0 }}>
                           <span className="font-dm" style={{ display: 'block', fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: t.textFaint, marginBottom: '0.15rem' }}>

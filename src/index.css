@@ -72,6 +72,7 @@
 }
 
 html {
+  font-size: 19px;
   background-image: url("https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/6e8c403a-cbbb-4ffb-9b5c-046a895a4145_44754-O4E303.jpg?v=7bc895d19fd86036061a48ea2d24fbcb");
   background-size: cover;
   background-position: center;
@@ -83,6 +84,7 @@ body {
   scroll-behavior: smooth;
   background-color: transparent;
   color: #1a1a1a;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Mobile responsive base ── */
 @media (max-width: 768px) {
   html {
+    font-size: 18px;
     background-attachment: scroll;
   }
 
@@ -116,6 +119,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+  html {
+    font-size: 17px;
+  }
+
   .intro-laptop-body {
     width: 92vw !important;
     height: calc(92vw * 0.625) !important;

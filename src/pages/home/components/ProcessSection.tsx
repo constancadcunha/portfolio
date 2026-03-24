@@ -14,7 +14,8 @@ const STEPS = [
       'Competitive analysis & heuristic review',
       'Journey mapping & pain point synthesis',
     ],
-    accent: '#8a9e7a',
+    accentLight: '#7aa0cb',
+    accentDark: '#78aeff',
   },
   {
     num: '02',
@@ -27,7 +28,8 @@ const STEPS = [
       'Concept sketches & rapid wireframes',
       'Design critique & early stakeholder review',
     ],
-    accent: '#c4a882',
+    accentLight: '#b596d2',
+    accentDark: '#b690ff',
   },
   {
     num: '03',
@@ -40,7 +42,8 @@ const STEPS = [
       'Moderated usability testing & iteration',
       'Frontend collaboration & QA review',
     ],
-    accent: '#b0966e',
+    accentLight: '#cca567',
+    accentDark: '#efbf54',
   },
 ];
 
@@ -145,7 +148,10 @@ export default function ProcessSection() {
           }}
           className="process-grid"
         >
-          {STEPS.map((step, i) => (
+          {STEPS.map((step, i) => {
+            const stepAccent = isDark ? step.accentDark : step.accentLight;
+
+            return (
             <div
               key={step.num}
               onMouseEnter={() => setActiveStep(i)}
@@ -170,7 +176,7 @@ export default function ProcessSection() {
                   fontSize: 'clamp(4rem, 7vw, 6.5rem)',
                   fontWeight: 300,
                   lineHeight: 1,
-                  color: activeStep === i ? step.accent : (isDark ? 'rgba(232,228,218,0.07)' : 'rgba(31,30,27,0.07)'),
+                  color: activeStep === i ? stepAccent : (isDark ? 'rgba(232,228,218,0.07)' : 'rgba(31,30,27,0.07)'),
                   transition: 'color 0.3s ease',
                   marginBottom: '1.5rem',
                   userSelect: 'none',
@@ -198,7 +204,7 @@ export default function ProcessSection() {
                 style={{
                   fontSize: '0.55rem',
                   letterSpacing: '0.2em',
-                  color: activeStep === i ? step.accent : (isDark ? 'rgba(248,214,111,0.65)' : 'rgba(110,140,166,0.78)'),
+                  color: activeStep === i ? stepAccent : (isDark ? 'rgba(248,214,111,0.65)' : 'rgba(110,140,166,0.78)'),
                   marginBottom: '1.4rem',
                   transition: 'color 0.3s ease',
                 }}
@@ -211,7 +217,7 @@ export default function ProcessSection() {
                 style={{
                   width: activeStep === i ? '3rem' : '1.5rem',
                   height: '1px',
-                  background: activeStep === i ? step.accent : (isDark ? 'rgba(232,228,218,0.12)' : 'rgba(31,30,27,0.12)'),
+                  background: activeStep === i ? stepAccent : (isDark ? 'rgba(232,228,218,0.12)' : 'rgba(31,30,27,0.12)'),
                   marginBottom: '1.4rem',
                   transition: 'width 0.35s ease, background 0.3s ease',
                 }}
@@ -243,7 +249,7 @@ export default function ProcessSection() {
                         width: 4,
                         height: 4,
                         borderRadius: '50%',
-                        background: activeStep === i ? step.accent : (isDark ? 'rgba(232,228,218,0.2)' : 'rgba(31,30,27,0.2)'),
+                        background: activeStep === i ? stepAccent : (isDark ? 'rgba(232,228,218,0.2)' : 'rgba(31,30,27,0.2)'),
                         flexShrink: 0,
                         marginTop: '0.45rem',
                         transition: 'background 0.3s ease',
@@ -269,7 +275,8 @@ export default function ProcessSection() {
                 />
               )}
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom note */}

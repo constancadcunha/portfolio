@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import FadeIn from '../../../components/base/FadeIn';
+import { highlightImportantText } from '../../../components/base/highlightImportantText';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 
@@ -15,6 +16,7 @@ interface ProjectLinks {
 
 interface Project {
   name: string;
+  accentKey?: 'blue' | 'purple' | 'gold' | 'sage' | 'amber';
   tag: string;
   categories: string[];
   title: string;
@@ -30,6 +32,7 @@ interface Project {
 const featured: Project[] = [
   {
     name: 'nextflat',
+    accentKey: 'blue',
     tag: 'Product Design · Design Systems · Frontend',
     categories: ['Web'],
     title: 'Redesigning a live Swiss real estate platform — from cluttered feed to map-first clarity',
@@ -42,6 +45,7 @@ const featured: Project[] = [
   },
   {
     name: 'SageBook',
+    accentKey: 'gold',
     tag: 'iOS App · UX Research · SwiftUI',
     categories: ['Mobile'],
     title: 'Fixing the moment new cooks abandon a recipe — halfway through, pan already hot',
@@ -58,6 +62,7 @@ const featured: Project[] = [
   },
   {
     name: 'ReMi',
+    accentKey: 'purple',
     tag: 'Mobile App · UCD · 7-week sprint',
     categories: ['Mobile'],
     title: "Young adults starting a first job shouldn't have to figure out relocation and budgeting alone",
@@ -77,6 +82,7 @@ const featured: Project[] = [
 const more: Project[] = [
   {
     name: 'Clicky',
+    accentKey: 'amber',
     tag: 'Web · Interaction · Experimental',
     categories: ['Web', 'Experimental'],
     title: 'Every tap and click is a tiny conversation between a person and an interface.',
@@ -88,6 +94,7 @@ const more: Project[] = [
   },
   {
     name: 'Incipit',
+    accentKey: 'blue',
     tag: 'Web · Writing · Focus Design',
     categories: ['Web'],
     title: 'The hardest part of writing is the first sentence.',
@@ -100,6 +107,7 @@ const more: Project[] = [
   },
   {
     name: 'CottageTunes',
+    accentKey: 'sage',
     tag: 'Mobile · Music · Discovery',
     categories: ['Mobile'],
     title: 'Music discovery built around atmosphere, not algorithm.',
@@ -111,6 +119,7 @@ const more: Project[] = [
   },
   {
     name: 'BookPod',
+    accentKey: 'gold',
     tag: 'Mobile · Reading · Habit Design',
     categories: ['Mobile'],
     title: 'Readers stop reading because friction wins, not because motivation fades.',
@@ -123,6 +132,7 @@ const more: Project[] = [
   },
   {
     name: 'Skein',
+    accentKey: 'purple',
     tag: 'Mobile · Craft · Community',
     categories: ['Mobile'],
     title: "A craft app designed around how knitters actually think — not how apps assume they do.",
@@ -135,10 +145,11 @@ const more: Project[] = [
   },
   {
     name: 'DebugQuest',
+    accentKey: 'blue',
     tag: 'Web · Game · Developer Tools',
     categories: ['Web', 'Experimental'],
     title: 'Learning to debug should feel like solving a puzzle, not reading a manual.',
-    bg: 'https://readdy.ai/api/search-image?query=minimalist%20retro%20terminal%20debugging%20interface%20with%20soft%20warm%20beige%20tones%20clean%20flat%20illustration%20style%20screen%20glow%20subtle%20code%20lines%20aesthetic%20quiet%20background&width=640&height=480&seq=debugquest1&orientation=landscape',
+    bg: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80',
     description: 'Interactive debugging challenge built to make error-finding intuitive and even enjoyable. Code puzzles, incremental hints, and instant feedback loops.',
     links: {
       github: 'https://github.com/constancadcunha/DebugQuest',
@@ -160,6 +171,8 @@ function primaryLink(links?: ProjectLinks): string | undefined {
 function CaseStudyModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+
+  const accentGroup = `${project.accentKey ?? 'blue'}-${project.name}`;
 
   if (typeof document === 'undefined') return null;
 
@@ -186,13 +199,13 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
           </button>
         </div>
         <div className="p-6 sm:p-8">
-          <p className="font-dm text-[10px] tracking-[0.22em] uppercase mb-3" style={{ color: t.textMuted }}>{project.tag}</p>
+          <p className="font-dm text-[10px] tracking-[0.22em] uppercase mb-3" style={{ color: t.textMuted }}>{highlightImportantText(project.tag, isDark, accentGroup)}</p>
           <h2 className="font-cormorant font-light leading-tight" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.75rem)', maxWidth: '32rem', color: t.text }}>
             Problems I solved,<br />
             <em>not just screens I designed.</em>
           </h2>
-          {project.impact && <p className="font-dm text-xs text-sage font-medium mb-5">{project.impact}</p>}
-          <p className="font-dm text-sm leading-relaxed mb-6" style={{ color: t.textMuted }}>{project.details ?? project.description}</p>
+          {project.impact && <p className="font-dm text-xs text-sage font-medium mb-5">{highlightImportantText(project.impact, isDark, accentGroup)}</p>}
+          <p className="font-dm text-sm leading-relaxed mb-6" style={{ color: t.textMuted }}>{highlightImportantText(project.details ?? project.description, isDark, accentGroup)}</p>
           {(project.links?.caseStudy || project.links?.prototype) && (
             <div className="flex flex-wrap gap-2 pt-5" style={{ borderTop: `1px solid ${t.borderDivider}` }}>
               {project.links?.caseStudy && (
@@ -226,6 +239,8 @@ function MoreProjectModal({ project, onClose }: { project: Project; onClose: () 
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
 
+  const accentGroup = `${project.accentKey ?? 'blue'}-${project.name}`;
+
   if (typeof document === 'undefined') return null;
 
   return createPortal(
@@ -252,9 +267,9 @@ function MoreProjectModal({ project, onClose }: { project: Project; onClose: () 
           </button>
         </div>
         <div className="p-5 sm:p-6">
-          <p className="font-dm tracking-[0.2em] uppercase" style={{ fontSize: '0.55rem', marginBottom: '0.5rem', color: t.textMuted }}>{project.tag}</p>
+          <p className="font-dm tracking-[0.2em] uppercase" style={{ fontSize: '0.55rem', marginBottom: '0.5rem', color: t.textMuted }}>{highlightImportantText(project.tag, isDark, accentGroup)}</p>
           <h3 className="font-cormorant font-light leading-snug" style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: t.text }}>{project.title}</h3>
-          <p className="font-dm leading-relaxed" style={{ fontSize: '0.8rem', marginBottom: '1.25rem', color: t.textMuted }}>{project.description}</p>
+          <p className="font-dm leading-relaxed" style={{ fontSize: '0.8rem', marginBottom: '1.25rem', color: t.textMuted }}>{highlightImportantText(project.description, isDark, accentGroup)}</p>
           <div className="flex flex-wrap gap-2" style={{ borderTop: `1px solid ${t.borderDivider}`, paddingTop: '1rem' }}>
             {project.links?.prototype && (
               <a href={project.links.prototype} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
@@ -365,10 +380,14 @@ export default function ProjectsSection() {
                   <span className="absolute bottom-3 left-4 font-dm text-xs text-white/90 tracking-widest uppercase font-medium">{p.name}</span>
                 </div>
                 <div className="flex flex-col flex-1 p-5">
-                  <p className="font-dm tracking-[0.22em] uppercase" style={{ fontSize: '0.55rem', marginBottom: '0.6rem', color: t.textMuted }}>{p.tag}</p>
+                  {(() => {
+                    const accentGroup = `${p.accentKey ?? 'blue'}-${p.name}`;
+                    return (
+                      <>
+                  <p className="font-dm tracking-[0.22em] uppercase" style={{ fontSize: '0.55rem', marginBottom: '0.6rem', color: t.textMuted }}>{highlightImportantText(p.tag, isDark, accentGroup)}</p>
                   <h3 className="font-cormorant font-normal leading-snug" style={{ fontSize: '1.1rem', marginBottom: '0.65rem', color: t.text }}>{p.title}</h3>
-                  <p className="font-dm leading-relaxed" style={{ fontSize: '0.75rem', marginBottom: '0.65rem', color: t.textMuted }}>{p.description}</p>
-                  <p className="font-dm text-sage font-medium" style={{ fontSize: '0.65rem', marginBottom: '1.2rem' }}>{p.impact}</p>
+                  <p className="font-dm leading-relaxed" style={{ fontSize: '0.75rem', marginBottom: '0.65rem', color: t.textMuted }}>{highlightImportantText(p.description, isDark, accentGroup)}</p>
+                  <p className="font-dm text-sage font-medium" style={{ fontSize: '0.65rem', marginBottom: '1.2rem' }}>{p.impact ? highlightImportantText(p.impact, isDark, accentGroup) : null}</p>
                   <div className="mt-auto flex flex-wrap gap-2">
                     {p.links?.caseStudy ? (
                       <a href={p.links.caseStudy} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
@@ -378,9 +397,9 @@ export default function ProjectsSection() {
                       </a>
                     ) : (
                       <button onClick={(e) => { e.stopPropagation(); setOpenProject(p); }}
-                        className="font-dm px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer"
+                        className="font-dm px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-1.5"
                         style={{ fontSize: '0.72rem', border: `1px solid ${t.borderInput}`, color: t.text }}>
-                        View case study
+                        <i className="ri-article-line text-xs" />Case study<i className="ri-external-link-line text-xs opacity-50" />
                       </button>
                     )}
                     {p.links?.prototype && (
@@ -391,6 +410,9 @@ export default function ProjectsSection() {
                       </a>
                     )}
                   </div>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </FadeIn>
@@ -492,7 +514,7 @@ export default function ProjectsSection() {
                           ))}
                         </div>
                       </div>
-                      <p className="font-dm leading-snug truncate" style={{ fontSize: '0.72rem', color: t.textMuted }}>{p.description}</p>
+                      <p className="font-dm leading-snug truncate" style={{ fontSize: '0.72rem', color: t.textMuted }}>{highlightImportantText(p.description, isDark, `${p.accentKey ?? 'blue'}-${p.name}`)}</p>
                     </div>
                     <div className="flex items-center gap-1.5 flex-shrink-0">
                       {p.links?.prototype && <LinkBtn href={p.links.prototype} icon="ri-play-circle-line" label="View prototype" />}
@@ -532,7 +554,7 @@ export default function ProjectsSection() {
               {previewProject.name}
             </p>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.58rem', color: t.textMuted, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {previewProject.tag}
+              {highlightImportantText(previewProject.tag, isDark, `${previewProject.accentKey ?? 'blue'}-${previewProject.name}`)}
             </p>
           </div>
         </div>

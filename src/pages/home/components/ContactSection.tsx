@@ -3,7 +3,7 @@ import FadeIn from '../../../components/base/FadeIn';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 
-const FORM_URL = 'https://readdy.ai/api/form/d70ql01qa83q0hmd1flg';
+const FORM_URL = 'https://formsubmit.co/ajax/constancadcunha@gmail.com';
 
 const socials = [
   {
@@ -18,7 +18,7 @@ const socials = [
   },
   {
     icon: 'ri-global-line',
-    label: 'Website',
+    label: 'Personal website',
     href: 'https://constancadcunha.github.io/constancacunha/',
   },
 ];
@@ -46,20 +46,21 @@ export default function ContactSection() {
     if (charCount > 500) return;
 
     const form = e.currentTarget;
-    const data = new URLSearchParams();
     const formData = new FormData(form);
-    formData.forEach((value, key) => {
-      if (typeof value === 'string') data.append(key, value);
-    });
+    formData.append('_subject', 'New portfolio contact form submission');
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
 
     setStatus('sending');
     try {
       const res = await fetch(FORM_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: data.toString(),
+        headers: { Accept: 'application/json' },
+        body: formData,
       });
-      if (res.ok) {
+      const payload = await res.json().catch(() => ({}));
+
+      if (res.ok && payload?.success !== false) {
         setStatus('sent');
         form.reset();
         setCharCount(0);
@@ -84,10 +85,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" style={{ background: t.bg, padding: '8rem 8% 9rem', transition: 'background 0.5s ease' }}>
+    <section id="contact" style={{ background: t.bg, padding: '6rem 8% 3.25rem', transition: 'background 0.5s ease' }}>
       <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
         {/* Header */}
-        <FadeIn style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+        <FadeIn style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <p className="font-dm uppercase" style={{ fontSize: '0.65rem', letterSpacing: '0.28em', marginBottom: '1.2rem', color: t.textMuted }}>
             Get in touch
           </p>
@@ -99,10 +100,10 @@ export default function ContactSection() {
           </p>
         </FadeIn>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '5rem', alignItems: 'start' }} className="contact-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: '3.5rem', alignItems: 'start' }} className="contact-grid">
           {/* Left — info */}
           <FadeIn delay={100} distance={20}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2.8rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2.2rem' }}>
               <div>
                 <p className="font-dm font-medium" style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem', color: t.text }}>
                   Based in
