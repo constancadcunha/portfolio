@@ -77,11 +77,6 @@ export default defineConfig({
   build: {
     sourcemap: true,
     outDir: "out",
-    rollupOptions: {
-      input: {
-        index: resolve(__dirname, "index.source.html"),
-      },
-    },
   },
   server: {
     port: 3000,
