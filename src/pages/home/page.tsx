@@ -452,9 +452,8 @@ function HomeContent() {
         className="portfolio-card"
         style={{
           position: introComplete ? 'fixed' : 'relative',
-          top: introComplete ? (isMobile ? '9vh' : '9vh') : undefined,
-          left: introComplete ? '50%' : undefined,
-          transform: introComplete ? 'translateX(-50%)' : undefined,
+          top: introComplete ? '9vh' : undefined,
+          left: introComplete ? (isMobile ? '7%' : '9%') : undefined,
           width: isMobile ? '86%' : '82%',
           height: introComplete ? (isMobile ? '82vh' : '82vh') : undefined,
           marginLeft: introComplete ? undefined : 'auto',
