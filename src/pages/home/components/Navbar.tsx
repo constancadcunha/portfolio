@@ -33,46 +33,23 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      const scrollY = container ? container.scrollTop : window.scrollY;
-      const viewportH = container ? container.clientHeight : window.innerHeight;
       // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
       const threshold = isMobile ? window.innerHeight * 1.1 : 60;
-      setScrolled(scrollY > (container ? viewportH * 0.08 : threshold));
+      setScrolled(window.scrollY > threshold);
     };
-    const bind = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      window.addEventListener('scroll', onScroll, { passive: true });
-      container?.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-      return () => {
-        window.removeEventListener('scroll', onScroll);
-        container?.removeEventListener('scroll', onScroll);
-      };
-    };
-
-    let unbind = bind();
-    const onIntroComplete = () => {
-      unbind();
-      unbind = bind();
-    };
-    window.addEventListener('introComplete', onIntroComplete);
-    return () => {
-      unbind();
-      window.removeEventListener('introComplete', onIntroComplete);
-    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [isMobile]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const setup = () => {
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
       NAV_SECTIONS.forEach(({ id }) => {
         const el = document.getElementById(id);
         if (!el) return;
         const obs = new IntersectionObserver(
           ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-          { threshold: 0, root: container ?? null, rootMargin: '-30% 0px -60% 0px' }
+          { threshold: 0, rootMargin: '-30% 0px -60% 0px' }
         );
         obs.observe(el);
         observers.push(obs);
@@ -106,12 +83,7 @@ export default function Navbar() {
     setMenuOpen(false);
     setTimeout(() => {
       const el = document.getElementById(id);
-      const container = document.querySelector<HTMLElement>('.portfolio-scroll');
-      if (el && container) {
-        container.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
-      } else if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, menuOpen ? 300 : 0);
   }, [menuOpen]);
 
