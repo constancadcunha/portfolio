@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { FLOWER_URL, STARRY_NIGHT_URL } from '../../../utils/paintings';
+import { usePrefersReducedMotion } from '../../../utils/usePrefersReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +11,7 @@ export default function IntroOverlay() {
   const spacerRef = useRef<HTMLDivElement>(null);
   const { isDark } = useDarkMode();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -18,6 +20,7 @@ export default function IntroOverlay() {
   }, []);
 
   useEffect(() => {
+    if (reduceMotion) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -49,7 +52,13 @@ export default function IntroOverlay() {
     });
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, [isMobile, reduceMotion]);
+
+  /* Reduced motion: no intro at all. This spacer only offsets the card's
+     negative top margin so the page starts right below the top painting strip. */
+  if (reduceMotion) {
+    return <div aria-hidden="true" style={{ height: isMobile ? 'calc(85vh + 9vh)' : 'calc(98vh + 10vh)' }} />;
+  }
 
   /* phone outer dimensions */
   const phoneW = Math.min(200, Math.round(window.innerWidth * 0.52));

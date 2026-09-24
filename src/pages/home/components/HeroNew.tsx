@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import './HeroNew.css';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
+import { usePrefersReducedMotion } from '../../../utils/usePrefersReducedMotion';
 
 const QUOTE =
   "The best portfolios don\u2019t show what you designed.\u00a0They show how you think.";
@@ -12,10 +13,17 @@ export default function HeroQuote() {
   const progressBarRef = useRef<HTMLDivElement>(null);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const container = textRef.current;
     if (!container) return;
+
+    // Reduced motion: show the whole quote as plain text, no scroll reveal
+    if (reduceMotion) {
+      container.textContent = QUOTE;
+      return;
+    }
 
     const words = QUOTE.split(' ');
     container.innerHTML = words
@@ -65,16 +73,16 @@ export default function HeroQuote() {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <div
       ref={outerRef}
-      style={{ position: 'relative', height: '160vh', background: t.bg, transition: 'background 0.5s ease' }}
+      style={{ position: 'relative', height: reduceMotion ? 'auto' : '160vh', background: t.bg, transition: 'background 0.5s ease' }}
     >
       <div
         style={{
-          position: 'sticky',
+          position: reduceMotion ? 'relative' : 'sticky',
           top: 0,
           height: '100vh',
           display: 'flex',
@@ -92,6 +100,7 @@ export default function HeroQuote() {
             top: 0, left: 0, right: 0,
             height: 2,
             background: t.progressBg,
+            display: reduceMotion ? 'none' : undefined,
           }}
         >
           <div

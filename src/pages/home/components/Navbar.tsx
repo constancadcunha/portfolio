@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { FLOWER_URL, STARRY_NIGHT_URL } from '../../../utils/paintings';
+import { usePrefersReducedMotion } from '../../../utils/usePrefersReducedMotion';
 import Icon from '../../../components/base/Icon';
 
 const OPEN_TO_WORK = true;
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const { isDark, toggle } = useDarkMode();
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -31,12 +33,14 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
-      const threshold = isMobile ? window.innerHeight * 1.1 : 60;
+      // (with reduced motion there is no intro, so go glassy right away)
+      const threshold = isMobile && !reduceMotion ? window.innerHeight * 1.1 : 60;
       setScrolled(window.scrollY > threshold);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isMobile]);
+  }, [isMobile, reduceMotion]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
