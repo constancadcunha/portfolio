@@ -110,7 +110,7 @@ export default function ContactSection() {
                   Based in
                 </p>
                 <p className="font-cormorant font-light" style={{ fontSize: '1.5rem', color: t.textMuted }}>Lisbon, Portugal</p>
-                <p className="font-dm" style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: t.textFaint }}>Lisbon, relocating to Paris. Open to roles across Europe.</p>
+                <p className="font-dm" style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: t.textFaint }}>Lisbon. Open to roles across Europe.</p>
               </div>
 
               <div>
