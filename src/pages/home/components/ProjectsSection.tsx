@@ -702,16 +702,14 @@ export default function ProjectsSection() {
               )}
               {filteredMore.map((p) => (
                 <li key={p.name}>
+                  {/* The row is clickable for mouse users; keyboard and screen-reader users
+                      get a real button (the project name) plus separate links. */}
                   <div
                     className="group flex items-center gap-4 py-3.5 rounded px-2 cursor-pointer transition-colors duration-150"
                     onClick={() => setOpenMoreProject(p)}
                     onMouseEnter={() => setPreviewProject(p)}
                     onMouseLeave={() => setPreviewProject(null)}
                     onMouseMove={handleRowMouseMove}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`${p.name}: ${p.description}`}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpenMoreProject(p); } }}
                     style={{ borderBottom: `1px solid ${t.border}` }}
                   >
                     <div className="flex-shrink-0 rounded overflow-hidden" style={{ width: '4rem', height: '3rem', background: isDark ? '#2a2824' : '#f0ede8' }}>
@@ -719,10 +717,19 @@ export default function ProjectsSection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2.5" style={{ marginBottom: '0.15rem' }}>
-                        <span className="font-dm text-sm font-medium whitespace-nowrap" style={{ color: t.text }}>{p.name}</span>
+                        <button
+                          type="button"
+                          onClick={(e) => { e.stopPropagation(); setOpenMoreProject(p); }}
+                          aria-haspopup="dialog"
+                          aria-describedby={`more-desc-${p.name.replace(/\W+/g, '-').toLowerCase()}`}
+                          className="font-dm text-sm font-medium whitespace-nowrap cursor-pointer"
+                          style={{ color: t.text, background: 'none', border: 0, padding: 0, textAlign: 'left' }}
+                        >
+                          {p.name}
+                        </button>
                         <span className="hidden sm:inline font-dm uppercase truncate" style={{ fontSize: '0.56rem', letterSpacing: '0.14em', color: t.textMuted }}>{p.tag}</span>
                       </div>
-                      <p className="font-dm leading-snug truncate" style={{ fontSize: '0.74rem', color: t.textMuted }}>{p.description}</p>
+                      <p id={`more-desc-${p.name.replace(/\W+/g, '-').toLowerCase()}`} className="font-dm leading-snug truncate" style={{ fontSize: '0.74rem', color: t.textMuted }}>{p.description}</p>
                     </div>
                     <div className="flex items-center gap-1.5 flex-shrink-0">
                       {p.links?.live && <LinkBtn href={p.links.live} icon="ri-global-line" label={`${p.name} live site`} />}

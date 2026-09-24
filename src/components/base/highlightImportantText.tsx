@@ -16,6 +16,21 @@ const LIGHT_MONET_COLORS: Record<string, string> = {
   coral: '#9a4f35',
 };
 
+/* Same hues, deeper still: for small labels (language levels, grades) so they keep
+   ≥4.5:1 even while the intro holds the card at reduced opacity over the painting */
+const LIGHT_LABEL_COLORS: Record<string, string> = {
+  blue: '#32587d',
+  purple: '#624990',
+  gold: '#6c511d',
+  sage: '#305d47',
+  amber: '#754d25',
+  sky: '#33587c',
+  lilac: '#624990',
+  honey: '#6c511d',
+  mint: '#305d47',
+  coral: '#86452e',
+};
+
 const DARK_VANGOGH_COLORS: Record<string, string> = {
   blue: '#6f97e8',
   purple: '#9a7fd6',
@@ -39,8 +54,13 @@ function hashKey(input: string): number {
   return hash;
 }
 
-export function highlightImportantText(text: string, isDark: boolean, groupKey?: string): React.ReactNode {
-  const palette = isDark ? DARK_VANGOGH_COLORS : LIGHT_MONET_COLORS;
+export function highlightImportantText(
+  text: string,
+  isDark: boolean,
+  groupKey?: string,
+  options?: { label?: boolean },
+): React.ReactNode {
+  const palette = isDark ? DARK_VANGOGH_COLORS : options?.label ? LIGHT_LABEL_COLORS : LIGHT_MONET_COLORS;
   const key = (groupKey ?? '').toLowerCase();
   const directTone = PALETTE_ORDER.find((tone) => key.includes(tone));
   const fallbackTone = PALETTE_ORDER[hashKey(groupKey ?? text) % PALETTE_ORDER.length];

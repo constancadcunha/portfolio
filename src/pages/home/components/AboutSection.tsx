@@ -370,7 +370,7 @@ export default function AboutSection() {
                     >
                       <Icon name="translate-2" className="text-xs" style={{ opacity: 0.6 }} />
                       {l.label}
-                      <span>{highlightImportantText(l.level, isDark, l.label)}</span>
+                      <span>{highlightImportantText(l.level, isDark, l.label, { label: true })}</span>
                     </span>
                   ))}
                 </div>
@@ -383,7 +383,7 @@ export default function AboutSection() {
                     <div key={e.degree}>
                       <p className="font-dm uppercase" style={{ fontSize: '0.6rem', letterSpacing: '0.14em', color: t.textMuted }}>{e.period}</p>
                       <p className="font-cormorant font-medium" style={{ fontSize: '1.1rem', color: t.text, lineHeight: 1.25 }}>{e.degree}</p>
-                      <p className="font-dm" style={{ fontSize: '0.75rem', color: t.textMuted }}>{e.school} · {highlightImportantText(e.grade, isDark, `edu-${e.degree}`)}</p>
+                      <p className="font-dm" style={{ fontSize: '0.75rem', color: t.textMuted }}>{e.school} · {highlightImportantText(e.grade, isDark, `edu-${e.degree}`, { label: true })}</p>
                     </div>
                   ))}
                 </div>
