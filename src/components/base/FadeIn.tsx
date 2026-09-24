@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ElementType } from 'react';
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ interface FadeInProps {
   distance?: number;
   className?: string;
   style?: React.CSSProperties;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }
 
 /**

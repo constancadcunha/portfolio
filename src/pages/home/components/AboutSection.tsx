@@ -3,6 +3,7 @@ import FadeIn from '../../../components/base/FadeIn';
 import { highlightImportantText } from '../../../components/base/highlightImportantText';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
+import { asset } from '../../../utils/asset';
 
 const skillGroups = [
   {
@@ -241,7 +242,11 @@ export default function AboutSection() {
             >
               <div className="flex-shrink-0 rounded-full overflow-hidden border-2 border-white" style={{ width: '5rem', height: '5rem' }}>
                 <img
-                  src="https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/8c3586c5-87d7-4a69-acaf-06a7702348ab_Constanca.jpg?v=e39dd6796735130c5131f6b448cdeb29"
+                  src={asset('images/portrait.webp')}
+                  width={240}
+                  height={190}
+                  loading="lazy"
+                  decoding="async"
                   alt="Portrait of Constança Cunha"
                   className="w-full h-full object-cover object-top"
                 />

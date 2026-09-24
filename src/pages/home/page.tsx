@@ -14,7 +14,7 @@ const CREDENTIALS = [
   { name: 'Phira Ventures', detail: 'Frontend Developer' },
   { name: 'Instituto Superior Técnico', detail: 'M.Sc. Interaction & Visualization' },
   { name: 'Sky Portugal', detail: 'Apprentice Developer' },
-  { name: 'nextflat CH', detail: 'Product Designer & Engineer' },
+  { name: 'nextflat', detail: 'Product Designer & Frontend Engineer' },
   { name: 'SINFO', detail: 'Tech Conference · 5,000 attendees' },
   { name: 'IBM', detail: 'Enterprise Design Thinking' },
 ];
@@ -325,7 +325,7 @@ function HomeContent() {
   }, []);
 
   return (
-    <div style={{ position: 'relative', ...(isMobile ? {} : desktopBgStyle) }}>
+    <div style={{ position: 'relative', display: 'flow-root', ...(isMobile ? {} : desktopBgStyle) }}>
       {/* Mobile-only: fixed background so the painting NEVER moves while scrolling */}
       {isMobile && (
         <div

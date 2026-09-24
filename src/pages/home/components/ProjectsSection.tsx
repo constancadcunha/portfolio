@@ -86,7 +86,7 @@ const featured: Project[] = [
     description:
       'Sole designer and frontend engineer on a live platform with 500+ users. Redesigned the homepage, property feed and both dashboards across 2 release cycles, on an atomic design system that cut estimated build time for new features by ~30%.',
     impact: '~30% faster feature builds · map-first feed · 2 release cycles shipped',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/d13be3b3-3e62-4ab2-bf73-3a38241445b1_nextflat.png?v=f881151d216566e033795e859ef074d7',
+    bg: asset('images/nextflat.webp'),
     alt: 'nextflat property feed with a map beside the listing results',
     meta: 'nextflat · Zurich, remote · Sep 2025 – Mar 2026',
     details:
@@ -151,7 +151,7 @@ const featured: Project[] = [
     description:
       'Survey found 60%+ abandon recipes mid-way due to unclear instructions. Designed a step-by-step execution flow with contextual ingredients and progress clarity. Zero backtracking in v2 vs. 3/5 hitting dead ends in v1.',
     impact: 'Zero backtracking in v2 · 60%+ mid-recipe abandonment addressed',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/68d5af49-633b-40bd-bf93-fbaa8b39929c_sagebook.png?v=0739bd4c666dd878ca0fc30f6a4913b2',
+    bg: asset('images/sagebook.webp'),
     alt: 'SageBook iOS screens showing a step-by-step recipe flow',
     details:
       "SageBook started from a clear observation: new cooks abandon recipes not because they're unmotivated but because recipe formats are designed for experienced cooks. A survey of new cooks found 60%+ abandon mid-recipe due to unclear instructions. I designed a step-by-step execution flow — no scrolling back, no scanning ahead — where each step reveals only what's relevant. Contextual ingredient sub-lists, visual progress indicators, and inline timers addressed the specific failure modes. Usability testing showed zero backtracking in v2 vs. 3 out of 5 participants hitting dead ends in v1.",
@@ -176,7 +176,7 @@ const more: Project[] = [
     tag: 'Web · Craft · Colour',
     categories: ['Web'],
     title: 'Try the colours before a single stitch.',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/e4846dbe-843f-4b39-a049-7fddabbfe165_skein.png?v=a049a4fb97d426ca18d66a8f7dc49e2e',
+    bg: asset('images/skein.webp'),
     alt: 'skein landing page: "Make your palette before you crochet"',
     description: 'A live colour studio for crochet. Pick your yarns, choose your stitch, watch it come to life.',
     links: {
@@ -190,7 +190,7 @@ const more: Project[] = [
     tag: 'Web · Reading · Playful',
     categories: ['Web'],
     title: 'Browse books the way you used to browse music.',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/d46ac9d9-031a-41e0-b145-f90b46b62416_bookPod.png?v=9bcf0c85c9c5106211fcccf34e0565d6',
+    bg: asset('images/bookpod.webp'),
     alt: 'bookPod: an iPod classic whose screen lists books',
     description: 'An iPod classic, but for books. Scroll the wheel, find your next read.',
     links: {
@@ -204,7 +204,7 @@ const more: Project[] = [
     tag: 'Web · Writing · Generative',
     categories: ['Web', 'Experimental'],
     title: 'One line at a time.',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/f89773e7-9cce-4d26-9d17-5f82c73a1c05_incipit.png?v=739f4a870d5d073135dacc8b19946307',
+    bg: asset('images/incipit.webp'),
     alt: 'incipit: the word "incipit" above a generated first line of a novel',
     description: 'The first line of a novel that was never written. Press any key for another, forever.',
     links: {
@@ -218,7 +218,7 @@ const more: Project[] = [
     tag: 'iOS · SwiftUI · Music',
     categories: ['Mobile'],
     title: 'A music player with a cottage garden in it.',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/9d6f502c-4e6c-45d7-9fe8-ca48fa7425c1_cottagetunes.png?v=2100af8a01d528cdf18320946b7443da',
+    bg: asset('images/cottagetunes.webp'),
     alt: 'CottageTunes iPhone screen with a floral song list',
     description: 'A whimsical music player with floral UI and nostalgic cottagecore charm, built in SwiftUI.',
     links: {
@@ -234,7 +234,7 @@ const more: Project[] = [
     description:
       'Combined relocation planning and budget decisions into a single guided onboarding flow. Full UCD process: research, journey mapping, prototyping, two rounds of evaluation.',
     impact: '40% clarity improvement in onboarding · 2 rounds of usability evaluation',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/3b6e777d-3d0f-46e8-9220-44f6e2eee1a9_remi1.png?v=7378270b2653db2ac3b341f97a6701fd',
+    bg: asset('images/remi.webp'),
     alt: 'ReMi onboarding screens for relocation and budgeting',
     links: {
       caseStudy: 'https://group1ccul03.notion.site/78aca85d730543929c78a2d25c008060?v=0ed04df2912d4a379f3af8766f5ae863',
@@ -247,7 +247,7 @@ const more: Project[] = [
     tag: 'Web · Interaction · Experimental',
     categories: ['Web', 'Experimental'],
     title: 'Every tap and click is a tiny conversation between a person and an interface.',
-    bg: 'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/a4fd0202-006b-4ff0-b74f-3d36f11dad63_clicky1.png?v=bf206608caff9f32dd029fe425d52e8c',
+    bg: asset('images/clicky.webp'),
     alt: 'Clicky prototype showing tactile buttons and toggles',
     description: 'Micro-interaction design as a discipline worth showing, not just describing. Tactile feedback, spring physics, satisfying transitions — built as a working prototype.',
     links: {
@@ -260,7 +260,7 @@ const more: Project[] = [
     tag: 'Terminal · Python · Game',
     categories: ['Experimental'],
     title: 'Learning to debug should feel like solving a puzzle, not reading a manual.',
-    bg: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80',
+    bg: asset('images/debugquest.webp'),
     alt: 'Code on a dark editor screen',
     // TODO(debugquest): the repo is a Python terminal game (fix buggy Python/JS snippets to progress,
     // ASCII art, skill system, easter eggs). It doesn't mention "incremental hints" or "instant
@@ -707,7 +707,7 @@ export default function ProjectsSection() {
                     style={{ borderBottom: `1px solid ${t.border}` }}
                   >
                     <div className="flex-shrink-0 rounded overflow-hidden" style={{ width: '4rem', height: '3rem', background: isDark ? '#2a2824' : '#f0ede8' }}>
-                      {p.bg && <img src={p.bg} alt="" width={128} height={96} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />}
+                      {p.bg && <img src={p.bg.replace('.webp', '-sm.webp')} alt="" width={128} height={96} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2.5" style={{ marginBottom: '0.15rem' }}>
@@ -749,7 +749,7 @@ export default function ProjectsSection() {
           }}
         >
           <div style={{ width: '100%', height: '8rem', overflow: 'hidden', background: isDark ? '#2a2824' : '#f5f3f0' }}>
-            <img src={previewProject.bg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+            <img src={previewProject.bg.replace('.webp', '-sm.webp')} alt="" width={320} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
           </div>
           <div style={{ padding: '0.6rem 0.75rem' }}>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', color: t.text, fontWeight: 500, marginBottom: '0.15rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
