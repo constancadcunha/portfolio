@@ -62,6 +62,8 @@ const featured: Project[] = [
     description:
       'Redesigned and rebuilt key storefront pages in Shopify Liquid for a German D2C sleep brand. PageSpeed went from the 20s–30s to the 80s–90s, and I contributed to average daily sales growing ~10× since April 2026.',
     impact: 'PageSpeed 20s–30s → 80s–90s · ~10× daily sales · 200,000+ customers',
+    bg: asset('images/mysheepi.webp'),
+    alt: 'mySheepi storefront homepage: neck pillow hero with a "Mehr Halt für Deinen Nacken" headline',
     meta: 'Phira Ventures · Frontend Developer · Apr 2026 – present',
     details:
       'mySheepi is a German direct-to-consumer sleep brand with more than 200,000 customers, selling through a Shopify storefront. At Phira Ventures I redesigned and rebuilt its key storefront pages in Shopify Liquid, with performance treated as a design constraint from the start.',
@@ -76,7 +78,6 @@ const featured: Project[] = [
       { label: 'Avg. daily sales', before: '~€1k', after: '~€10k', from: 0.1, to: 1 },
     ],
     headlineStat: { value: '200,000+', label: 'customers on a live Shopify storefront' },
-    confidentialNote: 'This is live client work, so the case study shows the results rather than screens.',
   },
   {
     name: 'nextflat',
@@ -462,6 +463,12 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
         {project.meta && <p className="font-dm" style={{ fontSize: '0.75rem', color: t.textMuted, marginBottom: '1.1rem' }}>{project.meta}</p>}
         {project.impact && <p className="font-dm text-xs font-medium mb-5" style={{ color: t.text }}>{highlightImportantText(project.impact, isDark, accentGroup)}</p>}
         <p className="font-dm text-sm leading-relaxed mb-5" style={{ color: t.textMuted, maxWidth: '44rem' }}>{highlightImportantText(project.details ?? project.description, isDark, accentGroup)}</p>
+
+        {project.bg && project.metrics && (
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: `1px solid ${t.border}`, maxWidth: '44rem' }}>
+            <MetricsVisual project={project} compact />
+          </div>
+        )}
 
         {project.bullets && (
           <ul className="font-dm text-sm leading-relaxed mb-6" style={{ color: t.textMuted, maxWidth: '44rem', display: 'grid', gap: '0.5rem', paddingLeft: 0, listStyle: 'none' }}>

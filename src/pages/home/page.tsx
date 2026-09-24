@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import IntroOverlay from './components/IntroOverlay';
+import HeroQuote from './components/HeroNew';
 import ProjectsSection from './components/ProjectsSection';
 import ProcessSection from './components/ProcessSection';
 import AboutSection from './components/AboutSection';
@@ -394,7 +395,7 @@ function HomeContent() {
           position: 'relative',
           width: isMobile ? '86%' : '82%',
           marginLeft: 'auto', marginRight: 'auto',
-          marginTop: isMobile ? '9vh' : '10vh',
+          marginTop: isMobile ? '-85vh' : '-98vh',
           marginBottom: isMobile ? '1.5vh' : '2vh',
           borderRadius: isMobile ? '1.5rem' : '1.5rem',
           overflow: 'clip',
@@ -485,6 +486,7 @@ function HomeContent() {
 
         </section>
 
+        <HeroQuote />
         <ProjectsSection />
         <ProcessSection />
         <AboutSection />

@@ -30,12 +30,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
+      // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
+      const threshold = isMobile ? window.innerHeight * 1.1 : 60;
+      setScrolled(window.scrollY > threshold);
     };
-    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];

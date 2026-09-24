@@ -101,6 +101,16 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: hidden;
   }
 
+  /* Intro overlay — hide laptop on very small screens, just fade in */
+  .intro-laptop-wrap {
+    transform-origin: center center;
+  }
+
+  .intro-laptop-body {
+    width: 88vw !important;
+    height: calc(88vw * 0.625) !important;
+  }
+
   /* Fix fixed flower strips height on mobile */
   .portfolio-card {
     width: 94% !important;
@@ -110,6 +120,11 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 480px) {
   html {
     font-size: 17px;
+  }
+
+  .intro-laptop-body {
+    width: 92vw !important;
+    height: calc(92vw * 0.625) !important;
   }
 }
 

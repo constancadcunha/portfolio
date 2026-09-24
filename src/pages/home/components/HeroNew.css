@@ -1,0 +1,17 @@
+/* Each word is an inline-block — ensures words never break mid-word across lines */
+.hq-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Space char between words */
+.hq-char.hq-space {
+  display: inline;
+  white-space: normal;
+}
+
+/* Individual chars — opacity animated via JS scroll handler */
+.hq-char {
+  display: inline;
+  will-change: opacity;
+}
