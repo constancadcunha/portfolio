@@ -9,7 +9,7 @@ const NAV_SECTIONS = [
   { id: 'projects', label: 'Projects' },
   { id: 'process', label: 'Process' },
   { id: 'about', label: 'About' },
-  { id: 'contact', label: "Let's Work" },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -110,7 +110,7 @@ export default function Navbar() {
           {/* Right: status dot + dark toggle + hamburger */}
           <div className="flex items-center gap-3">
             {OPEN_TO_WORK && (
-              <span className="relative flex-shrink-0" style={{ width: '0.45rem', height: '0.45rem' }} title="Open to work">
+              <span className="relative flex-shrink-0" style={{ width: '0.45rem', height: '0.45rem' }} title="Open to full-time roles" role="img" aria-label="Open to full-time roles">
                 <span className="absolute inset-0 rounded-full animate-ping" style={{ background: '#5c8a5c', opacity: 0.55, animationDuration: '1.8s' }} />
                 <span className="relative block w-full h-full rounded-full" style={{ background: '#5c8a5c' }} />
               </span>
@@ -201,7 +201,7 @@ export default function Navbar() {
                 <span className="relative block w-full h-full rounded-full" style={{ background: '#5c8a5c' }} />
               </span>
               <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: isDark ? 'rgba(232,228,218,0.4)' : 'rgba(31,30,27,0.4)' }}>
-                Open to work · internship &amp; full-time
+                Open to full-time roles
               </span>
             </div>
           )}
@@ -262,13 +262,13 @@ export default function Navbar() {
               : { background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.3)' }
           }
         >
-          Let&apos;s Work
+          Contact
         </a>
 
         {OPEN_TO_WORK && (
           <span
             className="flex items-center gap-1.5 whitespace-nowrap select-none"
-            title="Currently open to work — internship &amp; full-time opportunities"
+            title="Open to full-time design engineering roles across Europe"
             style={{
               borderLeft: scrolled ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(255,255,255,0.2)',
               paddingLeft: '0.85rem',
@@ -279,7 +279,7 @@ export default function Navbar() {
               <span className="relative block w-full h-full rounded-full" style={{ background: '#5c8a5c' }} />
             </span>
             <span className="font-dm" style={{ fontSize: '0.65rem', letterSpacing: '0.02em', color: scrolled ? 'rgba(31,30,27,0.55)' : 'rgba(255,255,255,0.6)' }}>
-              Open to work
+              Open to full-time roles
             </span>
           </span>
         )}

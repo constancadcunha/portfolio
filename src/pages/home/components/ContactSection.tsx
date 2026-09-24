@@ -96,7 +96,7 @@ export default function ContactSection() {
             Let&apos;s work<br /><em>together.</em>
           </h2>
           <p className="font-dm mx-auto" style={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: '28rem', color: t.textMuted }}>
-            Open to full product builds, redesigns, or just good design conversations. Drop me a message and I&apos;ll get back to you within a day.
+            I&apos;m looking for a full-time design engineering role in Europe. If you&apos;re hiring, or just want to talk design and code, I&apos;d love to hear from you.
           </p>
         </FadeIn>
 
@@ -109,7 +109,7 @@ export default function ContactSection() {
                   Based in
                 </p>
                 <p className="font-cormorant font-light" style={{ fontSize: '1.5rem', color: t.textMuted }}>Lisbon, Portugal</p>
-                <p className="font-dm" style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: t.textFaint }}>Available for remote work worldwide</p>
+                <p className="font-dm" style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: t.textFaint }}>Lisbon, relocating to Paris. Open to roles across Europe.</p>
               </div>
 
               <div>
@@ -122,13 +122,13 @@ export default function ContactSection() {
                     style={{ fontSize: '1.25rem', color: t.textMuted }}>
                     constancadcunha@gmail.com
                   </a>
-                  <button onClick={copyEmail} title="Copy email"
+                  <button type="button" onClick={copyEmail} title="Copy email" aria-label={emailCopied ? 'Email copied' : 'Copy email address'}
                     className="flex items-center justify-center w-7 h-7 rounded-full transition-all duration-200 cursor-pointer flex-shrink-0"
                     style={{ border: `1px solid ${t.borderInput}`, color: t.textMuted }}>
                     <i className={`${emailCopied ? 'ri-check-line' : 'ri-clipboard-line'} text-xs leading-none`} />
                   </button>
                 </div>
-                {emailCopied && <p className="font-dm mt-1" style={{ fontSize: '0.7rem', color: t.textFaint }}>Copied to clipboard!</p>}
+                <p className="font-dm mt-1" role="status" style={{ fontSize: '0.7rem', color: t.textMuted, minHeight: '1em' }}>{emailCopied ? 'Copied to clipboard!' : ''}</p>
               </div>
 
               <div>
@@ -142,7 +142,7 @@ export default function ContactSection() {
                       style={{ fontSize: '0.85rem', color: t.textMuted }}>
                       <span className="flex items-center justify-center w-9 h-9 rounded-full transition-colors duration-200"
                         style={{ border: `1px solid ${t.borderInput}` }}>
-                        <i className={`${s.icon} text-base`} />
+                        <i className={`${s.icon} text-base`} aria-hidden="true" />
                       </span>
                       {s.label}
                     </a>
@@ -154,8 +154,8 @@ export default function ContactSection() {
                 target="_blank" rel="noopener noreferrer"
                 className="font-dm font-medium transition-colors duration-200 cursor-pointer flex items-center gap-2 whitespace-nowrap"
                 style={{ fontSize: '0.8rem', letterSpacing: '0.06em', color: t.text }}>
-                <i className="ri-download-line text-base" />
-                Download résumé
+                <i className="ri-download-line text-base" aria-hidden="true" />
+                Download résumé (PDF)
               </a>
             </div>
           </FadeIn>
@@ -200,32 +200,14 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="project_type" className="font-dm block" style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem', color: t.text }}>
-                      What are you looking for?
-                    </label>
-                    <select id="project_type" name="project_type" className="font-dm cursor-pointer"
-                      style={{ ...inputStyle, appearance: 'none' }}
-                      onFocus={(e) => { e.target.style.borderColor = isDark ? 'rgba(232,228,218,0.5)' : 'rgba(0,0,0,0.4)'; }}
-                      onBlur={(e) => { e.target.style.borderColor = t.borderInput; }}>
-                      <option value="">Select an option</option>
-                      <option value="Full product design">Full product design</option>
-                      <option value="UX research & audit">UX research &amp; audit</option>
-                      <option value="Redesign">Redesign</option>
-                      <option value="Design system">Design system</option>
-                      <option value="Collaboration / consulting">Collaboration / consulting</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
                     <div className="flex justify-between items-baseline" style={{ marginBottom: '0.5rem' }}>
                       <label htmlFor="message" className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: t.text }}>
                         Message
                       </label>
-                      <span className="font-dm" style={{ fontSize: '0.65rem', color: charCount > 500 ? '#c0392b' : t.textFaint }}>{charCount}/500</span>
+                      <span className="font-dm" aria-live="polite" style={{ fontSize: '0.65rem', color: charCount > 500 ? '#b03a2e' : t.textMuted }}>{charCount}/500</span>
                     </div>
                     <textarea id="message" name="message" required rows={5} maxLength={500}
-                      placeholder="Tell me a bit about your project or what you have in mind..."
+                      placeholder="Tell me about the role, the team, or what you'd like to talk about…"
                       className="font-dm resize-none"
                       style={{ ...inputStyle }}
                       onFocus={(e) => { e.target.style.borderColor = isDark ? 'rgba(232,228,218,0.5)' : 'rgba(0,0,0,0.4)'; }}
@@ -234,7 +216,7 @@ export default function ContactSection() {
                   </div>
 
                   {status === 'error' && (
-                    <p className="font-dm text-sm" style={{ color: '#c0392b' }}>Something went wrong — please try again or email me directly.</p>
+                    <p className="font-dm text-sm" role="alert" style={{ color: isDark ? '#f0a092' : '#b03a2e' }}>Something went wrong — please try again or email me directly.</p>
                   )}
 
                   <button type="submit" disabled={status === 'sending' || charCount > 500}

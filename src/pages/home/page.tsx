@@ -6,7 +6,6 @@ import ProcessSection from './components/ProcessSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import PortfolioFooter from './components/PortfolioFooter';
-import CVPrint from './components/CVPrint';
 import { DarkModeProvider, useDarkMode } from '../../contexts/DarkModeContext';
 import { getTokens } from '../../utils/darkTokens';
 import { paintingUrl } from '../../utils/paintings';
@@ -339,7 +338,6 @@ function HomeContent() {
         />
       )}
 
-      <CVPrint />
       <CursorSparkle />
       {konamiActive && <KonamiToast onDone={() => setKonamiActive(false)} />}
 

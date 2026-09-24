@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "node:path";
+import { cpSync, existsSync } from "node:fs";
 import AutoImport from "unplugin-auto-import/vite";
 
 const base = process.env.BASE_PATH || "/";
@@ -17,6 +18,18 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    {
+      // The CV and certificates live at the repo root (not /public) so the CV
+      // can be swapped in place; copy them into the build so the links resolve.
+      name: "copy-root-documents",
+      apply: "build",
+      closeBundle() {
+        for (const item of ["Constança_Cunha_CV.pdf", "Certificates"]) {
+          const from = resolve(__dirname, item);
+          if (existsSync(from)) cpSync(from, resolve(__dirname, "out", item), { recursive: true });
+        }
+      },
+    },
     AutoImport({
       imports: [
         {
