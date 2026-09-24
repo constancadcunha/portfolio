@@ -1,13 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
+import { FLOWER_URL, STARRY_NIGHT_URL } from '../../../utils/paintings';
 
 const OPEN_TO_WORK = true;
-
-const FLOWER_URL =
-  'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/6e8c403a-cbbb-4ffb-9b5c-046a895a4145_44754-O4E303.jpg?v=7bc895d19fd86036061a48ea2d24fbcb';
-
-const STARRY_NIGHT_URL =
-  'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/ee9938bb-db17-4424-ae21-3295d23f431b_Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg.webp?v=e5c1f82b131465dd1fba7e27842ec222';
 
 const NAV_SECTIONS = [
   { id: 'hero', label: 'Home' },
@@ -33,39 +28,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      // On mobile, stay transparent during the intro scroll — only go glassy after the card is revealed
-      const threshold = isMobile ? window.innerHeight * 1.1 : 60;
-      setScrolled(window.scrollY > threshold);
+      setScrolled(window.scrollY > 40);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [isMobile]);
+  }, []);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-    const setup = () => {
-      NAV_SECTIONS.forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const obs = new IntersectionObserver(
-          ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
-          { threshold: 0, rootMargin: '-30% 0px -60% 0px' }
-        );
-        obs.observe(el);
-        observers.push(obs);
-      });
-    };
-    setup();
-    const handler = () => {
-      observers.forEach((o) => o.disconnect());
-      observers.length = 0;
-      setTimeout(setup, 200);
-    };
-    window.addEventListener('introComplete', handler);
-    return () => {
-      observers.forEach((o) => o.disconnect());
-      window.removeEventListener('introComplete', handler);
-    };
+    NAV_SECTIONS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
+        { threshold: 0, rootMargin: '-30% 0px -60% 0px' }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   // Prevent body scroll when mobile menu is open
@@ -83,7 +65,8 @@ export default function Navbar() {
     setMenuOpen(false);
     setTimeout(() => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
     }, menuOpen ? 300 : 0);
   }, [menuOpen]);
 

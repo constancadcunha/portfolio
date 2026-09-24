@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import IntroOverlay from './components/IntroOverlay';
-import HeroQuote from './components/HeroNew';
 import ProjectsSection from './components/ProjectsSection';
 import ProcessSection from './components/ProcessSection';
 import AboutSection from './components/AboutSection';
@@ -10,12 +9,7 @@ import PortfolioFooter from './components/PortfolioFooter';
 import CVPrint from './components/CVPrint';
 import { DarkModeProvider, useDarkMode } from '../../contexts/DarkModeContext';
 import { getTokens } from '../../utils/darkTokens';
-
-const FLOWER_URL =
-  'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/6e8c403a-cbbb-4ffb-9b5c-046a895a4145_44754-O4E303.jpg?v=7bc895d19fd86036061a48ea2d24fbcb';
-
-const STARRY_NIGHT_URL =
-  'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/ee9938bb-db17-4424-ae21-3295d23f431b_Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg.webp?v=e5c1f82b131465dd1fba7e27842ec222';
+import { paintingUrl } from '../../utils/paintings';
 
 const CREDENTIALS = [
   { name: 'Phira Ventures', detail: 'Frontend Developer' },
@@ -34,14 +28,18 @@ function RotatingTagline() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let interval: ReturnType<typeof setInterval>;
+    const tick = () => {
       setVisible(false);
       setTimeout(() => {
         setIdx((i) => (i + 1) % ROLES.length);
         setVisible(true);
       }, 350);
-    }, 2600);
-    return () => clearInterval(interval);
+    };
+    // Hold "Design Engineer" long enough to be read first, then rotate
+    const start = setTimeout(() => { tick(); interval = setInterval(tick, 2600); }, 5000);
+    return () => { clearTimeout(start); clearInterval(interval); };
   }, []);
 
   return (
@@ -57,7 +55,9 @@ function RotatingTagline() {
         justifyContent: 'center',
       }}
     >
+      <span className="sr-only">Design engineer</span>
       <span
+        aria-hidden="true"
         style={{
           display: 'inline-block',
           opacity: visible ? 1 : 0,
@@ -264,6 +264,15 @@ function useNameScramble(original: string) {
   return { display, handleClick };
 }
 
+/* ── Smooth in-page scroll (instant under reduced motion) ── */
+function scrollToId(id: string) {
+  return (e: React.MouseEvent) => {
+    e.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById(id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  };
+}
+
 /* ── Inner home content (needs context access) ── */
 function HomeContent() {
   const topStripRef = useRef<HTMLDivElement>(null);
@@ -285,7 +294,7 @@ function HomeContent() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const bgUrl = isDark ? STARRY_NIGHT_URL : FLOWER_URL;
+  const bgUrl = paintingUrl(isDark);
 
   // Desktop: background-attachment:fixed (parallax)
   // Mobile: we use a separate position:fixed div — background-attachment:fixed is broken on iOS
@@ -379,7 +388,7 @@ function HomeContent() {
           position: 'relative',
           width: isMobile ? '86%' : '82%',
           marginLeft: 'auto', marginRight: 'auto',
-          marginTop: isMobile ? '-85vh' : '-98vh',
+          marginTop: isMobile ? '9vh' : '10vh',
           marginBottom: isMobile ? '1.5vh' : '2vh',
           borderRadius: isMobile ? '1.5rem' : '1.5rem',
           overflow: 'clip',
@@ -396,7 +405,7 @@ function HomeContent() {
           id="hero"
           className="flex flex-col items-center justify-center text-center"
           style={{
-            padding: isMobile ? '6rem 6% 5rem' : '14vh 8% 8vh',
+            padding: isMobile ? '4.5rem 6% 3.5rem' : '11vh 8% 7vh',
             background: t.bg,
             transition: 'background 0.5s ease',
           }}
@@ -405,7 +414,7 @@ function HomeContent() {
             className="font-dm uppercase"
             style={{ fontSize: 'clamp(0.5rem, 0.85vw, 0.65rem)', letterSpacing: '0.3em', marginBottom: '1.75rem', color: t.textMuted }}
           >
-            Portfolio
+            Lisbon · relocating to Paris
           </p>
 
           <h1
@@ -426,8 +435,26 @@ function HomeContent() {
             I design in Figma and ship in code.
           </p>
 
+          <div className="flex flex-wrap items-center justify-center gap-3" style={{ marginTop: '2.25rem' }}>
+            <a
+              href="#projects"
+              onClick={scrollToId('projects')}
+              className="hero-cta font-dm font-medium rounded-full flex items-center gap-2"
+              style={{ fontSize: '0.8rem', letterSpacing: '0.04em', padding: '0.8rem 1.6rem', background: t.text, color: t.bg }}
+            >
+              See my work <i className="ri-arrow-down-line" aria-hidden="true" />
+            </a>
+            <a
+              href="#contact"
+              onClick={scrollToId('contact')}
+              className="hero-cta font-dm font-medium rounded-full"
+              style={{ fontSize: '0.8rem', letterSpacing: '0.04em', padding: '0.8rem 1.6rem', border: `1px solid ${t.borderInput}`, color: t.text }}
+            >
+              Get in touch
+            </a>
+          </div>
           {/* Credibility strip */}
-          <div style={{ marginTop: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ marginTop: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <p className="font-dm uppercase" style={{ fontSize: '0.52rem', letterSpacing: '0.3em', color: t.textFaint }}>
               Experience across
             </p>
@@ -450,13 +477,8 @@ function HomeContent() {
             <div style={{ width: '2.5rem', height: '1px', background: isDark ? 'rgba(232,228,218,0.1)' : 'rgba(31,30,27,0.12)', marginTop: '0.25rem' }} />
           </div>
 
-          <div className="flex flex-col items-center gap-2" style={{ marginTop: '3rem', opacity: 0.25 }}>
-            <div style={{ width: 1, height: 36, background: isDark ? '#e8e4da' : '#6b6b60', animation: 'scrollNudge 2s ease-in-out infinite' }} />
-            <span className="font-dm uppercase" style={{ fontSize: '0.46rem', letterSpacing: '0.32em', color: t.textMuted }}>scroll</span>
-          </div>
         </section>
 
-        <HeroQuote />
         <ProjectsSection />
         <ProcessSection />
         <AboutSection />
@@ -465,10 +487,6 @@ function HomeContent() {
       </div>
 
       <style>{`
-        @keyframes scrollNudge {
-          0%, 100% { opacity: 0.2; transform: scaleY(0.4); transform-origin: top; }
-          50%       { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
-        }
         @keyframes toastIn {
           from { opacity: 0; transform: translateX(-50%) translateY(12px) scale(0.9); }
           to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
