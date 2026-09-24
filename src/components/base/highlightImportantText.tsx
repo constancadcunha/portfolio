@@ -2,17 +2,18 @@ import React from 'react';
 
 const HIGHLIGHT_PATTERN = /(~?\d[\d,.]*(?:\/\d[\d,.]*)?(?:\+|%)?|\b\d+[\w-]*\b|\b[ABC]\d\b|\bTier-\d\b|\bv\d\b)/g;
 
+/* Deeper Monet tones so highlighted numbers pass WCAG AA (≥4.5:1) on the light backgrounds */
 const LIGHT_MONET_COLORS: Record<string, string> = {
-  blue: '#6f97c4',
-  purple: '#a693cf',
-  gold: '#d7bb7b',
-  sage: '#8fb79f',
-  amber: '#cfa67f',
-  sky: '#79a9d8',
-  lilac: '#b59ad9',
-  honey: '#d7b169',
-  mint: '#87bba2',
-  coral: '#d49983',
+  blue: '#3f6f9e',
+  purple: '#6b4f9c',
+  gold: '#7f5f22',
+  sage: '#3b7358',
+  amber: '#8a5a2b',
+  sky: '#3d6a96',
+  lilac: '#6b4f9c',
+  honey: '#7f5f22',
+  mint: '#3b7358',
+  coral: '#9a4f35',
 };
 
 const DARK_VANGOGH_COLORS: Record<string, string> = {

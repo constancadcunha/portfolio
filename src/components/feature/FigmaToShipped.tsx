@@ -1,5 +1,6 @@
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { getTokens } from '../../utils/darkTokens';
+import Icon from '../base/Icon';
 
 export interface ShotImage {
   src: string;
@@ -45,7 +46,7 @@ export default function FigmaToShipped({ figma, shipped, frameName, url, caption
           <div className="f2s-bar" style={{ background: '#2c2c2c', color: 'rgba(255,255,255,0.85)' }}>
             <FigmaMark />
             <span>Figma</span>
-            <span style={{ opacity: 0.55, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>/ {frameName}</span>
+            <span style={{ opacity: 0.75, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>/ {frameName}</span>
           </div>
           <div
             className="f2s-canvas"
@@ -55,7 +56,7 @@ export default function FigmaToShipped({ figma, shipped, frameName, url, caption
               backgroundSize: '12px 12px',
             }}
           >
-            <span className="f2s-frame-label" style={{ color: FIGMA_BLUE }}>{frameName}</span>
+            <span className="f2s-frame-label" style={{ color: isDark ? '#6cc0ff' : '#0a62ab' }}>{frameName}</span>
             <div className="f2s-frame" style={{ outline: `1.5px solid ${FIGMA_BLUE}` }}>
               <Slot image={figma} todo="TODO: add the Figma frame export" isDark={isDark} />
               {(['tl', 'tr', 'bl', 'br'] as const).map((c) => (
@@ -67,7 +68,7 @@ export default function FigmaToShipped({ figma, shipped, frameName, url, caption
 
         {/* ── Arrow ── */}
         <div className="f2s-arrow" aria-hidden="true" style={{ background: t.card, border: panelBorder, color: t.text }}>
-          <i className="ri-arrow-right-line" />
+          <Icon name="ri-arrow-right-line" />
         </div>
 
         {/* ── Shipped side ── */}
@@ -78,7 +79,7 @@ export default function FigmaToShipped({ figma, shipped, frameName, url, caption
               className="f2s-url"
               style={{ background: isDark ? 'rgba(255,255,255,0.06)' : '#ffffff', border: panelBorder, color: t.textMuted }}
             >
-              <i className="ri-lock-line" aria-hidden="true" /> {url ?? 'Shipped'}
+              <Icon name="ri-lock-line" /> {url ?? 'Shipped'}
             </span>
           </div>
           <div className="f2s-shot">
@@ -95,9 +96,9 @@ export default function FigmaToShipped({ figma, shipped, frameName, url, caption
       <style>{`
         .f2s-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .f2s-panel { border-radius: 0.75rem; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
-        .f2s-bar { display: flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.7rem; font-family: 'DM Sans', sans-serif; font-size: 0.62rem; min-height: 2rem; }
+        .f2s-bar { display: flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.7rem; font-family: 'DM Sans Variable', 'DM Sans', sans-serif; font-size: 0.62rem; min-height: 2rem; }
         .f2s-canvas { position: relative; flex: 1; padding: 1.6rem 1.1rem 1.1rem; }
-        .f2s-frame-label { position: absolute; top: 0.45rem; left: 1.1rem; font-family: 'DM Sans', sans-serif; font-size: 0.58rem; font-weight: 500; }
+        .f2s-frame-label { position: absolute; top: 0.45rem; left: 1.1rem; font-family: 'DM Sans Variable', 'DM Sans', sans-serif; font-size: 0.58rem; font-weight: 500; }
         .f2s-frame { position: relative; aspect-ratio: 16 / 10; background: #fff; }
         .f2s-handle { position: absolute; width: 7px; height: 7px; background: #fff; border: 1.5px solid; }
         .f2s-tl { top: -4px; left: -4px; } .f2s-tr { top: -4px; right: -4px; }

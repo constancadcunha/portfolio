@@ -9,6 +9,7 @@ import PortfolioFooter from './components/PortfolioFooter';
 import { DarkModeProvider, useDarkMode } from '../../contexts/DarkModeContext';
 import { getTokens } from '../../utils/darkTokens';
 import { paintingUrl } from '../../utils/paintings';
+import Icon from '../../components/base/Icon';
 
 const CREDENTIALS = [
   { name: 'Phira Ventures', detail: 'Frontend Developer' },
@@ -21,13 +22,18 @@ const CREDENTIALS = [
 
 const ROLES = ['Design Engineer', 'Frontend Developer', 'Product Designer'];
 
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ── Rotating tagline ── */
 function RotatingTagline() {
+  const { isDark } = useDarkMode();
+  const t = getTokens(isDark);
   const [idx, setIdx] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
     let interval: ReturnType<typeof setInterval>;
     const tick = () => {
       setVisible(false);
@@ -43,8 +49,9 @@ function RotatingTagline() {
 
   return (
     <div
-      className="font-dm font-normal text-stone uppercase overflow-hidden"
+      className="font-dm font-normal uppercase overflow-hidden"
       style={{
+        color: t.textMuted,
         fontSize: 'clamp(0.5rem, 0.95vw, 0.75rem)',
         letterSpacing: '0.36em',
         marginBottom: '1.4rem',
@@ -109,7 +116,7 @@ function BackToTop() {
         backdropFilter: 'blur(6px)',
       }}
     >
-      <i className="ri-arrow-up-line text-white/80" style={{ fontSize: '0.95rem', lineHeight: 1 }} />
+      <Icon name="ri-arrow-up-line" className="text-white/80" style={{ fontSize: '0.95rem', lineHeight: 1 }} />
     </button>
   );
 }
@@ -142,6 +149,7 @@ function CursorSparkle() {
   const lastMove = useRef(0);
 
   useEffect(() => {
+    if (prefersReducedMotion() || !window.matchMedia('(pointer: fine)').matches) return;
     const onMove = (e: MouseEvent) => {
       const now = Date.now();
       if (now - lastMove.current < 60) return; // throttle
@@ -206,7 +214,7 @@ function KonamiToast({ onDone }: { onDone: () => void }) {
         color: '#f5f3f0',
         borderRadius: '999px',
         padding: '0.7rem 1.6rem',
-        fontFamily: 'DM Sans, sans-serif',
+        fontFamily: '"DM Sans Variable", "DM Sans", sans-serif',
         fontSize: '0.8rem',
         letterSpacing: '0.03em',
         display: 'flex',
@@ -236,7 +244,7 @@ function useNameScramble(original: string) {
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => { clickCount.current = 0; }, 1200);
 
-    if (clickCount.current >= 5 && !scrambling) {
+    if (clickCount.current >= 5 && !scrambling && !prefersReducedMotion()) {
       setScrambling(true);
       clickCount.current = 0;
       let iter = 0;
@@ -267,8 +275,7 @@ function useNameScramble(original: string) {
 function scrollToId(id: string) {
   return (e: React.MouseEvent) => {
     e.preventDefault();
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById(id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   };
 }
 
@@ -306,9 +313,10 @@ function HomeContent() {
   };
 
   useEffect(() => {
+    const still = prefersReducedMotion();
     const onScroll = () => {
       const y = window.scrollY;
-      const offset = y * 0.06;
+      const offset = still ? 0 : y * 0.06;
       if (topStripRef.current) topStripRef.current.style.backgroundPositionY = `calc(50% + ${offset}px)`;
       if (bottomStripRef.current) bottomStripRef.current.style.backgroundPositionY = `calc(50% - ${offset}px)`;
 
@@ -428,7 +436,7 @@ function HomeContent() {
 
           <p
             className="font-cormorant font-light italic mx-auto"
-            style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.2rem)', maxWidth: '28rem', lineHeight: 1.65, color: isDark ? 'rgba(232,228,218,0.5)' : 'rgba(31,30,27,0.5)' }}
+            style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.2rem)', maxWidth: '28rem', lineHeight: 1.65, color: t.textMuted }}
           >
             I design in Figma and ship in code.
           </p>
@@ -440,7 +448,7 @@ function HomeContent() {
               className="hero-cta font-dm font-medium rounded-full flex items-center gap-2"
               style={{ fontSize: '0.8rem', letterSpacing: '0.04em', padding: '0.8rem 1.6rem', background: t.text, color: t.bg }}
             >
-              See my work <i className="ri-arrow-down-line" aria-hidden="true" />
+              See my work <Icon name="ri-arrow-down-line" />
             </a>
             <a
               href="#contact"
@@ -461,7 +469,7 @@ function HomeContent() {
                 <span key={c.name} className="flex items-center gap-x-5">
                   <span
                     className="font-cormorant font-light transition-colors duration-200 cursor-default"
-                    style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', letterSpacing: '0.015em', color: isDark ? 'rgba(232,228,218,0.35)' : 'rgba(31,30,27,0.45)' }}
+                    style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', letterSpacing: '0.015em', color: t.textMuted }}
                     title={c.detail}
                   >
                     {c.name}

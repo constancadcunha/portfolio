@@ -76,9 +76,12 @@ html {
   background-color: #6d7f5a;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
+html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans Variable', 'DM Sans', sans-serif;
   background-color: transparent;
   color: #1a1a1a;
   line-height: 1.7;
@@ -110,3 +113,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+/* ── Focus: always visible for keyboard users ── */
+:focus-visible {
+  outline: 2px solid #3d6a96 !important;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+input:focus-visible,
+textarea:focus-visible {
+  outline-offset: 1px;
+}
+
+/* ── Reduced motion: no animation, no smooth scrolling ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .animate-ping { animation: none !important; }
+}

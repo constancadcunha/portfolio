@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { FLOWER_URL, STARRY_NIGHT_URL } from '../../../utils/paintings';
+import Icon from '../../../components/base/Icon';
 
 const OPEN_TO_WORK = true;
 
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState('');
   const [hoverToggle, setHoverToggle] = useState(false);
+  const [previewWanted, setPreviewWanted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const { isDark, toggle } = useDarkMode();
@@ -76,8 +78,8 @@ export default function Navbar() {
 
   const linkColor = (id: string) =>
     scrolled
-      ? activeId === id ? '#1f1e1b' : 'rgba(31,30,27,0.5)'
-      : activeId === id ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.65)';
+      ? activeId === id ? '#1f1e1b' : 'rgba(31,30,27,0.75)'
+      : activeId === id ? '#ffffff' : 'rgba(255,255,255,0.92)';
 
   const underlineBg = scrolled ? '#1f1e1b' : '#ffffff';
 
@@ -91,7 +93,7 @@ export default function Navbar() {
           className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between transition-all duration-500"
           style={{
             padding: `0.75rem 1.25rem`,
-            background: scrolled ? 'rgba(255,255,255,0.88)' : 'transparent',
+            background: scrolled ? 'rgba(255,255,255,0.88)' : 'linear-gradient(to bottom, rgba(20,19,17,0.45), rgba(20,19,17,0))',
             backdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
             WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(160%)' : 'none',
             borderBottom: scrolled ? '1px solid rgba(0,0,0,0.07)' : 'none',
@@ -125,26 +127,35 @@ export default function Navbar() {
                 border: scrolled ? '1px solid rgba(31,30,27,0.16)' : '1px solid rgba(255,255,255,0.3)',
               }}
             >
-              <i className={isDark ? 'ri-sun-line' : 'ri-moon-line'} style={{ fontSize: '0.85rem', lineHeight: 1, color: scrolled ? 'rgba(31,30,27,0.6)' : 'rgba(255,255,255,0.85)' }} />
+              <Icon name={isDark ? 'ri-sun-line' : 'ri-moon-line'} style={{ fontSize: '0.85rem', lineHeight: 1, color: scrolled ? 'rgba(31,30,27,0.75)' : '#ffffff' }} />
             </button>
 
             <button
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
               className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 cursor-pointer"
               style={{
                 background: 'transparent',
                 border: scrolled ? '1px solid rgba(31,30,27,0.16)' : '1px solid rgba(255,255,255,0.3)',
               }}
             >
-              <i className="ri-menu-3-line" style={{ fontSize: '0.85rem', lineHeight: 1, color: scrolled ? 'rgba(31,30,27,0.6)' : 'rgba(255,255,255,0.85)' }} />
+              <Icon name="ri-menu-3-line" style={{ fontSize: '0.85rem', lineHeight: 1, color: scrolled ? 'rgba(31,30,27,0.75)' : '#ffffff' }} />
             </button>
           </div>
         </nav>
 
         {/* Mobile menu overlay */}
         <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          aria-hidden={!menuOpen}
+          inert={!menuOpen}
           style={{
+            visibility: menuOpen ? 'visible' : 'hidden',
             position: 'fixed', inset: 0, zIndex: 200,
             background: isDark ? 'rgba(28,26,23,0.97)' : 'rgba(250,249,247,0.97)',
             backdropFilter: 'blur(20px)',
@@ -152,20 +163,21 @@ export default function Navbar() {
             display: 'flex', flexDirection: 'column',
             opacity: menuOpen ? 1 : 0,
             pointerEvents: menuOpen ? 'auto' : 'none',
-            transition: 'opacity 0.3s ease',
+            transition: menuOpen ? 'opacity 0.3s ease' : 'opacity 0.3s ease, visibility 0s linear 0.3s',
           }}
         >
           {/* Top bar */}
           <div className="flex items-center justify-between px-6 pt-5 pb-4" style={{ borderBottom: isDark ? '1px solid rgba(232,228,218,0.08)' : '1px solid rgba(31,30,27,0.07)' }}>
-            <span className="font-cormorant font-light" style={{ fontSize: '1.1rem', letterSpacing: '0.02em', color: isDark ? 'rgba(232,228,218,0.6)' : 'rgba(31,30,27,0.4)' }}>
+            <span className="font-cormorant font-light" style={{ fontSize: '1.1rem', letterSpacing: '0.02em', color: isDark ? 'rgba(232,228,218,0.75)' : 'rgba(31,30,27,0.72)' }}>
               Menu
             </span>
             <button
               onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
               className="flex items-center justify-center w-9 h-9 rounded-full cursor-pointer transition-all duration-200"
               style={{ border: isDark ? '1px solid rgba(232,228,218,0.15)' : '1px solid rgba(31,30,27,0.12)', background: 'transparent' }}
             >
-              <i className="ri-close-line" style={{ fontSize: '1.1rem', lineHeight: 1, color: isDark ? 'rgba(232,228,218,0.7)' : 'rgba(31,30,27,0.6)' }} />
+              <Icon name="ri-close-line" style={{ fontSize: '1.1rem', lineHeight: 1, color: isDark ? 'rgba(232,228,218,0.7)' : 'rgba(31,30,27,0.6)' }} />
             </button>
           </div>
 
@@ -182,7 +194,7 @@ export default function Navbar() {
                   lineHeight: 1.2,
                   color: activeId === s.id
                     ? (isDark ? '#e8e4da' : '#1f1e1b')
-                    : (isDark ? 'rgba(232,228,218,0.3)' : 'rgba(31,30,27,0.28)'),
+                    : (isDark ? 'rgba(232,228,218,0.64)' : 'rgba(31,30,27,0.64)'),
                   opacity: menuOpen ? 1 : 0,
                   transform: menuOpen ? 'translateX(0)' : 'translateX(-16px)',
                   transition: `opacity 0.35s ease ${i * 55 + 100}ms, transform 0.35s ease ${i * 55 + 100}ms, color 0.2s ease`,
@@ -200,7 +212,7 @@ export default function Navbar() {
                 <span className="absolute inset-0 rounded-full animate-ping" style={{ background: '#5c8a5c', opacity: 0.55, animationDuration: '1.8s' }} />
                 <span className="relative block w-full h-full rounded-full" style={{ background: '#5c8a5c' }} />
               </span>
-              <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: isDark ? 'rgba(232,228,218,0.4)' : 'rgba(31,30,27,0.4)' }}>
+              <span className="font-dm" style={{ fontSize: '0.7rem', letterSpacing: '0.08em', color: isDark ? 'rgba(232,228,218,0.72)' : 'rgba(31,30,27,0.72)' }}>
                 Open to full-time roles
               </span>
             </div>
@@ -224,7 +236,7 @@ export default function Navbar() {
           pointerEvents: 'auto',
           backdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'blur(10px)',
           WebkitBackdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'blur(10px)',
-          background: scrolled ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.12)',
+          background: scrolled ? 'rgba(255,255,255,0.82)' : 'rgba(31,30,27,0.42)',
           border: scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.25)',
         }}
       >
@@ -258,8 +270,8 @@ export default function Navbar() {
             activeId === 'contact'
               ? { background: '#1f1e1b', color: '#ffffff', border: '1px solid #1f1e1b' }
               : scrolled
-              ? { background: 'transparent', color: 'rgba(31,30,27,0.6)', border: '1px solid rgba(31,30,27,0.22)' }
-              : { background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.3)' }
+              ? { background: 'transparent', color: '#1f1e1b', border: '1px solid rgba(31,30,27,0.3)' }
+              : { background: 'rgba(255,255,255,0.14)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.45)' }
           }
         >
           Contact
@@ -278,7 +290,7 @@ export default function Navbar() {
               <span className="absolute inset-0 rounded-full animate-ping" style={{ background: '#5c8a5c', opacity: 0.55, animationDuration: '1.8s' }} />
               <span className="relative block w-full h-full rounded-full" style={{ background: '#5c8a5c' }} />
             </span>
-            <span className="font-dm" style={{ fontSize: '0.65rem', letterSpacing: '0.02em', color: scrolled ? 'rgba(31,30,27,0.55)' : 'rgba(255,255,255,0.6)' }}>
+            <span className="font-dm" style={{ fontSize: '0.65rem', letterSpacing: '0.02em', color: scrolled ? 'rgba(31,30,27,0.75)' : 'rgba(255,255,255,0.92)' }}>
               Open to full-time roles
             </span>
           </span>
@@ -287,10 +299,11 @@ export default function Navbar() {
         {/* Dark mode toggle with painting hover preview */}
         <div
           className="relative flex-shrink-0"
-          onMouseEnter={() => setHoverToggle(true)}
+          onMouseEnter={() => { setHoverToggle(true); setPreviewWanted(true); }}
           onMouseLeave={() => setHoverToggle(false)}
         >
           <div
+            aria-hidden="true"
             style={{
               position: 'absolute',
               bottom: 'calc(100% + 12px)', right: '-0.5rem',
@@ -305,13 +318,13 @@ export default function Navbar() {
             }}
           >
             <div style={{ width: '100%', height: '6.5rem', overflow: 'hidden' }}>
-              <img src={previewImg} alt={previewLabel} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+              {previewWanted && <img src={previewImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />}
             </div>
             <div style={{ padding: '0.55rem 0.7rem 0.6rem' }}>
               <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '0.75rem', fontWeight: 300, color: 'rgba(240,236,228,0.92)', marginBottom: '0.1rem', letterSpacing: '0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {previewLabel}
               </p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.55rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,236,228,0.4)' }}>
+              <p style={{ fontFamily: '"DM Sans Variable", "DM Sans", sans-serif', fontSize: '0.55rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,236,228,0.72)' }}>
                 {previewSub}
               </p>
             </div>
@@ -330,9 +343,9 @@ export default function Navbar() {
               transform: hoverToggle ? 'scale(1.08)' : 'scale(1)',
             }}
           >
-            <i
-              className={isDark ? 'ri-sun-line' : 'ri-moon-line'}
-              style={{ fontSize: '0.9rem', lineHeight: 1, color: scrolled ? 'rgba(31,30,27,0.6)' : 'rgba(255,255,255,0.7)', transition: 'opacity 0.2s ease' }}
+            <Icon
+              name={isDark ? 'ri-sun-line' : 'ri-moon-line'}
+              style={{ fontSize: '0.9rem', color: scrolled ? 'rgba(31,30,27,0.75)' : '#ffffff' }}
             />
           </button>
         </div>

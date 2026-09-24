@@ -75,7 +75,7 @@ export default function ProcessSection() {
   const t = getTokens(isDark);
   const headingAccent = isDark
     ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 56%, #9fb0ff 100%)'
-    : 'linear-gradient(120deg, #9abeda 0%, #f0cfa3 48%, #bad5c4 100%)';
+    : 'linear-gradient(120deg, #3d6a96 0%, #7f5f22 50%, #3b7358 100%)';
   const { ref: headerRef, inView: headerIn } = useInViewOnce(0.2);
   const { ref: stepsRef, inView: stepsIn } = useInViewOnce(0.1);
   const [activeStep, setActiveStep] = useState<number | null>(null);
@@ -181,6 +181,7 @@ export default function ProcessSection() {
                   marginBottom: '1.5rem',
                   userSelect: 'none',
                 }}
+                aria-hidden="true"
               >
                 {step.num}
               </div>
@@ -204,7 +205,7 @@ export default function ProcessSection() {
                 style={{
                   fontSize: '0.55rem',
                   letterSpacing: '0.2em',
-                  color: activeStep === i ? stepAccent : (isDark ? 'rgba(248,214,111,0.65)' : 'rgba(110,140,166,0.78)'),
+                  color: activeStep === i ? stepAccent : (isDark ? 'rgba(248,214,111,0.85)' : '#4e6e8a'),
                   marginBottom: '1.4rem',
                   transition: 'color 0.3s ease',
                 }}

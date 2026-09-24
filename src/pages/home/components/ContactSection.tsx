@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FadeIn from '../../../components/base/FadeIn';
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
+import Icon from '../../../components/base/Icon';
 
 const FORM_URL = 'https://formsubmit.co/ajax/constancadcunha@gmail.com';
 
@@ -125,7 +126,7 @@ export default function ContactSection() {
                   <button type="button" onClick={copyEmail} title="Copy email" aria-label={emailCopied ? 'Email copied' : 'Copy email address'}
                     className="flex items-center justify-center w-7 h-7 rounded-full transition-all duration-200 cursor-pointer flex-shrink-0"
                     style={{ border: `1px solid ${t.borderInput}`, color: t.textMuted }}>
-                    <i className={`${emailCopied ? 'ri-check-line' : 'ri-clipboard-line'} text-xs leading-none`} />
+                    <Icon name={emailCopied ? 'ri-check-line' : 'ri-clipboard-line'} className="text-xs leading-none" />
                   </button>
                 </div>
                 <p className="font-dm mt-1" role="status" style={{ fontSize: '0.7rem', color: t.textMuted, minHeight: '1em' }}>{emailCopied ? 'Copied to clipboard!' : ''}</p>
@@ -142,7 +143,7 @@ export default function ContactSection() {
                       style={{ fontSize: '0.85rem', color: t.textMuted }}>
                       <span className="flex items-center justify-center w-9 h-9 rounded-full transition-colors duration-200"
                         style={{ border: `1px solid ${t.borderInput}` }}>
-                        <i className={`${s.icon} text-base`} aria-hidden="true" />
+                        <Icon name={s.icon} className="text-base" />
                       </span>
                       {s.label}
                     </a>
@@ -154,7 +155,7 @@ export default function ContactSection() {
                 target="_blank" rel="noopener noreferrer"
                 className="font-dm font-medium transition-colors duration-200 cursor-pointer flex items-center gap-2 whitespace-nowrap"
                 style={{ fontSize: '0.8rem', letterSpacing: '0.06em', color: t.text }}>
-                <i className="ri-download-line text-base" aria-hidden="true" />
+                <Icon name="ri-download-line" className="text-base" />
                 Download résumé (PDF)
               </a>
             </div>
@@ -166,7 +167,7 @@ export default function ContactSection() {
               {status === 'sent' ? (
                 <div className="flex flex-col items-center justify-center text-center" style={{ padding: '4rem 2rem' }}>
                   <div className="flex items-center justify-center w-14 h-14 rounded-full" style={{ background: isDark ? 'rgba(232,228,218,0.08)' : 'rgba(0,0,0,0.05)', marginBottom: '1.5rem' }}>
-                    <i className="ri-check-line text-2xl" style={{ color: t.text }} />
+                    <Icon name="ri-check-line" className="text-2xl" style={{ color: t.text }} />
                   </div>
                   <h3 className="font-cormorant font-light" style={{ fontSize: '2rem', marginBottom: '0.75rem', color: t.text }}>Message sent!</h3>
                   <p className="font-dm" style={{ fontSize: '0.85rem', lineHeight: 1.7, color: t.textMuted }}>Thank you for reaching out. I&apos;ll get back to you within a day.</p>

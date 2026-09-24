@@ -7,10 +7,7 @@ export default {
     extend: {
       fontFamily: {
         cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        dm: ['"DM Sans"', 'sans-serif'],
-        caveat: ['Caveat', 'cursive'],
-        caprasimo: ['Caprasimo', 'cursive'],
-        inter: ['Inter', 'sans-serif'],
+        dm: ['"DM Sans Variable"', '"DM Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         ink: '#1a1a1a',

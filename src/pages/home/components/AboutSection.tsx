@@ -4,6 +4,7 @@ import { highlightImportantText } from '../../../components/base/highlightImport
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 import { asset } from '../../../utils/asset';
+import Icon from '../../../components/base/Icon';
 
 const skillGroups = [
   {
@@ -165,9 +166,6 @@ export default function AboutSection() {
   const websiteLinkColor = isDark ? '#f2c86b' : '#7d9bc1';
   const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
   const certificateHref = (fileName: string) => `${basePath}Certificates/${encodeURIComponent(fileName)}`;
-  const panelBg = isDark
-    ? 'linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.025) 100%)'
-    : 'linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,238,0.98) 100%)';
   const skillPalettes = isDark
     ? [
         'linear-gradient(145deg, rgba(248,214,111,0.12) 0%, rgba(80,96,170,0.2) 100%)',
@@ -181,7 +179,7 @@ export default function AboutSection() {
       ];
   const headingAccent = isDark
     ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 56%, #9fb0ff 100%)'
-    : 'linear-gradient(120deg, #9abeda 0%, #f0cfa3 48%, #bad5c4 100%)';
+    : 'linear-gradient(120deg, #3d6a96 0%, #7f5f22 50%, #3b7358 100%)';
   const experienceAccents = isDark
     ? {
         sky: '#7cb5ff',
@@ -370,9 +368,9 @@ export default function AboutSection() {
                         color: t.textMuted,
                       }}
                     >
-                      <span className="material-icons-round text-xs leading-none" style={{ opacity: 0.5 }}>translate</span>
+                      <Icon name="translate-2" className="text-xs" style={{ opacity: 0.6 }} />
                       {l.label}
-                      <span style={{ opacity: 0.75 }}>{highlightImportantText(l.level, isDark, l.label)}</span>
+                      <span>{highlightImportantText(l.level, isDark, l.label)}</span>
                     </span>
                   ))}
                 </div>
@@ -418,7 +416,7 @@ export default function AboutSection() {
                       padding: '0.28rem 0.58rem',
                     }}
                   >
-                    <span className="material-icons-round text-xs leading-none">star_outline</span>
+                    <Icon name="star-line" className="text-xs" />
                     {highlightImportantText(item.achievement, isDark, toneKey)}
                   </div>
                 </div>
@@ -493,7 +491,7 @@ export default function AboutSection() {
                         </span>
                       </div>
                       <span className="font-dm" style={{ whiteSpace: 'nowrap', color: t.text, fontSize: '0.64rem', letterSpacing: '0.14em', textTransform: 'uppercase', flexShrink: 0 }}>
-                        Open <span className="material-icons-round" style={{ fontSize: '0.86rem', verticalAlign: 'text-bottom' }}>north_east</span>
+                        Open <Icon name="arrow-right-up-line" style={{ fontSize: '0.86rem' }} />
                       </span>
                     </a>
                   ))}

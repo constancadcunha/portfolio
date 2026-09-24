@@ -6,6 +6,7 @@ import { highlightImportantText } from '../../../components/base/highlightImport
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 import { asset } from '../../../utils/asset';
+import Icon from '../../../components/base/Icon';
 
 /* ─── TYPES ─────────────────────────────────────────────── */
 
@@ -338,19 +339,19 @@ function CloseButton({ onClose }: { onClose: () => void }) {
       className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full transition-colors cursor-pointer z-10"
       style={{ background: isDark ? 'rgba(30,28,24,0.92)' : 'rgba(255,255,255,0.92)' }}
     >
-      <i className="ri-close-line text-base leading-none" style={{ color: t.text }} aria-hidden="true" />
+      <Icon name="ri-close-line" className="text-base leading-none" style={{ color: t.text }} />
     </button>
   );
 }
 
 /* ─── METRICS VISUAL (confidential work: numbers instead of screens) ─── */
 
-function MetricsVisual({ project, compact = false }: { project: Project; compact?: boolean }) {
+function MetricsVisual({ project, compact = false, showName = false }: { project: Project; compact?: boolean; showName?: boolean }) {
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
   const barTrack = isDark ? 'rgba(232,228,218,0.08)' : 'rgba(31,30,27,0.07)';
   const barBefore = isDark ? 'rgba(232,228,218,0.28)' : 'rgba(31,30,27,0.22)';
-  const barAfter = isDark ? '#76ad8f' : '#3f7a5a';
+  const barAfter = isDark ? '#76ad8f' : '#2f6649';
 
   return (
     <div
@@ -363,6 +364,9 @@ function MetricsVisual({ project, compact = false }: { project: Project; compact
           : 'linear-gradient(145deg, rgba(199,223,208,0.55) 0%, rgba(245,239,232,0.9) 100%)',
       }}
     >
+      {showName && (
+        <span className="font-dm text-xs tracking-widest uppercase font-medium" style={{ color: t.text }} aria-hidden="true">{project.name}</span>
+      )}
       {project.headlineStat && (
         <p style={{ marginBottom: compact ? '0.1rem' : '0.3rem' }}>
           <span className="font-cormorant font-light" style={{ fontSize: compact ? '2.1rem' : '2.8rem', lineHeight: 1, color: t.text }}>{project.headlineStat.value}</span>
@@ -408,9 +412,9 @@ function PillLink({ href, icon, children, strong = false }: { href: string; icon
       className="font-dm px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-1.5"
       style={{ fontSize: '0.72rem', border: `1px solid ${t.borderInput}`, color: strong ? t.text : t.textMuted }}
     >
-      <i className={`${icon} text-xs`} aria-hidden="true" />
+      <Icon name={icon} className="text-xs" />
       {children}
-      <i className="ri-external-link-line text-xs opacity-60" aria-hidden="true" />
+      <Icon name="ri-external-link-line" className="text-xs opacity-60" />
       <span className="sr-only">(opens in a new tab)</span>
     </a>
   );
@@ -472,7 +476,7 @@ function CaseStudyModal({ project, onClose }: { project: Project; onClose: () =>
 
         {project.confidentialNote && (
           <p className="font-dm italic mb-6" style={{ fontSize: '0.75rem', color: t.textMuted }}>
-            <i className="ri-lock-line" aria-hidden="true" /> {project.confidentialNote}
+            <Icon name="ri-lock-line" /> {project.confidentialNote}
           </p>
         )}
 
@@ -531,7 +535,7 @@ function LinkBtn({ href, icon, label }: LinkBtnProps) {
       onClick={(e) => e.stopPropagation()}
       className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-150 cursor-pointer flex-shrink-0"
       style={{ border: `1px solid ${t.borderInput}`, color: t.textMuted }}>
-      <i className={`${icon} text-xs leading-none`} aria-hidden="true" />
+      <Icon name={icon} className="text-xs leading-none" />
     </a>
   );
 }
@@ -548,7 +552,7 @@ export default function ProjectsSection() {
   const t = getTokens(isDark);
   const headingAccent = isDark
     ? 'linear-gradient(120deg, #f8d66f 0%, #7aa6ff 55%, #9fb0ff 100%)'
-    : 'linear-gradient(120deg, #4f7ea8 0%, #9a7440 50%, #4f7d5c 100%)';
+    : 'linear-gradient(120deg, #3d6a96 0%, #7f5f22 50%, #3b7358 100%)';
   const chipBg = isDark ? 'rgba(248,214,111,0.12)' : 'rgba(151,183,210,0.2)';
 
   const closeProject = useCallback(() => setOpenProject(null), []);
@@ -598,7 +602,7 @@ export default function ProjectsSection() {
                   onClick={() => setOpenProject(p)}
                   style={{ background: t.card, border: `1px solid ${t.border}` }}
                 >
-                  <div className="relative overflow-hidden" style={{ aspectRatio: '16 / 9', background: isDark ? '#2a2824' : '#f5f3f0' }}>
+                  <div className={`relative flex ${p.bg ? 'overflow-hidden' : ''}`} style={{ aspectRatio: '16 / 9', background: isDark ? '#2a2824' : '#f5f3f0' }}>
                     {p.bg ? (
                       <>
                         <img
@@ -608,16 +612,13 @@ export default function ProjectsSection() {
                           height={675}
                           loading={i < 2 ? 'eager' : 'lazy'}
                           decoding="async"
-                          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover object-top transition-transform duration-700 motion-safe:group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" aria-hidden="true" />
                         <span className="absolute bottom-3 left-4 font-dm text-xs text-white tracking-widest uppercase font-medium" aria-hidden="true">{p.name}</span>
                       </>
                     ) : (
-                      <>
-                        <MetricsVisual project={p} compact />
-                        <span className="absolute top-3 left-4 font-dm text-xs tracking-widest uppercase font-medium" style={{ color: t.text }} aria-hidden="true">{p.name}</span>
-                      </>
+                      <MetricsVisual project={p} compact showName />
                     )}
                   </div>
                   <div className="flex flex-col flex-1 p-5 sm:p-6">
@@ -634,7 +635,7 @@ export default function ProjectsSection() {
                         style={{ fontSize: '0.72rem', background: t.text, color: t.bg, border: `1px solid ${t.text}` }}
                         aria-label={`Read the ${p.name} case study`}
                       >
-                        <i className="ri-article-line text-xs" aria-hidden="true" />Case study
+                        <Icon name="ri-article-line" className="text-xs" />Case study
                       </button>
                       <ProjectLinksRow links={p.links} />
                     </div>
@@ -752,10 +753,10 @@ export default function ProjectsSection() {
             <img src={previewProject.bg.replace('.webp', '-sm.webp')} alt="" width={320} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
           </div>
           <div style={{ padding: '0.6rem 0.75rem' }}>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', color: t.text, fontWeight: 500, marginBottom: '0.15rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <p style={{ fontFamily: '"DM Sans Variable", "DM Sans", sans-serif', fontSize: '0.7rem', color: t.text, fontWeight: 500, marginBottom: '0.15rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {previewProject.name}
             </p>
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.58rem', color: t.textMuted, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <p style={{ fontFamily: '"DM Sans Variable", "DM Sans", sans-serif', fontSize: '0.58rem', color: t.textMuted, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {previewProject.tag}
             </p>
           </div>
