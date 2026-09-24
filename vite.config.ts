@@ -9,6 +9,7 @@ const isPreview = process.env.IS_PREVIEW ? true : false;
 export default defineConfig({
   define: {
     __BASE_PATH__: JSON.stringify(base),
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
     __IS_PREVIEW__: JSON.stringify(isPreview),
     __READDY_PROJECT_ID__: JSON.stringify(process.env.PROJECT_ID || ""),
     __READDY_VERSION_ID__: JSON.stringify(process.env.VERSION_ID || ""),

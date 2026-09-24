@@ -9,67 +9,85 @@ const skillGroups = [
     title: 'Product Design',
     accent: 'Systems, flows, and interaction decisions that make products feel inevitable.',
     items: [
-      { tag: 'Figma', detail: 'Advanced wireframing, systems, and handoff.' },
-      { tag: 'Interaction Design', detail: 'Micro-interactions and clear user flows.' },
-      { tag: 'Prototyping', detail: 'Low-fi to high-fidelity clickable flows.' },
-      { tag: 'Information Architecture', detail: 'Content structure for clarity and speed.' },
+      { tag: 'Figma', detail: 'Components, variables, auto layout and dev-ready files.' },
+      { tag: 'Interaction Design', detail: 'Flows, micro-interactions and prototypes.' },
+      { tag: 'Design Systems', detail: 'Atomic, accessible components used in production.' },
+      { tag: 'After Effects · Premiere Pro', detail: 'Motion graphics and video for campaigns.' },
     ],
   },
   {
-    title: 'Research & Validation',
+    title: 'Research & Accessibility',
     accent: 'Evidence before polish, and testing before confidence.',
     items: [
       { tag: 'User Research', detail: 'Interviews, synthesis, and opportunity framing.' },
       { tag: 'Usability Testing', detail: 'Task-based tests and evidence-led iteration.' },
+      { tag: 'Accessibility (WCAG 2.1 AA)', detail: 'Semantic markup, contrast, keyboard use and automated checks.' },
       { tag: 'Heuristic Evaluation', detail: 'Expert inspection with actionable fixes.' },
-      { tag: 'AI Tools', detail: 'AI-assisted ideation and research workflows.' },
     ],
   },
   {
-    title: 'Build & Systems',
-    accent: 'Enough engineering depth to design for reality, not just presentation.',
+    title: 'Build & Ship',
+    accent: 'I build what I design, in production, with the same care.',
     items: [
-      { tag: 'Design Systems', detail: 'Atomic systems used by engineering teams.' },
-      { tag: 'React + TypeScript', detail: 'Production-ready implementation of designs.' },
-      { tag: 'SwiftUI', detail: 'Native product prototyping and build.' },
-      { tag: 'Django + Python', detail: 'Backend support for research platforms.' },
+      { tag: 'React + TypeScript', detail: 'Production UIs, from components to full apps.' },
+      { tag: 'Next.js', detail: 'Full-stack React apps, like StitchCraft Studio.' },
+      { tag: 'Tailwind CSS · CSS Modules', detail: 'Styling systems that scale with the design.' },
+      { tag: 'Shopify Liquid', detail: 'Storefront pages built for speed.' },
+      { tag: 'Storybook', detail: 'Components documented and tested in isolation.' },
+      { tag: 'Cursor · Claude Code', detail: 'AI-assisted development, reviewed and tested.' },
+      { tag: 'SwiftUI', detail: 'Native iOS apps, designed and built.' },
+      { tag: 'Django + Python', detail: 'Backends for research platforms.' },
+      { tag: 'Three.js · D3.js', detail: 'Coursework: 3D and data visualisation in my M.Sc.' },
     ],
   },
 ];
 
 const timeline = [
   {
+    period: 'Apr 2026 — Present',
+    role: 'Frontend Developer',
+    company: 'Phira Ventures · Lisbon, hybrid',
+    description: 'Frontend work on two projects. mySheepi, a German D2C sleep brand with 200,000+ customers: redesigned and rebuilt key Shopify storefront pages, taking PageSpeed from the 20s–30s to the 80s–90s, and built a KPI dashboard with live-site monitoring and automated accessibility checks, plus an internal promotion scheduler. Margem, an independent bookstore opening in Ericeira: sole designer and developer of its website.',
+    achievement: 'Contributed to ~10× daily sales at mySheepi',
+    accentTone: 'coral',
+  },
+  {
     period: 'Sep 2025 — Mar 2026',
     role: 'Product Designer & Frontend Engineer',
-    company: 'nextflat CH · Zurich, Remote',
-    description: 'Sole designer on a live Swiss real estate platform (500+ users). Redesigned homepage, property feed, and dashboards across 2 release cycles. Built an atomic design system reducing estimated frontend implementation time by ~30%.',
+    company: 'nextflat · Zurich, remote · Full-time internship',
+    description: 'Sole designer and frontend engineer on a live real estate platform (500+ users). Redesigned the homepage, property feed and both dashboards across 2 release cycles, including a map-first property feed with three view modes. Built an atomic design system of accessible React + CSS Modules components, cutting estimated build time for new features by ~30%.',
     achievement: '2 full release cycles shipped',
     accentTone: 'sky',
   },
   {
-    period: 'Jul — Aug 2024',
-    role: 'Front-End Developer Intern',
-    company: 'Sky Portugal · Lisbon',
-    description: 'Designed and built an internal STB device management system in under 2 weeks, reducing device onboarding time from several days to under 4 hours. Automated workflows and built structured data exports used by all operational teams.',
+    period: 'Jul — Sep 2024',
+    role: 'Apprentice Developer',
+    company: 'Sky Portugal · Lisbon · Internship',
+    description: 'Built an internal device management tool in under 2 weeks, cutting device onboarding from several days to under 4 hours.',
     achievement: 'Device onboarding: days to under 4 hours',
     accentTone: 'lilac',
   },
   {
-    period: 'Mar 2024 — May 2025',
+    period: 'May 2024 — May 2025',
     role: 'Coordinator',
     company: 'SINFO · Lisbon',
-    description: "Led a 30-person team organising Portugal's largest free tech conference. 5,000+ attendees, 85+ partner companies. Secured Tier-1 sponsorships including Oracle and coordinated national media coverage through CNN Portugal.",
-    achievement: '5,000+ attendees · Oracle sponsorship',
+    description: "Led a 30-person team organising SINFO, Portugal's largest free tech conference: 5,000+ attendees and 85+ partner companies.",
+    achievement: '30-person team · 5,000+ attendees',
     accentTone: 'honey',
   },
   {
-    period: 'Mar 2022 — May 2023',
-    role: 'Head of Human Resources',
-    company: 'Diferencial IST · Lisbon',
-    description: 'Built recruitment and onboarding processes from scratch for a 20+ member student team, improving time-to-productivity and first-year retention.',
-    achievement: 'Processes built from zero',
+    period: 'May 2022 — May 2024',
+    role: 'Multimedia Designer',
+    company: 'SINFO · Lisbon',
+    description: "Designed 30+ graphics (posters, social content and merchandise), including two of SINFO's top-performing Instagram posts and the SINFO 31 recruitment campaign.",
+    achievement: '2 of SINFO\'s top-performing Instagram posts',
     accentTone: 'mint',
   },
+];
+
+const education = [
+  { period: '2024 — 2026', degree: 'M.Sc. Computer Science (Interaction & Visualization)', school: 'Instituto Superior Técnico', grade: 'GPA 18/20' },
+  { period: '2020 — 2024', degree: 'B.Sc. Computer Science', school: 'Instituto Superior Técnico', grade: 'Final grade 17/20' },
 ];
 
 const certificateLinks = [
@@ -169,13 +187,19 @@ export default function AboutSection() {
         lilac: '#b493ff',
         honey: '#f0c35a',
         mint: '#7ec3a5',
+        coral: '#e7a072',
       }
     : {
         sky: '#79a9d8',
         lilac: '#b59ad9',
         honey: '#d7b169',
         mint: '#87bba2',
+        coral: '#d49983',
       };
+  /* Darker variants for text on the light background, so company names pass AA contrast */
+  const experienceText: Record<string, string> = isDark
+    ? experienceAccents
+    : { sky: '#3d6a96', lilac: '#6b4f9c', honey: '#7f5f22', mint: '#3b7358', coral: '#9a4f35' };
   const certificatePalettes = isDark
     ? [
         'linear-gradient(145deg, rgba(124,181,255,0.18) 0%, rgba(56,74,132,0.24) 100%)',
@@ -218,15 +242,15 @@ export default function AboutSection() {
               <div className="flex-shrink-0 rounded-full overflow-hidden border-2 border-white" style={{ width: '5rem', height: '5rem' }}>
                 <img
                   src="https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/8c3586c5-87d7-4a69-acaf-06a7702348ab_Constanca.jpg?v=e39dd6796735130c5131f6b448cdeb29"
-                  alt="Constança Cunha"
+                  alt="Portrait of Constança Cunha"
                   className="w-full h-full object-cover object-top"
                 />
               </div>
               <div>
                 <p className="font-dm text-sm font-medium" style={{ color: t.text }}>Constança Cunha</p>
-                <p className="font-dm text-xs" style={{ marginTop: '0.15rem', color: t.textMuted }}>Lisbon, Portugal · Open to remote</p>
+                <p className="font-dm text-xs" style={{ marginTop: '0.15rem', color: t.textMuted }}>Lisbon, relocating to Paris · EU citizen</p>
                 <p className="font-dm text-xs leading-relaxed" style={{ marginTop: '0.5rem', color: t.textMuted }}>
-                  {highlightImportantText("Product Designer with a Computer Science background and a master's in Interaction & Visualization. I've worked on live products, built design systems used by engineers, and can implement my own designs in code.", isDark, 'about-bio')}
+                  {highlightImportantText("Design engineer with a Computer Science background and a master's in Interaction & Visualization. I design in Figma and ship in code. At Phira Ventures I'm a frontend developer on mySheepi, a Shopify storefront for 200,000+ customers, and Margem, an independent bookstore's website. Before that I was the sole designer and frontend engineer at nextflat.", isDark, 'about-bio')}
                 </p>
                 <p className="font-dm text-xs leading-relaxed" style={{ marginTop: '0.6rem', color: t.textMuted }}>
                   For a fuller picture of my work experience, degrees, and volunteering, visit my{' '}
@@ -348,6 +372,19 @@ export default function AboutSection() {
                   ))}
                 </div>
               </div>
+
+              <div style={{ marginTop: '1.6rem' }}>
+                <h3 className="font-dm text-xs tracking-[0.2em] uppercase" style={{ marginBottom: '0.75rem', color: t.textMuted }}>Education</h3>
+                <div style={{ display: 'grid', gap: '0.8rem' }}>
+                  {education.map((e) => (
+                    <div key={e.degree}>
+                      <p className="font-dm uppercase" style={{ fontSize: '0.6rem', letterSpacing: '0.14em', color: t.textMuted }}>{e.period}</p>
+                      <p className="font-cormorant font-medium" style={{ fontSize: '1.1rem', color: t.text, lineHeight: 1.25 }}>{e.degree}</p>
+                      <p className="font-dm" style={{ fontSize: '0.75rem', color: t.textMuted }}>{e.school} · {highlightImportantText(e.grade, isDark, `edu-${e.degree}`)}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
           </div>
 
           {/* Right — Timeline */}
@@ -362,7 +399,7 @@ export default function AboutSection() {
                   <div className="absolute rounded-full" style={{ left: '-0.35rem', top: '0.35rem', width: '0.65rem', height: '0.65rem', background: accent }} />
                   <p className="font-dm text-xs tracking-widest uppercase" style={{ marginBottom: '0.25rem', color: t.textMuted }}>{highlightImportantText(item.period, isDark, toneKey)}</p>
                   <p className="font-cormorant font-medium leading-tight" style={{ fontSize: '1.2rem', color: t.text }}>{item.role}</p>
-                  <p className="font-dm" style={{ fontSize: '0.75rem', marginBottom: '0.5rem', color: accent }}>{item.company}</p>
+                  <p className="font-dm" style={{ fontSize: '0.75rem', marginBottom: '0.5rem', color: experienceText[item.accentTone] }}>{item.company}</p>
                   <p className="font-dm leading-relaxed" style={{ fontSize: '0.82rem', marginBottom: '0.5rem', color: t.textMuted }}>{highlightImportantText(item.description, isDark, toneKey)}</p>
                   <div
                     className="font-dm flex items-center gap-1"

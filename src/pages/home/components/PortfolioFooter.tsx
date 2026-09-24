@@ -1,6 +1,8 @@
 import { useDarkMode } from '../../../contexts/DarkModeContext';
 import { getTokens } from '../../../utils/darkTokens';
 
+const LAST_UPDATED = new Date(__BUILD_TIME__).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+
 export default function PortfolioFooter() {
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
@@ -23,7 +25,7 @@ export default function PortfolioFooter() {
           &copy; {new Date().getFullYear()} Constança Cunha.
         </p>
         <p className="font-dm" style={{ fontSize: '0.86rem', letterSpacing: '0.03em', color: t.textMuted, justifySelf: 'center' }}>
-          Last updated March 2026
+          Last updated {LAST_UPDATED}
         </p>
         <p className="font-cormorant italic" style={{ fontSize: '1.12rem', color: t.textMuted, justifySelf: 'center' }}>
           designed &amp; built with care
