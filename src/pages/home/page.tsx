@@ -18,14 +18,15 @@ const STARRY_NIGHT_URL =
   'https://storage.readdy-site.link/project_files/e3f47e67-a40c-4e43-bb07-7051efd37d8b/ee9938bb-db17-4424-ae21-3295d23f431b_Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg.webp?v=e5c1f82b131465dd1fba7e27842ec222';
 
 const CREDENTIALS = [
+  { name: 'Phira Ventures', detail: 'Frontend Developer' },
   { name: 'Instituto Superior Técnico', detail: 'M.Sc. Interaction & Visualization' },
-  { name: 'Sky Portugal', detail: 'Frontend Developer Intern' },
+  { name: 'Sky Portugal', detail: 'Apprentice Developer' },
   { name: 'nextflat CH', detail: 'Product Designer & Engineer' },
   { name: 'SINFO', detail: 'Tech Conference · 5,000 attendees' },
   { name: 'IBM', detail: 'Enterprise Design Thinking' },
 ];
 
-const ROLES = ['Product Designer', 'UX Researcher', 'Frontend Builder'];
+const ROLES = ['Design Engineer', 'Frontend Developer', 'Product Designer'];
 
 /* ── Rotating tagline ── */
 function RotatingTagline() {
@@ -422,7 +423,7 @@ function HomeContent() {
             className="font-cormorant font-light italic mx-auto"
             style={{ fontSize: 'clamp(0.95rem, 1.7vw, 1.2rem)', maxWidth: '28rem', lineHeight: 1.65, color: isDark ? 'rgba(232,228,218,0.5)' : 'rgba(31,30,27,0.5)' }}
           >
-            I turn complex problems into clear, beautiful, human-centred experiences.
+            I design in Figma and ship in code.
           </p>
 
           {/* Credibility strip */}

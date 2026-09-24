@@ -365,7 +365,7 @@ function ScreenContent({
         textAlign: 'center',
         paddingLeft: mobile ? 8 : 0, paddingRight: mobile ? 8 : 0,
       }}>
-        Product Designer &amp; UX Engineer
+        Design engineer
       </span>
 
       {/* Tagline — desktop only */}
@@ -380,7 +380,7 @@ function ScreenContent({
           opacity: showTagline ? 1 : 0,
           transition: 'opacity 0.5s ease',
         }}>
-          I turn complex problems into clear, beautiful, human-centred experiences.
+          I design in Figma and ship in code.
         </span>
       )}
 
