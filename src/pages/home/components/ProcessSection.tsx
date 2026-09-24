@@ -169,8 +169,11 @@ export default function ProcessSection() {
                 position: 'relative',
               }}
             >
-              {/* Step number */}
+              {/* Step number — pure decoration (the phase order is already in the
+                  reading order), so it's drawn via CSS generated content */}
               <div
+                className="process-num"
+                data-num={step.num}
                 style={{
                   fontFamily: 'Cormorant Garamond, serif',
                   fontSize: 'clamp(4rem, 7vw, 6.5rem)',
@@ -182,9 +185,7 @@ export default function ProcessSection() {
                   userSelect: 'none',
                 }}
                 aria-hidden="true"
-              >
-                {step.num}
-              </div>
+              />
 
               {/* Title */}
               <h3
@@ -299,6 +300,7 @@ export default function ProcessSection() {
       </div>
 
       <style>{`
+        .process-num::before { content: attr(data-num); }
         @media (max-width: 768px) {
           .process-grid {
             grid-template-columns: 1fr !important;

@@ -407,6 +407,7 @@ function HomeContent() {
           transition: 'background 0.5s ease, box-shadow 0.5s ease',
         }}
       >
+        <main>
         {/* ── Hero ── */}
         <section
           id="hero"
@@ -491,6 +492,7 @@ function HomeContent() {
         <ProcessSection />
         <AboutSection />
         <ContactSection />
+        </main>
         <PortfolioFooter />
       </div>
 

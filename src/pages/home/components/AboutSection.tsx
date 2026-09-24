@@ -163,7 +163,7 @@ export default function AboutSection() {
   const { ref: bioRef, revealed: bioRevealed } = useRevealOnScroll([]);
   const { isDark } = useDarkMode();
   const t = getTokens(isDark);
-  const websiteLinkColor = isDark ? '#f2c86b' : '#7d9bc1';
+  const websiteLinkColor = isDark ? '#f2c86b' : '#3d5a7f';
   const basePath = (__BASE_PATH__ || '/').replace(/\/?$/, '/');
   const certificateHref = (fileName: string) => `${basePath}Certificates/${encodeURIComponent(fileName)}`;
   const skillPalettes = isDark
