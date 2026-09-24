@@ -34,13 +34,13 @@ const STEPS = [
   {
     num: '03',
     title: 'Build',
-    subtitle: 'Refine · Test · Ship',
+    subtitle: 'Design · Code · Ship',
     description:
-      "High-fidelity designs grounded in real feedback. I stay close to engineering, iterate on what usability testing surfaces, and care about what happens after handoff — not just the deck.",
+      "I build what I design myself. The Figma components become React components, the details survive because there's no handoff to lose them in, and I keep testing and measuring once it's live.",
     details: [
-      'Component-based design systems',
-      'Moderated usability testing & iteration',
-      'Frontend collaboration & QA review',
+      'Design systems in Figma and in code',
+      'Production React, Next.js and Shopify builds',
+      'Accessibility, performance and usability checks after launch',
     ],
     accentLight: '#cca567',
     accentDark: '#efbf54',
@@ -290,9 +290,9 @@ export default function ProcessSection() {
         >
           <p
             className="font-cormorant font-light italic"
-            style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', color: isDark ? 'rgba(232,228,218,0.28)' : 'rgba(31,30,27,0.28)' }}
+            style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', color: t.textMuted }}
           >
-            "Good design is invisible. Great design makes the right thing obvious."
+            I design in Figma and ship in code, so nothing gets lost in handoff.
           </p>
         </div>
       </div>
