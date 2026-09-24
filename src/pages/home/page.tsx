@@ -421,7 +421,7 @@ function HomeContent() {
             className="font-dm uppercase"
             style={{ fontSize: 'clamp(0.5rem, 0.85vw, 0.65rem)', letterSpacing: '0.3em', marginBottom: '1.75rem', color: t.textMuted }}
           >
-            Lisbon · relocating to Paris
+            Lisbon
           </p>
 
           <h1

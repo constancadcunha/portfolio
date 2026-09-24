@@ -251,7 +251,7 @@ export default function AboutSection() {
               </div>
               <div>
                 <p className="font-dm text-sm font-medium" style={{ color: t.text }}>Constança Cunha</p>
-                <p className="font-dm text-xs" style={{ marginTop: '0.15rem', color: t.textMuted }}>Lisbon, relocating to Paris · EU citizen</p>
+                <p className="font-dm text-xs" style={{ marginTop: '0.15rem', color: t.textMuted }}>Lisbon · EU citizen</p>
                 <p className="font-dm text-xs leading-relaxed" style={{ marginTop: '0.5rem', color: t.textMuted }}>
                   {highlightImportantText("Design engineer with a Computer Science background and a master's in Interaction & Visualization. I design in Figma and ship in code. At Phira Ventures I'm a frontend developer on mySheepi, a Shopify storefront for 200,000+ customers, and Margem, an independent bookstore's website. Before that I was the sole designer and frontend engineer at nextflat.", isDark, 'about-bio')}
                 </p>
